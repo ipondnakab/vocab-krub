@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+dist/
+*.tsbuildinfo
+next-env.d.ts
+
+# Generated placeholder art — regenerate with `npm run generate:placeholders`
+public/assets/placeholder/
+
+coverage/
+.DS_Store
+*.log
+.env*.local
