@@ -1,0 +1,39 @@
+{
+  "name": "vocab-krub",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A 2D JRPG where the player learns English by playing a real RPG. Stage 1: the single-player learning campaign.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run tests/unit",
+    "test:content": "vitest run tests/content",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "generate:placeholders": "node scripts/generate-placeholders.ts"
+  },
+  "dependencies": {
+    "next": "16.3.1",
+    "phaser": "3.90.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^10.8.1",
+    "typescript": "5.9.3",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^4.1.11"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

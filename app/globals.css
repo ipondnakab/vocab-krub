@@ -1,0 +1,58 @@
+/*
+ * T047 establishes the full RPG visual language before any battle UI is built.
+ * This file holds only what the app shell needs until then.
+ *
+ * The standing rule (Constitution Principle I): HTML defaults make things look like a web
+ * form, and a web form is exactly what this game must never become. No default form
+ * controls, no system fonts, no browser-blue focus rings.
+ */
+
+:root {
+  --font-display: var(--font-display), monospace;
+  --font-text: var(--font-text), sans-serif;
+
+  /* Placeholder palette. T047 replaces this with the real one. */
+  --ink: #f2ecd8;
+  --ink-dim: #a89f86;
+  --ground: #1a1626;
+  --ground-raised: #262036;
+  --edge: #4a3f63;
+  --accent: #e8b64c;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--font-text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+a {
+  color: var(--accent);
+}
+
+/* Pixel art must never be smoothed when scaled. */
+canvas,
+img[data-pixel] {
+  image-rendering: pixelated;
+}
