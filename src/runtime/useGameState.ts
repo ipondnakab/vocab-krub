@@ -1,6 +1,6 @@
 import { useCallback, useSyncExternalStore } from "react";
-import type { GameState, GameStore } from "./GameStore.js";
-import type { Intent } from "./intents.js";
+import type { GameState, GameStore } from "./GameStore";
+import type { Intent } from "./intents";
 
 /**
  * React binding for the bridge.

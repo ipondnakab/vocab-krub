@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { componentId, difficultyTier, identifier, localized, targetText } from "./common.js";
+import { componentId, difficultyTier, identifier, localized, targetText } from "./common";
 
 /**
  * Question levels 1–5 (FR-015): meaning, recognition, word form, fill-in-the-blank, context.

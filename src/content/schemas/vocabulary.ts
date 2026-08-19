@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { cefrLevel, identifier, localized, targetText } from "./common.js";
+import { cefrLevel, identifier, localized, targetText } from "./common";
 
 /** One inflected member of a word family: for GO — go, went, gone, going. */
 export const wordFormSchema = z.strictObject({

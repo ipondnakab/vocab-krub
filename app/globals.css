@@ -1,58 +1,249 @@
 /*
- * T047 establishes the full RPG visual language before any battle UI is built.
- * This file holds only what the app shell needs until then.
+ * The RPG visual language (T047).
  *
- * The standing rule (Constitution Principle I): HTML defaults make things look like a web
- * form, and a web form is exactly what this game must never become. No default form
- * controls, no system fonts, no browser-blue focus rings.
+ * Constitution Principle I: this is a game that teaches, not a quiz with sprites. React renders
+ * all the text (research R-014), which means HTML's defaults are the standing threat — a page of
+ * <button> elements in a system font IS a web form, and no amount of good battle logic survives
+ * looking like one.
+ *
+ * So: no default form controls, no system fonts, no browser focus rings, no rounded corners.
+ * Frames are pixel-stepped with hard box-shadows rather than borders with radii.
  */
 
 :root {
-  --font-display: var(--font-display), monospace;
-  --font-text: var(--font-text), sans-serif;
+  /*
+   * NOTE: --font-display and --font-text are set on <html> by next/font (app/layout.tsx).
+   * Do NOT redeclare them here — :root IS <html>, so `--font-text: var(--font-text), …` is
+   * self-referential, invalid, and silently drops every face back to a system serif. Reference
+   * them with a fallback at the point of use instead.
+   */
+  --ground: #14101f;
+  --ground-deep: #0b0813;
+  --panel: #241d38;
+  --panel-raised: #302749;
+  --edge: #4b3d70;
+  --edge-bright: #6d5a9c;
 
-  /* Placeholder palette. T047 replaces this with the real one. */
-  --ink: #f2ecd8;
-  --ink-dim: #a89f86;
-  --ground: #1a1626;
-  --ground-raised: #262036;
-  --edge: #4a3f63;
-  --accent: #e8b64c;
+  --ink: #f4eeda;
+  --ink-dim: #a99ec2;
+  --accent: #f2c14e;
+
+  --hp-player: #6ec06e;
+  --hp-monster: #d9584a;
+  --correct: #7fd18a;
+  --wrong: #e8614d;
+
+  --px: 2px;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
 
-html,
 body {
-  height: 100%;
-}
-
-body {
-  background: var(--ground);
+  background: var(--ground-deep);
   color: var(--ink);
-  font-family: var(--font-text);
-  -webkit-font-smoothing: antialiased;
+  font-family: var(--font-text), "Noto Sans Thai", sans-serif;
   line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.5;
+h1, h2, h3 { font-family: var(--font-display), monospace; font-weight: 400; line-height: 1.5; }
+a { color: var(--accent); }
+
+canvas, img[data-pixel] { image-rendering: pixelated; }
+
+/* ---------------------------------------------------------------- panels */
+
+/*
+ * A stepped frame, the way an RPG window is drawn: hard bands of colour, no anti-aliased
+ * curve anywhere. This is the asset the contract no longer asks anyone to draw.
+ */
+.panel {
+  background: var(--panel);
+  /* Opaque, so a scrolled panel never lets the canvas bleed through the text. */
+  box-shadow:
+    0 0 0 var(--px) var(--edge-bright),
+    0 0 0 calc(var(--px) * 2) var(--ground-deep),
+    0 0 0 calc(var(--px) * 3) var(--edge);
+  padding: 1rem 1.25rem;
 }
 
-a {
+.panel--raised { background: var(--panel-raised); }
+
+.label {
+  font-family: var(--font-display), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- hp bars */
+
+.hpbar { display: grid; gap: 0.35rem; }
+
+.hpbar__track {
+  height: 14px;
+  background: var(--ground-deep);
+  box-shadow: 0 0 0 var(--px) var(--edge);
+  overflow: hidden;
+}
+
+.hpbar__fill {
+  height: 100%;
+  /* Tweened, not jumped — a bar that snaps reads as a spreadsheet updating. */
+  transition: width 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hpbar__fill--player { background: var(--hp-player); }
+.hpbar__fill--monster { background: var(--hp-monster); }
+
+.hpbar__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.hpbar__value { font-family: var(--font-display), monospace; font-size: 0.6rem; color: var(--ink-dim); }
+
+/* ---------------------------------------------------------------- options */
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+@media (max-width: 40rem) {
+  .options { grid-template-columns: minmax(0, 1fr); }
+}
+
+/*
+ * Deliberately NOT a <button> with default styling. `appearance: none` strips the OS control,
+ * and every state below is drawn as a stepped frame so an answer reads as a menu command in a
+ * JRPG, not a form submit.
+ */
+.option {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+
+  background: var(--panel-raised);
+  color: var(--ink);
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  box-shadow: 0 0 0 var(--px) var(--edge);
+  transition: background 120ms steps(2), box-shadow 120ms steps(2), transform 80ms steps(2);
+}
+
+.option__key {
+  font-family: var(--font-display), monospace;
+  font-size: 0.6rem;
   color: var(--accent);
+  min-width: 1.4rem;
 }
 
-/* Pixel art must never be smoothed when scaled. */
-canvas,
-img[data-pixel] {
-  image-rendering: pixelated;
+.option:hover:not(:disabled),
+.option:focus-visible {
+  background: var(--edge);
+  box-shadow: 0 0 0 var(--px) var(--accent);
+  outline: none;
+  transform: translateX(2px);
 }
+
+.option:disabled { cursor: default; opacity: 0.45; }
+
+.option--correct { background: color-mix(in srgb, var(--correct) 28%, var(--panel-raised)); box-shadow: 0 0 0 var(--px) var(--correct); }
+.option--wrong { background: color-mix(in srgb, var(--wrong) 28%, var(--panel-raised)); box-shadow: 0 0 0 var(--px) var(--wrong); }
+.option--eliminated { opacity: 0.25; text-decoration: line-through; }
+
+/* ---------------------------------------------------------------- battle layout */
+
+.battle {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /* Match the Phaser canvas width so the HUD frames the monster instead of the browser. */
+  width: min(100%, 960px);
+  margin: 0 auto;
+  padding: 1rem;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+.battle > * { pointer-events: auto; }
+
+.battle__top { display: grid; gap: 0.75rem; max-width: 26rem; }
+
+/* min-height:0 is load-bearing: without it the 1fr row refuses to shrink, the bottom section
+   grows past the viewport, and the HP bar rides up over the monster. */
+.battle__stage-gap { min-height: 0; pointer-events: none; }
+
+.battle__bottom { display: grid; gap: 0.75rem; min-height: 0; }
+
+/* The HP bar stays pinned; only the panels scroll when feedback makes them tall. */
+.battle__panels {
+  display: grid;
+  gap: 0.75rem;
+  min-height: 0;
+  max-height: 58dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.prompt {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
+}
+
+.feedback { display: grid; gap: 0.6rem; }
+.feedback__answer { font-family: var(--font-display), monospace; font-size: 0.85rem; color: var(--correct); }
+.feedback__why { color: var(--ink-dim); }
+
+.actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.action {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: var(--font-display), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  background: var(--panel-raised);
+  color: var(--ink);
+  padding: 0.65rem 1rem;
+  box-shadow: 0 0 0 var(--px) var(--edge);
+  transition: background 120ms steps(2), box-shadow 120ms steps(2);
+}
+
+.action:hover:not(:disabled), .action:focus-visible {
+  background: var(--edge);
+  box-shadow: 0 0 0 var(--px) var(--accent);
+  outline: none;
+}
+
+.action:disabled { cursor: default; opacity: 0.4; }
+.action--primary { background: var(--accent); color: var(--ground-deep); }
+.action--primary:hover:not(:disabled) { background: var(--ink); box-shadow: 0 0 0 var(--px) var(--accent); }
+
+/* ---------------------------------------------------------------- outcome */
+
+.outcome { display: grid; gap: 0.9rem; justify-items: start; }
+.outcome__title { font-family: var(--font-display), monospace; font-size: 1.1rem; }
+.outcome__title--victory { color: var(--accent); }
+.outcome__title--defeat { color: var(--wrong); }
+.outcome__note { color: var(--ink-dim); }
+
+.stage { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--ground); }
+.stage__canvas { position: absolute; inset: 0; }

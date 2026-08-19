@@ -1,18 +1,33 @@
 {
   "damage": {
-    "byDifficulty": { "easy": 10, "medium": 20, "hard": 30, "expert": 50 }
+    "byDifficulty": {
+      "easy": 10,
+      "medium": 20,
+      "hard": 30,
+      "expert": 50
+    }
   },
   "player": {
     "baseMaxHp": 100,
     "hpPerLevel": 20,
-    "xpCurve": [0, 100, 250, 450, 700, 1000, 1400, 1900, 2500, 3200]
+    "xpCurve": [
+      0,
+      100,
+      250,
+      450,
+      700,
+      1000,
+      1400,
+      1900,
+      2500,
+      3200
+    ]
   },
   "mastery": {
     "streakRequired": 2
   },
   "questions": {
     "reviewProportion": 0.3,
-    "weightMonsterWord": 10,
     "weightUnmasteredComponent": 3,
     "weightMasteredComponent": 1,
     "recencyPenalty": 0.2

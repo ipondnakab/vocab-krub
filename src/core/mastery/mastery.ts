@@ -1,6 +1,6 @@
-import type { BalanceConfig, VocabularyWord } from "../../content/schemas/index.js";
-import { deriveComponents } from "../content/deriveComponents.js";
-import type { ComponentMastery, PlayerState, WordMastery } from "../player/playerState.js";
+import type { BalanceConfig, VocabularyWord } from "../../content/schemas/index";
+import { deriveComponents } from "../content/deriveComponents";
+import type { ComponentMastery, PlayerState, WordMastery } from "../player/playerState";
 
 /**
  * Vocabulary mastery (FR-023 … FR-029, research R-005).

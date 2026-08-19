@@ -203,31 +203,31 @@ lets the monster attack. This is the hypothesis under test.
 
 ### Core rules (no rendering)
 
-- [ ] **T033** [US1] Implement `src/core/questions/select.ts` — the weighted selection from R-004:
+- [x] **T033** [US1] Implement `src/core/questions/select.ts` — the weighted selection from R-004:
       eligibility filter (monster word or encountered review word; grammar learned; not the previous
       question), then weighting by source, component mastery state, and recency. All weights from
       balance config.
-- [ ] **T034** [US1] Test question selection: prefers unmastered components of the monster's word
+- [x] **T034** [US1] Test question selection: prefers unmastered components of the monster's word
       (FR-019); excludes questions whose grammar is unlearned (FR-018); never repeats consecutively
       (FR-013); prefers unasked questions until the pool is exhausted; degrades gracefully when the
       pool is smaller than the battle is long; falls back to the monster's word when the review pool
       is empty; **throws a named error rather than returning undefined** when nothing is eligible.
-- [ ] **T035** [P] [US1] Implement `src/core/questions/present.ts` — `presentQuestion` shuffling
+- [x] **T035** [P] [US1] Implement `src/core/questions/present.ts` — `presentQuestion` shuffling
       options via the injected `Rng` and returning `PresentedQuestion` with the remapped correct index
       (FR-021), plus `gradeAnswer`.
-- [ ] **T036** [P] [US1] Test presentation and grading: shuffled order varies across seeds; the
+- [x] **T036** [P] [US1] Test presentation and grading: shuffled order varies across seeds; the
       correct answer always survives shuffling; the remapped index always points at it; grading is
       right for every option position; renderers can never see the authored ordering.
-- [ ] **T037** [P] [US1] Implement `src/core/questions/damage.ts` — `damageFor(question, weapon,
+- [x] **T037** [P] [US1] Implement `src/core/questions/damage.ts` — `damageFor(question, weapon,
       balance)` per FR-005 and R-006: difficulty tier value × weapon multiplier, no weapon meaning ×1.
-- [ ] **T038** [P] [US1] Test damage: each of the four tiers yields its configured value; a weapon
+- [x] **T038** [P] [US1] Test damage: each of the four tiers yields its configured value; a weapon
       multiplier applies; damage comes from the tier and **not** from the question's level; editing
       `balance.json` changes damage with no code edit.
-- [ ] **T039** [US1] Implement `src/core/battle/battle.ts`: `createBattle`, `submitAnswer`,
+- [x] **T039** [US1] Implement `src/core/battle/battle.ts`: `createBattle`, `submitAnswer`,
       `attemptFlee`, `endBattle` per [contracts/core-api.md](./contracts/core-api.md). State is
       returned, never mutated in place. Exactly one question resolves per turn and grants at most one
       attack opportunity (FR-001). One side acts per turn. Victory and defeat decided here.
-- [ ] **T040** [US1] Test the battle turn rules — the heart of Principle V:
+- [x] **T040** [US1] Test the battle turn rules — the heart of Principle V:
       correct answer damages the monster and the monster does **not** attack that turn (FR-002);
       wrong answer damages the player and the monster takes **no** damage that turn (FR-003);
       wrong answer returns feedback with the correct option and explanation, present in the result
@@ -240,60 +240,77 @@ lets the monster attack. This is the hypothesis under test.
       both cannot reach 0 on the same turn, because only one side acts;
       `submitAnswer` throws when `phase !== "awaiting-answer"` (FR-010);
       no further question is drawn after an outcome is decided.
-- [ ] **T041** [US1] Test flee: succeeds and fails against a seeded RNG at the configured chance;
+- [x] **T041** [US1] Test flee: succeeds and fails against a seeded RNG at the configured chance;
       failure consumes the turn; success awards no rewards (FR-011); `attemptFlee` **throws** on a boss
       battle rather than returning a failure (FR-012); mastery earned before fleeing is retained.
-- [ ] **T042** [US1] Wire mastery into battle resolution: every answer calls `recordAnswer` for the
+- [x] **T042** [US1] Wire mastery into battle resolution: every answer calls `recordAnswer` for the
       question's component and the result carries `masteryEvents`. Test that mastery is applied per
       answer, not at battle end, so quitting mid-battle keeps it.
-- [ ] **T043** [US1] Integration test `tests/integration/battle-flow.test.ts`: a scripted all-correct
+- [x] **T043** [US1] Integration test `tests/integration/battle-flow.test.ts`: a scripted all-correct
       run always wins without taking damage, and a scripted all-wrong run always ends in defeat
       (SC-005). Both against a fixed seed.
 
 ### Mounting the game
 
-- [ ] **T044** [US1] Implement `app/play/page.tsx` and `src/components/GameCanvas.tsx` — the client
+- [x] **T044** [US1] Implement `app/play/page.tsx` and `src/components/GameCanvas.tsx` — the client
       component that mounts Phaser via `next/dynamic` with `ssr: false` (R-013). **Guard against React
       Strict Mode's double effect invocation** with a ref, and destroy the Phaser instance on unmount.
       This is the classic way this integration breaks.
-- [ ] **T045** [US1] Implement `src/phaser/game.ts` plus `BootScene` and `PreloadScene`: Phaser config
+- [x] **T045** [US1] Implement `src/phaser/game.ts` plus `BootScene` and `PreloadScene`: Phaser config
       with `pixelArt: true`, asset preloading per the asset contract, and store subscription wired in
       `create()` with **unsubscribe on `shutdown`** (bridge contract).
-- [ ] **T046** [US1] Wire the dev query-parameter shortcuts (`?battle=`, `?map=`, `?challenge=`,
+- [x] **T046** [US1] Wire the dev query-parameter shortcuts (`?battle=`, `?map=`, `?challenge=`,
       `?locale=`, `?seed=`), active in development and inert in production.
 
 ### React battle UI
 
-- [ ] **T047** [US1] Establish the RPG visual language in `app/globals.css` and a shared panel
+- [x] **T047** [US1] Establish the RPG visual language in `app/globals.css` and a shared panel
       component: pixel-stepped borders, the game palette, no default form controls, no system fonts.
       **This task exists because HTML defaults make things look like a web form, and a web form is
       exactly what Principle I forbids this game from becoming.**
-- [ ] **T048** [P] [US1] Build `src/components/battle/HpBar.tsx` — framed bar with a tweened fill,
+- [x] **T048** [P] [US1] Build `src/components/battle/HpBar.tsx` — framed bar with a tweened fill,
       used for both combatants, in CSS rather than art.
-- [ ] **T049** [P] [US1] Build `src/components/battle/QuestionPanel.tsx` and `OptionList.tsx` — the
+- [x] **T049** [P] [US1] Build `src/components/battle/QuestionPanel.tsx` and `OptionList.tsx` — the
       prompt and four options, keyboard- and pointer-navigable, rendering `PresentedQuestion` so the
       authored ordering is never exposed.
-- [ ] **T050** [US1] Build `src/components/battle/FeedbackPanel.tsx` — the correct answer and its
+- [x] **T050** [US1] Build `src/components/battle/FeedbackPanel.tsx` — the correct answer and its
       localized explanation, requiring dismissal before the counterattack resolves (FR-004). A
       Principle IV requirement, not a nicety.
-- [ ] **T051** [US1] Build `src/components/battle/BattleHud.tsx` composing the above over the canvas,
+- [x] **T051** [US1] Build `src/components/battle/BattleHud.tsx` composing the above over the canvas,
       reading state through `useGameState` and sending intents through `useDispatch`. It computes no
       damage and compares no HP to zero.
-- [ ] **T052** [US1] Implement input locking in the UI: options are visibly disabled while `phase` is
+- [x] **T052** [US1] Implement input locking in the UI: options are visibly disabled while `phase` is
       not `awaiting-answer`, and inputs are **discarded, not queued** (FR-010). The store drops them
       too — belt and braces, because a queued answer resolving after a battle ends is a real bug.
 
 ### Phaser battle scene
 
-- [ ] **T053** [US1] Implement `src/phaser/scenes/BattleScene.ts`: monster sprite, backdrop, and the
+- [x] **T053** [US1] Implement `src/phaser/scenes/BattleScene.ts`: monster sprite, backdrop, and the
       attack / hurt / damage-flash animations driven by store state. **No text** — React owns text
       (R-014).
-- [ ] **T054** [US1] Implement the victory sequence as **restoration**: the monster's frame-3 restored
+- [x] **T054** [US1] Implement the victory sequence as **restoration**: the monster's frame-3 restored
       sprite, calm framing, copy that says the word was freed rather than killed (Principle I). Add
       the defeat sequence.
 
-**Checkpoint**: A complete battle is playable start to finish, both outcomes. **The core hypothesis is
-now testable — get this in front of a playtester before building Phase 4.**
+**Checkpoint**: ✅ **COMPLETE (2026-08-20)** — 176 tests pass in ~0.4s, lint/typecheck/build clean,
+and the battle was driven end to end in a real browser at `/play?battle=monster-go&seed=42`:
+
+```
+initial                     monster 140/140   player 100/100
+correct answer          →   monster 130/140   player 100/100   (FR-002: monster does not act)
+wrong answer            →   feedback shows "go" + Thai explanation, player STILL 100/100
+dismiss feedback        →   player 82/100                      (FR-004: taught before hit)
+flee button on boss     →   absent                             (FR-012)
+real asset 404 → placeholder served                            (asset contract fallback)
+```
+
+Two defects the test suite could never have caught, both found by looking at the screenshot:
+- `:root { --font-text: var(--font-text) }` is self-referential, because `:root` IS the `<html>`
+  element `next/font` puts its variable on. Every face silently fell back to a system serif.
+- The battle overlay had no `min-height: 0` on its flexible row, so the feedback panel pushed the
+  player HP bar up over the monster sprite.
+
+**The core hypothesis is now testable — get this in front of a playtester before building Phase 4.**
 
 ---
 

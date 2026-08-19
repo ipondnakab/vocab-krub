@@ -19,10 +19,10 @@ import {
   type Npc,
   type Question,
   type VocabularyWord,
-} from "../../content/schemas/index.js";
-import { deriveComponents } from "./deriveComponents.js";
-import { ContentValidationError, formatPath, type ContentIssue } from "./errors.js";
-import { validateContent, type ValidationLevel } from "./validate.js";
+} from "../../content/schemas/index";
+import { deriveComponents } from "./deriveComponents";
+import { ContentValidationError, formatPath, type ContentIssue } from "./errors";
+import { validateContent, type ValidationLevel } from "./validate";
 
 /** The raw, unparsed JSON documents, keyed by their filename. */
 export interface RawContentFiles {

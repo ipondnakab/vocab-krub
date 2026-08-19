@@ -1,20 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { createGameStore, type GameStoreDeps } from "../../src/runtime/GameStore.js";
-import type { PlayerState } from "../../src/core/player/playerState.js";
-import type { SaveLoadResult, SaveRepository } from "../../src/core/save/SaveRepository.js";
-import type { BalanceConfig } from "../../src/content/schemas/index.js";
-
-const balance: BalanceConfig = {
-  damage: { byDifficulty: { easy: 10, medium: 20, hard: 30, expert: 50 } },
-  player: { baseMaxHp: 100, hpPerLevel: 20, xpCurve: [0, 100] },
-  mastery: { streakRequired: 2 },
-  questions: {
-    reviewProportion: 0.3, weightMonsterWord: 10, weightUnmasteredComponent: 3,
-    weightMasteredComponent: 1, recencyPenalty: 0.2,
-  },
-  battle: { fleeSuccessChance: 0.6, defeatGoldPenalty: 0.1 },
-  challenge: { defaultPassThreshold: 0.8 },
-};
+import { createGameStore, type GameStoreDeps } from "../../src/runtime/GameStore";
+import type { PlayerState } from "../../src/core/player/playerState";
+import type { SaveLoadResult, SaveRepository } from "../../src/core/save/SaveRepository";
+import { balance, content } from "../helpers/fixtures";
+import { createRng } from "../../src/core/rng/rng";
 
 function fakeSave(overrides: Partial<SaveRepository> = {}): SaveRepository {
   return {
@@ -27,7 +16,7 @@ function fakeSave(overrides: Partial<SaveRepository> = {}): SaveRepository {
 }
 
 function deps(save: SaveRepository = fakeSave()): GameStoreDeps {
-  return { balance, save, startMapId: "village", startX: 3, startY: 4 };
+  return { content, balance, rng: createRng(1), save, startMapId: "village", startX: 3, startY: 4 };
 }
 
 describe("GameStore — subscription", () => {
@@ -149,5 +138,94 @@ describe("GameStore — locale", () => {
     expect(store.getSnapshot().player.locale).toBe("th");
     store.dispatch({ type: "set-locale", locale: "en" });
     expect(store.getSnapshot().player.locale).toBe("en");
+  });
+});
+
+describe("GameStore — battle intents (FR-010)", () => {
+  const inBattle = (monsterId = "monster-eat") => {
+    const store = createGameStore(deps());
+    store.dispatch({ type: "new-game" });
+    store.dispatch({ type: "start-battle", monsterId });
+    return store;
+  };
+
+  it("starts a battle and mirrors the player into game state", () => {
+    const store = inBattle();
+    const s = store.getSnapshot();
+    expect(s.screen).toBe("battle");
+    expect(s.battle?.monsterId).toBe("monster-eat");
+    expect(s.player).toBe(s.battle?.player);
+  });
+
+  it("drops a second start-battle while one is already running", () => {
+    const store = inBattle();
+    const before = store.getSnapshot();
+    store.dispatch({ type: "start-battle", monsterId: "monster-go" });
+    expect(store.getSnapshot()).toBe(before);
+  });
+
+  it("DROPS an answer that arrives while feedback is showing", () => {
+    // The queued-answer bug: an answer submitted during a death animation must never resolve
+    // into a battle that has already moved on.
+    const store = inBattle();
+    const q = store.getSnapshot().battle!.currentQuestion!;
+    store.dispatch({ type: "answer-question", optionIndex: (q.correctIndex + 1) % 4 });
+    expect(store.getSnapshot().battle?.phase).toBe("showing-feedback");
+
+    const during = store.getSnapshot();
+    const listener = vi.fn();
+    store.subscribe(listener);
+    store.dispatch({ type: "answer-question", optionIndex: 0 });
+
+    expect(store.getSnapshot()).toBe(during);
+    expect(listener).not.toHaveBeenCalled();
+  });
+
+  it("does not replay a dropped answer once the phase allows one again", () => {
+    const store = inBattle();
+    const q = store.getSnapshot().battle!.currentQuestion!;
+    store.dispatch({ type: "answer-question", optionIndex: (q.correctIndex + 1) % 4 });
+    store.dispatch({ type: "answer-question", optionIndex: 0 }); // dropped
+    const turnBefore = store.getSnapshot().battle!.turn;
+    store.dispatch({ type: "dismiss-feedback" });
+    // Exactly one turn advanced — the dropped intent did not resurface.
+    expect(store.getSnapshot().battle!.turn).toBe(turnBefore + 1);
+    expect(store.getSnapshot().battle!.phase).toBe("awaiting-answer");
+  });
+
+  it("drops flee on a boss, so core's throw is never reached", () => {
+    const store = inBattle("monster-go");
+    const before = store.getSnapshot();
+    expect(() => store.dispatch({ type: "attempt-flee" })).not.toThrow();
+    expect(store.getSnapshot()).toBe(before);
+  });
+
+  it("drops leave-battle until the battle has actually ended", () => {
+    const store = inBattle();
+    const before = store.getSnapshot();
+    store.dispatch({ type: "leave-battle" });
+    expect(store.getSnapshot()).toBe(before);
+  });
+
+  it("returns to the world and saves once the battle ends", () => {
+    const save = vi.fn();
+    const store = createGameStore(deps(fakeSave({ save })));
+    store.dispatch({ type: "new-game" });
+    store.dispatch({ type: "start-battle", monsterId: "monster-eat" });
+
+    for (let i = 0; i < 60 && store.getSnapshot().battle?.phase !== "ended"; i += 1) {
+      const battle = store.getSnapshot().battle!;
+      if (battle.phase === "awaiting-answer") {
+        store.dispatch({ type: "answer-question", optionIndex: battle.currentQuestion!.correctIndex });
+      } else {
+        store.dispatch({ type: "dismiss-feedback" });
+      }
+    }
+    expect(store.getSnapshot().battle?.outcome).toBe("victory");
+
+    store.dispatch({ type: "leave-battle" });
+    expect(store.getSnapshot().screen).toBe("world");
+    expect(store.getSnapshot().battle).toBeNull();
+    expect(save).toHaveBeenCalledTimes(2); // new-game, then battle end
   });
 });

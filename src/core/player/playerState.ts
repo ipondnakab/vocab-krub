@@ -1,6 +1,6 @@
-import type { BalanceConfig, Direction } from "../../content/schemas/index.js";
-import { maxHpForLevel } from "../config/balance.js";
-import type { Locale } from "../i18n/i18n.js";
+import type { BalanceConfig, Direction } from "../../content/schemas/index";
+import { maxHpForLevel } from "../config/balance";
+import type { Locale } from "../i18n/i18n";
 
 export interface ComponentMastery {
   streak: number;

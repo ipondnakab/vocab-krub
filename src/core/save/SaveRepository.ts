@@ -1,4 +1,4 @@
-import type { PlayerState } from "../player/playerState.js";
+import type { PlayerState } from "../player/playerState";
 
 /**
  * Persistence boundary (FR-053, contracts/save-format.md).

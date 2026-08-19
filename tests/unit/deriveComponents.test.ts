@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { deriveComponents, formComponentId } from "../../src/core/content/deriveComponents.js";
-import type { VocabularyWord } from "../../src/content/schemas/index.js";
+import { deriveComponents, formComponentId } from "../../src/core/content/deriveComponents";
+import type { VocabularyWord } from "../../src/content/schemas/index";
 
 const localized = (s: string) => ({ th: s, en: s });
 

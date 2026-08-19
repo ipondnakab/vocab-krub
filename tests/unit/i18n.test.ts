@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createI18n, localize, missingKeyMarker, type Bundles } from "../../src/core/i18n/i18n.js";
+import { createI18n, localize, missingKeyMarker, type Bundles } from "../../src/core/i18n/i18n";
 
 const bundles: Bundles = {
   th: { "battle.attack": "โจมตี", "battle.damage": "สร้างความเสียหาย {amount}" },

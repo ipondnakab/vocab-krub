@@ -7,9 +7,9 @@ import type {
   GrammarTopic,
   Question,
   VocabularyWord,
-} from "../../content/schemas/index.js";
-import { deriveComponents } from "./deriveComponents.js";
-import type { ContentIssue } from "./errors.js";
+} from "../../content/schemas/index";
+import { deriveComponents } from "./deriveComponents";
+import type { ContentIssue } from "./errors";
 
 /**
  * Cross-file validation (contracts/content-schemas.md).

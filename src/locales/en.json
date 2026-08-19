@@ -2,18 +2,15 @@
   "title.start": "Start",
   "title.continue": "Continue",
   "title.newGame": "New Game",
-
   "common.close": "Close",
   "common.back": "Back",
   "common.continue": "Continue",
   "common.locale": "Language",
-
   "hud.level": "Level",
   "hud.hp": "HP",
   "hud.gold": "Gold",
   "hud.journal": "Journal",
   "hud.menu": "Menu",
-
   "battle.attack": "Attack",
   "battle.flee": "Flee",
   "battle.usePet": "Use Pet",
@@ -29,15 +26,14 @@
   "battle.fleeSuccess": "You got away",
   "battle.fleeFailed": "You could not get away",
   "battle.bossNoFlee": "You cannot flee this battle",
-
   "journal.title": "Word Journal",
   "journal.mastered": "Mastered",
   "journal.progress": "Understanding",
   "journal.component.meaning": "Meaning",
   "journal.component.context": "Use in context",
   "journal.empty": "No words learned yet",
-
   "notice.storageUnavailable": "This device cannot save progress. Your progress will be lost when you close the game.",
   "notice.saveUnreadable": "Your save file could not be read. You can start a new game.",
-  "notice.contentError": "The game content failed to load"
+  "notice.contentError": "The game content failed to load",
+  "battle.victoryNote": "The word was not destroyed. It was freed from The Silence, and it remembers you."
 }

@@ -26,8 +26,12 @@ export const balanceConfigSchema = z.strictObject({
     streakRequired: z.number().int().min(2),
   }),
   questions: z.strictObject({
+    /**
+     * Target share of each battle's questions drawn from previously learned words.
+     * Honoured by normalising the two pools against each other, so this is the ONLY knob
+     * controlling the ratio — a separate monster-word weight would silently fight it.
+     */
     reviewProportion: z.number().min(0).max(1),
-    weightMonsterWord: z.number().positive(),
     weightUnmasteredComponent: z.number().positive(),
     weightMasteredComponent: z.number().positive(),
     recencyPenalty: z.number().min(0).max(1),

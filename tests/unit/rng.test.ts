@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createRng } from "../../src/core/rng/rng.js";
+import { createRng } from "../../src/core/rng/rng";
 
 describe("seeded Rng (research R-007)", () => {
   it("produces an identical sequence for the same seed", () => {

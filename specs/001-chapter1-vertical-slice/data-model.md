@@ -180,7 +180,6 @@ player.hpPerLevel         20
 player.xpCurve            [0, 100, 250, 450, 700, 1000, ...]
 mastery.streakRequired    2
 questions.reviewProportion        0.3
-questions.weightMonsterWord       10
 questions.weightUnmasteredComponent 3
 questions.weightMasteredComponent   1
 questions.recencyPenalty            0.2

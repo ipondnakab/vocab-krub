@@ -4,15 +4,19 @@
  * React components and Phaser scenes never mutate state. They send one of these, the store
  * forwards it to `src/core`, and the store stores what core returns.
  *
- * SCOPE NOTE — the union grows with the features that handle it. Constitution Principle VI
- * forbids placeholder architecture for unspecified features, so `answer-question`, `move`,
- * `interact`, and the rest arrive in the phase that implements them (US1 … US6) rather than
- * sitting here as unhandled variants. What is defined now is what has a handler now.
+ * The union grows with the features that handle it. Variants for exploration (`move`,
+ * `interact`), dialogue, and the chapter challenge arrive in US2, US3, and US6 — a variant lands
+ * in the same phase as its handler, never earlier (Principle VI).
  */
 export type Intent =
   | { type: "new-game" }
   | { type: "continue-game" }
   | { type: "set-locale"; locale: "th" | "en" }
-  | { type: "dismiss-notice" };
+  | { type: "dismiss-notice" }
+  | { type: "start-battle"; monsterId: string }
+  | { type: "answer-question"; optionIndex: number }
+  | { type: "dismiss-feedback" }
+  | { type: "attempt-flee" }
+  | { type: "leave-battle" };
 
 export type IntentType = Intent["type"];

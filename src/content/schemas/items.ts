@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { identifier, localized } from "./common.js";
+import { identifier, localized } from "./common";
 
 /**
  * The effect union is CLOSED, and that is a pedagogical guarantee, not a typing convenience.

@@ -9,7 +9,7 @@ import items from "./items.json";
 import pets from "./pets.json";
 import chapters from "./chapters.json";
 
-import type { RawContentFiles } from "../../core/content/loadContent.js";
+import type { RawContentFiles } from "../../core/content/loadContent";
 
 /**
  * The shipped content, bundled at build time (plan.md § Constraints: fully offline-capable).

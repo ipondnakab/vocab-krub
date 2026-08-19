@@ -1,5 +1,5 @@
-import { balanceConfigSchema, type BalanceConfig, type DifficultyTier } from "../../content/schemas/index.js";
-import { ContentValidationError, formatPath, type ContentIssue } from "../content/errors.js";
+import { balanceConfigSchema, type BalanceConfig, type DifficultyTier } from "../../content/schemas/index";
+import { ContentValidationError, formatPath, type ContentIssue } from "../content/errors";
 
 /**
  * Typed access to the balance configuration (Constitution Principle III).

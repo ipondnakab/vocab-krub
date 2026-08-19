@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { identifier, localized } from "./common.js";
+import { identifier, localized } from "./common";
 
 export const dropSchema = z.strictObject({
   itemId: identifier(),

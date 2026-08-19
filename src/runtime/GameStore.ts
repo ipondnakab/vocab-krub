@@ -1,8 +1,14 @@
-import type { BalanceConfig } from "../content/schemas/index.js";
-import type { Locale } from "../core/i18n/i18n.js";
-import { createNewPlayer, type PlayerState } from "../core/player/playerState.js";
-import type { SaveRepository } from "../core/save/SaveRepository.js";
-import type { Intent } from "./intents.js";
+import type { BalanceConfig } from "../content/schemas/index";
+import {
+  attemptFlee, createBattle, dismissFeedback, endBattle, submitAnswer,
+  type BattleState, type BattleTurnResult,
+} from "../core/battle/battle";
+import type { ContentIndex } from "../core/content/loadContent";
+import type { Locale } from "../core/i18n/i18n";
+import { createNewPlayer, type PlayerState } from "../core/player/playerState";
+import type { Rng } from "../core/rng/rng";
+import type { SaveRepository } from "../core/save/SaveRepository";
+import type { Intent } from "./intents";
 
 /**
  * The runtime bridge (contracts/runtime-bridge.md).
@@ -10,25 +16,24 @@ import type { Intent } from "./intents.js";
  * One source of truth, two subscribers: React renders text, Phaser renders the world. Both read
  * THIS state. Neither keeps a copy, which is why an HP bar can never disagree with a sprite.
  *
- * THE RULE: this layer routes, `src/core` decides. If you find a calculation here — damage,
- * victory, mastery, rewards — it is misplaced. The store stores; it does not compute.
+ * THE RULE: this layer routes, `src/core` decides. Every branch below forwards to a core
+ * function and stores what it returns — no damage is computed here, no victory decided, no
+ * mastery updated.
  */
 
-export type Screen = "title" | "world" | "journal";
+export type Screen = "title" | "world" | "battle" | "journal";
 
 export interface Notice {
   kind: "storage-unavailable" | "save-unreadable" | "content-error";
   detail?: string;
 }
 
-/**
- * SCOPE NOTE — `battle`, `dialogue`, `challenge`, and `world` slots are added by the phases that
- * define their state types (US1 → BattleState, US3 → DialogueState, US6 → ChallengeState).
- * Adding them now would mean inventing shapes before their rules exist. Principle VI.
- */
 export interface GameState {
   screen: Screen;
   player: PlayerState;
+  battle: BattleState | null;
+  /** The last resolved turn, so renderers can animate what just happened. */
+  lastTurn: BattleTurnResult | null;
   notice: Notice | null;
 }
 
@@ -39,11 +44,9 @@ export interface GameStore {
 }
 
 export interface GameStoreDeps {
-  /**
-   * `content: ContentIndex` joins these deps in T039, when starting a battle first needs it.
-   * Carrying an unused dependency now would be dead weight, and Principle VI says wait.
-   */
+  content: ContentIndex;
   balance: BalanceConfig;
+  rng: Rng;
   save: SaveRepository;
   startMapId: string;
   startX: number;
@@ -53,11 +56,11 @@ export interface GameStoreDeps {
 
 /**
  * Guards run BEFORE an intent is applied. A guard that returns false means the intent is
- * DROPPED — not queued, not deferred (FR-010). Queuing is what lets an answer submitted during
- * a death animation resolve into a battle that already ended.
+ * DROPPED — not queued, not deferred (FR-010).
  *
- * US1 adds the battle guard here: `answer-question` is dropped unless
- * `battle.phase === "awaiting-answer"`.
+ * Queuing is what lets an answer submitted during a death animation resolve into a battle that
+ * already ended. Core throws on the same condition as a second line of defence; the store's job
+ * is to make sure core never sees it.
  */
 function canDispatch(intent: Intent, state: GameState): boolean {
   switch (intent.type) {
@@ -65,6 +68,16 @@ function canDispatch(intent: Intent, state: GameState): boolean {
       return state.notice !== null;
     case "continue-game":
       return state.screen === "title";
+    case "start-battle":
+      return state.battle === null;
+    case "answer-question":
+      return state.battle?.phase === "awaiting-answer";
+    case "dismiss-feedback":
+      return state.battle?.phase === "showing-feedback";
+    case "attempt-flee":
+      return state.battle?.phase === "awaiting-answer" && !state.battle.isBoss;
+    case "leave-battle":
+      return state.battle?.phase === "ended";
     case "new-game":
     case "set-locale":
       return true;
@@ -72,6 +85,8 @@ function canDispatch(intent: Intent, state: GameState): boolean {
 }
 
 export function createGameStore(deps: GameStoreDeps): GameStore {
+  const battleDeps = { content: deps.content, balance: deps.balance, rng: deps.rng };
+
   const freshPlayer = (): PlayerState =>
     createNewPlayer(deps.balance, {
       startMapId: deps.startMapId,
@@ -83,6 +98,8 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
   let state: GameState = {
     screen: "title",
     player: freshPlayer(),
+    battle: null,
+    lastTurn: null,
     notice: deps.save.isAvailable() ? null : { kind: "storage-unavailable" },
   };
 
@@ -93,6 +110,11 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
     if (next === state) return;
     state = next;
     for (const listener of listeners) listener();
+  };
+
+  /** Battle turns all end the same way: keep the state, mirror the player, remember the turn. */
+  const applyTurn = (result: BattleTurnResult): void => {
+    commit({ ...state, battle: result.state, player: result.state.player, lastTurn: result });
   };
 
   return {
@@ -112,7 +134,7 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
         case "new-game": {
           const player = freshPlayer();
           deps.save.save(player);
-          commit({ ...state, screen: "world", player });
+          commit({ ...state, screen: "world", player, battle: null, lastTurn: null });
           return;
         }
         case "continue-game": {
@@ -120,20 +142,48 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
           if (result.status === "ok") {
             commit({ ...state, screen: "world", player: result.player, notice: null });
           } else if (result.status === "empty") {
-            const player = freshPlayer();
-            commit({ ...state, screen: "world", player });
+            commit({ ...state, screen: "world", player: freshPlayer() });
           } else {
             commit({ ...state, notice: { kind: "save-unreadable", detail: result.reason } });
           }
           return;
         }
         case "set-locale": {
-          const player = { ...state.player, locale: intent.locale };
-          commit({ ...state, player });
+          commit({ ...state, player: { ...state.player, locale: intent.locale } });
           return;
         }
         case "dismiss-notice": {
           commit({ ...state, notice: null });
+          return;
+        }
+        case "start-battle": {
+          const battle = createBattle({
+            monsterId: intent.monsterId,
+            player: state.player,
+            content: deps.content,
+            balance: deps.balance,
+            rng: deps.rng,
+          });
+          commit({ ...state, screen: "battle", battle, player: battle.player, lastTurn: null });
+          return;
+        }
+        case "answer-question": {
+          applyTurn(submitAnswer(state.battle!, intent.optionIndex, battleDeps));
+          return;
+        }
+        case "dismiss-feedback": {
+          applyTurn(dismissFeedback(state.battle!, battleDeps));
+          return;
+        }
+        case "attempt-flee": {
+          const result = attemptFlee(state.battle!, battleDeps);
+          commit({ ...state, battle: result.state, player: result.state.player });
+          return;
+        }
+        case "leave-battle": {
+          const player = endBattle(state.battle!);
+          deps.save.save(player);
+          commit({ ...state, screen: "world", player, battle: null, lastTurn: null });
           return;
         }
       }

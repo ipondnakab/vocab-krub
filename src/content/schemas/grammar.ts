@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { cefrLevel, identifier, localized, targetText } from "./common.js";
+import { cefrLevel, identifier, localized, targetText } from "./common";
 
 export const grammarTopicSchema = z.strictObject({
   id: identifier(),

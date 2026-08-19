@@ -1,14 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { applyDamage, clampHp, createNewPlayer, withHp } from "../../src/core/player/playerState.js";
-import { levelForXp, maxHpForLevel } from "../../src/core/config/balance.js";
-import type { BalanceConfig } from "../../src/content/schemas/index.js";
+import { applyDamage, clampHp, createNewPlayer, withHp } from "../../src/core/player/playerState";
+import { levelForXp, maxHpForLevel } from "../../src/core/config/balance";
+import type { BalanceConfig } from "../../src/content/schemas/index";
 
 const balance: BalanceConfig = {
   damage: { byDifficulty: { easy: 10, medium: 20, hard: 30, expert: 50 } },
   player: { baseMaxHp: 100, hpPerLevel: 20, xpCurve: [0, 100, 250, 450] },
   mastery: { streakRequired: 2 },
   questions: {
-    reviewProportion: 0.3, weightMonsterWord: 10, weightUnmasteredComponent: 3,
+    reviewProportion: 0.3, weightUnmasteredComponent: 3,
     weightMasteredComponent: 1, recencyPenalty: 0.2,
   },
   battle: { fleeSuccessChance: 0.6, defeatGoldPenalty: 0.1 },

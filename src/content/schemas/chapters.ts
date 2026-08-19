@@ -1,6 +1,6 @@
 import { z } from "zod";
-import { identifier, localized } from "./common.js";
-import { rewardTableSchema } from "./monsters.js";
+import { identifier, localized } from "./common";
+import { rewardTableSchema } from "./monsters";
 
 export const challengeConfigSchema = z.strictObject({
   questionCount: z.number().int().positive(),

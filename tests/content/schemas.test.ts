@@ -1,8 +1,8 @@
 import { describe, expect, it } from "vitest";
-import { rawContentFiles } from "../../src/content/data/index.js";
-import { loadContent } from "../../src/core/content/loadContent.js";
-import { ContentValidationError } from "../../src/core/content/errors.js";
-import { deriveComponents } from "../../src/core/content/deriveComponents.js";
+import { rawContentFiles } from "../../src/content/data/index";
+import { loadContent } from "../../src/core/content/loadContent";
+import { ContentValidationError } from "../../src/core/content/errors";
+import { deriveComponents } from "../../src/core/content/deriveComponents";
 
 /**
  * Every shipped content file, validated exactly as the game validates it at load (FR-050).

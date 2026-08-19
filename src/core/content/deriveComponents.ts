@@ -1,4 +1,4 @@
-import type { VocabularyWord } from "../../content/schemas/index.js";
+import type { VocabularyWord } from "../../content/schemas/index";
 
 /**
  * A word's mastery components are DERIVED, never authored (FR-023).

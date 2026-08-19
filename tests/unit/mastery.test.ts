@@ -8,9 +8,9 @@ import {
   recordAnswer,
   unmasteredComponentIds,
   wordsMasteredCount,
-} from "../../src/core/mastery/mastery.js";
-import type { BalanceConfig, VocabularyWord } from "../../src/content/schemas/index.js";
-import type { PlayerState, WordMastery } from "../../src/core/player/playerState.js";
+} from "../../src/core/mastery/mastery";
+import type { BalanceConfig, VocabularyWord } from "../../src/content/schemas/index";
+import type { PlayerState, WordMastery } from "../../src/core/player/playerState";
 
 const L = (s: string) => ({ th: s, en: s });
 
@@ -44,7 +44,6 @@ function balanceWith(streakRequired: number): BalanceConfig {
     mastery: { streakRequired },
     questions: {
       reviewProportion: 0.3,
-      weightMonsterWord: 10,
       weightUnmasteredComponent: 3,
       weightMasteredComponent: 1,
       recencyPenalty: 0.2,
