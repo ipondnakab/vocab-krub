@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "id": "beginner-sword",
+      "name": { "th": "ดาบผู้เริ่มต้น", "en": "Beginner Sword" },
+      "description": { "th": "ดาบธรรมดา แต่คมพอจะปลดปล่อยคำที่ถูกลืม", "en": "A plain blade, sharp enough to free a forgotten word." },
+      "kind": "weapon",
+      "effects": [{ "kind": "damage-multiplier", "value": 1.2 }],
+      "unlock": { "type": "monster-drop" }
+    },
+    {
+      "id": "beginner-armor",
+      "name": { "th": "เกราะผู้เริ่มต้น", "en": "Beginner Armor" },
+      "description": { "th": "ลดความเจ็บปวดจากการตอบผิด การผิดพลาดคือส่วนหนึ่งของการเรียนรู้", "en": "Softens the sting of a wrong answer. Mistakes are part of learning." },
+      "kind": "armor",
+      "effects": [{ "kind": "damage-reduction", "value": 4 }],
+      "unlock": { "type": "monster-drop" }
+    },
+    {
+      "id": "scholar-robe",
+      "name": { "th": "เสื้อคลุมนักปราชญ์", "en": "Scholar's Robe" },
+      "description": { "th": "รางวัลสำหรับผู้ที่เชี่ยวชาญคำศัพท์ ครั้งแรกที่ผิดจะไม่เจ็บ", "en": "Earned by mastering words. Your first mistake each battle costs nothing." },
+      "kind": "armor",
+      "effects": [{ "kind": "first-mistake-free", "scope": "grammar" }],
+      "unlock": { "type": "words-mastered", "threshold": 3 }
+    }
+  ]
+}

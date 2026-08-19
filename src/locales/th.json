@@ -1,0 +1,43 @@
+{
+  "title.start": "เริ่มเกม",
+  "title.continue": "เล่นต่อ",
+  "title.newGame": "เกมใหม่",
+
+  "common.close": "ปิด",
+  "common.back": "ย้อนกลับ",
+  "common.continue": "ต่อไป",
+  "common.locale": "ภาษา",
+
+  "hud.level": "เลเวล",
+  "hud.hp": "พลังชีวิต",
+  "hud.gold": "เหรียญทอง",
+  "hud.journal": "สมุดคำศัพท์",
+  "hud.menu": "เมนู",
+
+  "battle.attack": "โจมตี",
+  "battle.flee": "หนี",
+  "battle.usePet": "ใช้สัตว์เลี้ยง",
+  "battle.yourTurn": "ตาของคุณ",
+  "battle.correct": "ถูกต้อง!",
+  "battle.wrong": "ยังไม่ถูก",
+  "battle.damageDealt": "สร้างความเสียหาย {amount}",
+  "battle.damageTaken": "คุณเสียพลังชีวิต {amount}",
+  "battle.feedbackTitle": "คำตอบที่ถูกคือ",
+  "battle.feedbackDismiss": "เข้าใจแล้ว",
+  "battle.victory": "คำนี้กลับคืนสู่โลกแล้ว",
+  "battle.defeat": "คุณหมดแรง",
+  "battle.fleeSuccess": "คุณหนีออกมาได้",
+  "battle.fleeFailed": "หนีไม่สำเร็จ",
+  "battle.bossNoFlee": "คุณหนีจากการต่อสู้นี้ไม่ได้",
+
+  "journal.title": "สมุดคำศัพท์",
+  "journal.mastered": "เชี่ยวชาญแล้ว",
+  "journal.progress": "ความเข้าใจ",
+  "journal.component.meaning": "ความหมาย",
+  "journal.component.context": "การใช้ในบริบท",
+  "journal.empty": "ยังไม่ได้เรียนรู้คำใด",
+
+  "notice.storageUnavailable": "อุปกรณ์นี้บันทึกความคืบหน้าไม่ได้ ความคืบหน้าจะหายเมื่อปิดเกม",
+  "notice.saveUnreadable": "อ่านไฟล์บันทึกไม่ได้ คุณสามารถเริ่มเกมใหม่ได้",
+  "notice.contentError": "โหลดเนื้อหาเกมไม่สำเร็จ"
+}

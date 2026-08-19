@@ -1,0 +1,24 @@
+{
+  "npcs": [
+    {
+      "id": "teacher-mali",
+      "name": { "th": "ครูมะลิ", "en": "Teacher Mali" },
+      "role": "teacher",
+      "mapId": "village",
+      "dialogueId": "dlg-mali-intro",
+      "repeatDialogueId": "dlg-mali-repeat",
+      "grammarTopicId": "present-simple",
+      "portrait": "teacher-mali"
+    },
+    {
+      "id": "guard-thanet",
+      "name": { "th": "ทหารยามธเนศ", "en": "Guard Thanet" },
+      "role": "guard",
+      "mapId": "village",
+      "dialogueId": "dlg-thanet-intro",
+      "repeatDialogueId": "dlg-thanet-repeat",
+      "grammarTopicId": null,
+      "portrait": "guard-thanet"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "words": [
+    {
+      "id": "go",
+      "word": "go",
+      "meaning": { "th": "ไป", "en": "to move to a place" },
+      "cefr": "A1",
+      "topic": "movement",
+      "difficulty": 2,
+      "forms": [
+        { "id": "base", "text": "go", "role": "base", "roleLabel": { "th": "รูปปัจจุบัน", "en": "base form" } },
+        { "id": "past", "text": "went", "role": "past", "roleLabel": { "th": "รูปอดีต", "en": "past" } },
+        { "id": "past-participle", "text": "gone", "role": "past-participle", "roleLabel": { "th": "รูปช่องที่ 3", "en": "past participle" } },
+        { "id": "present-participle", "text": "going", "role": "present-participle", "roleLabel": { "th": "รูปกำลังทำ", "en": "present participle" } }
+      ],
+      "examples": [
+        { "sentence": "I go to school every day.", "translation": { "th": "ฉันไปโรงเรียนทุกวัน", "en": "I go to school every day." }, "formId": "base" },
+        { "sentence": "I went to the market yesterday.", "translation": { "th": "ฉันไปตลาดเมื่อวาน", "en": "I went to the market yesterday." }, "formId": "past" },
+        { "sentence": "She has gone home.", "translation": { "th": "เธอกลับบ้านไปแล้ว", "en": "She has gone home." }, "formId": "past-participle" },
+        { "sentence": "We are going now.", "translation": { "th": "พวกเรากำลังจะไปแล้ว", "en": "We are going now." }, "formId": "present-participle" }
+      ]
+    },
+    {
+      "id": "eat",
+      "word": "eat",
+      "meaning": { "th": "กิน", "en": "to put food in your mouth" },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 2,
+      "forms": [
+        { "id": "base", "text": "eat", "role": "base", "roleLabel": { "th": "รูปปัจจุบัน", "en": "base form" } },
+        { "id": "past", "text": "ate", "role": "past", "roleLabel": { "th": "รูปอดีต", "en": "past" } },
+        { "id": "past-participle", "text": "eaten", "role": "past-participle", "roleLabel": { "th": "รูปช่องที่ 3", "en": "past participle" } },
+        { "id": "present-participle", "text": "eating", "role": "present-participle", "roleLabel": { "th": "รูปกำลังทำ", "en": "present participle" } }
+      ],
+      "examples": [
+        { "sentence": "We eat rice every day.", "translation": { "th": "พวกเรากินข้าวทุกวัน", "en": "We eat rice every day." }, "formId": "base" },
+        { "sentence": "He ate breakfast early.", "translation": { "th": "เขากินอาหารเช้าแต่เช้า", "en": "He ate breakfast early." }, "formId": "past" },
+        { "sentence": "I have eaten already.", "translation": { "th": "ฉันกินแล้ว", "en": "I have eaten already." }, "formId": "past-participle" },
+        { "sentence": "They are eating now.", "translation": { "th": "พวกเขากำลังกินอยู่", "en": "They are eating now." }, "formId": "present-participle" }
+      ]
+    },
+    {
+      "id": "see",
+      "word": "see",
+      "meaning": { "th": "เห็น", "en": "to notice with your eyes" },
+      "cefr": "A1",
+      "topic": "senses",
+      "difficulty": 2,
+      "forms": [
+        { "id": "base", "text": "see", "role": "base", "roleLabel": { "th": "รูปปัจจุบัน", "en": "base form" } },
+        { "id": "past", "text": "saw", "role": "past", "roleLabel": { "th": "รูปอดีต", "en": "past" } },
+        { "id": "past-participle", "text": "seen", "role": "past-participle", "roleLabel": { "th": "รูปช่องที่ 3", "en": "past participle" } }
+      ],
+      "examples": [
+        { "sentence": "I see a bird.", "translation": { "th": "ฉันเห็นนก", "en": "I see a bird." }, "formId": "base" },
+        { "sentence": "I saw her yesterday.", "translation": { "th": "ฉันเห็นเธอเมื่อวาน", "en": "I saw her yesterday." }, "formId": "past" },
+        { "sentence": "I have seen that place.", "translation": { "th": "ฉันเคยเห็นที่นั่น", "en": "I have seen that place." }, "formId": "past-participle" }
+      ]
+    },
+    {
+      "id": "water",
+      "word": "water",
+      "meaning": { "th": "น้ำ", "en": "the clear liquid you drink" },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 1,
+      "forms": [
+        { "id": "base", "text": "water", "role": "base", "roleLabel": { "th": "คำนาม", "en": "noun" } }
+      ],
+      "examples": [
+        { "sentence": "I drink water every morning.", "translation": { "th": "ฉันดื่มน้ำทุกเช้า", "en": "I drink water every morning." }, "formId": "base" }
+      ]
+    },
+    {
+      "id": "friend",
+      "word": "friend",
+      "meaning": { "th": "เพื่อน", "en": "a person you like and know well" },
+      "cefr": "A1",
+      "topic": "people",
+      "difficulty": 1,
+      "forms": [
+        { "id": "base", "text": "friend", "role": "base", "roleLabel": { "th": "คำนามเอกพจน์", "en": "singular noun" } },
+        { "id": "plural", "text": "friends", "role": "plural", "roleLabel": { "th": "คำนามพหูพจน์", "en": "plural noun" } }
+      ],
+      "examples": [
+        { "sentence": "She is my friend.", "translation": { "th": "เธอเป็นเพื่อนของฉัน", "en": "She is my friend." }, "formId": "base" },
+        { "sentence": "I have many friends.", "translation": { "th": "ฉันมีเพื่อนหลายคน", "en": "I have many friends." }, "formId": "plural" }
+      ]
+    }
+  ]
+}

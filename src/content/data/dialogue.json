@@ -1,0 +1,48 @@
+{
+  "nodes": [
+    {
+      "id": "dlg-mali-intro",
+      "speakerId": "teacher-mali",
+      "lines": [
+        { "th": "เมื่อก่อนฉันเคยบอกเด็กๆ ได้ว่าฉันทำอะไรทุกวัน... แต่ตอนนี้คำพวกนั้นหายไปหมดแล้ว", "en": "I used to be able to tell the children what I do each day. Now those words are gone." },
+        { "th": "ช่วยฉันจำมันหน่อยได้ไหม เราเรียกมันว่า Present Simple", "en": "Help me remember them. We call it the Present Simple." },
+        { "th": "เวลาพูดถึงสิ่งที่ทำเป็นประจำ เราใช้กริยารูปปัจจุบัน เช่น I go to school every day.", "en": "For things we do regularly, we use the base verb: I go to school every day." }
+      ],
+      "next": null,
+      "practiceQuestionIds": ["q-go-base", "q-eat-base"],
+      "teachesGrammarId": "present-simple"
+    },
+    {
+      "id": "dlg-mali-repeat",
+      "speakerId": "teacher-mali",
+      "lines": [
+        { "th": "ขอบคุณนะ ตอนนี้ฉันบอกได้แล้วว่า I teach here every day", "en": "Thank you. Now I can say it again: I teach here every day." },
+        { "th": "ถ้าอยากทบทวน Present Simple อีกครั้ง มาหาฉันได้เสมอ", "en": "Come back any time you want to go over the Present Simple again." }
+      ],
+      "next": null,
+      "practiceQuestionIds": [],
+      "teachesGrammarId": null
+    },
+    {
+      "id": "dlg-thanet-intro",
+      "speakerId": "guard-thanet",
+      "lines": [
+        { "th": "หยุดก่อน ประตูนี้เปิดให้เฉพาะผู้ที่จำคำได้เท่านั้น", "en": "Stop. This gate opens only for those who can still remember the words." },
+        { "th": "ถ้าอยากผ่านไป ต้องตอบคำถามของข้าให้ได้", "en": "If you wish to pass, you must answer my questions." }
+      ],
+      "next": null,
+      "practiceQuestionIds": [],
+      "teachesGrammarId": null
+    },
+    {
+      "id": "dlg-thanet-repeat",
+      "speakerId": "guard-thanet",
+      "lines": [
+        { "th": "เจ้ากลับมาอีกแล้วหรือ พร้อมจะลองอีกครั้งไหม", "en": "You have returned. Are you ready to try again?" }
+      ],
+      "next": null,
+      "practiceQuestionIds": [],
+      "teachesGrammarId": null
+    }
+  ]
+}

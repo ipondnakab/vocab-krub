@@ -1,0 +1,16 @@
+{
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": { "th": "บทที่ 1 — หมู่บ้านที่ถูกลืม", "en": "Chapter 1 — The Forgotten Village" },
+      "mapIds": ["village", "forest", "cave"],
+      "vocabularyIds": ["go", "eat", "see", "water", "friend"],
+      "grammarTopicIds": ["present-simple", "past-simple"],
+      "monsterIds": ["monster-eat", "monster-go"],
+      "npcIds": ["teacher-mali", "guard-thanet"],
+      "bossMonsterId": "monster-go",
+      "challenge": { "questionCount": 10, "passThreshold": 0.8, "guardNpcId": "guard-thanet" },
+      "completionReward": { "xp": 200, "gold": 100, "drops": [{ "itemId": "owl", "chance": 1 }] }
+    }
+  ]
+}

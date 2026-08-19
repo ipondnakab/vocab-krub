@@ -1,0 +1,26 @@
+{
+  "monsters": [
+    {
+      "id": "monster-eat",
+      "wordId": "eat",
+      "name": { "th": "ผู้ถูกลืม: EAT", "en": "The Forgotten: EAT" },
+      "maxHp": 80,
+      "attack": 12,
+      "isBoss": false,
+      "questionPoolIds": ["q-eat-meaning", "q-eat-recognition", "q-eat-base", "q-eat-past", "q-eat-pp", "q-eat-prp", "q-eat-context"],
+      "rewards": { "xp": 40, "gold": 15, "drops": [{ "itemId": "beginner-sword", "chance": 0.25 }] },
+      "sprite": { "key": "monster-eat", "frames": 4 }
+    },
+    {
+      "id": "monster-go",
+      "wordId": "go",
+      "name": { "th": "ผู้ถูกลืม: GO", "en": "The Forgotten: GO" },
+      "maxHp": 140,
+      "attack": 18,
+      "isBoss": true,
+      "questionPoolIds": ["q-go-meaning", "q-go-recognition", "q-go-base", "q-go-past", "q-go-pp", "q-go-prp", "q-go-context"],
+      "rewards": { "xp": 120, "gold": 60, "drops": [{ "itemId": "beginner-armor", "chance": 1 }] },
+      "sprite": { "key": "monster-go", "frames": 4 }
+    }
+  ]
+}
