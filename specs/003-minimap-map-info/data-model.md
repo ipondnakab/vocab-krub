@@ -15,7 +15,7 @@ Chapters currently declare `mapIds: string[]`. They gain a parallel record of lo
 
 | Field | Type | Rules |
 |---|---|---|
-| `mapNames` | `Record<string, Localized>` | Keyed by map id. Every id in `mapIds` MUST have an entry, and both `th` and `en` MUST be non-empty. |
+| `mapNames` | `Record<string, Localized>` | Keyed by map id. Every id in `mapIds` MUST have an entry, and both `th` and `en` MUST be non-empty (FR-013, FR-015, FR-018). |
 
 Validation added: a map declared in `mapIds` with no entry in `mapNames` fails at load, naming the
 file and the map — the same treatment every other missing localized field gets.
@@ -33,16 +33,20 @@ record adds the name without changing the shape everything else already consumes
 | Field | Type | Derived from |
 |---|---|---|
 | `width`, `height` | `number` | `GameMap.width`, `GameMap.height` |
-| `blocked` | `boolean[]` | `GameMap.collidesAt(x, y)` over every tile |
-| `exits` | `{ x, y, targetMapId }[]` | `GameMap.transitions` |
-| `player` | `{ x, y, facing }` | `PlayerState.location` |
-| `monsters` | `{ x, y, monsterId }[]` | `WorldState.monsters` — already filtered by `monstersDefeated` |
+| `blocked` | `boolean[]` | `GameMap.collidesAt(x, y)` over every tile (FR-001) |
+| `exits` | `{ x, y, targetMapId }[]` | `GameMap.transitions` (FR-003) |
+| `player` | `{ x, y, facing }` | `PlayerState.location` (FR-002) |
+| `monsters` | `{ x, y, monsterId }[]` | `WorldState.monsters` — already filtered by `monstersDefeated` (FR-008, FR-009, FR-010) |
 | `npcs` | `{ x, y, npcId, lessonDone }[]` | `WorldState.npcs` + `hasCompletedLesson` |
-| `monstersRemaining` | `number` | `WorldState.monsters.length` |
+| `monstersRemaining` | `number` | `WorldState.monsters.length` (FR-012) |
 | `lessonsRemaining` | `number` | count of map NPCs whose grammar topic is unlearned |
 
 `enterMap` already removes defeated monsters when building world state, so "monsters remaining" is
 the length of a list that exists — verified against the shipped `worldState.ts` rather than assumed.
+
+A model is produced even for a map with no monsters and no NPCs — empty arrays, zero counts
+(FR-007). Changing map rebuilds terrain from scratch, so nothing survives from the previous one
+(FR-004).
 
 **Split for memoization**: terrain (`width`, `height`, `blocked`, `exits`) depends only on the map
 and is computed once per map. Markers depend on live state and are computed per change. A monster

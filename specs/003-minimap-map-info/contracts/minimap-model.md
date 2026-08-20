@@ -28,21 +28,24 @@ mapDisplayName(mapId: string, content: ContentIndex): Localized
 
 ```ts
 interface MinimapTerrain {
-  width: number;
+  width: number;                                              // FR-005 (proportions)
   height: number;
   /** Row-major, length width * height. True where movement is blocked. */
-  blocked: boolean[];
-  exits: Array<{ x: number; y: number; targetMapId: string }>;
+  blocked: boolean[];                                         // FR-001
+  exits: Array<{ x: number; y: number; targetMapId: string }>; // FR-003
 }
 
 interface MinimapMarkers {
-  player: { x: number; y: number; facing: Direction };
-  monsters: Array<{ x: number; y: number; monsterId: string }>;
-  npcs: Array<{ x: number; y: number; npcId: string; lessonDone: boolean }>;
-  monstersRemaining: number;
+  player: { x: number; y: number; facing: Direction };         // FR-002
+  monsters: Array<{ x: number; y: number; monsterId: string }>; // FR-008, FR-009, FR-010
+  npcs: Array<{ x: number; y: number; npcId: string; lessonDone: boolean }>; // FR-011
+  monstersRemaining: number;                                   // FR-012
   lessonsRemaining: number;
 }
 ```
+
+Both functions MUST return a valid model for a map with no monsters and no NPCs — empty arrays and
+zero counts, never null (FR-007).
 
 ## Rules
 
@@ -54,7 +57,10 @@ interface MinimapMarkers {
   and is still worth locating (FR-011).
 - `blocked` is row-major and indexed `y * width + x`, matching how the map's collision grid is
   already stored.
-- `mapDisplayName` never returns an empty string or a raw id (FR-014).
+- `mapDisplayName` never returns an empty string or a raw id (FR-014), and returns the localized
+  name authored in content (FR-013, FR-015).
+- Changing map produces a wholly new terrain model; nothing from the previous map may survive
+  (FR-004).
 
 ## Rendering contract
 
@@ -63,7 +69,8 @@ interface MinimapMarkers {
 - Player, monster, and NPC markers must be distinguishable without colour alone, since colour is
   the first thing to fail on a small pixel-art palette.
 - No text inside the SVG. Map name and counts are rendered as DOM text beside it, so Thai renders
-  through the DOM like every other string (research R-014 of feature 001).
+  through the DOM like every other string (research R-014 of feature 001). All of that text
+  resolves through the locale layer in both languages (FR-018).
 
 ## What this contract forbids
 
