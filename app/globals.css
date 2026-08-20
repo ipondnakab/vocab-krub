@@ -428,3 +428,11 @@ canvas, img[data-pixel] { image-rendering: pixelated; }
 
 .notice { position: absolute; top: 1rem; left: 50%; transform: translateX(-50%); z-index: 5; max-width: min(92%, 40rem); }
 .notice__box { display: flex; align-items: center; gap: 1rem; background: var(--panel-raised); }
+
+/* ---------------------------------------------------------------- story */
+
+.story { position: absolute; inset: 0; display: grid; place-items: center; padding: 1.5rem;
+         background: color-mix(in srgb, var(--ground-deep) 88%, transparent); z-index: 6; }
+.story__box { width: min(100%, 44rem); display: grid; gap: 1.1rem; }
+.story__line { font-size: 1.1rem; line-height: 1.8; }
+.story__count { margin-left: auto; align-self: center; }

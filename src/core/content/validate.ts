@@ -183,6 +183,20 @@ export function validateContent(content: RawContent, level: ValidationLevel = "s
         );
       }
     });
+    // A brand-new player has learned no grammar. If fewer than two of a monster's questions are
+    // ungated, the battle asks its one askable question and then has nothing left that is not a
+    // consecutive repeat (FR-013). Caught here rather than as a thrown error mid-fight.
+    const ungated = monster.questionPoolIds
+      .map((id) => content.questions.find((q) => q.id === id))
+      .filter((q) => q !== undefined && q.requiresGrammar === null);
+    if (ungated.length < 2) {
+      add(
+        "monsters.json",
+        at("questionPoolIds"),
+        `only ${ungated.length} question(s) are answerable before any grammar is learned; a monster needs at least 2, or a first-time battle runs dry after one turn`,
+      );
+    }
+
     monster.rewards.drops.forEach((drop, di) => {
       if (!itemById.has(drop.itemId)) {
         add("monsters.json", at(`rewards.drops[${di}].itemId`), `references unknown item '${drop.itemId}'`);

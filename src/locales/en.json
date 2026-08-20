@@ -59,5 +59,12 @@
   "challenge.failedNote": "Not yet. Go and study, then come back to me.",
   "challenge.weakest": "You were weakest on: {topics}",
   "challenge.retry": "Try again",
-  "challenge.score": "{correct} of {total} correct"
+  "challenge.score": "{correct} of {total} correct",
+  "story.opening1": "This world was once full of words. People spoke without having to think.",
+  "story.opening2": "Then The Silence came, and the words began to be forgotten.",
+  "story.opening3": "A word forgotten long enough twists into a monster. It is not evil. It is only lost.",
+  "story.opening4": "You are a Word Keeper. You free a word by understanding it.",
+  "story.opening5": "Your knowledge is your weapon. Go — the village is waiting.",
+  "story.chapterComplete": "Chapter 1 is over. The village has its words back. The Silence does not.",
+  "story.skip": "Skip"
 }

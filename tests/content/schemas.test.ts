@@ -15,7 +15,16 @@ describe("shipped content", () => {
     expect(() => loadContent(rawContentFiles)).not.toThrow();
   });
 
-  const content = loadContent(rawContentFiles);
+  /**
+   * T118. Chapter 1 is now authored to shipping size, so the SC-003/SC-004 completeness rules
+   * are switched ON: 30+ words, every mastery component has a question, all five levels appear,
+   * and the chapter meets its NPC/monster/item minimums.
+   */
+  it("passes SHIPPING completeness validation (SC-003, SC-004)", () => {
+    expect(() => loadContent(rawContentFiles, "shipping")).not.toThrow();
+  });
+
+  const content = loadContent(rawContentFiles, "shipping");
 
   it("indexes every entity by id", () => {
     expect(content.word("go").word).toBe("go");

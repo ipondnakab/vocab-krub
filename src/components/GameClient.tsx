@@ -15,6 +15,7 @@ import { WorldHud } from "./hud/WorldHud";
 import { DialogueBox } from "./dialogue/DialogueBox";
 import { WordJournal } from "./journal/WordJournal";
 import { NoticeBar } from "./hud/NoticeBar";
+import { StoryOpening } from "./hud/StoryOpening";
 import { MasteryMoment } from "./battle/MasteryMoment";
 import { ChallengePanel } from "./challenge/ChallengePanel";
 import { loadMapFile } from "../platform/loadMapFile";
@@ -179,6 +180,7 @@ export function GameClient() {
     <GameStoreProvider store={boot.store} content={boot.content}>
       <div className="stage">
         <GameCanvas store={boot.store} />
+        <StoryOpening />
         <NoticeBar />
         <WorldHud />
         <DialogueBox />

@@ -3,24 +3,271 @@
     {
       "id": "monster-eat",
       "wordId": "eat",
-      "name": { "th": "ผู้ถูกลืม: EAT", "en": "The Forgotten: EAT" },
+      "name": {
+        "th": "ผู้ถูกลืม: EAT",
+        "en": "The Forgotten: EAT"
+      },
       "maxHp": 80,
       "attack": 12,
       "isBoss": false,
-      "questionPoolIds": ["q-eat-meaning", "q-eat-recognition", "q-eat-base", "q-eat-past", "q-eat-pp", "q-eat-prp", "q-eat-context"],
-      "rewards": { "xp": 40, "gold": 15, "drops": [{ "itemId": "beginner-sword", "chance": 0.25 }] },
-      "sprite": { "key": "monster-eat", "frames": 4 }
+      "questionPoolIds": [
+        "q-eat-meaning",
+        "q-eat-base",
+        "q-eat-past",
+        "q-eat-pp",
+        "q-eat-prp",
+        "q-eat-recognition",
+        "q-eat-context"
+      ],
+      "rewards": {
+        "xp": 40,
+        "gold": 15,
+        "drops": [
+          {
+            "itemId": "beginner-sword",
+            "chance": 0.25
+          }
+        ]
+      },
+      "sprite": {
+        "key": "monster-eat",
+        "frames": 4
+      }
+    },
+    {
+      "id": "monster-see",
+      "wordId": "see",
+      "name": {
+        "th": "ผู้ถูกลืม: SEE",
+        "en": "The Forgotten: SEE"
+      },
+      "maxHp": 85,
+      "attack": 13,
+      "isBoss": false,
+      "questionPoolIds": [
+        "q-see-meaning",
+        "q-see-base",
+        "q-see-past",
+        "q-see-pp",
+        "q-see-prp",
+        "q-see-recognition",
+        "q-see-context"
+      ],
+      "rewards": {
+        "xp": 40,
+        "gold": 15,
+        "drops": [
+          {
+            "itemId": "beginner-sword",
+            "chance": 0.25
+          }
+        ]
+      },
+      "sprite": {
+        "key": "monster-see",
+        "frames": 4
+      }
+    },
+    {
+      "id": "monster-take",
+      "wordId": "take",
+      "name": {
+        "th": "ผู้ถูกลืม: TAKE",
+        "en": "The Forgotten: TAKE"
+      },
+      "maxHp": 90,
+      "attack": 14,
+      "isBoss": false,
+      "questionPoolIds": [
+        "q-take-meaning",
+        "q-take-base",
+        "q-take-past",
+        "q-take-pp",
+        "q-take-prp",
+        "q-take-recognition",
+        "q-take-context"
+      ],
+      "rewards": {
+        "xp": 40,
+        "gold": 15,
+        "drops": [
+          {
+            "itemId": "beginner-sword",
+            "chance": 0.25
+          }
+        ]
+      },
+      "sprite": {
+        "key": "monster-take",
+        "frames": 4
+      }
+    },
+    {
+      "id": "monster-drink",
+      "wordId": "drink",
+      "name": {
+        "th": "ผู้ถูกลืม: DRINK",
+        "en": "The Forgotten: DRINK"
+      },
+      "maxHp": 95,
+      "attack": 15,
+      "isBoss": false,
+      "questionPoolIds": [
+        "q-drink-meaning",
+        "q-drink-base",
+        "q-drink-past",
+        "q-drink-pp",
+        "q-drink-prp",
+        "q-drink-recognition",
+        "q-drink-context"
+      ],
+      "rewards": {
+        "xp": 40,
+        "gold": 15,
+        "drops": [
+          {
+            "itemId": "beginner-sword",
+            "chance": 0.25
+          }
+        ]
+      },
+      "sprite": {
+        "key": "monster-drink",
+        "frames": 4
+      }
+    },
+    {
+      "id": "monster-write",
+      "wordId": "write",
+      "name": {
+        "th": "ผู้ถูกลืม: WRITE",
+        "en": "The Forgotten: WRITE"
+      },
+      "maxHp": 100,
+      "attack": 16,
+      "isBoss": false,
+      "questionPoolIds": [
+        "q-write-meaning",
+        "q-write-base",
+        "q-write-past",
+        "q-write-pp",
+        "q-write-prp",
+        "q-write-recognition",
+        "q-write-context"
+      ],
+      "rewards": {
+        "xp": 40,
+        "gold": 15,
+        "drops": [
+          {
+            "itemId": "beginner-sword",
+            "chance": 0.25
+          }
+        ]
+      },
+      "sprite": {
+        "key": "monster-write",
+        "frames": 4
+      }
+    },
+    {
+      "id": "monster-friend",
+      "wordId": "friend",
+      "name": {
+        "th": "ผู้ถูกลืม: FRIEND",
+        "en": "The Forgotten: FRIEND"
+      },
+      "maxHp": 75,
+      "attack": 11,
+      "isBoss": false,
+      "questionPoolIds": [
+        "q-friend-meaning",
+        "q-friend-base",
+        "q-friend-plural",
+        "q-friend-context"
+      ],
+      "rewards": {
+        "xp": 40,
+        "gold": 15,
+        "drops": [
+          {
+            "itemId": "beginner-sword",
+            "chance": 0.25
+          }
+        ]
+      },
+      "sprite": {
+        "key": "monster-friend",
+        "frames": 4
+      }
     },
     {
       "id": "monster-go",
       "wordId": "go",
-      "name": { "th": "ผู้ถูกลืม: GO", "en": "The Forgotten: GO" },
+      "name": {
+        "th": "ผู้ถูกลืม: GO",
+        "en": "The Forgotten: GO"
+      },
       "maxHp": 140,
       "attack": 18,
       "isBoss": true,
-      "questionPoolIds": ["q-go-meaning", "q-go-recognition", "q-go-base", "q-go-past", "q-go-pp", "q-go-prp", "q-go-context"],
-      "rewards": { "xp": 120, "gold": 60, "drops": [{ "itemId": "beginner-armor", "chance": 1 }] },
-      "sprite": { "key": "monster-go", "frames": 4 }
+      "questionPoolIds": [
+        "q-go-meaning",
+        "q-go-base",
+        "q-go-past",
+        "q-go-pp",
+        "q-go-prp",
+        "q-go-recognition",
+        "q-go-context"
+      ],
+      "rewards": {
+        "xp": 120,
+        "gold": 60,
+        "drops": [
+          {
+            "itemId": "beginner-armor",
+            "chance": 1
+          }
+        ]
+      },
+      "sprite": {
+        "key": "monster-go",
+        "frames": 4
+      }
+    },
+    {
+      "id": "monster-sing",
+      "wordId": "sing",
+      "name": {
+        "th": "ผู้ถูกลืม: SING",
+        "en": "The Forgotten: SING"
+      },
+      "maxHp": 85,
+      "attack": 13,
+      "isBoss": false,
+      "questionPoolIds": [
+        "q-sing-meaning",
+        "q-sing-recognition",
+        "q-sing-base",
+        "q-sing-past",
+        "q-sing-pp",
+        "q-sing-prp",
+        "q-sing-context"
+      ],
+      "rewards": {
+        "xp": 40,
+        "gold": 15,
+        "drops": [
+          {
+            "itemId": "beginner-sword",
+            "chance": 0.25
+          }
+        ]
+      },
+      "sprite": {
+        "key": "monster-sing",
+        "frames": 4
+      }
     }
   ]
 }

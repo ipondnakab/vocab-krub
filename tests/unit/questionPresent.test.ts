@@ -78,12 +78,13 @@ describe("damage from difficulty (FR-005, R-006)", () => {
   });
 
   it("comes from the TIER, not the question's level", () => {
-    // q-go-meaning is level 1 / easy; q-go-context is level 5 / expert. Two level-3 questions
-    // with different tiers must differ, proving level is not the input.
-    const past = presentQuestion(content.question("q-go-past"), rng(1)); // level 3, medium
-    const pp = presentQuestion(content.question("q-go-pp"), rng(1)); // level 3, hard
-    expect(past.level).toBe(pp.level);
-    expect(damageFor(past, null, balance)).not.toBe(damageFor(pp, null, balance));
+    // Two questions at the SAME level with different tiers must deal different damage. If level
+    // were the input they would be identical.
+    const base = presentQuestion(content.question("q-go-base"), rng(1)); // level 4, easy
+    const pp = presentQuestion(content.question("q-go-pp"), rng(1)); // level 4, hard
+    expect(base.level).toBe(pp.level);
+    expect(base.difficulty).not.toBe(pp.difficulty);
+    expect(damageFor(base, null, balance)).not.toBe(damageFor(pp, null, balance));
   });
 
   it("scales with an equipped weapon", () => {
