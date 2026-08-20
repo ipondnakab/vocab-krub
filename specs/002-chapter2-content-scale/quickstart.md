@@ -59,3 +59,33 @@ That number is the deliverable. If the answer is "mostly writing content", the p
 chapters 3 through 6 are a content exercise. If the answer is "mostly fighting the tooling", that
 is worth knowing at chapter 2 rather than at chapter 6 — and the next feature is a better tool,
 not more chapters.
+
+---
+
+## Authoring log (T075, partial)
+
+**What can be measured mechanically**, from authoring Chapter 2 through the CLI:
+
+| | |
+|---|---|
+| Words authored | 40 (20 verbs, 20 nouns) |
+| Questions generated | 221 |
+| Source files changed by authoring | **0** — only `src/content/data/` (SC-002, verified by diff) |
+| Tool invocations | 40 + 20 re-runs after a rule was corrected |
+
+**Defects the run exposed, none of which the test suite caught:**
+
+1. The homograph refusal rejected **every regular verb** (`walked`/`walked`). It refused `jump`.
+2. Corrected, it then rejected **every noun** — all 20 in one batch, because nouns have no past
+   form at all.
+3. Question generation assumed every word is a verb, emitting `"I door every day."` as a real
+   answer option.
+4. The locale audit caught English written into a Thai lesson line.
+
+All four are now encoded as refusals or tests. The pattern is worth naming: **each was a rule that
+was correct for the case I tested and wrong for the case I did not.** Running the tool over real
+content found them in minutes; the unit tests had been green throughout.
+
+**What is NOT measured, and cannot be by me**: how long this takes someone who did not build the
+tool. That is SC-001 and T027, and it is the number this feature exists to produce. My own time is
+not evidence — I knew what the tool wanted before I typed it.

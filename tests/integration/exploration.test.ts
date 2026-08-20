@@ -70,6 +70,25 @@ describe("exploration is never blocked (Principle I, FR-006)", () => {
     }
   });
 
+  it("leaves the corridor to the exit clear of monsters", () => {
+    /*
+     * The player must be able to WALK PAST a monster and choose to fight it later. Row 7 is the
+     * only through-route on these maps, so a monster standing on it forces the encounter — the
+     * same loss of agency a random encounter would cause (Principle I).
+     *
+     * Found by walking a map in a browser: three monsters sat between the player and the chapter
+     * exit, and the exit could not be reached at all.
+     */
+    for (const id of MAP_IDS) {
+      const map = maps.get(id)!;
+      const exitRows = new Set(map.transitions.map((t) => t.y));
+      const world = enterMap(map, player());
+      for (const monster of world.monsters) {
+        expect(exitRows.has(monster.y), `${id}: ${monster.monsterId} blocks the corridor at row ${monster.y}`).toBe(false);
+      }
+    }
+  });
+
   it("keeps every map's exit reachable while monsters patrol", () => {
     // A monster parked on a transition would silently trap the player on that map.
     for (const id of MAP_IDS) {
@@ -79,6 +98,11 @@ describe("exploration is never blocked (Principle I, FR-006)", () => {
         world = stepPatrol(world, standing(id, 1, 1), r);
         for (const t of world.map.transitions) {
           expect(world.monsters.some((m) => m.x === t.x && m.y === t.y), `${id} exit blocked`).toBe(false);
+          // Patrol must not wander onto the corridor either, or the gauntlet returns at runtime.
+          expect(
+            world.monsters.some((m) => m.y === t.y),
+            `${id}: a monster patrolled onto the exit corridor at row ${t.y}`,
+          ).toBe(false);
         }
       }
     }

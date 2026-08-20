@@ -318,10 +318,28 @@ export function generatePlaceholders(outDir: string): string[] {
         ...regular.filter((_, i) => i % chapter.maps.length === mi),
         ...(isLastMap ? boss : []),
       ];
+      /*
+       * Monsters stand OFF the path row.
+       *
+       * Row 7 is the only walkable corridor, so putting monsters on it turns the map into a
+       * gauntlet the player cannot walk past — every encounter forced, none chosen. The spec is
+       * explicit that encounters are player-initiated (Principle I: never ambushed into a
+       * question), and a corridor full of monsters takes that away just as surely as a random
+       * encounter would.
+       *
+       * Found by walking the map in a browser: the player could not reach the chapter exit
+       * because three monsters sat between them and it.
+       */
+      const MONSTER_ROWS = [5, 9, 4, 10, 3, 11];
       forThisMap.forEach((m, i) => {
         spawns.push({
-          type: "monster", tileX: 8 + i * 3, tileY: 7,
-          properties: { monsterId: m.id, patrolRadius: m.isBoss ? 0 : 3 },
+          type: "monster",
+          tileX: 7 + i * 4,
+          tileY: MONSTER_ROWS[i % MONSTER_ROWS.length] as number,
+          // Radius 1 keeps a monster spawned two rows off the corridor from ever reaching it.
+          // Clearing the SPAWN row was not enough: a radius of 2 let them patrol onto row 7 at
+          // runtime and re-create the gauntlet. Constrained by construction rather than by luck.
+          properties: { monsterId: m.id, patrolRadius: m.isBoss ? 0 : 1 },
         });
       });
 
