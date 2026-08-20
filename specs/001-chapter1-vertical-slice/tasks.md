@@ -619,40 +619,45 @@ code is a liability (Principle VI).
 **Purpose**: Fill the chapter to shipping size, verify the constitution's promises hold, and gather
 the evidence this MVP exists to produce.
 
-- [ ] **T117** [POLISH] Author the full Chapter 1 vocabulary — expand to **30+ words** at A1 with
+- [x] **T117** [POLISH] Author the full Chapter 1 vocabulary — expand to **30+ words** at A1 with
       meanings in both locales, word families, and examples (SC-003).
-- [ ] **T118** [POLISH] Author the full question set — every derived component of every word covered,
+- [x] **T118** [POLISH] Author the full question set — every derived component of every word covered,
       levels 1–5 represented, all four difficulty tiers used, explanations in both locales.
-- [ ] **T119** [POLISH] Author the remaining monsters to 6 plus the `go` boss, with HP and attack tuned
+- [x] **T119** [POLISH] Author the remaining monsters to 6 plus the `go` boss, with HP and attack tuned
       so a fight lasts a designed number of turns.
-- [ ] **T120** [POLISH] Write the Chapter 1 story beats: the opening that introduces The Silence, the
+- [x] **T120** [POLISH] Write the Chapter 1 story beats: the opening that introduces The Silence, the
       Word Keeper's role, the arc through village → forest → cave, and the castle gate. Both locales.
-- [ ] **T121** [POLISH] **Verify SC-008 by doing it**: add one new vocabulary word with its questions
+- [x] **T121** [POLISH] **Verify SC-008 by doing it**: add one new vocabulary word with its questions
       and one new monster, editing content files only. If any source file must change, fix the engine —
       that is a Principle III violation, not an acceptable limitation.
-- [ ] **T122** [P] [POLISH] Balance pass: tune `balance.json` so battles last 4–6 turns, the chapter
+- [x] **T122** [P] [POLISH] Balance pass: tune `balance.json` so battles last 4–6 turns, the chapter
       runs 45–90 minutes (SC-002), and the first battle is reachable within 3 minutes (SC-001).
-- [ ] **T123** [P] [POLISH] Verify SC-007 — the full suite finishes in under 30 seconds. If it does
+- [x] **T123** [P] [POLISH] Verify SC-007 — the full suite finishes in under 30 seconds. If it does
       not, find the test that touched a browser.
-- [ ] **T124** [P] [POLISH] Verify SC-006 — 100% coverage of state-changing rules in `src/core/`.
-- [ ] **T125** [P] [POLISH] Full locale audit: both bundles complete (SC-009), every content file
+- [x] **T124** [P] [POLISH] Verify SC-006 — 100% coverage of state-changing rules in `src/core/`.
+- [x] **T125** [P] [POLISH] Full locale audit: both bundles complete (SC-009), every content file
       localized, Thai rendering verified including combining vowels and tone marks, and **no
       target-language English accidentally translated** (FR-052).
-- [ ] **T126** [P] [POLISH] Performance and layout pass: verify SC-011 — stable frame rate in the
+- [x] **T126** [P] [POLISH] Performance and layout pass: verify SC-011 — stable frame rate in the
       canvas during exploration and battle, no perceptible input lag on answer selection, and no React
       re-render storm from store subscriptions. Responsive layout, desktop first, verified at mobile
       viewport sizes. Touch controls explicitly not required.
-- [ ] **T127** [POLISH] **Anti-quiz review**: play the slice and check it reads as an RPG, not a web
+- [x] **T127** [POLISH] **Anti-quiz review**: play the slice and check it reads as an RPG, not a web
       form. HTML makes drifting easy; Principle I makes it fatal. Fix anything that looks like a
       questionnaire.
-- [ ] **T128** [POLISH] Replace placeholders with the owner's art as it arrives, in the asset
-      contract's priority order. Confirm each drop-in needs **zero** code changes.
-- [ ] **T129** [POLISH] Implement a server-backed `SaveRepository` adapter in `src/platform/` — the
+- [ ] **T128** [POLISH] ⛔ **BLOCKED — needs the project owner's art.** The asset contract is
+      written, the fallback loader is live and verified (a missing real file 404s and the
+      placeholder serves), and `tests/content/asset-contract.test.ts` enforces every dimension
+      and frame order. Drop conforming files at `public/assets/<category>/` and they are used
+      with zero code changes. Nothing else blocks on this.
+- [x] **T129** [POLISH] Implement a server-backed `SaveRepository` adapter in `src/platform/` — the
       final MVP task. It must require **no** changes to any gameplay module. If it does, Principle II
       was violated somewhere earlier and that is the real bug.
-- [ ] **T130** [POLISH] **Run the playtest that justifies this whole project** (SC-012): at least 5
-      testers complete the vertical slice and answer whether the battle loop was fun. Write up what
-      they said. This is the deliverable the MVP exists to produce.
+- [ ] **T130** [POLISH] ⛔ **BLOCKED — only the project owner can run this.** (SC-012) At least 5
+      testers complete the vertical slice and answer whether the battle loop was fun. **This is the
+      deliverable the MVP exists to produce, and it is still open.** The gate was set after Phase 3
+      and seven phases have been built on top of it since. Most of what a poor result would change
+      lives in `balance.json` rather than in code, but that is mitigation, not an answer.
 
 ---
 
@@ -723,4 +728,7 @@ If the loop is not fun, the cheapest moment to learn it is at the end of Phase 3
 | 9 | T109–T116 | US7 (P7) | Persistent progress |
 | 10 | T117–T130 | POLISH | Full content, balance, real art, server saves, and the playtest |
 
-**Total**: 130 tasks. **MVP-critical path to a testable hypothesis**: T001–T054.
+**Total**: 130 tasks. **128 complete.** The two remaining are blocked on the project owner, not
+on engineering: T128 needs art, T130 is the playtest.
+
+**MVP-critical path to a testable hypothesis**: T001–T054 (complete).

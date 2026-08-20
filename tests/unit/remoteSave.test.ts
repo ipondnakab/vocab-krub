@@ -21,7 +21,7 @@ const ok = () => new Response("", { status: 200 });
 describe("remote save adapter (T129)", () => {
   it("writes through to the server AND to local storage", async () => {
     const local = memoryRepo();
-    const fetchImpl = vi.fn(async () => ok());
+    const fetchImpl = vi.fn(async (_url: string | URL | Request, _init?: RequestInit) => ok());
     const repo = createRemoteSaveRepository({ endpoint: "/api/save", local, fetchImpl });
 
     const p = player({ gold: 42 });
