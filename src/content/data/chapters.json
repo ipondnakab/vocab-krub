@@ -85,6 +85,93 @@
           }
         ]
       }
+    },
+    {
+      "id": "chapter-2",
+      "title": {
+        "th": "บทที่ 2 — เมืองหลังประตู",
+        "en": "Chapter 2 — The Town Beyond the Gate"
+      },
+      "requiresChapterId": "chapter-1",
+      "mapIds": [
+        "castle",
+        "river",
+        "ruins"
+      ],
+      "vocabularyIds": [
+        "open",
+        "close",
+        "start",
+        "stop",
+        "ask",
+        "answer",
+        "call",
+        "wait",
+        "meet",
+        "leave",
+        "arrive",
+        "learn",
+        "teach",
+        "speak",
+        "understand",
+        "remember",
+        "forget",
+        "choose",
+        "carry",
+        "build",
+        "door",
+        "window",
+        "road",
+        "market",
+        "river",
+        "boat",
+        "money",
+        "time",
+        "day",
+        "night",
+        "morning",
+        "family",
+        "mother",
+        "father",
+        "child",
+        "name",
+        "hand",
+        "eye",
+        "tree",
+        "bird"
+      ],
+      "grammarTopicIds": [
+        "present-continuous",
+        "question-forms"
+      ],
+      "monsterIds": [
+        "monster-open",
+        "monster-ask",
+        "monster-speak",
+        "monster-forget",
+        "monster-family",
+        "monster-river",
+        "monster-remember"
+      ],
+      "npcIds": [
+        "teacher-anong",
+        "scholar-decha",
+        "merchant-ploy",
+        "villager-manee",
+        "villager-suchat",
+        "guard-pim"
+      ],
+      "bossMonsterId": "monster-remember",
+      "challenge": {
+        "questionCount": 12,
+        "passThreshold": 0.8,
+        "guardNpcId": "guard-pim"
+      },
+      "completionReward": {
+        "xp": 300,
+        "gold": 150,
+        "drops": []
+      }
     }
   ]
 }

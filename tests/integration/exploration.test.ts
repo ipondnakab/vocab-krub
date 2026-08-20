@@ -8,7 +8,9 @@ import { player, rng } from "../helpers/fixtures";
 import type { Direction } from "../../src/content/schemas";
 
 const OUT = join(process.cwd(), "public", "assets", "placeholder");
-const MAP_IDS = ["village", "forest", "cave"] as const;
+import chaptersJson from "../../src/content/data/chapters.json" with { type: "json" };
+
+const MAP_IDS = chaptersJson.chapters.flatMap((c) => c.mapIds);
 const DIRECTIONS: Direction[] = ["up", "down", "left", "right"];
 const maps = new Map<string, GameMap>();
 
@@ -82,26 +84,35 @@ describe("exploration is never blocked (Principle I, FR-006)", () => {
     }
   });
 
-  it("connects village → forest → cave as one walkable route", () => {
-    const village = maps.get("village")!;
-    const forest = maps.get("forest")!;
-    const cave = maps.get("cave")!;
-
-    const toForest = village.transitions.find((t) => t.targetMapId === "forest");
-    const toCave = forest.transitions.find((t) => t.targetMapId === "cave");
-    const backToVillage = forest.transitions.find((t) => t.targetMapId === "village");
-    const backToForest = cave.transitions.find((t) => t.targetMapId === "forest");
-
-    expect(toForest, "village has no exit to the forest").toBeDefined();
-    expect(toCave, "forest has no exit to the cave").toBeDefined();
-    expect(backToVillage, "forest has no way back to the village").toBeDefined();
-    expect(backToForest, "cave has no way back to the forest").toBeDefined();
+  it("connects every map into one walkable chain, including across the chapter boundary", () => {
+    // Each map links forward to the next and back to the previous, so the whole campaign is one
+    // continuous route rather than disconnected islands.
+    for (let i = 0; i < MAP_IDS.length; i += 1) {
+      const map = maps.get(MAP_IDS[i]!)!;
+      const previous = MAP_IDS[i - 1];
+      const next = MAP_IDS[i + 1];
+      if (previous) {
+        expect(map.transitions.some((t) => t.targetMapId === previous), `${map.id} → ${previous}`).toBe(true);
+      }
+      if (next) {
+        expect(map.transitions.some((t) => t.targetMapId === next), `${map.id} → ${next}`).toBe(true);
+      }
+    }
   });
 
-  it("places the chapter boss in the cave and a regular monster in the forest", () => {
-    const forest = enterMap(maps.get("forest")!, player());
-    const cave = enterMap(maps.get("cave")!, player());
-    expect(forest.monsters.map((m) => m.monsterId)).toContain("monster-eat");
-    expect(cave.monsters.map((m) => m.monsterId)).toContain("monster-go");
+  it("places each chapter's BOSS on that chapter's last map", () => {
+    // Asserts the design intent rather than a map name, so it keeps meaning as chapters are added.
+    for (const chapter of chaptersJson.chapters) {
+      const lastMapId = chapter.mapIds.at(-1)!;
+      const world = enterMap(maps.get(lastMapId)!, player());
+      expect(world.monsters.map((m) => m.monsterId), `${chapter.id} boss`).toContain(chapter.bossMonsterId);
+    }
+  });
+
+  it("puts at least one monster on every chapter's first map", () => {
+    for (const chapter of chaptersJson.chapters) {
+      const firstMapId = chapter.mapIds[0]!;
+      expect(enterMap(maps.get(firstMapId)!, player()).monsters.length, chapter.id).toBeGreaterThan(0);
+    }
   });
 });

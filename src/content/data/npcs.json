@@ -77,6 +77,84 @@
       "repeatDialogueId": "dlg-nong-repeat",
       "grammarTopicId": null,
       "portrait": "villager-nong"
+    },
+    {
+      "id": "teacher-anong",
+      "name": {
+        "th": "ครูอนงค์",
+        "en": "Teacher Anong"
+      },
+      "role": "teacher",
+      "mapId": "castle",
+      "dialogueId": "dlg-anong-intro",
+      "repeatDialogueId": "dlg-anong-repeat",
+      "grammarTopicId": "present-continuous",
+      "portrait": "teacher-anong"
+    },
+    {
+      "id": "scholar-decha",
+      "name": {
+        "th": "นักปราชญ์เดชา",
+        "en": "Scholar Decha"
+      },
+      "role": "scholar",
+      "mapId": "castle",
+      "dialogueId": "dlg-decha-intro",
+      "repeatDialogueId": "dlg-decha-repeat",
+      "grammarTopicId": "question-forms",
+      "portrait": "scholar-decha"
+    },
+    {
+      "id": "merchant-ploy",
+      "name": {
+        "th": "แม่ค้าพลอย",
+        "en": "Merchant Ploy"
+      },
+      "role": "merchant",
+      "mapId": "river",
+      "dialogueId": "dlg-ploy-intro",
+      "repeatDialogueId": "dlg-ploy-repeat",
+      "grammarTopicId": null,
+      "portrait": "merchant-ploy"
+    },
+    {
+      "id": "villager-manee",
+      "name": {
+        "th": "ชาวเมืองมณี",
+        "en": "Townsfolk Manee"
+      },
+      "role": "villager",
+      "mapId": "river",
+      "dialogueId": "dlg-manee-intro",
+      "repeatDialogueId": "dlg-manee-repeat",
+      "grammarTopicId": null,
+      "portrait": "villager-manee"
+    },
+    {
+      "id": "villager-suchat",
+      "name": {
+        "th": "ชาวเมืองสุชาติ",
+        "en": "Townsfolk Suchat"
+      },
+      "role": "villager",
+      "mapId": "ruins",
+      "dialogueId": "dlg-suchat-intro",
+      "repeatDialogueId": "dlg-suchat-repeat",
+      "grammarTopicId": null,
+      "portrait": "villager-suchat"
+    },
+    {
+      "id": "guard-pim",
+      "name": {
+        "th": "ทหารยามพิม",
+        "en": "Guard Pim"
+      },
+      "role": "guard",
+      "mapId": "ruins",
+      "dialogueId": "dlg-pim-intro",
+      "repeatDialogueId": "dlg-pim-repeat",
+      "grammarTopicId": null,
+      "portrait": "guard-pim"
     }
   ]
 }

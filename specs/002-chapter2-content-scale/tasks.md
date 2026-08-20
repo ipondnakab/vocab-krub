@@ -134,8 +134,8 @@ nothing was lost.
 - [ ] T033 [US2] Wire chapter transition into the world scene in src/phaser/scenes/WorldScene.ts so completing Chapter 1's challenge leads into Chapter 2's first map (FR-018)
 - [ ] T034 [US2] Allow return to completed chapters' maps for practice in src/core/chapter/progression.ts and src/runtime/GameStore.ts (FR-012)
 - [ ] T035 [P] [US2] Add locale keys for chapter transition and locked-chapter messaging to src/locales/th.json and src/locales/en.json (FR-019)
-- [ ] T036 [US2] Author the Chapter 2 record in src/content/data/chapters.json with `requiresChapterId: "chapter-1"`, its maps, boss, challenge, and completion reward (FR-018)
-- [ ] T037 [US2] Create the three Chapter 2 maps in public/assets/ via scripts/generate-placeholders.ts, with transitions linking them and back to Chapter 1 (FR-018)
+- [X] T036 [US2] Author the Chapter 2 record in src/content/data/chapters.json with `requiresChapterId: "chapter-1"`, its maps, boss, challenge, and completion reward (FR-018)
+- [X] T037 [US2] Create the three Chapter 2 maps in public/assets/ via scripts/generate-placeholders.ts, with transitions linking them and back to Chapter 1 (FR-018)
 
 **Checkpoint**: A finished Chapter 1 save walks into Chapter 2 with everything it earned.
 
@@ -155,10 +155,10 @@ questions become eligible in battle.
 
 ### Implementation for User Story 3
 
-- [ ] T040 [P] [US3] Author the `present-continuous` and `question-forms` grammar topics in src/content/data/grammar.json, both locales (FR-014, research R-108)
-- [ ] T041 [US3] Author six Chapter 2 NPCs in src/content/data/npcs.json with their roles, portraits, and map placement (FR-018)
-- [ ] T042 [US3] Author their dialogue trees in src/content/data/dialogue.json, including in-frame practice questions and post-lesson variation (FR-018)
-- [ ] T043 [P] [US3] Place the Chapter 2 NPCs on the new maps via scripts/generate-placeholders.ts spawn objects, all in bounds and off transitions (feature 001 T077 lesson)
+- [X] T040 [P] [US3] Author the `present-continuous` and `question-forms` grammar topics in src/content/data/grammar.json, both locales (FR-014, research R-108)
+- [X] T041 [US3] Author six Chapter 2 NPCs in src/content/data/npcs.json with their roles, portraits, and map placement (FR-018)
+- [X] T042 [US3] Author their dialogue trees in src/content/data/dialogue.json, including in-frame practice questions and post-lesson variation (FR-018)
+- [X] T043 [P] [US3] Place the Chapter 2 NPCs on the new maps via scripts/generate-placeholders.ts spawn objects, all in bounds and off transitions (feature 001 T077 lesson)
 - [ ] T044 [US3] Verify no hardcoded Thai entered any new component by running tests/content/locale-audit.test.ts (FR-019)
 
 **Checkpoint**: Chapter 2's grammar is taught by characters, and unlocks its dependent questions.
@@ -181,10 +181,10 @@ proportion of questions come from Chapter 1 vocabulary.
 
 ### Implementation for User Story 4
 
-- [ ] T048 [US4] Author Chapter 2's vocabulary into src/content/data/vocabulary.json — at least 30 new A1 words with forms, meanings, and examples in both locales — using `npm run author` (FR-014, FR-019, SC-004)
-- [ ] T049 [US4] Author the Chapter 2 question set into src/content/data/questions.json via `npm run author`, covering every derived component, all five levels, and all four difficulty tiers (FR-014, SC-004)
-- [ ] T050 [US4] Author six Chapter 2 monsters plus the chapter boss in src/content/data/monsters.json, each with at least two ungated questions (FR-004, FR-018)
-- [ ] T051 [US4] Place the Chapter 2 monsters on the new maps via scripts/generate-placeholders.ts, with patrol radii set (FR-018)
+- [X] T048 [US4] Author Chapter 2's vocabulary into src/content/data/vocabulary.json — at least 30 new A1 words with forms, meanings, and examples in both locales — using `npm run author` (FR-014, FR-019, SC-004)
+- [X] T049 [US4] Author the Chapter 2 question set into src/content/data/questions.json via `npm run author`, covering every derived component, all five levels, and all four difficulty tiers (FR-014, SC-004)
+- [X] T050 [US4] Author six Chapter 2 monsters plus the chapter boss in src/content/data/monsters.json, each with at least two ungated questions (FR-004, FR-018)
+- [X] T051 [US4] Place the Chapter 2 monsters on the new maps via scripts/generate-placeholders.ts, with patrol radii set (FR-018)
 - [ ] T052 [US4] Confirm no file under src/core/, src/runtime/, src/phaser/, or src/components/ changed to make **battle** review span chapters, by inspecting `git diff --name-only` for this phase. Scoped to battles deliberately: the chapter CHALLENGE does filter per-chapter and legitimately changes code in T057 (research R-104)
 
 **Checkpoint**: Chapter 1's words come back in Chapter 2 battles, and the proportion is measured.
@@ -206,7 +206,7 @@ proportion of questions come from Chapter 1 vocabulary.
 ### Implementation for User Story 5
 
 - [ ] T056 [US5] Author the Chapter 2 gatekeeper NPC and their challenge dialogue in src/content/data/npcs.json and src/content/data/dialogue.json, both locales (FR-016)
-- [ ] T057 [US5] Extend challenge question drawing in src/core/chapter/challenge.ts to include earlier chapters' review material alongside the chapter's own (FR-016)
+- [X] T057 [US5] Extend challenge question drawing in src/core/chapter/challenge.ts to include earlier chapters' review material alongside the chapter's own (FR-016)
 - [ ] T058 [US5] Author the Chapter 2 completion reward in src/content/data/chapters.json (FR-018)
 - [ ] T059 [US5] Write the Chapter 2 story beats and its closing moment in src/locales/th.json and src/locales/en.json (FR-019)
 

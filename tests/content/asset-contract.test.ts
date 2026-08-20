@@ -5,6 +5,10 @@ import { generatePlaceholders } from "../../scripts/generate-placeholders.ts";
 import { readPngSize } from "../../scripts/png.ts";
 import npcs from "../../src/content/data/npcs.json" with { type: "json" };
 import monsters from "../../src/content/data/monsters.json" with { type: "json" };
+import chaptersJson from "../../src/content/data/chapters.json" with { type: "json" };
+
+/** Derived from content so adding a chapter's maps does not require editing this test. */
+const MAP_IDS = chaptersJson.chapters.flatMap((c) => c.mapIds);
 
 /**
  * The asset contract, enforced (contracts/asset-contract.md).
@@ -82,7 +86,7 @@ describe("portraits and UI (§ 4, § 7)", () => {
 
 describe("tilesets (§ 5)", () => {
   it("use 32x32 tiles with no margin or spacing", () => {
-    for (const name of ["village", "forest", "cave"]) {
+    for (const name of MAP_IDS) {
       const { tilewidth, tileheight, margin, spacing } = map(name).tilesets[0]!;
       expect({ tilewidth, tileheight, margin, spacing }).toEqual({
         tilewidth: 32, tileheight: 32, margin: 0, spacing: 0,
@@ -101,7 +105,7 @@ describe("maps (§ 6)", () => {
   const REQUIRED_LAYERS = ["ground", "decoration", "collision", "above", "spawns", "transitions"];
 
   it("exist for village, forest, and cave", () => {
-    for (const name of ["village", "forest", "cave"]) {
+    for (const name of MAP_IDS) {
       expect(existsSync(join(OUT, "maps", `${name}.tmj`)), name).toBe(true);
     }
   });
@@ -109,7 +113,7 @@ describe("maps (§ 6)", () => {
   it("contain ALL SIX contracted layer names", () => {
     // The loader looks these up by name and fails loudly on a missing one, so every map must
     // emit every layer even when it is empty.
-    for (const name of ["village", "forest", "cave"]) {
+    for (const name of MAP_IDS) {
       const names = map(name).layers.map((l) => l.name);
       for (const required of REQUIRED_LAYERS) expect(names, `${name} is missing '${required}'`).toContain(required);
     }
@@ -135,7 +139,7 @@ describe("maps (§ 6)", () => {
   it("reference only real npc and monster ids in spawns", () => {
     const npcIds = new Set(npcs.npcs.map((n) => n.id));
     const monsterIds = new Set(monsters.monsters.map((m) => m.id));
-    for (const name of ["village", "forest", "cave"]) {
+    for (const name of MAP_IDS) {
       for (const obj of map(name).layers.find((l) => l.name === "spawns")!.objects!) {
         if (obj.type === "npc") expect(npcIds).toContain(prop(obj, "npcId"));
         if (obj.type === "monster") expect(monsterIds).toContain(prop(obj, "monsterId"));
@@ -145,7 +149,7 @@ describe("maps (§ 6)", () => {
 
   it("give every transition a counterpart in its destination map", () => {
     // The stranded-player edge case: a one-way link is a map you can enter and never leave.
-    const names = ["village", "forest", "cave"];
+    const names = MAP_IDS;
     const maps = new Map(names.map((n) => [n, map(n)]));
     for (const [name, data] of maps) {
       for (const t of data.layers.find((l) => l.name === "transitions")!.objects!) {
@@ -162,7 +166,7 @@ describe("maps (§ 6)", () => {
 
   it("never places a transition on a colliding tile", () => {
     // A transition the player cannot step onto is a dead end that looks like a door.
-    for (const name of ["village", "forest", "cave"]) {
+    for (const name of MAP_IDS) {
       const data = map(name);
       const collision = data.layers.find((l) => l.name === "collision") as unknown as { data: number[] };
       for (const t of data.layers.find((l) => l.name === "transitions")!.objects! as unknown as Array<{ x: number; y: number }>) {

@@ -4208,6 +4208,5089 @@
         "th": "คำถามใช้ \"did\" จึงตอบด้วย \"danced\"",
         "en": "The question uses \"did\", so answer \"danced\"."
       }
+    },
+    {
+      "id": "q-open-meaning",
+      "wordId": "open",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เปิด\"?",
+        "en": "Which word means \"to make something not closed\"?"
+      },
+      "options": [
+        "open",
+        "opened",
+        "opening",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"open\" แปลว่า เปิด",
+        "en": "\"open\" means to make something not closed."
+      }
+    },
+    {
+      "id": "q-open-recognition",
+      "wordId": "open",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"open\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"open\" correctly?"
+      },
+      "options": [
+        "I open every day.",
+        "I open yesterday.",
+        "I am open every day.",
+        "I opens every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"open\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"open\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-open-base",
+      "wordId": "open",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "open",
+        "opened",
+        "opening",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"open\" คือ \"open\"",
+        "en": "The base form of \"open\" is \"open\"."
+      }
+    },
+    {
+      "id": "q-open-past",
+      "wordId": "open",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"open\" คืออะไร?",
+        "en": "What is the past tense of \"open\"?"
+      },
+      "options": [
+        "opened",
+        "open",
+        "opening",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"open\" คือ \"opened\"",
+        "en": "The past form of \"open\" is \"opened\"."
+      }
+    },
+    {
+      "id": "q-open-prp",
+      "wordId": "open",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "opening",
+        "open",
+        "opened",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"open\" คือ \"opening\"",
+        "en": "The present-participle form of \"open\" is \"opening\"."
+      }
+    },
+    {
+      "id": "q-open-context",
+      "wordId": "open",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I opened yesterday.",
+        "I open yesterday.",
+        "I have open yesterday.",
+        "I am open yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"opened\"",
+        "en": "The question uses \"did\", so answer in the past: \"opened\"."
+      }
+    },
+    {
+      "id": "q-close-meaning",
+      "wordId": "close",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ปิด\"?",
+        "en": "Which word means \"to shut something\"?"
+      },
+      "options": [
+        "close",
+        "closed",
+        "closing",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"close\" แปลว่า ปิด",
+        "en": "\"close\" means to shut something."
+      }
+    },
+    {
+      "id": "q-close-recognition",
+      "wordId": "close",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"close\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"close\" correctly?"
+      },
+      "options": [
+        "I close every day.",
+        "I close yesterday.",
+        "I am close every day.",
+        "I closes every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"close\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"close\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-close-base",
+      "wordId": "close",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "close",
+        "closed",
+        "closing",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"close\" คือ \"close\"",
+        "en": "The base form of \"close\" is \"close\"."
+      }
+    },
+    {
+      "id": "q-close-past",
+      "wordId": "close",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"close\" คืออะไร?",
+        "en": "What is the past tense of \"close\"?"
+      },
+      "options": [
+        "closed",
+        "close",
+        "closing",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"close\" คือ \"closed\"",
+        "en": "The past form of \"close\" is \"closed\"."
+      }
+    },
+    {
+      "id": "q-close-prp",
+      "wordId": "close",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "closing",
+        "close",
+        "closed",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"close\" คือ \"closing\"",
+        "en": "The present-participle form of \"close\" is \"closing\"."
+      }
+    },
+    {
+      "id": "q-close-context",
+      "wordId": "close",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I closed yesterday.",
+        "I close yesterday.",
+        "I have close yesterday.",
+        "I am close yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"closed\"",
+        "en": "The question uses \"did\", so answer in the past: \"closed\"."
+      }
+    },
+    {
+      "id": "q-start-meaning",
+      "wordId": "start",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เริ่ม\"?",
+        "en": "Which word means \"to begin something\"?"
+      },
+      "options": [
+        "start",
+        "started",
+        "starting",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"start\" แปลว่า เริ่ม",
+        "en": "\"start\" means to begin something."
+      }
+    },
+    {
+      "id": "q-start-recognition",
+      "wordId": "start",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"start\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"start\" correctly?"
+      },
+      "options": [
+        "I start every day.",
+        "I start yesterday.",
+        "I am start every day.",
+        "I starts every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"start\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"start\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-start-base",
+      "wordId": "start",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "start",
+        "started",
+        "starting",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"start\" คือ \"start\"",
+        "en": "The base form of \"start\" is \"start\"."
+      }
+    },
+    {
+      "id": "q-start-past",
+      "wordId": "start",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"start\" คืออะไร?",
+        "en": "What is the past tense of \"start\"?"
+      },
+      "options": [
+        "started",
+        "start",
+        "starting",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"start\" คือ \"started\"",
+        "en": "The past form of \"start\" is \"started\"."
+      }
+    },
+    {
+      "id": "q-start-prp",
+      "wordId": "start",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "starting",
+        "start",
+        "started",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"start\" คือ \"starting\"",
+        "en": "The present-participle form of \"start\" is \"starting\"."
+      }
+    },
+    {
+      "id": "q-start-context",
+      "wordId": "start",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I started yesterday.",
+        "I start yesterday.",
+        "I have start yesterday.",
+        "I am start yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"started\"",
+        "en": "The question uses \"did\", so answer in the past: \"started\"."
+      }
+    },
+    {
+      "id": "q-stop-meaning",
+      "wordId": "stop",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"หยุด\"?",
+        "en": "Which word means \"to end a movement or action\"?"
+      },
+      "options": [
+        "stop",
+        "stopped",
+        "stopping",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"stop\" แปลว่า หยุด",
+        "en": "\"stop\" means to end a movement or action."
+      }
+    },
+    {
+      "id": "q-stop-recognition",
+      "wordId": "stop",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"stop\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"stop\" correctly?"
+      },
+      "options": [
+        "I stop every day.",
+        "I stop yesterday.",
+        "I am stop every day.",
+        "I stops every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"stop\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"stop\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-stop-base",
+      "wordId": "stop",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "stop",
+        "stopped",
+        "stopping",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"stop\" คือ \"stop\"",
+        "en": "The base form of \"stop\" is \"stop\"."
+      }
+    },
+    {
+      "id": "q-stop-past",
+      "wordId": "stop",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"stop\" คืออะไร?",
+        "en": "What is the past tense of \"stop\"?"
+      },
+      "options": [
+        "stopped",
+        "stop",
+        "stopping",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"stop\" คือ \"stopped\"",
+        "en": "The past form of \"stop\" is \"stopped\"."
+      }
+    },
+    {
+      "id": "q-stop-prp",
+      "wordId": "stop",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "stopping",
+        "stop",
+        "stopped",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"stop\" คือ \"stopping\"",
+        "en": "The present-participle form of \"stop\" is \"stopping\"."
+      }
+    },
+    {
+      "id": "q-stop-context",
+      "wordId": "stop",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I stopped yesterday.",
+        "I stop yesterday.",
+        "I have stop yesterday.",
+        "I am stop yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"stopped\"",
+        "en": "The question uses \"did\", so answer in the past: \"stopped\"."
+      }
+    },
+    {
+      "id": "q-ask-meaning",
+      "wordId": "ask",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ถาม\"?",
+        "en": "Which word means \"to say a question\"?"
+      },
+      "options": [
+        "ask",
+        "asked",
+        "asking",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"ask\" แปลว่า ถาม",
+        "en": "\"ask\" means to say a question."
+      }
+    },
+    {
+      "id": "q-ask-recognition",
+      "wordId": "ask",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"ask\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"ask\" correctly?"
+      },
+      "options": [
+        "I ask every day.",
+        "I ask yesterday.",
+        "I am ask every day.",
+        "I asks every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"ask\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"ask\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-ask-base",
+      "wordId": "ask",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "ask",
+        "asked",
+        "asking",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"ask\" คือ \"ask\"",
+        "en": "The base form of \"ask\" is \"ask\"."
+      }
+    },
+    {
+      "id": "q-ask-past",
+      "wordId": "ask",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"ask\" คืออะไร?",
+        "en": "What is the past tense of \"ask\"?"
+      },
+      "options": [
+        "asked",
+        "ask",
+        "asking",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"ask\" คือ \"asked\"",
+        "en": "The past form of \"ask\" is \"asked\"."
+      }
+    },
+    {
+      "id": "q-ask-prp",
+      "wordId": "ask",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "asking",
+        "ask",
+        "asked",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"ask\" คือ \"asking\"",
+        "en": "The present-participle form of \"ask\" is \"asking\"."
+      }
+    },
+    {
+      "id": "q-ask-context",
+      "wordId": "ask",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I asked yesterday.",
+        "I ask yesterday.",
+        "I have ask yesterday.",
+        "I am ask yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"asked\"",
+        "en": "The question uses \"did\", so answer in the past: \"asked\"."
+      }
+    },
+    {
+      "id": "q-answer-meaning",
+      "wordId": "answer",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ตอบ\"?",
+        "en": "Which word means \"to reply to a question\"?"
+      },
+      "options": [
+        "answer",
+        "answered",
+        "answering",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"answer\" แปลว่า ตอบ",
+        "en": "\"answer\" means to reply to a question."
+      }
+    },
+    {
+      "id": "q-answer-recognition",
+      "wordId": "answer",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"answer\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"answer\" correctly?"
+      },
+      "options": [
+        "I answer every day.",
+        "I answer yesterday.",
+        "I am answer every day.",
+        "I answers every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"answer\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"answer\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-answer-base",
+      "wordId": "answer",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "answer",
+        "answered",
+        "answering",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"answer\" คือ \"answer\"",
+        "en": "The base form of \"answer\" is \"answer\"."
+      }
+    },
+    {
+      "id": "q-answer-past",
+      "wordId": "answer",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"answer\" คืออะไร?",
+        "en": "What is the past tense of \"answer\"?"
+      },
+      "options": [
+        "answered",
+        "answer",
+        "answering",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"answer\" คือ \"answered\"",
+        "en": "The past form of \"answer\" is \"answered\"."
+      }
+    },
+    {
+      "id": "q-answer-prp",
+      "wordId": "answer",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "answering",
+        "answer",
+        "answered",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"answer\" คือ \"answering\"",
+        "en": "The present-participle form of \"answer\" is \"answering\"."
+      }
+    },
+    {
+      "id": "q-answer-context",
+      "wordId": "answer",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I answered yesterday.",
+        "I answer yesterday.",
+        "I have answer yesterday.",
+        "I am answer yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"answered\"",
+        "en": "The question uses \"did\", so answer in the past: \"answered\"."
+      }
+    },
+    {
+      "id": "q-call-meaning",
+      "wordId": "call",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เรียก\"?",
+        "en": "Which word means \"to say someone's name loudly\"?"
+      },
+      "options": [
+        "call",
+        "called",
+        "calling",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"call\" แปลว่า เรียก",
+        "en": "\"call\" means to say someone's name loudly."
+      }
+    },
+    {
+      "id": "q-call-recognition",
+      "wordId": "call",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"call\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"call\" correctly?"
+      },
+      "options": [
+        "I call every day.",
+        "I call yesterday.",
+        "I am call every day.",
+        "I calls every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"call\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"call\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-call-base",
+      "wordId": "call",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "call",
+        "called",
+        "calling",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"call\" คือ \"call\"",
+        "en": "The base form of \"call\" is \"call\"."
+      }
+    },
+    {
+      "id": "q-call-past",
+      "wordId": "call",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"call\" คืออะไร?",
+        "en": "What is the past tense of \"call\"?"
+      },
+      "options": [
+        "called",
+        "call",
+        "calling",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"call\" คือ \"called\"",
+        "en": "The past form of \"call\" is \"called\"."
+      }
+    },
+    {
+      "id": "q-call-prp",
+      "wordId": "call",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "calling",
+        "call",
+        "called",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"call\" คือ \"calling\"",
+        "en": "The present-participle form of \"call\" is \"calling\"."
+      }
+    },
+    {
+      "id": "q-call-context",
+      "wordId": "call",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I called yesterday.",
+        "I call yesterday.",
+        "I have call yesterday.",
+        "I am call yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"called\"",
+        "en": "The question uses \"did\", so answer in the past: \"called\"."
+      }
+    },
+    {
+      "id": "q-wait-meaning",
+      "wordId": "wait",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"รอ\"?",
+        "en": "Which word means \"to stay until something happens\"?"
+      },
+      "options": [
+        "wait",
+        "waited",
+        "waiting",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"wait\" แปลว่า รอ",
+        "en": "\"wait\" means to stay until something happens."
+      }
+    },
+    {
+      "id": "q-wait-recognition",
+      "wordId": "wait",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"wait\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"wait\" correctly?"
+      },
+      "options": [
+        "I wait every day.",
+        "I wait yesterday.",
+        "I am wait every day.",
+        "I waits every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"wait\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"wait\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-wait-base",
+      "wordId": "wait",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "wait",
+        "waited",
+        "waiting",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"wait\" คือ \"wait\"",
+        "en": "The base form of \"wait\" is \"wait\"."
+      }
+    },
+    {
+      "id": "q-wait-past",
+      "wordId": "wait",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"wait\" คืออะไร?",
+        "en": "What is the past tense of \"wait\"?"
+      },
+      "options": [
+        "waited",
+        "wait",
+        "waiting",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"wait\" คือ \"waited\"",
+        "en": "The past form of \"wait\" is \"waited\"."
+      }
+    },
+    {
+      "id": "q-wait-prp",
+      "wordId": "wait",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "waiting",
+        "wait",
+        "waited",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"wait\" คือ \"waiting\"",
+        "en": "The present-participle form of \"wait\" is \"waiting\"."
+      }
+    },
+    {
+      "id": "q-wait-context",
+      "wordId": "wait",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I waited yesterday.",
+        "I wait yesterday.",
+        "I have wait yesterday.",
+        "I am wait yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"waited\"",
+        "en": "The question uses \"did\", so answer in the past: \"waited\"."
+      }
+    },
+    {
+      "id": "q-meet-meaning",
+      "wordId": "meet",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"พบ\"?",
+        "en": "Which word means \"to come together with someone\"?"
+      },
+      "options": [
+        "meet",
+        "met",
+        "meeting",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"meet\" แปลว่า พบ",
+        "en": "\"meet\" means to come together with someone."
+      }
+    },
+    {
+      "id": "q-meet-recognition",
+      "wordId": "meet",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"meet\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"meet\" correctly?"
+      },
+      "options": [
+        "I meet every day.",
+        "I meet yesterday.",
+        "I am meet every day.",
+        "I meets every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"meet\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"meet\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-meet-base",
+      "wordId": "meet",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "meet",
+        "met",
+        "meeting",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"meet\" คือ \"meet\"",
+        "en": "The base form of \"meet\" is \"meet\"."
+      }
+    },
+    {
+      "id": "q-meet-past",
+      "wordId": "meet",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"meet\" คืออะไร?",
+        "en": "What is the past tense of \"meet\"?"
+      },
+      "options": [
+        "met",
+        "meet",
+        "meeting",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"meet\" คือ \"met\"",
+        "en": "The past form of \"meet\" is \"met\"."
+      }
+    },
+    {
+      "id": "q-meet-prp",
+      "wordId": "meet",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "meeting",
+        "meet",
+        "met",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"meet\" คือ \"meeting\"",
+        "en": "The present-participle form of \"meet\" is \"meeting\"."
+      }
+    },
+    {
+      "id": "q-meet-context",
+      "wordId": "meet",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I met yesterday.",
+        "I meet yesterday.",
+        "I have meet yesterday.",
+        "I am meet yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"met\"",
+        "en": "The question uses \"did\", so answer in the past: \"met\"."
+      }
+    },
+    {
+      "id": "q-leave-meaning",
+      "wordId": "leave",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ออกจาก\"?",
+        "en": "Which word means \"to go away from a place\"?"
+      },
+      "options": [
+        "leave",
+        "left",
+        "leaving",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"leave\" แปลว่า ออกจาก",
+        "en": "\"leave\" means to go away from a place."
+      }
+    },
+    {
+      "id": "q-leave-recognition",
+      "wordId": "leave",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"leave\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"leave\" correctly?"
+      },
+      "options": [
+        "I leave every day.",
+        "I leave yesterday.",
+        "I am leave every day.",
+        "I leaves every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"leave\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"leave\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-leave-base",
+      "wordId": "leave",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "leave",
+        "left",
+        "leaving",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"leave\" คือ \"leave\"",
+        "en": "The base form of \"leave\" is \"leave\"."
+      }
+    },
+    {
+      "id": "q-leave-past",
+      "wordId": "leave",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"leave\" คืออะไร?",
+        "en": "What is the past tense of \"leave\"?"
+      },
+      "options": [
+        "left",
+        "leave",
+        "leaving",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"leave\" คือ \"left\"",
+        "en": "The past form of \"leave\" is \"left\"."
+      }
+    },
+    {
+      "id": "q-leave-prp",
+      "wordId": "leave",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "leaving",
+        "leave",
+        "left",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"leave\" คือ \"leaving\"",
+        "en": "The present-participle form of \"leave\" is \"leaving\"."
+      }
+    },
+    {
+      "id": "q-leave-context",
+      "wordId": "leave",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I left yesterday.",
+        "I leave yesterday.",
+        "I have leave yesterday.",
+        "I am leave yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"left\"",
+        "en": "The question uses \"did\", so answer in the past: \"left\"."
+      }
+    },
+    {
+      "id": "q-arrive-meaning",
+      "wordId": "arrive",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"มาถึง\"?",
+        "en": "Which word means \"to reach a place\"?"
+      },
+      "options": [
+        "arrive",
+        "arrived",
+        "arriving",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"arrive\" แปลว่า มาถึง",
+        "en": "\"arrive\" means to reach a place."
+      }
+    },
+    {
+      "id": "q-arrive-recognition",
+      "wordId": "arrive",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"arrive\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"arrive\" correctly?"
+      },
+      "options": [
+        "I arrive every day.",
+        "I arrive yesterday.",
+        "I am arrive every day.",
+        "I arrives every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"arrive\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"arrive\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-arrive-base",
+      "wordId": "arrive",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "arrive",
+        "arrived",
+        "arriving",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"arrive\" คือ \"arrive\"",
+        "en": "The base form of \"arrive\" is \"arrive\"."
+      }
+    },
+    {
+      "id": "q-arrive-past",
+      "wordId": "arrive",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"arrive\" คืออะไร?",
+        "en": "What is the past tense of \"arrive\"?"
+      },
+      "options": [
+        "arrived",
+        "arrive",
+        "arriving",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"arrive\" คือ \"arrived\"",
+        "en": "The past form of \"arrive\" is \"arrived\"."
+      }
+    },
+    {
+      "id": "q-arrive-prp",
+      "wordId": "arrive",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "arriving",
+        "arrive",
+        "arrived",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"arrive\" คือ \"arriving\"",
+        "en": "The present-participle form of \"arrive\" is \"arriving\"."
+      }
+    },
+    {
+      "id": "q-arrive-context",
+      "wordId": "arrive",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I arrived yesterday.",
+        "I arrive yesterday.",
+        "I have arrive yesterday.",
+        "I am arrive yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"arrived\"",
+        "en": "The question uses \"did\", so answer in the past: \"arrived\"."
+      }
+    },
+    {
+      "id": "q-learn-meaning",
+      "wordId": "learn",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เรียนรู้\"?",
+        "en": "Which word means \"to get new knowledge\"?"
+      },
+      "options": [
+        "learn",
+        "learned",
+        "learning",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"learn\" แปลว่า เรียนรู้",
+        "en": "\"learn\" means to get new knowledge."
+      }
+    },
+    {
+      "id": "q-learn-recognition",
+      "wordId": "learn",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"learn\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"learn\" correctly?"
+      },
+      "options": [
+        "I learn every day.",
+        "I learn yesterday.",
+        "I am learn every day.",
+        "I learns every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"learn\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"learn\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-learn-base",
+      "wordId": "learn",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "learn",
+        "learned",
+        "learning",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"learn\" คือ \"learn\"",
+        "en": "The base form of \"learn\" is \"learn\"."
+      }
+    },
+    {
+      "id": "q-learn-past",
+      "wordId": "learn",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"learn\" คืออะไร?",
+        "en": "What is the past tense of \"learn\"?"
+      },
+      "options": [
+        "learned",
+        "learn",
+        "learning",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"learn\" คือ \"learned\"",
+        "en": "The past form of \"learn\" is \"learned\"."
+      }
+    },
+    {
+      "id": "q-learn-prp",
+      "wordId": "learn",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "learning",
+        "learn",
+        "learned",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"learn\" คือ \"learning\"",
+        "en": "The present-participle form of \"learn\" is \"learning\"."
+      }
+    },
+    {
+      "id": "q-learn-context",
+      "wordId": "learn",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I learned yesterday.",
+        "I learn yesterday.",
+        "I have learn yesterday.",
+        "I am learn yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"learned\"",
+        "en": "The question uses \"did\", so answer in the past: \"learned\"."
+      }
+    },
+    {
+      "id": "q-teach-meaning",
+      "wordId": "teach",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"สอน\"?",
+        "en": "Which word means \"to give knowledge to someone\"?"
+      },
+      "options": [
+        "teach",
+        "taught",
+        "teaching",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"teach\" แปลว่า สอน",
+        "en": "\"teach\" means to give knowledge to someone."
+      }
+    },
+    {
+      "id": "q-teach-recognition",
+      "wordId": "teach",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"teach\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"teach\" correctly?"
+      },
+      "options": [
+        "I teach every day.",
+        "I teach yesterday.",
+        "I am teach every day.",
+        "I teaches every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"teach\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"teach\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-teach-base",
+      "wordId": "teach",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "teach",
+        "taught",
+        "teaching",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"teach\" คือ \"teach\"",
+        "en": "The base form of \"teach\" is \"teach\"."
+      }
+    },
+    {
+      "id": "q-teach-past",
+      "wordId": "teach",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"teach\" คืออะไร?",
+        "en": "What is the past tense of \"teach\"?"
+      },
+      "options": [
+        "taught",
+        "teach",
+        "teaching",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"teach\" คือ \"taught\"",
+        "en": "The past form of \"teach\" is \"taught\"."
+      }
+    },
+    {
+      "id": "q-teach-prp",
+      "wordId": "teach",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "teaching",
+        "teach",
+        "taught",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"teach\" คือ \"teaching\"",
+        "en": "The present-participle form of \"teach\" is \"teaching\"."
+      }
+    },
+    {
+      "id": "q-teach-context",
+      "wordId": "teach",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I taught yesterday.",
+        "I teach yesterday.",
+        "I have teach yesterday.",
+        "I am teach yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"taught\"",
+        "en": "The question uses \"did\", so answer in the past: \"taught\"."
+      }
+    },
+    {
+      "id": "q-speak-meaning",
+      "wordId": "speak",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"พูด\"?",
+        "en": "Which word means \"to say words\"?"
+      },
+      "options": [
+        "speak",
+        "spoke",
+        "spoken",
+        "speaking"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"speak\" แปลว่า พูด",
+        "en": "\"speak\" means to say words."
+      }
+    },
+    {
+      "id": "q-speak-recognition",
+      "wordId": "speak",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"speak\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"speak\" correctly?"
+      },
+      "options": [
+        "I speak every day.",
+        "I speak yesterday.",
+        "I am speak every day.",
+        "I speaks every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"speak\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"speak\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-speak-base",
+      "wordId": "speak",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "speak",
+        "spoke",
+        "spoken",
+        "speaking"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"speak\" คือ \"speak\"",
+        "en": "The base form of \"speak\" is \"speak\"."
+      }
+    },
+    {
+      "id": "q-speak-past",
+      "wordId": "speak",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"speak\" คืออะไร?",
+        "en": "What is the past tense of \"speak\"?"
+      },
+      "options": [
+        "spoke",
+        "speak",
+        "spoken",
+        "speaking"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"speak\" คือ \"spoke\"",
+        "en": "The past form of \"speak\" is \"spoke\"."
+      }
+    },
+    {
+      "id": "q-speak-pp",
+      "wordId": "speak",
+      "component": "form:pp",
+      "level": 4,
+      "difficulty": "hard",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have ___ already.",
+        "en": "Fill in the blank: I have ___ already."
+      },
+      "options": [
+        "spoken",
+        "speak",
+        "spoke",
+        "speaking"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"speak\" คือ \"spoken\"",
+        "en": "The past-participle form of \"speak\" is \"spoken\"."
+      }
+    },
+    {
+      "id": "q-speak-prp",
+      "wordId": "speak",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "speaking",
+        "speak",
+        "spoke",
+        "spoken"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"speak\" คือ \"speaking\"",
+        "en": "The present-participle form of \"speak\" is \"speaking\"."
+      }
+    },
+    {
+      "id": "q-speak-context",
+      "wordId": "speak",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I spoke yesterday.",
+        "I speak yesterday.",
+        "I have speak yesterday.",
+        "I am speak yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"spoke\"",
+        "en": "The question uses \"did\", so answer in the past: \"spoke\"."
+      }
+    },
+    {
+      "id": "q-understand-meaning",
+      "wordId": "understand",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เข้าใจ\"?",
+        "en": "Which word means \"to know what something means\"?"
+      },
+      "options": [
+        "understand",
+        "understood",
+        "understanding",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"understand\" แปลว่า เข้าใจ",
+        "en": "\"understand\" means to know what something means."
+      }
+    },
+    {
+      "id": "q-understand-recognition",
+      "wordId": "understand",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"understand\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"understand\" correctly?"
+      },
+      "options": [
+        "I understand every day.",
+        "I understand yesterday.",
+        "I am understand every day.",
+        "I understands every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"understand\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"understand\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-understand-base",
+      "wordId": "understand",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "understand",
+        "understood",
+        "understanding",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"understand\" คือ \"understand\"",
+        "en": "The base form of \"understand\" is \"understand\"."
+      }
+    },
+    {
+      "id": "q-understand-past",
+      "wordId": "understand",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"understand\" คืออะไร?",
+        "en": "What is the past tense of \"understand\"?"
+      },
+      "options": [
+        "understood",
+        "understand",
+        "understanding",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"understand\" คือ \"understood\"",
+        "en": "The past form of \"understand\" is \"understood\"."
+      }
+    },
+    {
+      "id": "q-understand-prp",
+      "wordId": "understand",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "understanding",
+        "understand",
+        "understood",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"understand\" คือ \"understanding\"",
+        "en": "The present-participle form of \"understand\" is \"understanding\"."
+      }
+    },
+    {
+      "id": "q-understand-context",
+      "wordId": "understand",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I understood yesterday.",
+        "I understand yesterday.",
+        "I have understand yesterday.",
+        "I am understand yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"understood\"",
+        "en": "The question uses \"did\", so answer in the past: \"understood\"."
+      }
+    },
+    {
+      "id": "q-remember-meaning",
+      "wordId": "remember",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"จำได้\"?",
+        "en": "Which word means \"to keep something in your mind\"?"
+      },
+      "options": [
+        "remember",
+        "remembered",
+        "remembering",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"remember\" แปลว่า จำได้",
+        "en": "\"remember\" means to keep something in your mind."
+      }
+    },
+    {
+      "id": "q-remember-recognition",
+      "wordId": "remember",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"remember\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"remember\" correctly?"
+      },
+      "options": [
+        "I remember every day.",
+        "I remember yesterday.",
+        "I am remember every day.",
+        "I remembers every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"remember\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"remember\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-remember-base",
+      "wordId": "remember",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "remember",
+        "remembered",
+        "remembering",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"remember\" คือ \"remember\"",
+        "en": "The base form of \"remember\" is \"remember\"."
+      }
+    },
+    {
+      "id": "q-remember-past",
+      "wordId": "remember",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"remember\" คืออะไร?",
+        "en": "What is the past tense of \"remember\"?"
+      },
+      "options": [
+        "remembered",
+        "remember",
+        "remembering",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"remember\" คือ \"remembered\"",
+        "en": "The past form of \"remember\" is \"remembered\"."
+      }
+    },
+    {
+      "id": "q-remember-prp",
+      "wordId": "remember",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "remembering",
+        "remember",
+        "remembered",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"remember\" คือ \"remembering\"",
+        "en": "The present-participle form of \"remember\" is \"remembering\"."
+      }
+    },
+    {
+      "id": "q-remember-context",
+      "wordId": "remember",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I remembered yesterday.",
+        "I remember yesterday.",
+        "I have remember yesterday.",
+        "I am remember yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"remembered\"",
+        "en": "The question uses \"did\", so answer in the past: \"remembered\"."
+      }
+    },
+    {
+      "id": "q-forget-meaning",
+      "wordId": "forget",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ลืม\"?",
+        "en": "Which word means \"to lose something from your mind\"?"
+      },
+      "options": [
+        "forget",
+        "forgot",
+        "forgotten",
+        "forgetting"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"forget\" แปลว่า ลืม",
+        "en": "\"forget\" means to lose something from your mind."
+      }
+    },
+    {
+      "id": "q-forget-recognition",
+      "wordId": "forget",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"forget\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"forget\" correctly?"
+      },
+      "options": [
+        "I forget every day.",
+        "I forget yesterday.",
+        "I am forget every day.",
+        "I forgets every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"forget\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"forget\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-forget-base",
+      "wordId": "forget",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "forget",
+        "forgot",
+        "forgotten",
+        "forgetting"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"forget\" คือ \"forget\"",
+        "en": "The base form of \"forget\" is \"forget\"."
+      }
+    },
+    {
+      "id": "q-forget-past",
+      "wordId": "forget",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"forget\" คืออะไร?",
+        "en": "What is the past tense of \"forget\"?"
+      },
+      "options": [
+        "forgot",
+        "forget",
+        "forgotten",
+        "forgetting"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"forget\" คือ \"forgot\"",
+        "en": "The past form of \"forget\" is \"forgot\"."
+      }
+    },
+    {
+      "id": "q-forget-pp",
+      "wordId": "forget",
+      "component": "form:pp",
+      "level": 4,
+      "difficulty": "hard",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have ___ already.",
+        "en": "Fill in the blank: I have ___ already."
+      },
+      "options": [
+        "forgotten",
+        "forget",
+        "forgot",
+        "forgetting"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"forget\" คือ \"forgotten\"",
+        "en": "The past-participle form of \"forget\" is \"forgotten\"."
+      }
+    },
+    {
+      "id": "q-forget-prp",
+      "wordId": "forget",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "forgetting",
+        "forget",
+        "forgot",
+        "forgotten"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"forget\" คือ \"forgetting\"",
+        "en": "The present-participle form of \"forget\" is \"forgetting\"."
+      }
+    },
+    {
+      "id": "q-forget-context",
+      "wordId": "forget",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I forgot yesterday.",
+        "I forget yesterday.",
+        "I have forget yesterday.",
+        "I am forget yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"forgot\"",
+        "en": "The question uses \"did\", so answer in the past: \"forgot\"."
+      }
+    },
+    {
+      "id": "q-choose-meaning",
+      "wordId": "choose",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เลือก\"?",
+        "en": "Which word means \"to pick one thing\"?"
+      },
+      "options": [
+        "choose",
+        "chose",
+        "chosen",
+        "choosing"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"choose\" แปลว่า เลือก",
+        "en": "\"choose\" means to pick one thing."
+      }
+    },
+    {
+      "id": "q-choose-recognition",
+      "wordId": "choose",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"choose\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"choose\" correctly?"
+      },
+      "options": [
+        "I choose every day.",
+        "I choose yesterday.",
+        "I am choose every day.",
+        "I chooses every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"choose\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"choose\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-choose-base",
+      "wordId": "choose",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "choose",
+        "chose",
+        "chosen",
+        "choosing"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"choose\" คือ \"choose\"",
+        "en": "The base form of \"choose\" is \"choose\"."
+      }
+    },
+    {
+      "id": "q-choose-past",
+      "wordId": "choose",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"choose\" คืออะไร?",
+        "en": "What is the past tense of \"choose\"?"
+      },
+      "options": [
+        "chose",
+        "choose",
+        "chosen",
+        "choosing"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"choose\" คือ \"chose\"",
+        "en": "The past form of \"choose\" is \"chose\"."
+      }
+    },
+    {
+      "id": "q-choose-pp",
+      "wordId": "choose",
+      "component": "form:pp",
+      "level": 4,
+      "difficulty": "hard",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have ___ already.",
+        "en": "Fill in the blank: I have ___ already."
+      },
+      "options": [
+        "chosen",
+        "choose",
+        "chose",
+        "choosing"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"choose\" คือ \"chosen\"",
+        "en": "The past-participle form of \"choose\" is \"chosen\"."
+      }
+    },
+    {
+      "id": "q-choose-prp",
+      "wordId": "choose",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "choosing",
+        "choose",
+        "chose",
+        "chosen"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"choose\" คือ \"choosing\"",
+        "en": "The present-participle form of \"choose\" is \"choosing\"."
+      }
+    },
+    {
+      "id": "q-choose-context",
+      "wordId": "choose",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I chose yesterday.",
+        "I choose yesterday.",
+        "I have choose yesterday.",
+        "I am choose yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"chose\"",
+        "en": "The question uses \"did\", so answer in the past: \"chose\"."
+      }
+    },
+    {
+      "id": "q-carry-meaning",
+      "wordId": "carry",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ถือ\"?",
+        "en": "Which word means \"to hold and move something\"?"
+      },
+      "options": [
+        "carry",
+        "carried",
+        "carrying",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"carry\" แปลว่า ถือ",
+        "en": "\"carry\" means to hold and move something."
+      }
+    },
+    {
+      "id": "q-carry-recognition",
+      "wordId": "carry",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"carry\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"carry\" correctly?"
+      },
+      "options": [
+        "I carry every day.",
+        "I carry yesterday.",
+        "I am carry every day.",
+        "I carries every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"carry\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"carry\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-carry-base",
+      "wordId": "carry",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "carry",
+        "carried",
+        "carrying",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"carry\" คือ \"carry\"",
+        "en": "The base form of \"carry\" is \"carry\"."
+      }
+    },
+    {
+      "id": "q-carry-past",
+      "wordId": "carry",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"carry\" คืออะไร?",
+        "en": "What is the past tense of \"carry\"?"
+      },
+      "options": [
+        "carried",
+        "carry",
+        "carrying",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"carry\" คือ \"carried\"",
+        "en": "The past form of \"carry\" is \"carried\"."
+      }
+    },
+    {
+      "id": "q-carry-prp",
+      "wordId": "carry",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "carrying",
+        "carry",
+        "carried",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"carry\" คือ \"carrying\"",
+        "en": "The present-participle form of \"carry\" is \"carrying\"."
+      }
+    },
+    {
+      "id": "q-carry-context",
+      "wordId": "carry",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I carried yesterday.",
+        "I carry yesterday.",
+        "I have carry yesterday.",
+        "I am carry yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"carried\"",
+        "en": "The question uses \"did\", so answer in the past: \"carried\"."
+      }
+    },
+    {
+      "id": "q-build-meaning",
+      "wordId": "build",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"สร้าง\"?",
+        "en": "Which word means \"to make a building\"?"
+      },
+      "options": [
+        "build",
+        "built",
+        "building",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"build\" แปลว่า สร้าง",
+        "en": "\"build\" means to make a building."
+      }
+    },
+    {
+      "id": "q-build-recognition",
+      "wordId": "build",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"build\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"build\" correctly?"
+      },
+      "options": [
+        "I build every day.",
+        "I build yesterday.",
+        "I am build every day.",
+        "I builds every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"build\" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ",
+        "en": "Use \"build\" with I for something you do regularly."
+      }
+    },
+    {
+      "id": "q-build-base",
+      "wordId": "build",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "build",
+        "built",
+        "building",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"build\" คือ \"build\"",
+        "en": "The base form of \"build\" is \"build\"."
+      }
+    },
+    {
+      "id": "q-build-past",
+      "wordId": "build",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"build\" คืออะไร?",
+        "en": "What is the past tense of \"build\"?"
+      },
+      "options": [
+        "built",
+        "build",
+        "building",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"build\" คือ \"built\"",
+        "en": "The past form of \"build\" is \"built\"."
+      }
+    },
+    {
+      "id": "q-build-prp",
+      "wordId": "build",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "building",
+        "build",
+        "built",
+        "go"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"build\" คือ \"building\"",
+        "en": "The present-participle form of \"build\" is \"building\"."
+      }
+    },
+    {
+      "id": "q-build-context",
+      "wordId": "build",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I built yesterday.",
+        "I build yesterday.",
+        "I have build yesterday.",
+        "I am build yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"built\"",
+        "en": "The question uses \"did\", so answer in the past: \"built\"."
+      }
+    },
+    {
+      "id": "q-door-meaning",
+      "wordId": "door",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ประตู\"?",
+        "en": "Which word means \"the thing you open to enter a room\"?"
+      },
+      "options": [
+        "door",
+        "doors",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"door\" แปลว่า ประตู",
+        "en": "\"door\" means the thing you open to enter a room."
+      }
+    },
+    {
+      "id": "q-door-recognition",
+      "wordId": "door",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"door\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"door\" correctly?"
+      },
+      "options": [
+        "This is a door.",
+        "This is a doors.",
+        "These is a door.",
+        "This is an doors."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"door\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"door\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-door-base",
+      "wordId": "door",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "door",
+        "doors",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"door\" คือ \"door\"",
+        "en": "The base form of \"door\" is \"door\"."
+      }
+    },
+    {
+      "id": "q-door-plural",
+      "wordId": "door",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "doors",
+        "door",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"door\" คือ \"doors\"",
+        "en": "The plural form of \"door\" is \"doors\"."
+      }
+    },
+    {
+      "id": "q-door-context",
+      "wordId": "door",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two doors.",
+        "I see two door.",
+        "I see a two doors.",
+        "I sees two doors."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"doors\"",
+        "en": "More than one takes the plural \"doors\"."
+      }
+    },
+    {
+      "id": "q-window-meaning",
+      "wordId": "window",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"หน้าต่าง\"?",
+        "en": "Which word means \"the glass opening in a wall\"?"
+      },
+      "options": [
+        "window",
+        "windows",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"window\" แปลว่า หน้าต่าง",
+        "en": "\"window\" means the glass opening in a wall."
+      }
+    },
+    {
+      "id": "q-window-recognition",
+      "wordId": "window",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"window\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"window\" correctly?"
+      },
+      "options": [
+        "This is a window.",
+        "This is a windows.",
+        "These is a window.",
+        "This is an windows."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"window\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"window\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-window-base",
+      "wordId": "window",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "window",
+        "windows",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"window\" คือ \"window\"",
+        "en": "The base form of \"window\" is \"window\"."
+      }
+    },
+    {
+      "id": "q-window-plural",
+      "wordId": "window",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "windows",
+        "window",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"window\" คือ \"windows\"",
+        "en": "The plural form of \"window\" is \"windows\"."
+      }
+    },
+    {
+      "id": "q-window-context",
+      "wordId": "window",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two windows.",
+        "I see two window.",
+        "I see a two windows.",
+        "I sees two windows."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"windows\"",
+        "en": "More than one takes the plural \"windows\"."
+      }
+    },
+    {
+      "id": "q-road-meaning",
+      "wordId": "road",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ถนน\"?",
+        "en": "Which word means \"the way vehicles travel on\"?"
+      },
+      "options": [
+        "road",
+        "roads",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"road\" แปลว่า ถนน",
+        "en": "\"road\" means the way vehicles travel on."
+      }
+    },
+    {
+      "id": "q-road-recognition",
+      "wordId": "road",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"road\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"road\" correctly?"
+      },
+      "options": [
+        "This is a road.",
+        "This is a roads.",
+        "These is a road.",
+        "This is an roads."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"road\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"road\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-road-base",
+      "wordId": "road",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "road",
+        "roads",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"road\" คือ \"road\"",
+        "en": "The base form of \"road\" is \"road\"."
+      }
+    },
+    {
+      "id": "q-road-plural",
+      "wordId": "road",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "roads",
+        "road",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"road\" คือ \"roads\"",
+        "en": "The plural form of \"road\" is \"roads\"."
+      }
+    },
+    {
+      "id": "q-road-context",
+      "wordId": "road",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two roads.",
+        "I see two road.",
+        "I see a two roads.",
+        "I sees two roads."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"roads\"",
+        "en": "More than one takes the plural \"roads\"."
+      }
+    },
+    {
+      "id": "q-market-meaning",
+      "wordId": "market",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ตลาด\"?",
+        "en": "Which word means \"the place where people buy and sell\"?"
+      },
+      "options": [
+        "market",
+        "markets",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"market\" แปลว่า ตลาด",
+        "en": "\"market\" means the place where people buy and sell."
+      }
+    },
+    {
+      "id": "q-market-recognition",
+      "wordId": "market",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"market\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"market\" correctly?"
+      },
+      "options": [
+        "This is a market.",
+        "This is a markets.",
+        "These is a market.",
+        "This is an markets."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"market\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"market\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-market-base",
+      "wordId": "market",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "market",
+        "markets",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"market\" คือ \"market\"",
+        "en": "The base form of \"market\" is \"market\"."
+      }
+    },
+    {
+      "id": "q-market-plural",
+      "wordId": "market",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "markets",
+        "market",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"market\" คือ \"markets\"",
+        "en": "The plural form of \"market\" is \"markets\"."
+      }
+    },
+    {
+      "id": "q-market-context",
+      "wordId": "market",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two markets.",
+        "I see two market.",
+        "I see a two markets.",
+        "I sees two markets."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"markets\"",
+        "en": "More than one takes the plural \"markets\"."
+      }
+    },
+    {
+      "id": "q-river-meaning",
+      "wordId": "river",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"แม่น้ำ\"?",
+        "en": "Which word means \"a long stream of water\"?"
+      },
+      "options": [
+        "river",
+        "rivers",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"river\" แปลว่า แม่น้ำ",
+        "en": "\"river\" means a long stream of water."
+      }
+    },
+    {
+      "id": "q-river-recognition",
+      "wordId": "river",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"river\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"river\" correctly?"
+      },
+      "options": [
+        "This is a river.",
+        "This is a rivers.",
+        "These is a river.",
+        "This is an rivers."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"river\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"river\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-river-base",
+      "wordId": "river",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "river",
+        "rivers",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"river\" คือ \"river\"",
+        "en": "The base form of \"river\" is \"river\"."
+      }
+    },
+    {
+      "id": "q-river-plural",
+      "wordId": "river",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "rivers",
+        "river",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"river\" คือ \"rivers\"",
+        "en": "The plural form of \"river\" is \"rivers\"."
+      }
+    },
+    {
+      "id": "q-river-context",
+      "wordId": "river",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two rivers.",
+        "I see two river.",
+        "I see a two rivers.",
+        "I sees two rivers."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"rivers\"",
+        "en": "More than one takes the plural \"rivers\"."
+      }
+    },
+    {
+      "id": "q-boat-meaning",
+      "wordId": "boat",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เรือ\"?",
+        "en": "Which word means \"the thing you travel on water in\"?"
+      },
+      "options": [
+        "boat",
+        "boats",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"boat\" แปลว่า เรือ",
+        "en": "\"boat\" means the thing you travel on water in."
+      }
+    },
+    {
+      "id": "q-boat-recognition",
+      "wordId": "boat",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"boat\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"boat\" correctly?"
+      },
+      "options": [
+        "This is a boat.",
+        "This is a boats.",
+        "These is a boat.",
+        "This is an boats."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"boat\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"boat\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-boat-base",
+      "wordId": "boat",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "boat",
+        "boats",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"boat\" คือ \"boat\"",
+        "en": "The base form of \"boat\" is \"boat\"."
+      }
+    },
+    {
+      "id": "q-boat-plural",
+      "wordId": "boat",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "boats",
+        "boat",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"boat\" คือ \"boats\"",
+        "en": "The plural form of \"boat\" is \"boats\"."
+      }
+    },
+    {
+      "id": "q-boat-context",
+      "wordId": "boat",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two boats.",
+        "I see two boat.",
+        "I see a two boats.",
+        "I sees two boats."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"boats\"",
+        "en": "More than one takes the plural \"boats\"."
+      }
+    },
+    {
+      "id": "q-money-meaning",
+      "wordId": "money",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เงิน\"?",
+        "en": "Which word means \"what you pay with\"?"
+      },
+      "options": [
+        "money",
+        "go",
+        "eat",
+        "see"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"money\" แปลว่า เงิน",
+        "en": "\"money\" means what you pay with."
+      }
+    },
+    {
+      "id": "q-money-recognition",
+      "wordId": "money",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"money\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"money\" correctly?"
+      },
+      "options": [
+        "I need money.",
+        "I need a money.",
+        "I need moneys.",
+        "I needs money."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"money\" เป็นคำนามนับไม่ได้ จึงไม่ใช้ a และไม่เติม -s",
+        "en": "\"money\" is uncountable, so it takes no \"a\" and no -s."
+      }
+    },
+    {
+      "id": "q-money-base",
+      "wordId": "money",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "money",
+        "go",
+        "eat",
+        "see"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"money\" คือ \"money\"",
+        "en": "The base form of \"money\" is \"money\"."
+      }
+    },
+    {
+      "id": "q-money-context",
+      "wordId": "money",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณอยากบอกว่ามี \"เงิน\" อยู่บ้าง ควรพูดว่าอย่างไร?",
+        "en": "You want to say you have some. What should you say?"
+      },
+      "options": [
+        "I have some money.",
+        "I have some moneys.",
+        "I have a money.",
+        "I have an money."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"money\" นับไม่ได้ จึงใช้ \"some\" และไม่เติม -s",
+        "en": "\"money\" is uncountable, so use \"some\" and no -s."
+      }
+    },
+    {
+      "id": "q-time-meaning",
+      "wordId": "time",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เวลา\"?",
+        "en": "Which word means \"what a clock measures\"?"
+      },
+      "options": [
+        "time",
+        "go",
+        "eat",
+        "see"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"time\" แปลว่า เวลา",
+        "en": "\"time\" means what a clock measures."
+      }
+    },
+    {
+      "id": "q-time-recognition",
+      "wordId": "time",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"time\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"time\" correctly?"
+      },
+      "options": [
+        "I need time.",
+        "I need a time.",
+        "I need times.",
+        "I needs time."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"time\" เป็นคำนามนับไม่ได้ จึงไม่ใช้ a และไม่เติม -s",
+        "en": "\"time\" is uncountable, so it takes no \"a\" and no -s."
+      }
+    },
+    {
+      "id": "q-time-base",
+      "wordId": "time",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "time",
+        "go",
+        "eat",
+        "see"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"time\" คือ \"time\"",
+        "en": "The base form of \"time\" is \"time\"."
+      }
+    },
+    {
+      "id": "q-time-context",
+      "wordId": "time",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณอยากบอกว่ามี \"เวลา\" อยู่บ้าง ควรพูดว่าอย่างไร?",
+        "en": "You want to say you have some. What should you say?"
+      },
+      "options": [
+        "I have some time.",
+        "I have some times.",
+        "I have a time.",
+        "I have an time."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"time\" นับไม่ได้ จึงใช้ \"some\" และไม่เติม -s",
+        "en": "\"time\" is uncountable, so use \"some\" and no -s."
+      }
+    },
+    {
+      "id": "q-day-meaning",
+      "wordId": "day",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"วัน\"?",
+        "en": "Which word means \"the hours when it is light\"?"
+      },
+      "options": [
+        "day",
+        "days",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"day\" แปลว่า วัน",
+        "en": "\"day\" means the hours when it is light."
+      }
+    },
+    {
+      "id": "q-day-recognition",
+      "wordId": "day",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"day\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"day\" correctly?"
+      },
+      "options": [
+        "This is a day.",
+        "This is a days.",
+        "These is a day.",
+        "This is an days."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"day\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"day\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-day-base",
+      "wordId": "day",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "day",
+        "days",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"day\" คือ \"day\"",
+        "en": "The base form of \"day\" is \"day\"."
+      }
+    },
+    {
+      "id": "q-day-plural",
+      "wordId": "day",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "days",
+        "day",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"day\" คือ \"days\"",
+        "en": "The plural form of \"day\" is \"days\"."
+      }
+    },
+    {
+      "id": "q-day-context",
+      "wordId": "day",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two days.",
+        "I see two day.",
+        "I see a two days.",
+        "I sees two days."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"days\"",
+        "en": "More than one takes the plural \"days\"."
+      }
+    },
+    {
+      "id": "q-night-meaning",
+      "wordId": "night",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"กลางคืน\"?",
+        "en": "Which word means \"the hours when it is dark\"?"
+      },
+      "options": [
+        "night",
+        "nights",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"night\" แปลว่า กลางคืน",
+        "en": "\"night\" means the hours when it is dark."
+      }
+    },
+    {
+      "id": "q-night-recognition",
+      "wordId": "night",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"night\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"night\" correctly?"
+      },
+      "options": [
+        "This is a night.",
+        "This is a nights.",
+        "These is a night.",
+        "This is an nights."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"night\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"night\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-night-base",
+      "wordId": "night",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "night",
+        "nights",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"night\" คือ \"night\"",
+        "en": "The base form of \"night\" is \"night\"."
+      }
+    },
+    {
+      "id": "q-night-plural",
+      "wordId": "night",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "nights",
+        "night",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"night\" คือ \"nights\"",
+        "en": "The plural form of \"night\" is \"nights\"."
+      }
+    },
+    {
+      "id": "q-night-context",
+      "wordId": "night",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two nights.",
+        "I see two night.",
+        "I see a two nights.",
+        "I sees two nights."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"nights\"",
+        "en": "More than one takes the plural \"nights\"."
+      }
+    },
+    {
+      "id": "q-morning-meaning",
+      "wordId": "morning",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เช้า\"?",
+        "en": "Which word means \"the early part of the day\"?"
+      },
+      "options": [
+        "morning",
+        "mornings",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"morning\" แปลว่า เช้า",
+        "en": "\"morning\" means the early part of the day."
+      }
+    },
+    {
+      "id": "q-morning-recognition",
+      "wordId": "morning",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"morning\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"morning\" correctly?"
+      },
+      "options": [
+        "This is a morning.",
+        "This is a mornings.",
+        "These is a morning.",
+        "This is an mornings."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"morning\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"morning\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-morning-base",
+      "wordId": "morning",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "morning",
+        "mornings",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"morning\" คือ \"morning\"",
+        "en": "The base form of \"morning\" is \"morning\"."
+      }
+    },
+    {
+      "id": "q-morning-plural",
+      "wordId": "morning",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "mornings",
+        "morning",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"morning\" คือ \"mornings\"",
+        "en": "The plural form of \"morning\" is \"mornings\"."
+      }
+    },
+    {
+      "id": "q-morning-context",
+      "wordId": "morning",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two mornings.",
+        "I see two morning.",
+        "I see a two mornings.",
+        "I sees two mornings."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"mornings\"",
+        "en": "More than one takes the plural \"mornings\"."
+      }
+    },
+    {
+      "id": "q-family-meaning",
+      "wordId": "family",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ครอบครัว\"?",
+        "en": "Which word means \"the people you are related to\"?"
+      },
+      "options": [
+        "family",
+        "families",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"family\" แปลว่า ครอบครัว",
+        "en": "\"family\" means the people you are related to."
+      }
+    },
+    {
+      "id": "q-family-recognition",
+      "wordId": "family",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"family\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"family\" correctly?"
+      },
+      "options": [
+        "This is a family.",
+        "This is a families.",
+        "These is a family.",
+        "This is an familys."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"family\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"family\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-family-base",
+      "wordId": "family",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "family",
+        "families",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"family\" คือ \"family\"",
+        "en": "The base form of \"family\" is \"family\"."
+      }
+    },
+    {
+      "id": "q-family-plural",
+      "wordId": "family",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "families",
+        "family",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"family\" คือ \"families\"",
+        "en": "The plural form of \"family\" is \"families\"."
+      }
+    },
+    {
+      "id": "q-family-context",
+      "wordId": "family",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two families.",
+        "I see two family.",
+        "I see a two families.",
+        "I sees two families."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"families\"",
+        "en": "More than one takes the plural \"families\"."
+      }
+    },
+    {
+      "id": "q-mother-meaning",
+      "wordId": "mother",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"แม่\"?",
+        "en": "Which word means \"a female parent\"?"
+      },
+      "options": [
+        "mother",
+        "mothers",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"mother\" แปลว่า แม่",
+        "en": "\"mother\" means a female parent."
+      }
+    },
+    {
+      "id": "q-mother-recognition",
+      "wordId": "mother",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"mother\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"mother\" correctly?"
+      },
+      "options": [
+        "This is a mother.",
+        "This is a mothers.",
+        "These is a mother.",
+        "This is an mothers."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"mother\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"mother\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-mother-base",
+      "wordId": "mother",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "mother",
+        "mothers",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"mother\" คือ \"mother\"",
+        "en": "The base form of \"mother\" is \"mother\"."
+      }
+    },
+    {
+      "id": "q-mother-plural",
+      "wordId": "mother",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "mothers",
+        "mother",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"mother\" คือ \"mothers\"",
+        "en": "The plural form of \"mother\" is \"mothers\"."
+      }
+    },
+    {
+      "id": "q-mother-context",
+      "wordId": "mother",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two mothers.",
+        "I see two mother.",
+        "I see a two mothers.",
+        "I sees two mothers."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"mothers\"",
+        "en": "More than one takes the plural \"mothers\"."
+      }
+    },
+    {
+      "id": "q-father-meaning",
+      "wordId": "father",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"พ่อ\"?",
+        "en": "Which word means \"a male parent\"?"
+      },
+      "options": [
+        "father",
+        "fathers",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"father\" แปลว่า พ่อ",
+        "en": "\"father\" means a male parent."
+      }
+    },
+    {
+      "id": "q-father-recognition",
+      "wordId": "father",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"father\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"father\" correctly?"
+      },
+      "options": [
+        "This is a father.",
+        "This is a fathers.",
+        "These is a father.",
+        "This is an fathers."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"father\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"father\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-father-base",
+      "wordId": "father",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "father",
+        "fathers",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"father\" คือ \"father\"",
+        "en": "The base form of \"father\" is \"father\"."
+      }
+    },
+    {
+      "id": "q-father-plural",
+      "wordId": "father",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "fathers",
+        "father",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"father\" คือ \"fathers\"",
+        "en": "The plural form of \"father\" is \"fathers\"."
+      }
+    },
+    {
+      "id": "q-father-context",
+      "wordId": "father",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two fathers.",
+        "I see two father.",
+        "I see a two fathers.",
+        "I sees two fathers."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"fathers\"",
+        "en": "More than one takes the plural \"fathers\"."
+      }
+    },
+    {
+      "id": "q-child-meaning",
+      "wordId": "child",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เด็ก\"?",
+        "en": "Which word means \"a young person\"?"
+      },
+      "options": [
+        "child",
+        "children",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"child\" แปลว่า เด็ก",
+        "en": "\"child\" means a young person."
+      }
+    },
+    {
+      "id": "q-child-recognition",
+      "wordId": "child",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"child\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"child\" correctly?"
+      },
+      "options": [
+        "This is a child.",
+        "This is a children.",
+        "These is a child.",
+        "This is an childs."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"child\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"child\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-child-base",
+      "wordId": "child",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "child",
+        "children",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"child\" คือ \"child\"",
+        "en": "The base form of \"child\" is \"child\"."
+      }
+    },
+    {
+      "id": "q-child-plural",
+      "wordId": "child",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "children",
+        "child",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"child\" คือ \"children\"",
+        "en": "The plural form of \"child\" is \"children\"."
+      }
+    },
+    {
+      "id": "q-child-context",
+      "wordId": "child",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two children.",
+        "I see two child.",
+        "I see a two children.",
+        "I sees two children."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"children\"",
+        "en": "More than one takes the plural \"children\"."
+      }
+    },
+    {
+      "id": "q-name-meaning",
+      "wordId": "name",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ชื่อ\"?",
+        "en": "Which word means \"what someone is called\"?"
+      },
+      "options": [
+        "name",
+        "names",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"name\" แปลว่า ชื่อ",
+        "en": "\"name\" means what someone is called."
+      }
+    },
+    {
+      "id": "q-name-recognition",
+      "wordId": "name",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"name\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"name\" correctly?"
+      },
+      "options": [
+        "This is a name.",
+        "This is a names.",
+        "These is a name.",
+        "This is an names."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"name\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"name\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-name-base",
+      "wordId": "name",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "name",
+        "names",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"name\" คือ \"name\"",
+        "en": "The base form of \"name\" is \"name\"."
+      }
+    },
+    {
+      "id": "q-name-plural",
+      "wordId": "name",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "names",
+        "name",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"name\" คือ \"names\"",
+        "en": "The plural form of \"name\" is \"names\"."
+      }
+    },
+    {
+      "id": "q-name-context",
+      "wordId": "name",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two names.",
+        "I see two name.",
+        "I see a two names.",
+        "I sees two names."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"names\"",
+        "en": "More than one takes the plural \"names\"."
+      }
+    },
+    {
+      "id": "q-hand-meaning",
+      "wordId": "hand",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"มือ\"?",
+        "en": "Which word means \"the part of your body at the end of your arm\"?"
+      },
+      "options": [
+        "hand",
+        "hands",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"hand\" แปลว่า มือ",
+        "en": "\"hand\" means the part of your body at the end of your arm."
+      }
+    },
+    {
+      "id": "q-hand-recognition",
+      "wordId": "hand",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"hand\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"hand\" correctly?"
+      },
+      "options": [
+        "This is a hand.",
+        "This is a hands.",
+        "These is a hand.",
+        "This is an hands."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"hand\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"hand\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-hand-base",
+      "wordId": "hand",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "hand",
+        "hands",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"hand\" คือ \"hand\"",
+        "en": "The base form of \"hand\" is \"hand\"."
+      }
+    },
+    {
+      "id": "q-hand-plural",
+      "wordId": "hand",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "hands",
+        "hand",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"hand\" คือ \"hands\"",
+        "en": "The plural form of \"hand\" is \"hands\"."
+      }
+    },
+    {
+      "id": "q-hand-context",
+      "wordId": "hand",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two hands.",
+        "I see two hand.",
+        "I see a two hands.",
+        "I sees two hands."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"hands\"",
+        "en": "More than one takes the plural \"hands\"."
+      }
+    },
+    {
+      "id": "q-eye-meaning",
+      "wordId": "eye",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ตา\"?",
+        "en": "Which word means \"the part of your body you see with\"?"
+      },
+      "options": [
+        "eye",
+        "eyes",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"eye\" แปลว่า ตา",
+        "en": "\"eye\" means the part of your body you see with."
+      }
+    },
+    {
+      "id": "q-eye-recognition",
+      "wordId": "eye",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"eye\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"eye\" correctly?"
+      },
+      "options": [
+        "This is a eye.",
+        "This is a eyes.",
+        "These is a eye.",
+        "This is an eyes."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"eye\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"eye\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-eye-base",
+      "wordId": "eye",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "eye",
+        "eyes",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"eye\" คือ \"eye\"",
+        "en": "The base form of \"eye\" is \"eye\"."
+      }
+    },
+    {
+      "id": "q-eye-plural",
+      "wordId": "eye",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "eyes",
+        "eye",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"eye\" คือ \"eyes\"",
+        "en": "The plural form of \"eye\" is \"eyes\"."
+      }
+    },
+    {
+      "id": "q-eye-context",
+      "wordId": "eye",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two eyes.",
+        "I see two eye.",
+        "I see a two eyes.",
+        "I sees two eyes."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"eyes\"",
+        "en": "More than one takes the plural \"eyes\"."
+      }
+    },
+    {
+      "id": "q-tree-meaning",
+      "wordId": "tree",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"ต้นไม้\"?",
+        "en": "Which word means \"a tall plant with a wooden trunk\"?"
+      },
+      "options": [
+        "tree",
+        "trees",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"tree\" แปลว่า ต้นไม้",
+        "en": "\"tree\" means a tall plant with a wooden trunk."
+      }
+    },
+    {
+      "id": "q-tree-recognition",
+      "wordId": "tree",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"tree\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"tree\" correctly?"
+      },
+      "options": [
+        "This is a tree.",
+        "This is a trees.",
+        "These is a tree.",
+        "This is an trees."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"tree\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"tree\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-tree-base",
+      "wordId": "tree",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "tree",
+        "trees",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"tree\" คือ \"tree\"",
+        "en": "The base form of \"tree\" is \"tree\"."
+      }
+    },
+    {
+      "id": "q-tree-plural",
+      "wordId": "tree",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "trees",
+        "tree",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"tree\" คือ \"trees\"",
+        "en": "The plural form of \"tree\" is \"trees\"."
+      }
+    },
+    {
+      "id": "q-tree-context",
+      "wordId": "tree",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two trees.",
+        "I see two tree.",
+        "I see a two trees.",
+        "I sees two trees."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"trees\"",
+        "en": "More than one takes the plural \"trees\"."
+      }
+    },
+    {
+      "id": "q-bird-meaning",
+      "wordId": "bird",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"นก\"?",
+        "en": "Which word means \"an animal with feathers that flies\"?"
+      },
+      "options": [
+        "bird",
+        "birds",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"bird\" แปลว่า นก",
+        "en": "\"bird\" means an animal with feathers that flies."
+      }
+    },
+    {
+      "id": "q-bird-recognition",
+      "wordId": "bird",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"bird\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"bird\" correctly?"
+      },
+      "options": [
+        "This is a bird.",
+        "This is a birds.",
+        "These is a bird.",
+        "This is an birds."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"bird\" เป็นคำนามเอกพจน์ จึงใช้ \"a\" นำหน้า",
+        "en": "\"bird\" is a singular noun, so it takes \"a\"."
+      }
+    },
+    {
+      "id": "q-bird-base",
+      "wordId": "bird",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "bird",
+        "birds",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"bird\" คือ \"bird\"",
+        "en": "The base form of \"bird\" is \"bird\"."
+      }
+    },
+    {
+      "id": "q-bird-plural",
+      "wordId": "bird",
+      "component": "form:plural",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I have many ___.",
+        "en": "Fill in the blank: I have many ___."
+      },
+      "options": [
+        "birds",
+        "bird",
+        "go",
+        "eat"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "รูปนี้ของ \"bird\" คือ \"birds\"",
+        "en": "The plural form of \"bird\" is \"birds\"."
+      }
+    },
+    {
+      "id": "q-bird-context",
+      "wordId": "bird",
+      "component": "context",
+      "level": 5,
+      "difficulty": "hard",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?",
+        "en": "You can see two of them. What should you say?"
+      },
+      "options": [
+        "I see two birds.",
+        "I see two bird.",
+        "I see a two birds.",
+        "I sees two birds."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ \"birds\"",
+        "en": "More than one takes the plural \"birds\"."
+      }
     }
   ]
 }

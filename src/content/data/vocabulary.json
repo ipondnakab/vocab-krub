@@ -1774,6 +1774,1835 @@
           "formId": "base"
         }
       ]
+    },
+    {
+      "id": "open",
+      "word": "open",
+      "meaning": {
+        "th": "เปิด",
+        "en": "to make something not closed"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "open",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "opened",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "opening",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I open every day.",
+          "translation": {
+            "th": "ฉันเปิดทุกวัน",
+            "en": "I open every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "word": "close",
+      "meaning": {
+        "th": "ปิด",
+        "en": "to shut something"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "close",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "closed",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "closing",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I close every day.",
+          "translation": {
+            "th": "ฉันปิดทุกวัน",
+            "en": "I close every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "start",
+      "word": "start",
+      "meaning": {
+        "th": "เริ่ม",
+        "en": "to begin something"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "start",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "started",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "starting",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I start every day.",
+          "translation": {
+            "th": "ฉันเริ่มทุกวัน",
+            "en": "I start every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "stop",
+      "word": "stop",
+      "meaning": {
+        "th": "หยุด",
+        "en": "to end a movement or action"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "stop",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "stopped",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "stopping",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I stop every day.",
+          "translation": {
+            "th": "ฉันหยุดทุกวัน",
+            "en": "I stop every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "word": "ask",
+      "meaning": {
+        "th": "ถาม",
+        "en": "to say a question"
+      },
+      "cefr": "A1",
+      "topic": "talking",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "ask",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "asked",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "asking",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I ask every day.",
+          "translation": {
+            "th": "ฉันถามทุกวัน",
+            "en": "I ask every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "word": "answer",
+      "meaning": {
+        "th": "ตอบ",
+        "en": "to reply to a question"
+      },
+      "cefr": "A1",
+      "topic": "talking",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "answer",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "answered",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "answering",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I answer every day.",
+          "translation": {
+            "th": "ฉันตอบทุกวัน",
+            "en": "I answer every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "call",
+      "word": "call",
+      "meaning": {
+        "th": "เรียก",
+        "en": "to say someone's name loudly"
+      },
+      "cefr": "A1",
+      "topic": "talking",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "call",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "called",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "calling",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I call every day.",
+          "translation": {
+            "th": "ฉันเรียกทุกวัน",
+            "en": "I call every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "wait",
+      "word": "wait",
+      "meaning": {
+        "th": "รอ",
+        "en": "to stay until something happens"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "wait",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "waited",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "waiting",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I wait every day.",
+          "translation": {
+            "th": "ฉันรอทุกวัน",
+            "en": "I wait every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "meet",
+      "word": "meet",
+      "meaning": {
+        "th": "พบ",
+        "en": "to come together with someone"
+      },
+      "cefr": "A1",
+      "topic": "people",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "meet",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "met",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "meeting",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I meet every day.",
+          "translation": {
+            "th": "ฉันพบทุกวัน",
+            "en": "I meet every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "leave",
+      "word": "leave",
+      "meaning": {
+        "th": "ออกจาก",
+        "en": "to go away from a place"
+      },
+      "cefr": "A1",
+      "topic": "movement",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "leave",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "left",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "leaving",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I leave every day.",
+          "translation": {
+            "th": "ฉันออกจากทุกวัน",
+            "en": "I leave every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "arrive",
+      "word": "arrive",
+      "meaning": {
+        "th": "มาถึง",
+        "en": "to reach a place"
+      },
+      "cefr": "A1",
+      "topic": "movement",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "arrive",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "arrived",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "arriving",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I arrive every day.",
+          "translation": {
+            "th": "ฉันมาถึงทุกวัน",
+            "en": "I arrive every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "learn",
+      "word": "learn",
+      "meaning": {
+        "th": "เรียนรู้",
+        "en": "to get new knowledge"
+      },
+      "cefr": "A1",
+      "topic": "school",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "learn",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "learned",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "learning",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I learn every day.",
+          "translation": {
+            "th": "ฉันเรียนรู้ทุกวัน",
+            "en": "I learn every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "teach",
+      "word": "teach",
+      "meaning": {
+        "th": "สอน",
+        "en": "to give knowledge to someone"
+      },
+      "cefr": "A1",
+      "topic": "school",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "teach",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "taught",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "teaching",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I teach every day.",
+          "translation": {
+            "th": "ฉันสอนทุกวัน",
+            "en": "I teach every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "speak",
+      "word": "speak",
+      "meaning": {
+        "th": "พูด",
+        "en": "to say words"
+      },
+      "cefr": "A1",
+      "topic": "talking",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "speak",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "spoke",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "pp",
+          "text": "spoken",
+          "role": "past-participle",
+          "roleLabel": {
+            "th": "รูปช่องที่ 3",
+            "en": "past participle"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "speaking",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I speak every day.",
+          "translation": {
+            "th": "ฉันพูดทุกวัน",
+            "en": "I speak every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "understand",
+      "word": "understand",
+      "meaning": {
+        "th": "เข้าใจ",
+        "en": "to know what something means"
+      },
+      "cefr": "A1",
+      "topic": "thinking",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "understand",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "understood",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "understanding",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I understand every day.",
+          "translation": {
+            "th": "ฉันเข้าใจทุกวัน",
+            "en": "I understand every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "remember",
+      "word": "remember",
+      "meaning": {
+        "th": "จำได้",
+        "en": "to keep something in your mind"
+      },
+      "cefr": "A1",
+      "topic": "thinking",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "remember",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "remembered",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "remembering",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I remember every day.",
+          "translation": {
+            "th": "ฉันจำได้ทุกวัน",
+            "en": "I remember every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "forget",
+      "word": "forget",
+      "meaning": {
+        "th": "ลืม",
+        "en": "to lose something from your mind"
+      },
+      "cefr": "A1",
+      "topic": "thinking",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "forget",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "forgot",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "pp",
+          "text": "forgotten",
+          "role": "past-participle",
+          "roleLabel": {
+            "th": "รูปช่องที่ 3",
+            "en": "past participle"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "forgetting",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I forget every day.",
+          "translation": {
+            "th": "ฉันลืมทุกวัน",
+            "en": "I forget every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "choose",
+      "word": "choose",
+      "meaning": {
+        "th": "เลือก",
+        "en": "to pick one thing"
+      },
+      "cefr": "A1",
+      "topic": "thinking",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "choose",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "chose",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "pp",
+          "text": "chosen",
+          "role": "past-participle",
+          "roleLabel": {
+            "th": "รูปช่องที่ 3",
+            "en": "past participle"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "choosing",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I choose every day.",
+          "translation": {
+            "th": "ฉันเลือกทุกวัน",
+            "en": "I choose every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "carry",
+      "word": "carry",
+      "meaning": {
+        "th": "ถือ",
+        "en": "to hold and move something"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "carry",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "carried",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "carrying",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I carry every day.",
+          "translation": {
+            "th": "ฉันถือทุกวัน",
+            "en": "I carry every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "word": "build",
+      "meaning": {
+        "th": "สร้าง",
+        "en": "to make a building"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "build",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "built",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "building",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I build every day.",
+          "translation": {
+            "th": "ฉันสร้างทุกวัน",
+            "en": "I build every day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "door",
+      "word": "door",
+      "meaning": {
+        "th": "ประตู",
+        "en": "the thing you open to enter a room"
+      },
+      "cefr": "A1",
+      "topic": "places",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "door",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "doors",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the door.",
+          "translation": {
+            "th": "ฉันเห็นประตู",
+            "en": "I see the door."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "window",
+      "word": "window",
+      "meaning": {
+        "th": "หน้าต่าง",
+        "en": "the glass opening in a wall"
+      },
+      "cefr": "A1",
+      "topic": "places",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "window",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "windows",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the window.",
+          "translation": {
+            "th": "ฉันเห็นหน้าต่าง",
+            "en": "I see the window."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "road",
+      "word": "road",
+      "meaning": {
+        "th": "ถนน",
+        "en": "the way vehicles travel on"
+      },
+      "cefr": "A1",
+      "topic": "places",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "road",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "roads",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the road.",
+          "translation": {
+            "th": "ฉันเห็นถนน",
+            "en": "I see the road."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "market",
+      "word": "market",
+      "meaning": {
+        "th": "ตลาด",
+        "en": "the place where people buy and sell"
+      },
+      "cefr": "A1",
+      "topic": "places",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "market",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "markets",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the market.",
+          "translation": {
+            "th": "ฉันเห็นตลาด",
+            "en": "I see the market."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "river",
+      "word": "river",
+      "meaning": {
+        "th": "แม่น้ำ",
+        "en": "a long stream of water"
+      },
+      "cefr": "A1",
+      "topic": "nature",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "river",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "rivers",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the river.",
+          "translation": {
+            "th": "ฉันเห็นแม่น้ำ",
+            "en": "I see the river."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "boat",
+      "word": "boat",
+      "meaning": {
+        "th": "เรือ",
+        "en": "the thing you travel on water in"
+      },
+      "cefr": "A1",
+      "topic": "places",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "boat",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "boats",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the boat.",
+          "translation": {
+            "th": "ฉันเห็นเรือ",
+            "en": "I see the boat."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "money",
+      "word": "money",
+      "meaning": {
+        "th": "เงิน",
+        "en": "what you pay with"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "money",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I like money.",
+          "translation": {
+            "th": "ฉันชอบเงิน",
+            "en": "I like money."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "time",
+      "word": "time",
+      "meaning": {
+        "th": "เวลา",
+        "en": "what a clock measures"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "time",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I like time.",
+          "translation": {
+            "th": "ฉันชอบเวลา",
+            "en": "I like time."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "day",
+      "word": "day",
+      "meaning": {
+        "th": "วัน",
+        "en": "the hours when it is light"
+      },
+      "cefr": "A1",
+      "topic": "time",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "day",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "days",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the day.",
+          "translation": {
+            "th": "ฉันเห็นวัน",
+            "en": "I see the day."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "night",
+      "word": "night",
+      "meaning": {
+        "th": "กลางคืน",
+        "en": "the hours when it is dark"
+      },
+      "cefr": "A1",
+      "topic": "time",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "night",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "nights",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the night.",
+          "translation": {
+            "th": "ฉันเห็นกลางคืน",
+            "en": "I see the night."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "morning",
+      "word": "morning",
+      "meaning": {
+        "th": "เช้า",
+        "en": "the early part of the day"
+      },
+      "cefr": "A1",
+      "topic": "time",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "morning",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "mornings",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the morning.",
+          "translation": {
+            "th": "ฉันเห็นเช้า",
+            "en": "I see the morning."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "word": "family",
+      "meaning": {
+        "th": "ครอบครัว",
+        "en": "the people you are related to"
+      },
+      "cefr": "A1",
+      "topic": "people",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "family",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "families",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the family.",
+          "translation": {
+            "th": "ฉันเห็นครอบครัว",
+            "en": "I see the family."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "mother",
+      "word": "mother",
+      "meaning": {
+        "th": "แม่",
+        "en": "a female parent"
+      },
+      "cefr": "A1",
+      "topic": "people",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "mother",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "mothers",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the mother.",
+          "translation": {
+            "th": "ฉันเห็นแม่",
+            "en": "I see the mother."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "father",
+      "word": "father",
+      "meaning": {
+        "th": "พ่อ",
+        "en": "a male parent"
+      },
+      "cefr": "A1",
+      "topic": "people",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "father",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "fathers",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the father.",
+          "translation": {
+            "th": "ฉันเห็นพ่อ",
+            "en": "I see the father."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "child",
+      "word": "child",
+      "meaning": {
+        "th": "เด็ก",
+        "en": "a young person"
+      },
+      "cefr": "A1",
+      "topic": "people",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "child",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "children",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the child.",
+          "translation": {
+            "th": "ฉันเห็นเด็ก",
+            "en": "I see the child."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "name",
+      "word": "name",
+      "meaning": {
+        "th": "ชื่อ",
+        "en": "what someone is called"
+      },
+      "cefr": "A1",
+      "topic": "people",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "name",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "names",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the name.",
+          "translation": {
+            "th": "ฉันเห็นชื่อ",
+            "en": "I see the name."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "hand",
+      "word": "hand",
+      "meaning": {
+        "th": "มือ",
+        "en": "the part of your body at the end of your arm"
+      },
+      "cefr": "A1",
+      "topic": "body",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "hand",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "hands",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the hand.",
+          "translation": {
+            "th": "ฉันเห็นมือ",
+            "en": "I see the hand."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "eye",
+      "word": "eye",
+      "meaning": {
+        "th": "ตา",
+        "en": "the part of your body you see with"
+      },
+      "cefr": "A1",
+      "topic": "body",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "eye",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "eyes",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the eye.",
+          "translation": {
+            "th": "ฉันเห็นตา",
+            "en": "I see the eye."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "tree",
+      "word": "tree",
+      "meaning": {
+        "th": "ต้นไม้",
+        "en": "a tall plant with a wooden trunk"
+      },
+      "cefr": "A1",
+      "topic": "nature",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "tree",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "trees",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the tree.",
+          "translation": {
+            "th": "ฉันเห็นต้นไม้",
+            "en": "I see the tree."
+          },
+          "formId": "base"
+        }
+      ]
+    },
+    {
+      "id": "bird",
+      "word": "bird",
+      "meaning": {
+        "th": "นก",
+        "en": "an animal with feathers that flies"
+      },
+      "cefr": "A1",
+      "topic": "nature",
+      "difficulty": 1,
+      "forms": [
+        {
+          "id": "base",
+          "text": "bird",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "plural",
+          "text": "birds",
+          "role": "plural",
+          "roleLabel": {
+            "th": "รูปพหูพจน์",
+            "en": "plural"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I see the bird.",
+          "translation": {
+            "th": "ฉันเห็นนก",
+            "en": "I see the bird."
+          },
+          "formId": "base"
+        }
+      ]
     }
   ]
 }

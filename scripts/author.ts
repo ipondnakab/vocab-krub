@@ -81,7 +81,7 @@ function addWord(draft: WordDraft, chapterId: string): number {
   const generated = buildQuestions(built, vocabulary.words.map((w) => w.word));
 
   // Refuse BEFORE writing. Every rule here is a defect Chapter 1 shipped or nearly shipped.
-  const refusals = checkRefusals(built, generated);
+  const refusals = checkRefusals(built, generated, draft.forms);
   if (refusals.length > 0) {
     console.error(`\n✗ Cannot add "${draft.word}":\n`);
     for (const refusal of refusals) console.error(`  ${refusal.message}`);

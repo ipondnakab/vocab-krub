@@ -6,7 +6,10 @@ import { generatePlaceholders } from "../../scripts/generate-placeholders.ts";
 import { content } from "../helpers/fixtures";
 
 const OUT = join(process.cwd(), "public", "assets", "placeholder");
-const MAP_IDS = ["village", "forest", "cave"] as const;
+import chaptersJson from "../../src/content/data/chapters.json" with { type: "json" };
+
+/** Derived from content, not hardcoded — a literal list goes stale the moment a chapter is added. */
+const MAP_IDS = chaptersJson.chapters.flatMap((c) => c.mapIds);
 
 const rawMap = (id: string) => JSON.parse(readFileSync(join(OUT, "maps", `${id}.tmj`), "utf8")) as unknown;
 const maps = new Map<string, GameMap>();

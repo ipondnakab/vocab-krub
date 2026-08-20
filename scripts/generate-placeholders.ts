@@ -3,6 +3,7 @@ import { dirname, join } from "node:path";
 import { Canvas, type Rgba } from "./png.ts";
 import npcs from "../src/content/data/npcs.json" with { type: "json" };
 import monsters from "../src/content/data/monsters.json" with { type: "json" };
+import chapters from "../src/content/data/chapters.json" with { type: "json" };
 
 /**
  * Generates conforming placeholder assets (contracts/asset-contract.md).
@@ -254,7 +255,9 @@ export function generatePlaceholders(outDir: string): string[] {
     emit(`monsters/${monster.id}-overworld.png`, singleTile(i));
   });
 
-  const maps = ["village", "forest", "cave"];
+  // Map names come from chapters.json, so adding a chapter's maps is a content edit rather
+  // than a code edit — the same rule the rest of the content pipeline follows.
+  const maps = chapters.chapters.flatMap((c) => c.mapIds);
   maps.forEach((mapName, i) => emit(`tilesets/${mapName}.png`, tileset(i * 3)));
 
   // Stars stay art (asset contract § 7); every other UI element is CSS.
@@ -269,33 +272,70 @@ export function generatePlaceholders(outDir: string): string[] {
 
   // Hand-placed so every NPC lands inside the map, off the path row, and clear of the interior
   // obstacles. A naive stride ran the sixth villager straight off the east edge.
+  // Hand-placed so every NPC lands inside the map, off the path row, and clear of the interior
+  // obstacles. A naive stride ran the sixth villager straight off the east edge.
   const NPC_TILES: ReadonlyArray<readonly [number, number]> = [
     [3, 4], [8, 4], [12, 5], [16, 6], [5, 10], [10, 11],
   ];
-  const npcSpawns: SpawnObject[] = npcs.npcs
-    .filter((n) => n.mapId === "village")
-    .map((n, i) => {
-      const tile = NPC_TILES[i % NPC_TILES.length] as readonly [number, number];
-      return { type: "npc", tileX: tile[0], tileY: tile[1], properties: { npcId: n.id, facing: "down" } };
+
+  /**
+   * Maps are generated per chapter, chained west-to-east within a chapter and linked across the
+   * chapter boundary — so finishing one chapter's last map walks you into the next chapter's
+   * first. Every transition gets its counterpart, because a one-way link is a map you enter and
+   * cannot leave.
+   */
+  const chapterMaps = chapters.chapters.map((c) => ({ id: c.id, maps: c.mapIds }));
+  const flat = chapterMaps.flatMap((c) => c.maps);
+
+  for (let ci = 0; ci < chapterMaps.length; ci += 1) {
+    const chapter = chapterMaps[ci] as { id: string; maps: string[] };
+    const chapterNpcs = npcs.npcs.filter((n) => chapter.maps.includes(n.mapId));
+    const chapterMonsters = monsters.monsters.filter((m) =>
+      (chapters.chapters[ci]?.monsterIds ?? []).includes(m.id));
+
+    chapter.maps.forEach((mapName, mi) => {
+      const globalIndex = flat.indexOf(mapName);
+      const previous = flat[globalIndex - 1];
+      const next = flat[globalIndex + 1];
+
+      const spawns: SpawnObject[] = [];
+      if (globalIndex === 0) {
+        spawns.push({ type: "player-start", tileX: 3, tileY: 7, properties: { facing: "down" } });
+      }
+      // NPCs stand on the map their content says they do.
+      chapterNpcs
+        .filter((n) => n.mapId === mapName)
+        .forEach((n, i) => {
+          const tile = NPC_TILES[i % NPC_TILES.length] as readonly [number, number];
+          spawns.push({ type: "npc", tileX: tile[0], tileY: tile[1], properties: { npcId: n.id, facing: "down" } });
+        });
+      // Regular monsters spread evenly across the chapter's maps; the BOSS always stands on the
+      // last one, so a chapter reads as a journey toward it rather than scattering it at random.
+      const regular = chapterMonsters.filter((m) => !m.isBoss);
+      const boss = chapterMonsters.filter((m) => m.isBoss);
+      const isLastMap = mi === chapter.maps.length - 1;
+      const forThisMap = [
+        ...regular.filter((_, i) => i % chapter.maps.length === mi),
+        ...(isLastMap ? boss : []),
+      ];
+      forThisMap.forEach((m, i) => {
+        spawns.push({
+          type: "monster", tileX: 8 + i * 3, tileY: 7,
+          properties: { monsterId: m.id, patrolRadius: m.isBoss ? 0 : 3 },
+        });
+      });
+
+      const transitions: TransitionObject[] = [];
+      if (previous) {
+        transitions.push({ tileX: 0, tileY: 7, targetMapId: previous, targetX: MAP_W - 2, targetY: 7, facing: "left" });
+      }
+      if (next) {
+        transitions.push({ tileX: MAP_W - 1, tileY: 7, targetMapId: next, targetX: 1, targetY: 7, facing: "right" });
+      }
+
+      emit(`maps/${mapName}.tmj`, tiledMap(mapName, spawns, transitions));
     });
-
-  emit("maps/village.tmj", tiledMap("village",
-    [{ type: "player-start", tileX: 3, tileY: 7, properties: { facing: "down" } }, ...npcSpawns],
-    [{ tileX: MAP_W - 1, tileY: 7, targetMapId: "forest", targetX: 1, targetY: 7, facing: "right" }],
-  ));
-
-  emit("maps/forest.tmj", tiledMap("forest",
-    [{ type: "monster", tileX: 10, tileY: 7, properties: { monsterId: "monster-eat", patrolRadius: 3 } }],
-    [
-      { tileX: 0, tileY: 7, targetMapId: "village", targetX: MAP_W - 2, targetY: 7, facing: "left" },
-      { tileX: MAP_W - 1, tileY: 7, targetMapId: "cave", targetX: 1, targetY: 7, facing: "right" },
-    ],
-  ));
-
-  emit("maps/cave.tmj", tiledMap("cave",
-    [{ type: "monster", tileX: 10, tileY: 7, properties: { monsterId: "monster-go", patrolRadius: 0 } }],
-    [{ tileX: 0, tileY: 7, targetMapId: "forest", targetX: MAP_W - 2, targetY: 7, facing: "left" }],
-  ));
+  }
 
   return written;
 }

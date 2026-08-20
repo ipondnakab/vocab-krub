@@ -125,21 +125,58 @@ export function buildQuestions(word: VocabularyWord, otherWordTexts: string[]): 
     `"${word.word}" แปลว่า ${word.meaning.th}`, `"${word.word}" means ${word.meaning.en}.`,
   ));
 
+  /*
+   * A word is treated as a verb when the author supplied a past form. The distinction matters:
+   * generating verb frames for a noun produced "I door every day." — nonsense that would have
+   * shipped to a learner as a real answer option.
+   */
+  const pastForm = word.forms.find((f) => f.role === "past");
+  const pluralForm = word.forms.find((f) => f.role === "plural");
+  const isVerb = pastForm !== undefined;
+
   // Recognition — deliberately UNGATED so every monster has at least two questions a brand-new
   // player can answer. Chapter 1 shipped monsters whose entire pool was grammar-gated, and a
   // first battle fought before any lesson ran out of askable questions and threw.
-  questions.push(q(
-    `q-${word.id}-recognition`, "context", 2, "easy", null,
-    `ประโยคใดใช้ "${word.word}" ได้ถูกต้อง?`, `Which sentence uses "${word.word}" correctly?`,
-    [
-      `I ${word.word} every day.`,
-      `I ${word.word} yesterday.`,
-      `I am ${word.word} every day.`,
-      `I ${thirdPerson(word.word)} every day.`,
-    ],
-    `ใช้ "${word.word}" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ`,
-    `Use "${word.word}" with I for something you do regularly.`,
-  ));
+  questions.push(
+    isVerb
+      ? q(
+          `q-${word.id}-recognition`, "context", 2, "easy", null,
+          `ประโยคใดใช้ "${word.word}" ได้ถูกต้อง?`, `Which sentence uses "${word.word}" correctly?`,
+          [
+            `I ${word.word} every day.`,
+            `I ${word.word} yesterday.`,
+            `I am ${word.word} every day.`,
+            `I ${thirdPerson(word.word)} every day.`,
+          ],
+          `ใช้ "${word.word}" กับประธาน I และเหตุการณ์ที่ทำเป็นประจำ`,
+          `Use "${word.word}" with I for something you do regularly.`,
+        )
+      : pluralForm
+        ? q(
+            `q-${word.id}-recognition`, "context", 2, "easy", null,
+            `ประโยคใดใช้ "${word.word}" ได้ถูกต้อง?`, `Which sentence uses "${word.word}" correctly?`,
+            [
+              `This is a ${word.word}.`,
+              `This is a ${pluralForm.text}.`,
+              `These is a ${word.word}.`,
+              `This is an ${word.word}s.`,
+            ],
+            `"${word.word}" เป็นคำนามเอกพจน์ จึงใช้ "a" นำหน้า`,
+            `"${word.word}" is a singular noun, so it takes "a".`,
+          )
+        : q(
+            `q-${word.id}-recognition`, "context", 2, "easy", null,
+            `ประโยคใดใช้ "${word.word}" ได้ถูกต้อง?`, `Which sentence uses "${word.word}" correctly?`,
+            [
+              `I need ${word.word}.`,
+              `I need a ${word.word}.`,
+              `I need ${word.word}s.`,
+              `I needs ${word.word}.`,
+            ],
+            `"${word.word}" เป็นคำนามนับไม่ได้ จึงไม่ใช้ a และไม่เติม -s`,
+            `"${word.word}" is uncountable, so it takes no "a" and no -s.`,
+          ),
+  );
 
   const FRAME: Record<string, [string, string]> = {
     base: ["เติมคำในช่องว่าง: I ___ every day.", "Fill in the blank: I ___ every day."],
@@ -162,17 +199,39 @@ export function buildQuestions(word: VocabularyWord, otherWordTexts: string[]): 
     ));
   }
 
-  // Context — the situational question, gated on Past Simple.
-  const past = word.forms.find((f) => f.id === "past")?.text ?? word.word;
-  questions.push(q(
-    `q-${word.id}-context`, "context", 5, "expert", "past-simple",
-    `มีคนถามว่า "What did you do yesterday?" ควรตอบอย่างไร?`,
-    `Someone asks, "What did you do yesterday?" How should you answer?`,
-    [`I ${past} yesterday.`, `I ${word.word} yesterday.`,
-     `I have ${word.word} yesterday.`, `I am ${word.word} yesterday.`],
-    `คำถามใช้ "did" จึงต้องตอบด้วยรูปอดีต "${past}"`,
-    `The question uses "did", so answer in the past: "${past}".`,
-  ));
+  // Context — a situation, framed for the word's class.
+  if (isVerb) {
+    const past = pastForm.text;
+    questions.push(q(
+      `q-${word.id}-context`, "context", 5, "expert", "past-simple",
+      `มีคนถามว่า "What did you do yesterday?" ควรตอบอย่างไร?`,
+      `Someone asks, "What did you do yesterday?" How should you answer?`,
+      [`I ${past} yesterday.`, `I ${word.word} yesterday.`,
+       `I have ${word.word} yesterday.`, `I am ${word.word} yesterday.`],
+      `คำถามใช้ "did" จึงต้องตอบด้วยรูปอดีต "${past}"`,
+      `The question uses "did", so answer in the past: "${past}".`,
+    ));
+  } else if (pluralForm) {
+    questions.push(q(
+      `q-${word.id}-context`, "context", 5, "hard", "present-simple",
+      `คุณเห็นสิ่งนี้สองอย่าง ควรพูดว่าอย่างไร?`,
+      `You can see two of them. What should you say?`,
+      [`I see two ${pluralForm.text}.`, `I see two ${word.word}.`,
+       `I see a two ${pluralForm.text}.`, `I sees two ${pluralForm.text}.`],
+      `จำนวนมากกว่าหนึ่งต้องใช้รูปพหูพจน์ "${pluralForm.text}"`,
+      `More than one takes the plural "${pluralForm.text}".`,
+    ));
+  } else {
+    questions.push(q(
+      `q-${word.id}-context`, "context", 5, "hard", "present-simple",
+      `คุณอยากบอกว่ามี "${word.meaning.th}" อยู่บ้าง ควรพูดว่าอย่างไร?`,
+      `You want to say you have some. What should you say?`,
+      [`I have some ${word.word}.`, `I have some ${word.word}s.`,
+       `I have a ${word.word}.`, `I have an ${word.word}.`],
+      `"${word.word}" นับไม่ได้ จึงใช้ "some" และไม่เติม -s`,
+      `"${word.word}" is uncountable, so use "some" and no -s.`,
+    ));
+  }
 
   return questions;
 }
@@ -183,20 +242,39 @@ export function buildQuestions(word: VocabularyWord, otherWordTexts: string[]): 
  * Every one of these is a defect Chapter 1 actually shipped or nearly shipped. A refusal must
  * explain WHY in one sentence — the tool is also where an author learns the rule.
  */
-export function checkRefusals(word: VocabularyWord, questions: Question[]): Refusal[] {
+/**
+ * @param suppliedForms the forms the AUTHOR wrote, before deduplication. Required to tell
+ *   "this word has no past because it is a noun" from "this word's past collapsed into its
+ *   base". Without it the rule cannot distinguish the two, and refuses every noun.
+ */
+export function checkRefusals(
+  word: VocabularyWord,
+  questions: Question[],
+  suppliedForms?: WordDraft["forms"],
+): Refusal[] {
   const refusals: Refusal[] = [];
 
-  // The refusal is narrow on purpose. Regular verbs legitimately spell past and past-participle
-  // identically (walked / walked), and refusing those would reject most of A1 — a mistake this
-  // rule made in its first form. What genuinely cannot be tested is a word whose BASE and PAST
-  // are the same: "what is the past tense of read?" has no answerable set of options.
-  const base = word.forms.find((f) => f.role === "base");
-  const past = word.forms.find((f) => f.role === "past");
-  if (base && !past) {
-    refusals.push({
-      rule: "homograph-forms",
-      message: `"${word.id}" has no distinct past form — its past is spelled the same as its base ("${base.text}"), so "what is the past tense?" has no answerable set of options.`,
-    });
+  /*
+   * This rule has been wrong twice, both times by being too broad, and both times caught by
+   * running the tool rather than by a test:
+   *
+   *   v1 refused any word with two identically-spelled forms — which is EVERY regular verb
+   *      (walked / walked). It would have rejected most of A1.
+   *   v2 refused any word with no past form — which is EVERY NOUN. It rejected all twenty.
+   *
+   * The genuine defect is narrow: the author SUPPLIED a past form and it is spelled the same as
+   * the base (read / read), so "what is the past tense?" has no answerable set of options. A
+   * noun that never had a past is not a defect, and neither is walked / walked.
+   */
+  if (suppliedForms) {
+    const suppliedBase = suppliedForms.find((f) => f.role === "base");
+    const suppliedPast = suppliedForms.find((f) => f.role === "past");
+    if (suppliedBase && suppliedPast && suppliedBase.text === suppliedPast.text) {
+      refusals.push({
+        rule: "homograph-forms",
+        message: `"${word.id}" has a past form spelled the same as its base ("${suppliedBase.text}"), so "what is the past tense?" has no answerable set of options.`,
+      });
+    }
   }
 
   const ungated = questions.filter((q) => q.requiresGrammar === null);

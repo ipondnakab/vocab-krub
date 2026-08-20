@@ -84,20 +84,43 @@ export function chapterOfMonster(monsterId: string, content: ContentIndex): stri
 }
 
 /**
- * FR-046: questions come only from this chapter's declared vocabulary and grammar.
+ * Questions the chapter challenge may ask (FR-046, and FR-016 of feature 002).
  *
- * Anything gated behind grammar the player never learned is excluded — the guard tests what the
- * chapter taught, not what it withheld.
+ * The chapter's own vocabulary, PLUS review material from earlier chapters the player has
+ * actually encountered. Anything gated behind grammar they never learned is excluded — the guard
+ * tests what the chapter taught, not what it withheld.
+ *
+ * Note this is NOT the same mechanism as battle review. The battle review pool keys off
+ * `encountered` and spans chapters for free; this pool is chapter-scoped by design and had to be
+ * widened deliberately, because a gatekeeper asking only about the last chapter would let a
+ * player forget everything before it.
  */
 export function challengePool(player: PlayerState, chapterId: string, content: ContentIndex): Question[] {
   const chapter = content.chapter(chapterId);
   const words = new Set(chapter.vocabularyIds);
   const topics = new Set(chapter.grammarTopicIds);
 
+  // Earlier chapters, in declaration order up to this one.
+  const index = content.chapters.findIndex((c) => c.id === chapterId);
+  const reviewWords = new Set<string>();
+  const reviewTopics = new Set<string>();
+  for (const earlier of content.chapters.slice(0, Math.max(0, index))) {
+    for (const wordId of earlier.vocabularyIds) {
+      // Only words the player actually met. Testing them on content they skipped is a trap.
+      if (player.mastery[wordId]?.encountered) reviewWords.add(wordId);
+    }
+    for (const topicId of earlier.grammarTopicIds) reviewTopics.add(topicId);
+  }
+
   return content.questions.filter((question) => {
-    if (!words.has(question.wordId)) return false;
+    const isChapterWord = words.has(question.wordId);
+    const isReviewWord = reviewWords.has(question.wordId);
+    if (!isChapterWord && !isReviewWord) return false;
     if (question.requiresGrammar === null) return true;
-    return topics.has(question.requiresGrammar) && isGrammarLearned(player, question.requiresGrammar);
+    const allowedTopic = isChapterWord
+      ? topics.has(question.requiresGrammar) || reviewTopics.has(question.requiresGrammar)
+      : reviewTopics.has(question.requiresGrammar);
+    return allowedTopic && isGrammarLearned(player, question.requiresGrammar);
   });
 }
 

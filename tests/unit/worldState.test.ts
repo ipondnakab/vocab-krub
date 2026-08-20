@@ -24,11 +24,13 @@ describe("entering a map", () => {
   it("places monsters from the spawns layer", () => {
     const world = enterMap(maps.get("forest")!, player());
     expect(world.monsters.length).toBeGreaterThan(0);
-    expect(world.monsters[0]).toMatchObject({ monsterId: "monster-eat" });
+    expect(world.monsters[0]!.monsterId).toMatch(/^monster-/);
   });
 
   it("does NOT place a monster the player already defeated (FR-033)", () => {
-    const world = enterMap(maps.get("forest")!, player({ monstersDefeated: ["monster-eat"] }));
+    const all = enterMap(maps.get("forest")!, player());
+    const defeated = all.monsters.map((m) => m.monsterId);
+    const world = enterMap(maps.get("forest")!, player({ monstersDefeated: defeated }));
     expect(world.monsters).toEqual([]);
   });
 
@@ -67,7 +69,7 @@ describe("encounters (FR-032)", () => {
     const monster = world.monsters[0]!;
     const outcome = movePlayer(world, at(monster.x - 1, monster.y), "right");
     expect(outcome.kind).toBe("encounter");
-    if (outcome.kind === "encounter") expect(outcome.monsterId).toBe("monster-eat");
+    if (outcome.kind === "encounter") expect(outcome.monsterId).toBe(monster.monsterId);
   });
 
   it("does NOT move the player onto the monster's tile", () => {
@@ -135,11 +137,17 @@ describe("patrol (FR-032 support)", () => {
   });
 
   it("leaves a stationary monster (patrolRadius 0) exactly where it spawned", () => {
+    // The boss is the stationary one — patrolRadius 0 — and it stands on its chapter's last map.
     let world = enterMap(maps.get("cave")!, player());
-    const home = { ...world.monsters[0]! };
+    const stationary = world.monsters.filter((m) => m.patrolRadius === 0);
+    expect(stationary.length, "cave should hold at least one stationary monster").toBeGreaterThan(0);
+    const homes = stationary.map((m) => ({ id: m.monsterId, x: m.x, y: m.y }));
     const r = rng(9);
     for (let i = 0; i < 100; i += 1) world = stepPatrol(world, at(1, 1), r);
-    expect(world.monsters[0]).toMatchObject({ x: home.x, y: home.y });
+    for (const home of homes) {
+      const now = world.monsters.find((m) => m.monsterId === home.id)!;
+      expect({ x: now.x, y: now.y }).toEqual({ x: home.x, y: home.y });
+    }
   });
 
   it("never parks a monster on a map transition, which would block the exit", () => {

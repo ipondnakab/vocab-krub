@@ -28,7 +28,7 @@ const draft = (over: Partial<WordDraft> = {}): WordDraft => ({
 const OTHERS = ["walk", "drink", "house", "book"];
 const generate = (d: WordDraft = draft()) => {
   const word = buildWord(d);
-  return { word, questions: buildQuestions(word, OTHERS) };
+  return { word, questions: buildQuestions(word, OTHERS), supplied: d.forms };
 };
 
 describe("morphology — real forms, never invented ones", () => {
@@ -62,9 +62,32 @@ describe("morphology — real forms, never invented ones", () => {
 });
 
 describe("REFUSAL: forms spelled identically (FR-003)", () => {
+  it("ACCEPTS a noun, which legitimately has no past form at all", () => {
+    // The second version of this rule refused every word with no past form — which is every
+    // noun. It rejected all twenty of Chapter 2's. Found by running the tool, not by a test.
+    const { word, questions, supplied } = generate(draft({
+      id: "door", word: "door",
+      forms: [
+        { id: "base", text: "door", role: "base" },
+        { id: "plural", text: "doors", role: "plural" },
+      ],
+      exampleSentence: "I see the door.",
+    }));
+    expect(checkRefusals(word, questions, supplied)).toEqual([]);
+  });
+
+  it("ACCEPTS an uncountable noun with only a base form", () => {
+    const { word, questions, supplied } = generate(draft({
+      id: "money", word: "money",
+      forms: [{ id: "base", text: "money", role: "base" }],
+      exampleSentence: "I like money.",
+    }));
+    expect(checkRefusals(word, questions, supplied)).toEqual([]);
+  });
+
   it("refuses `read` / `read` / `read`", () => {
     // Chapter 1 hit this and the word had to be dropped after the fact.
-    const { word, questions } = generate(draft({
+    const { word, questions, supplied } = generate(draft({
       id: "read", word: "read",
       forms: [
         { id: "base", text: "read", role: "base" },
@@ -73,12 +96,12 @@ describe("REFUSAL: forms spelled identically (FR-003)", () => {
       ],
       exampleSentence: "I read every day.",
     }));
-    const refusals = checkRefusals(word, questions);
+    const refusals = checkRefusals(word, questions, supplied);
     expect(refusals.some((r) => r.rule === "homograph-forms")).toBe(true);
   });
 
   it("explains WHY rather than just rejecting", () => {
-    const { word, questions } = generate(draft({
+    const { word, questions, supplied } = generate(draft({
       id: "cut", word: "cut",
       forms: [
         { id: "base", text: "cut", role: "base" },
@@ -86,14 +109,14 @@ describe("REFUSAL: forms spelled identically (FR-003)", () => {
       ],
       exampleSentence: "I cut it every day.",
     }));
-    const refusal = checkRefusals(word, questions).find((r) => r.rule === "homograph-forms");
+    const refusal = checkRefusals(word, questions, supplied).find((r) => r.rule === "homograph-forms");
     expect(refusal?.message).toMatch(/no answerable set of options/);
   });
 
   it("ACCEPTS a regular verb whose past and participle are identical", () => {
     // walked / walked is true of every regular verb. The first version of this rule refused
     // them all, which would have rejected most of A1. Found by running the tool, not by testing.
-    const { word, questions } = generate(draft({
+    const { word, questions, supplied } = generate(draft({
       id: "jump", word: "jump",
       forms: [
         { id: "base", text: "jump", role: "base" },
@@ -103,14 +126,14 @@ describe("REFUSAL: forms spelled identically (FR-003)", () => {
       ],
       exampleSentence: "I jump every day.",
     }));
-    expect(checkRefusals(word, questions)).toEqual([]);
+    expect(checkRefusals(word, questions, supplied)).toEqual([]);
     // The duplicate participle is dropped rather than generating an unanswerable question.
     expect(word.forms.map((f) => f.text)).toEqual(["jump", "jumped", "jumping"]);
   });
 
   it("accepts a word whose forms are all distinct", () => {
-    const { word, questions } = generate();
-    expect(checkRefusals(word, questions).some((r) => r.rule === "homograph-forms")).toBe(false);
+    const { word, questions, supplied } = generate();
+    expect(checkRefusals(word, questions, supplied).some((r) => r.rule === "homograph-forms")).toBe(false);
   });
 });
 
@@ -124,9 +147,9 @@ describe("REFUSAL: too few ungated questions (FR-004)", () => {
   });
 
   it("refuses a question set stripped down to one ungated question", () => {
-    const { word, questions } = generate();
+    const { word, questions, supplied } = generate();
     const stripped = questions.filter((q) => q.id !== `q-${word.id}-recognition`);
-    const refusal = checkRefusals(word, stripped).find((r) => r.rule === "insufficient-ungated");
+    const refusal = checkRefusals(word, stripped, supplied).find((r) => r.rule === "insufficient-ungated");
     expect(refusal?.message).toMatch(/runs out of askable questions after one turn/);
   });
 });
@@ -139,33 +162,33 @@ describe("REFUSAL: an uncovered mastery component (FR-005)", () => {
   });
 
   it("refuses when a component's question is removed", () => {
-    const { word, questions } = generate();
+    const { word, questions, supplied } = generate();
     const stripped = questions.filter((q) => q.component !== "form:past");
-    const refusal = checkRefusals(word, stripped).find((r) => r.rule === "uncovered-component");
+    const refusal = checkRefusals(word, stripped, supplied).find((r) => r.rule === "uncovered-component");
     expect(refusal?.message).toMatch(/could never reach 100% mastery/);
   });
 });
 
 describe("REFUSAL: unanswerable options", () => {
   it("refuses a duplicated option", () => {
-    const { word, questions } = generate();
+    const { word, questions, supplied } = generate();
     const broken = questions.map((q, i) =>
       i === 0 ? { ...q, options: [q.options[0]!, q.options[0]!, q.options[2]!, q.options[3]!] } : q);
-    expect(checkRefusals(word, broken).some((r) => r.rule === "duplicate-option")).toBe(true);
+    expect(checkRefusals(word, broken, supplied).some((r) => r.rule === "duplicate-option")).toBe(true);
   });
 
   it("refuses Thai script in an answer option", () => {
     // Options are the English under test. A Thai gloss there makes the question unanswerable.
-    const { word, questions } = generate();
+    const { word, questions, supplied } = generate();
     const broken = questions.map((q, i) =>
       i === 0 ? { ...q, options: ["ร้องเพลง", q.options[1]!, q.options[2]!, q.options[3]!] } : q);
-    const refusal = checkRefusals(word, broken).find((r) => r.rule === "translated-answer");
+    const refusal = checkRefusals(word, broken, supplied).find((r) => r.rule === "translated-answer");
     expect(refusal?.message).toMatch(/never translated/);
   });
 
   it("passes a clean generated word with no refusals at all", () => {
-    const { word, questions } = generate();
-    expect(checkRefusals(word, questions)).toEqual([]);
+    const { word, questions, supplied } = generate();
+    expect(checkRefusals(word, questions, supplied)).toEqual([]);
   });
 });
 
