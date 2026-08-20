@@ -1,5 +1,8 @@
 # Quickstart: Authoring Chapter 2
 
+**This document is the authoring guide required by FR-007.** It is written for someone adding
+content, not for someone changing the engine.
+
 > The tooling described here does not exist yet — this is the contract implementation must satisfy.
 > Everything under "Verify" already works today against Chapter 1.
 
@@ -42,10 +45,10 @@ Play it: `/play?map=<chapter-2-map>` drops you straight into the new maps, and
 ## What "done" looks like
 
 - `npm test` green, including the cross-chapter review measurement
-- No file outside `src/content/data/` changed — this is SC-002, and it is checked by looking at
-  the diff
+- No file outside `src/content/data/` changed — this is FR-001 and SC-002, and it is checked by
+  looking at the diff
 - A save from Chapter 1 loads and reaches Chapter 2 with everything intact
-- Both locales complete, and no English under test accidentally translated
+- Both locales complete, and no English under test accidentally translated (FR-019)
 
 ## The measurement this feature exists to take
 

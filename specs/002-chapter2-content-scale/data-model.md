@@ -43,6 +43,7 @@ needed.
 | **Save schema** | `ChapterProgress` is a map keyed by chapter id. A save that never saw `chapter-2` has no entry, and `chapterProgressOf` already returns a zeroed default for a missing key — written for exactly this case and verified against the shipped code. `schemaVersion` stays at 1. A migration that does nothing is worse than none: it implies a change happened. |
 | **Word mastery** | Keyed by word id, not by chapter. A word in two chapters has one record and counts once toward unlocks (FR-013) — `wordsMasteredCount` already counts distinct entries. |
 | **Review pool** | Already spans chapters. Selection draws review questions from any word marked `encountered`, and `encountered` was never scoped to a chapter. Chapter 1 words will appear in Chapter 2 battles with zero code changes (R-104). This feature verifies that; it does not build it. |
+| **Player progress carried forward** (FR-010) | Level, XP, gold, inventory, equipment, pet, and mastery live on `PlayerState`, which is chapter-agnostic. Entering a chapter reads nothing and resets nothing. |
 | **Grammar learned** | A flat list of topic ids on the player. Chapter 2's topics append; Chapter 1's stay learned and are not re-taught (FR-017). |
 | **Battle, question, mastery, reward rules** | Untouched. FR-020 forbids new mechanics precisely so that any overrun is attributable to content, not code. |
 | **Balance config** | No new keys. Chapter 2 tunes monster HP and attack in `monsters.json`, which is per-monster data, not global balance. |
@@ -66,7 +67,7 @@ content edit changed the ordering.
 
 | | Chapter 1 (shipped) | Chapter 2 (target) | Combined |
 |---|---|---|---|
-| Vocabulary words | 31 | ~40 | ~71 |
+| Vocabulary words (FR-014: ≥30 new) | 31 | ~40 | ~71 |
 | Questions | 177 | ~240 | ~417 |
 | Grammar topics | 2 | 2 | 4 |
 | NPCs | 6 | 6 | 12 |

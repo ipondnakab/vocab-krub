@@ -12,6 +12,8 @@ Several entries below are conclusions from defects that actually happened while 
 
 ## R-101: How chapter content gets authored
 
+**Resolves**: FR-008.
+
 **Decision**: A guided command-line tool, `npm run author`, that prompts for a word and writes the
 full content set into the existing JSON files. Hand-editing stays supported and the JSON stays the
 single source of truth — the tool writes exactly what a person could write by hand.
@@ -41,6 +43,9 @@ is hard to see and expensive to unwind.
 ---
 
 ## R-102: What the authoring tool generates, and what it refuses
+
+**Resolves**: FR-006 (placeholder art for new entities), and enforces FR-003 through FR-005 at
+authoring time.
 
 **Decision**: The tool prompts for the parts only a human can supply — the word, its meaning in
 both languages, its forms, and one example sentence — and derives the rest: mastery components,
@@ -87,6 +92,8 @@ or inserting a side chapter should not need an engineer.
 ---
 
 ## R-104: Cross-chapter review
+
+**Resolves**: FR-015, FR-016.
 
 **Decision**: No new mechanism. Question selection already draws review questions from any word
 the player has `encountered`, regardless of which chapter declared it, at
@@ -155,6 +162,8 @@ styled control, not an `<input>` dropped into an RPG.
 ---
 
 ## R-108: What Chapter 2 teaches
+
+**Resolves**: FR-014, FR-018.
 
 **Decision**: Chapter 2 stays at **A1**. Grammar is Present Continuous (`I am going`) and question
 forms with `do`/`does` (`Do you go to school?`).

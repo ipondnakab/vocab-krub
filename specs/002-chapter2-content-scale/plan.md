@@ -39,8 +39,9 @@ the content (SC-008). Question selection must stay responsive as the review pool
 (FR-020), so any schedule overrun is attributable to the content pipeline rather than to new code
 — which is the measurement this feature exists to take.
 
-**Scale/Scope**: ~40 new A1 words, ~240 new questions, 2 new grammar topics, 3 new maps, 6 new
-NPCs, 6 new monsters plus a boss, 1 chapter challenge. Both locales complete.
+**Scale/Scope** (FR-014, FR-018, FR-019): ~40 new A1 words, ~240 new questions, 2 new grammar
+topics, 3 new maps, 6 new NPCs, 6 new monsters plus a boss, 1 chapter challenge. Both locales
+complete.
 
 **Explicitly absent**: Stage 2, Socket.IO, accounts, spaced repetition, free-text answers, A2
 content, and any new battle mechanic.
