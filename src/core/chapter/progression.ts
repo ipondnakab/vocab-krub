@@ -49,6 +49,30 @@ export function nextChapter(player: PlayerState, content: ContentIndex): Chapter
   );
 }
 
+/** Which chapter a map belongs to. Maps are declared per chapter, so this is a content lookup. */
+export function chapterOfMap(mapId: string, content: ContentIndex): Chapter | null {
+  return content.chapters.find((c) => c.mapIds.includes(mapId)) ?? null;
+}
+
+/**
+ * Whether the player may walk onto a map (FR-009).
+ *
+ * Chapter maps are chained end to end, so without this a player could stroll out of Chapter 1's
+ * last map straight into Chapter 2. The gate lives on the map rather than on a separate
+ * "enter chapter" action, because walking is how the player moves and a menu would be a seam.
+ */
+export function canEnterMap(
+  player: PlayerState,
+  mapId: string,
+  content: ContentIndex,
+): { allowed: true } | { allowed: false; blockedBy: Chapter } {
+  const chapter = chapterOfMap(mapId, content);
+  if (!chapter) return { allowed: true };
+  if (isChapterAvailable(player, chapter.id, content)) return { allowed: true };
+  const blocker = blockedBy(player, chapter.id, content);
+  return blocker ? { allowed: false, blockedBy: blocker } : { allowed: true };
+}
+
 /** Completing a chapter never locks it — earlier maps stay open for practice (FR-012). */
 export function isChapterReplayable(player: PlayerState, chapterId: string): boolean {
   return chapterProgressOf(player, chapterId).completed;

@@ -436,3 +436,10 @@ canvas, img[data-pixel] { image-rendering: pixelated; }
 .story__box { width: min(100%, 44rem); display: grid; gap: 1.1rem; }
 .story__line { font-size: 1.1rem; line-height: 1.8; }
 .story__count { margin-left: auto; align-self: center; }
+
+/* Journal at scale: grouped by chapter, filtered by state. A flat list was fine at 31 words. */
+.journal__filters { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+.journal__count { margin-left: auto; }
+.journal__group { display: grid; gap: 0.35rem; margin-bottom: 0.8rem; }
+.journal__grouptitle { color: var(--accent); }
+.journal__grouplist { list-style: none; display: grid; gap: 0.35rem; }

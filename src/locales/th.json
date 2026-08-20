@@ -68,5 +68,12 @@
   "story.chapterComplete": "บทที่ 1 จบแล้ว คำต่างๆ ในหมู่บ้านกลับมาแล้ว แต่ความเงียบยังไม่จบ",
   "story.skip": "ข้าม",
   "common.localeEndonymEn": "EN",
-  "common.localeEndonymTh": "ไทย"
+  "common.localeEndonymTh": "ไทย",
+  "notice.chapterLocked": "ยังไปต่อไม่ได้ ต้องผ่าน \"{chapter}\" ให้จบก่อน",
+  "story.chapter2Complete": "บทที่ 2 จบแล้ว เมืองจำชื่อของตัวเองได้อีกครั้ง แต่ถนนยังทอดยาวต่อไป",
+  "journal.filterAll": "ทั้งหมด",
+  "journal.filterMastered": "เชี่ยวชาญแล้ว",
+  "journal.filterInProgress": "กำลังเรียน",
+  "journal.filterNotStarted": "ยังไม่เริ่ม",
+  "journal.count": "{count} คำ"
 }

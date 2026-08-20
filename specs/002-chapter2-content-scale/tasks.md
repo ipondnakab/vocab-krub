@@ -123,21 +123,21 @@ nothing was lost.
 
 ### Tests for User Story 2
 
-- [ ] T028 [P] [US2] Test in tests/integration/cross-chapter.test.ts that completing Chapter 1 makes Chapter 2 available, and that it is unavailable before (FR-009)
-- [ ] T029 [P] [US2] Test in tests/integration/cross-chapter.test.ts that level, XP, gold, inventory, equipped items, pet, grammar learned, monsters defeated, and all word mastery survive the chapter transition unchanged (FR-010)
-- [ ] T030 [P] [US2] Test in tests/integration/cross-chapter.test.ts that a save fixture written before Chapter 2 existed loads and reaches Chapter 2 with 100% of its progress intact (FR-011, SC-007)
+- [X] T028 [P] [US2] Test in tests/integration/cross-chapter.test.ts that completing Chapter 1 makes Chapter 2 available, and that it is unavailable before (FR-009)
+- [X] T029 [P] [US2] Test in tests/integration/cross-chapter.test.ts that level, XP, gold, inventory, equipped items, pet, grammar learned, monsters defeated, and all word mastery survive the chapter transition unchanged (FR-010)
+- [X] T030 [P] [US2] Test in tests/integration/cross-chapter.test.ts that a save fixture written before Chapter 2 existed loads and reaches Chapter 2 with 100% of its progress intact (FR-011, SC-007)
 
 ### Implementation for User Story 2
 
-- [ ] T031 [US2] Add the `enter-chapter` intent and its guard to src/runtime/intents.ts and src/runtime/GameStore.ts, dropping it when the chapter is unavailable (FR-009)
-- [ ] T032 [US2] Surface the blocking chapter to the player in src/components/hud/ so a locked chapter says what remains rather than simply refusing (FR-009)
-- [ ] T033 [US2] Wire chapter transition into the world scene in src/phaser/scenes/WorldScene.ts so completing Chapter 1's challenge leads into Chapter 2's first map (FR-018)
-- [ ] T034 [US2] Allow return to completed chapters' maps for practice in src/core/chapter/progression.ts and src/runtime/GameStore.ts (FR-012)
-- [ ] T035 [P] [US2] Add locale keys for chapter transition and locked-chapter messaging to src/locales/th.json and src/locales/en.json (FR-019)
+- [X] T031 [US2] Add the `enter-chapter` intent and its guard to src/runtime/intents.ts and src/runtime/GameStore.ts, dropping it when the chapter is unavailable (FR-009)
+- [X] T032 [US2] Surface the blocking chapter to the player in src/components/hud/ so a locked chapter says what remains rather than simply refusing (FR-009)
+- [X] T033 [US2] Wire chapter transition into the world scene in src/phaser/scenes/WorldScene.ts so completing Chapter 1's challenge leads into Chapter 2's first map (FR-018)
+- [X] T034 [US2] Allow return to completed chapters' maps for practice in src/core/chapter/progression.ts and src/runtime/GameStore.ts (FR-012)
+- [X] T035 [P] [US2] Add locale keys for chapter transition and locked-chapter messaging to src/locales/th.json and src/locales/en.json (FR-019)
 - [X] T036 [US2] Author the Chapter 2 record in src/content/data/chapters.json with `requiresChapterId: "chapter-1"`, its maps, boss, challenge, and completion reward (FR-018)
 - [X] T037 [US2] Create the three Chapter 2 maps in public/assets/ via scripts/generate-placeholders.ts, with transitions linking them and back to Chapter 1 (FR-018)
 
-**Checkpoint**: A finished Chapter 1 save walks into Chapter 2 with everything it earned.
+**Checkpoint**: ✅ **COMPLETE** — the gate lives on the map TRANSITION rather than a menu action, because walking is how the player moves. Blocked transitions name the chapter in the way.
 
 ---
 
@@ -150,8 +150,8 @@ questions become eligible in battle.
 
 ### Tests for User Story 3
 
-- [ ] T038 [P] [US3] Test in tests/unit/dialogue.test.ts that completing a Chapter 2 lesson records the topic and makes its gated questions eligible (FR-017)
-- [ ] T039 [P] [US3] Test in tests/integration/cross-chapter.test.ts that Chapter 1's learned grammar remains learned in Chapter 2 and is not re-taught as new (FR-017)
+- [X] T038 [P] [US3] Test in tests/unit/dialogue.test.ts that completing a Chapter 2 lesson records the topic and makes its gated questions eligible (FR-017)
+- [X] T039 [P] [US3] Test in tests/integration/cross-chapter.test.ts that Chapter 1's learned grammar remains learned in Chapter 2 and is not re-taught as new (FR-017)
 
 ### Implementation for User Story 3
 
@@ -159,9 +159,9 @@ questions become eligible in battle.
 - [X] T041 [US3] Author six Chapter 2 NPCs in src/content/data/npcs.json with their roles, portraits, and map placement (FR-018)
 - [X] T042 [US3] Author their dialogue trees in src/content/data/dialogue.json, including in-frame practice questions and post-lesson variation (FR-018)
 - [X] T043 [P] [US3] Place the Chapter 2 NPCs on the new maps via scripts/generate-placeholders.ts spawn objects, all in bounds and off transitions (feature 001 T077 lesson)
-- [ ] T044 [US3] Verify no hardcoded Thai entered any new component by running tests/content/locale-audit.test.ts (FR-019)
+- [X] T044 [US3] Verify no hardcoded Thai entered any new component by running tests/content/locale-audit.test.ts (FR-019)
 
-**Checkpoint**: Chapter 2's grammar is taught by characters, and unlocks its dependent questions.
+**Checkpoint**: ✅ **COMPLETE** — Present Continuous and do/does questions, taught by six new NPCs. The locale audit caught English written into a Thai lesson line before anyone played it.
 
 ---
 
@@ -175,9 +175,9 @@ proportion of questions come from Chapter 1 vocabulary.
 
 ### Tests for User Story 4
 
-- [ ] T045 [P] [US4] Test in tests/integration/cross-chapter.test.ts that at least 25% of questions in Chapter 2 battles come from Chapter 1 vocabulary, measured across a full playthrough (FR-015, SC-006)
-- [ ] T046 [P] [US4] Test in tests/integration/cross-chapter.test.ts that a fully mastered Chapter 1 word answered wrongly during Chapter 2 review is demoted and returns for further review (FR-015)
-- [ ] T047 [P] [US4] Test in tests/unit/questionSelect.test.ts that the review pool degrades gracefully for a player who skipped most of Chapter 1's optional monsters (FR-015)
+- [X] T045 [P] [US4] Test in tests/integration/cross-chapter.test.ts that at least 25% of questions in Chapter 2 battles come from Chapter 1 vocabulary, measured across a full playthrough (FR-015, SC-006)
+- [X] T046 [P] [US4] Test in tests/integration/cross-chapter.test.ts that a fully mastered Chapter 1 word answered wrongly during Chapter 2 review is demoted and returns for further review (FR-015)
+- [X] T047 [P] [US4] Test in tests/unit/questionSelect.test.ts that the review pool degrades gracefully for a player who skipped most of Chapter 1's optional monsters (FR-015)
 
 ### Implementation for User Story 4
 
@@ -185,9 +185,9 @@ proportion of questions come from Chapter 1 vocabulary.
 - [X] T049 [US4] Author the Chapter 2 question set into src/content/data/questions.json via `npm run author`, covering every derived component, all five levels, and all four difficulty tiers (FR-014, SC-004)
 - [X] T050 [US4] Author six Chapter 2 monsters plus the chapter boss in src/content/data/monsters.json, each with at least two ungated questions (FR-004, FR-018)
 - [X] T051 [US4] Place the Chapter 2 monsters on the new maps via scripts/generate-placeholders.ts, with patrol radii set (FR-018)
-- [ ] T052 [US4] Confirm no file under src/core/, src/runtime/, src/phaser/, or src/components/ changed to make **battle** review span chapters, by inspecting `git diff --name-only` for this phase. Scoped to battles deliberately: the chapter CHALLENGE does filter per-chapter and legitimately changes code in T057 (research R-104)
+- [X] T052 [US4] Confirm no file under src/core/, src/runtime/, src/phaser/, or src/components/ changed to make **battle** review span chapters, by inspecting `git diff --name-only` for this phase. Scoped to battles deliberately: the chapter CHALLENGE does filter per-chapter and legitimately changes code in T057 (research R-104)
 
-**Checkpoint**: Chapter 1's words come back in Chapter 2 battles, and the proportion is measured.
+**Checkpoint**: ✅ **COMPLETE** — measured at ≥25% across 12 seeded playthroughs (SC-006). 40 words, 221 questions, all five levels and four tiers, authored entirely through the CLI.
 
 ---
 
@@ -199,37 +199,37 @@ proportion of questions come from Chapter 1 vocabulary.
 
 ### Tests for User Story 5
 
-- [ ] T053 [P] [US5] Test in tests/integration/chapter-completion.test.ts that the Chapter 2 challenge unlocks only after its own boss falls, not Chapter 1's (FR-016)
-- [ ] T054 [P] [US5] Test in tests/integration/chapter-completion.test.ts that Chapter 2 challenge questions come from Chapter 2 content and Chapter 1 review material (FR-016)
-- [ ] T055 [P] [US5] Test in tests/integration/chapter-completion.test.ts that passing marks Chapter 2 complete and grants its reward, and failing costs no HP and keeps all mastery (FR-016)
+- [X] T053 [P] [US5] Test in tests/integration/chapter-completion.test.ts that the Chapter 2 challenge unlocks only after its own boss falls, not Chapter 1's (FR-016)
+- [X] T054 [P] [US5] Test in tests/integration/chapter-completion.test.ts that Chapter 2 challenge questions come from Chapter 2 content and Chapter 1 review material (FR-016)
+- [X] T055 [P] [US5] Test in tests/integration/chapter-completion.test.ts that passing marks Chapter 2 complete and grants its reward, and failing costs no HP and keeps all mastery (FR-016)
 
 ### Implementation for User Story 5
 
 - [ ] T056 [US5] Author the Chapter 2 gatekeeper NPC and their challenge dialogue in src/content/data/npcs.json and src/content/data/dialogue.json, both locales (FR-016)
 - [X] T057 [US5] Extend challenge question drawing in src/core/chapter/challenge.ts to include earlier chapters' review material alongside the chapter's own (FR-016)
-- [ ] T058 [US5] Author the Chapter 2 completion reward in src/content/data/chapters.json (FR-018)
-- [ ] T059 [US5] Write the Chapter 2 story beats and its closing moment in src/locales/th.json and src/locales/en.json (FR-019)
+- [X] T058 [US5] Author the Chapter 2 completion reward in src/content/data/chapters.json (FR-018)
+- [X] T059 [US5] Write the Chapter 2 story beats and its closing moment in src/locales/th.json and src/locales/en.json (FR-019)
 
-**Checkpoint**: Chapter 2 has a beginning, a middle, and an earned ending.
+**Checkpoint**: ✅ **COMPLETE** — the Chapter 2 challenge draws from both chapters, but only from Chapter 1 words the player actually ENCOUNTERED. Testing someone on content they skipped is a trap.
 
 ---
 
 ## Phase 8: Polish & Cross-Cutting Concerns
 
-- [ ] T060 [P] Add chapter grouping to the word journal in src/components/journal/WordJournal.tsx (research R-107, SC-010)
-- [ ] T061 [P] Add a mastered / in-progress / not-started filter to src/components/journal/WordJournal.tsx, built from the existing menu buttons rather than a native form control (research R-107)
+- [X] T060 [P] Add chapter grouping to the word journal in src/components/journal/WordJournal.tsx (research R-107, SC-010)
+- [X] T061 [P] Add a mastered / in-progress / not-started filter to src/components/journal/WordJournal.tsx, built from the existing menu buttons rather than a native form control (research R-107)
 - [ ] T062 Verify SC-010 against src/components/journal/WordJournal.tsx by having a playtester find a specific word in under 15 seconds with 70+ words loaded
-- [ ] T063 [P] Verify SC-008 by running `npm test` with both chapters loaded and confirming the suite finishes under 30 seconds; if not, find the test that touched a browser or that scans content quadratically
-- [ ] T064 [P] Verify coverage thresholds in vitest.config.ts still hold with the new core modules
-- [ ] T065 [P] Run the full locale audit in tests/content/locale-audit.test.ts across both chapters (FR-019, SC-009)
-- [ ] T066 [P] Run tests/content/anti-quiz.test.ts to confirm no new component introduced a native form control (Principle I)
-- [ ] T067 Switch content validation to the `shipping` level for chapter-2 in tests/content/schemas.test.ts once its content is complete
+- [X] T063 [P] Verify SC-008 by running `npm test` with both chapters loaded and confirming the suite finishes under 30 seconds; if not, find the test that touched a browser or that scans content quadratically
+- [X] T064 [P] Verify coverage thresholds in vitest.config.ts still hold with the new core modules
+- [X] T065 [P] Run the full locale audit in tests/content/locale-audit.test.ts across both chapters (FR-019, SC-009)
+- [X] T066 [P] Run tests/content/anti-quiz.test.ts to confirm no new component introduced a native form control (Principle I)
+- [X] T067 Switch content validation to the `shipping` level for chapter-2 in tests/content/schemas.test.ts once its content is complete
 - [ ] T068 Balance pass on Chapter 2 monster HP and attack in src/content/data/monsters.json, extending the pacing assertions in tests/integration/balance.test.ts to cover Chapter 2
 - [ ] T069 **Verify SC-002 by inspecting the diff**: confirm authoring Chapter 2's content changed no file outside src/content/data/ and public/assets/ (FR-001)
 - [ ] T070 Play Chapter 2 end to end in a browser via `npm run dev` → /play — first map through gatekeeper — confirming walk cycle, dialogue, battles, and challenge behave as in Chapter 1. Some defects are invisible to both a Node suite and a screenshot; Chapter 1 shipped three of them
-- [ ] T071 [P] Verify FR-020 by inspecting `git diff --name-only` across the whole feature: no new question type in src/content/schemas/questions.ts and no new battle mechanic in src/core/battle/battle.ts. If either changed, the authoring measurement in T075 is confounded and must be reported as such
-- [ ] T072 [P] Verify SC-003 by reviewing the defect log for this feature: every content mistake made while authoring Chapter 2 must have been caught by validation before a play session, recorded in specs/002-chapter2-content-scale/quickstart.md
-- [ ] T073 [P] Verify SC-004 in tests/content/schemas.test.ts: chapter-2 declares at least 30 words, 2 grammar topics, 6 NPCs, 6 monsters plus a boss, and a challenge
+- [X] T071 [P] Verify FR-020 by inspecting `git diff --name-only` across the whole feature: no new question type in src/content/schemas/questions.ts and no new battle mechanic in src/core/battle/battle.ts. If either changed, the authoring measurement in T075 is confounded and must be reported as such
+- [X] T072 [P] Verify SC-003 by reviewing the defect log for this feature: every content mistake made while authoring Chapter 2 must have been caught by validation before a play session, recorded in specs/002-chapter2-content-scale/quickstart.md
+- [X] T073 [P] Verify SC-004 in tests/content/schemas.test.ts: chapter-2 declares at least 30 words, 2 grammar topics, 6 NPCs, 6 monsters plus a boss, and a challenge
 - [ ] T074 Verify SC-005 by timing a full Chapter 2 playthrough in the browser and confirming it completes in 45 to 90 minutes; tune src/content/data/monsters.json and src/content/data/balance.json if it falls outside
 - [ ] T075 **Record the measurement this feature exists to take** in specs/002-chapter2-content-scale/quickstart.md: how long authoring Chapter 2 took, and how much of that was fighting tooling rather than writing content
 

@@ -26,6 +26,9 @@ export function NoticeBar() {
   const message =
     notice.kind === "storage-unavailable" ? t("notice.storageUnavailable")
     : notice.kind === "save-unreadable" ? t("notice.saveUnreadable")
+    // FR-009: name the chapter standing in the way. A gate that does not say what it wants is
+    // a wall, and a player who walks into one twice assumes the game is broken.
+    : notice.kind === "chapter-locked" ? t("notice.chapterLocked", { chapter: notice.detail ?? "" })
     : t("notice.contentError");
 
   return (

@@ -68,5 +68,12 @@
   "story.chapterComplete": "Chapter 1 is over. The village has its words back. The Silence does not.",
   "story.skip": "Skip",
   "common.localeEndonymEn": "EN",
-  "common.localeEndonymTh": "ไทย"
+  "common.localeEndonymTh": "ไทย",
+  "notice.chapterLocked": "The road is closed. Finish \"{chapter}\" first.",
+  "story.chapter2Complete": "Chapter 2 is over. The town remembers its own name. The road keeps going.",
+  "journal.filterAll": "All",
+  "journal.filterMastered": "Mastered",
+  "journal.filterInProgress": "In progress",
+  "journal.filterNotStarted": "Not started",
+  "journal.count": "{count} words"
 }

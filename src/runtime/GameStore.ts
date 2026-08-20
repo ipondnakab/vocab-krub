@@ -21,6 +21,7 @@ import {
   advanceDialogue, answerPractice, completeDialogue, startDialogue, type DialogueState,
 } from "../core/dialogue/dialogue";
 import { facingTile } from "../core/world/movement";
+import { canEnterMap } from "../core/chapter/progression";
 import type { Intent } from "./intents";
 
 /**
@@ -37,7 +38,7 @@ import type { Intent } from "./intents";
 export type Screen = "title" | "world" | "battle" | "dialogue" | "challenge" | "journal";
 
 export interface Notice {
-  kind: "storage-unavailable" | "save-unreadable" | "content-error";
+  kind: "storage-unavailable" | "save-unreadable" | "content-error" | "chapter-locked";
   detail?: string;
 }
 
@@ -284,12 +285,28 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
                 },
               });
               return;
-            case "transition":
+            case "transition": {
+              // FR-009: chapter maps are chained, so the gate has to live on the transition.
+              // Refusing silently would read as a bug, so the player is told which chapter
+              // stands in the way.
+              const entry = canEnterMap(state.player, outcome.transition.targetMapId, deps.content);
+              if (!entry.allowed) {
+                commit({
+                  ...state,
+                  notice: { kind: "chapter-locked", detail: entry.blockedBy.id },
+                  player: {
+                    ...state.player,
+                    location: { ...state.player.location, facing: outcome.transition.facing },
+                  },
+                });
+                return;
+              }
               // Map files load asynchronously, so the store records the intent and the client
               // fetches, parses, and dispatches `enter-map`. Keeping fetch out of dispatch is
               // what keeps every rule here synchronous and testable.
               commit({ ...state, world: outcome.world });
               return;
+            }
             case "encounter": {
               const battle = createBattle({
                 monsterId: outcome.monsterId,
