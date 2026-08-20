@@ -45,5 +45,24 @@ export function createPhaserGame(parent: HTMLElement, store: GameStore): PhaserG
   // module-level singletons and testable in isolation later.
   game.registry.set("store", store);
 
-  return { destroy: () => game.destroy(true) };
+  /**
+   * Dev-only handle for inspecting and driving the running game from a browser session.
+   *
+   * Gated on the same flag as the `/play?battle=` shortcuts and stripped from production builds
+   * by next.config.ts. It exists because some defects — a walk cycle that never advances a
+   * frame — are invisible to a Node test suite AND to a screenshot, and the only honest way to
+   * verify them is to read the live scene graph.
+   */
+  if (process.env.NEXT_PUBLIC_DEV_SHORTCUTS === "1") {
+    (window as unknown as { __vocabKrub?: unknown }).__vocabKrub = { game, store };
+  }
+
+  return {
+    destroy: () => {
+      if (process.env.NEXT_PUBLIC_DEV_SHORTCUTS === "1") {
+        delete (window as unknown as { __vocabKrub?: unknown }).__vocabKrub;
+      }
+      game.destroy(true);
+    },
+  };
 }

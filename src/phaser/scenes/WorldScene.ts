@@ -9,6 +9,13 @@ import type { Direction } from "../../content/schemas";
 const TILE = 32;
 const PATROL_INTERVAL_MS = 900;
 const MOVE_REPEAT_MS = 140;
+/**
+ * How long after the last step the walk cycle stops.
+ *
+ * Must exceed MOVE_REPEAT_MS, or a player holding a direction gets their animation killed
+ * between steps and the sprite looks frozen while sliding.
+ */
+const IDLE_AFTER_MS = MOVE_REPEAT_MS + 90;
 /** How much the world is magnified. 32px tiles read as a postage stamp at 1x. */
 const CAMERA_ZOOM = 1.75;
 
@@ -33,6 +40,8 @@ export class WorldScene extends Phaser.Scene {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   private wasd!: Record<Direction, Phaser.Input.Keyboard.Key>;
   private lastMoveAt = 0;
+  /** When the player last actually changed tile, used to decide when to drop back to idle. */
+  private lastStepAt = 0;
   private mapId = "";
 
   constructor() {
@@ -218,7 +227,14 @@ export class WorldScene extends Phaser.Scene {
     const { x, y, facing } = state.player.location;
     const targetX = x * TILE + TILE / 2;
     const targetY = y * TILE + TILE;
-    if (this.player.x !== targetX || this.player.y !== targetY) {
+    const moving = this.player.x !== targetX || this.player.y !== targetY;
+
+    if (moving) {
+      this.lastStepAt = this.time.now;
+      // `true` = ignoreIfPlaying, so holding a direction keeps ONE continuous cycle running
+      // instead of restarting it on frame 0 every step. Stopping is handled by the idle timer
+      // in update(), never here: a 140ms tween cannot host a 500ms walk cycle, so stopping
+      // on tween completion killed the animation after roughly one frame.
       this.player.anims.play(`player:walk:${facing}`, true);
       this.tweens.add({
         targets: this.player,
@@ -226,12 +242,14 @@ export class WorldScene extends Phaser.Scene {
         y: targetY,
         duration: MOVE_REPEAT_MS,
         ease: "Linear",
-        onComplete: () => {
-          this.player.anims.stop();
-          this.player.setFrame(CHARACTER_ROWS[facing] * CHARACTER_COLUMNS);
-        },
       });
-    } else {
+      return;
+    }
+
+    // Turning on the spot (a blocked step changes facing but not position) shows the idle frame
+    // for the new direction. Guarded on `isPlaying` so an unrelated store change — a monster
+    // patrol tick, an HP update — cannot stomp a walk cycle that is still running.
+    if (!this.player.anims.isPlaying) {
       this.player.setFrame(CHARACTER_ROWS[facing] * CHARACTER_COLUMNS);
     }
   }
@@ -244,6 +262,13 @@ export class WorldScene extends Phaser.Scene {
   }
 
   override update(time: number): void {
+    // Drop back to the idle frame once the player has actually stopped, rather than after each
+    // individual step.
+    if (this.player?.anims.isPlaying && time - this.lastStepAt > IDLE_AFTER_MS) {
+      this.player.anims.stop();
+      this.player.setFrame(CHARACTER_ROWS[this.store.getSnapshot().player.location.facing] * CHARACTER_COLUMNS);
+    }
+
     if (!this.cursors) return;
 
     const pressed: Direction[] = [];

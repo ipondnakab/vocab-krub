@@ -74,6 +74,12 @@ export default tseslint.config(
         },
       ],
       "@typescript-eslint/no-explicit-any": "error",
+      // A leading underscore is the conventional "deliberately unused" marker, and typed mock
+      // signatures need it — the parameters exist to satisfy a type, not to be read.
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        { argsIgnorePattern: "^_", varsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_" },
+      ],
     },
   },
 
