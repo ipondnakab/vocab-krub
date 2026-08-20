@@ -41,6 +41,66 @@ function missesToLose(monsterId: string, seed: number): number {
   return misses;
 }
 
+/** A player arriving in Chapter 2 is levelled; pacing must be checked against that, not a novice. */
+function graduate() {
+  return player({ level: 5, maxHp: 180, hp: 180, equipped: { weapon: "beginner-sword", armor: null, pet: null },
+    inventory: [{ itemId: "beginner-sword", quantity: 1 }] });
+}
+
+function turnsToWinAs(monsterId: string, seed: number, p = graduate()): number {
+  const d = deps(seed);
+  let state: BattleState = createBattle({ monsterId, player: p, content, balance, rng: d.rng });
+  let turns = 0;
+  while (state.phase !== "ended" && turns < 100) {
+    if (state.phase === "awaiting-answer") {
+      turns += 1;
+      state = submitAnswer(state, state.currentQuestion!.correctIndex, d).state;
+    } else {
+      state = dismissFeedback(state, d).state;
+    }
+  }
+  return turns;
+}
+
+describe("Chapter 2 battle pacing (T068)", () => {
+  it("keeps regular Chapter 2 monsters within the same turn budget", () => {
+    // Chapter 2 monsters have more HP, but the player arrives with a weapon and more levels.
+    // The turn count is what the player feels, so that is what is held steady.
+    for (const monsterId of ["monster-open", "monster-ask", "monster-river"]) {
+      for (let seed = 1; seed <= 8; seed += 1) {
+        const turns = turnsToWinAs(monsterId, seed);
+        expect(turns, `${monsterId} seed ${seed} took ${turns} turns`).toBeGreaterThanOrEqual(TARGET_TURNS.min);
+        expect(turns, `${monsterId} seed ${seed} took ${turns} turns`).toBeLessThanOrEqual(TARGET_TURNS.max);
+      }
+    }
+  });
+
+  it("makes the Chapter 2 boss the longest fight in the game so far", () => {
+    const ch2Boss = turnsToWinAs("monster-remember", 1);
+    const ch1Boss = turnsToWinAs("monster-go", 1);
+    const regular = turnsToWinAs("monster-open", 1);
+    expect(ch2Boss).toBeGreaterThan(regular);
+    expect(ch2Boss).toBeGreaterThanOrEqual(ch1Boss);
+    expect(ch2Boss).toBeLessThanOrEqual(TARGET_TURNS.max + 5);
+  });
+
+  it("still gives a levelled player room to be wrong several times", () => {
+    const d = deps(1);
+    let state: BattleState = createBattle({ monsterId: "monster-remember", player: graduate(), content, balance, rng: d.rng });
+    let misses = 0;
+    while (state.phase !== "ended" && misses < 100) {
+      if (state.phase === "awaiting-answer") {
+        misses += 1;
+        const q = state.currentQuestion!;
+        state = submitAnswer(state, (q.correctIndex + 1) % q.options.length, d).state;
+      } else {
+        state = dismissFeedback(state, d).state;
+      }
+    }
+    expect(misses, `the Chapter 2 boss kills after ${misses} misses`).toBeGreaterThanOrEqual(5);
+  });
+});
+
 describe("battle pacing (T122)", () => {
   it("resolves a regular monster in a designed number of turns", () => {
     for (const monsterId of ["monster-eat", "monster-see", "monster-friend"]) {
