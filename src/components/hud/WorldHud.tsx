@@ -43,6 +43,10 @@ export function WorldHud() {
             A Thai player and an English player see the same answer options, because those
             options are the material under test (FR-052).
           */}
+          <button type="button" className="action worldhud__locale"
+                  onClick={() => dispatch({ type: "open-journal" })}>
+            {t("hud.journal")}
+          </button>
           <button
             type="button"
             className="action worldhud__locale"

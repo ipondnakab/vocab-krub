@@ -6,6 +6,9 @@ import { createI18n, type Bundles } from "../../core/i18n/i18n";
 import { HpBar } from "./HpBar";
 import { QuestionPanel } from "./QuestionPanel";
 import { FeedbackPanel } from "./FeedbackPanel";
+import { MasteryStars } from "../journal/MasteryStars";
+import { masteryPercent } from "../../core/mastery/mastery";
+import { useContent } from "../../runtime/GameContext";
 import th from "../../locales/th.json";
 import en from "../../locales/en.json";
 
@@ -25,6 +28,8 @@ const bundles = { th, en } as Bundles;
  */
 export function BattleHud() {
   const battle = useGame((s) => s.battle);
+  const mastery = useGame((s) => s.player.mastery);
+  const content = useContent();
   const lastTurn = useGame((s) => s.lastTurn);
   const locale = useGame((s) => s.player.locale);
   const dispatch = useGameDispatch();
@@ -47,6 +52,14 @@ export function BattleHud() {
     <div className="battle">
       <div className="battle__top">
         <HpBar label={monsterName} hp={battle.monsterHp} maxHp={battle.monsterMaxHp} variant="monster" />
+        {/*
+          T083. HP and knowledge are DIFFERENT systems (FR-029). Showing them side by side is the
+          point: you can knock this word's HP to zero without understanding it, and the stars say so.
+        */}
+        <div className="masterytag">
+          <span className="label masterytag__label">{t("journal.progress")}</span>
+          <MasteryStars percent={masteryPercent(mastery[content.monster(battle.monsterId).wordId] ?? { wordId: "", components: {}, encountered: false })} />
+        </div>
       </div>
 
       <div className="battle__stage-gap" />

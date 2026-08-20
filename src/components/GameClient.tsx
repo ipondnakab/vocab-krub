@@ -13,6 +13,8 @@ import { GameStoreProvider } from "../runtime/GameContext";
 import { BattleHud } from "./battle/BattleHud";
 import { WorldHud } from "./hud/WorldHud";
 import { DialogueBox } from "./dialogue/DialogueBox";
+import { WordJournal } from "./journal/WordJournal";
+import { MasteryMoment } from "./battle/MasteryMoment";
 import { loadMapFile } from "../platform/loadMapFile";
 import { parseMap } from "../core/world/mapData";
 import type { Locale } from "../core/i18n/i18n";
@@ -131,6 +133,8 @@ export function GameClient() {
         <WorldHud />
         <DialogueBox />
         <BattleHud />
+        <MasteryMoment />
+        <WordJournal />
       </div>
     </GameStoreProvider>
   );

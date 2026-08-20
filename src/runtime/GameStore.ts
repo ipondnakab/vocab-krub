@@ -39,6 +39,8 @@ export interface GameState {
   world: WorldState | null;
   dialogue: DialogueState | null;
   battle: BattleState | null;
+  /** Where the journal was opened from, so closing it returns you there rather than to the map. */
+  screenBefore: Screen | null;
   /** The last resolved turn, so renderers can animate what just happened. */
   lastTurn: BattleTurnResult | null;
   notice: Notice | null;
@@ -95,6 +97,12 @@ function canDispatch(intent: Intent, state: GameState): boolean {
       return state.dialogue?.phase === "ended";
     case "replay-lesson":
       return state.dialogue !== null;
+    // The journal is readable from the world AND mid-battle: checking what you know about the
+    // word in front of you is exactly the moment you want it.
+    case "open-journal":
+      return state.dialogue === null && state.screen !== "journal";
+    case "close-journal":
+      return state.screen === "journal";
     case "answer-question":
       return state.battle?.phase === "awaiting-answer";
     case "dismiss-feedback":
@@ -126,6 +134,7 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
     world: null,
     dialogue: null,
     battle: null,
+    screenBefore: null,
     lastTurn: null,
     notice: deps.save.isAvailable() ? null : { kind: "storage-unavailable" },
   };
@@ -273,6 +282,14 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
             balance: deps.balance, rng: deps.rng, replayLesson: true,
           });
           commit({ ...state, dialogue });
+          return;
+        }
+        case "open-journal": {
+          commit({ ...state, screen: "journal", screenBefore: state.screen });
+          return;
+        }
+        case "close-journal": {
+          commit({ ...state, screen: state.screenBefore ?? "world" });
           return;
         }
         case "step-world": {

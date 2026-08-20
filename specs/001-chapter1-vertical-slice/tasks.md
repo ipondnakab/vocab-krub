@@ -425,32 +425,44 @@ verified they fail on the original bug before fixing it.
 
 **Independent Test**: Drive mastery with a scripted answer sequence, then open the journal.
 
-- [ ] **T079** [US4] Implement the review pool: mark a word `encountered` on first battle, and include
+- [x] **T079** [US4] Implement the review pool: mark a word `encountered` on first battle, and include
       review questions at `balance.questions.reviewProportion` of a battle's draws (FR-020).
-- [ ] **T080** [US4] Test review selection: the configured proportion is respected over many turns; an
+- [x] **T080** [US4] Test review selection: the configured proportion is respected over many turns; an
       empty review pool falls back to the monster's word without error; review questions record
       mastery normally.
-- [ ] **T081** [P] [US4] Build `src/components/journal/MasteryStars.tsx` and
+- [x] **T081** [P] [US4] Build `src/components/journal/MasteryStars.tsx` and
       `ComponentChecklist.tsx` using the contracted star assets.
-- [ ] **T082** [US4] Build `src/components/journal/WordJournal.tsx` — the word list with per-word
+- [x] **T082** [US4] Build `src/components/journal/WordJournal.tsx` — the word list with per-word
       mastery percentage and per-component mastered state (FR-028), openable from the world and from
       battle.
-- [ ] **T083** [P] [US4] Add the in-battle mastery indicator showing the word's progress alongside its
+- [x] **T083** [P] [US4] Add the in-battle mastery indicator showing the word's progress alongside its
       HP, making explicit that **HP and knowledge are different things** (FR-029, and the concept
       document's dual-bar display).
-- [ ] **T084** [US4] Implement the word-mastered moment: five stars and a restoration beat when the
+- [x] **T084** [US4] Implement the word-mastered moment: five stars and a restoration beat when the
       last component completes (FR-026).
-- [ ] **T085** [US4] Test mastery survival across defeat, flee, quit, and reload (FR-027) — never
+- [x] **T085** [US4] Test mastery survival across defeat, flee, quit, and reload (FR-027) — never
       reduced by any of them.
-- [ ] **T086** [US4] Integration test `tests/integration/mastery-progression.test.ts`: a full scripted
+- [x] **T086** [US4] Integration test `tests/integration/mastery-progression.test.ts`: a full scripted
       playthrough of one word from 0% to MASTERED through real battles, asserting exact state after
       each answer.
-- [ ] **T087** [US4] Verify SC-004: every question level 1–5 appears at least once in a normal
+- [x] **T087** [US4] Verify SC-004: every question level 1–5 appears at least once in a normal
       playthrough, asserted over the shipped content.
-- [ ] **T088** [P] [US4] Verify SC-003 progress: confirm the content counts required for Chapter 1 are
+- [x] **T088** [P] [US4] Verify SC-003 progress: confirm the content counts required for Chapter 1 are
       tracked and reported by the content tests as authoring proceeds.
 
-**Checkpoint**: Learning is visible to the player and reinforced by repeated exposure.
+**Checkpoint**: ✅ **COMPLETE (2026-08-20)** — 246 tests pass, lint/typecheck/build clean.
+
+T079/T080 were already satisfied by Phase 3: the review pool, the configurable proportion, and
+the empty-pool fallback all shipped with question selection and are covered by
+`tests/unit/questionSelect.test.ts`. Verified rather than rebuilt.
+
+The dual display the concept document asks for is live and confirmed in a browser: the monster's
+HP bar and the word's ความเข้าใจ stars sit side by side, so it is unmissable that beating a word
+and understanding it are different things (FR-029).
+
+T088 reports Chapter 1's content counts against the SC-003 minimums rather than failing on them.
+Grammar, NPCs, items, and pets are already at shipping size; vocabulary and monsters are not, and
+T117/T119 close that gap. A test that fails on unfinished authoring would just get skipped.
 
 ---
 

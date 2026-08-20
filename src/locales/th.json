@@ -40,5 +40,8 @@
   "dialogue.correction": "ยังไม่ใช่นะ คำตอบคือ \"{answer}\"",
   "dialogue.replayLesson": "ขอฟังอีกครั้ง",
   "dialogue.advanceHint": "กด Enter เพื่อไปต่อ",
-  "world.interactHint": "กด E เพื่อพูดคุย"
+  "world.interactHint": "กด E เพื่อพูดคุย",
+  "mastery.wordMastered": "เชี่ยวชาญคำว่า \"{word}\" แล้ว",
+  "mastery.componentMastered": "จำได้แล้ว: {part}",
+  "mastery.restored": "คำนี้กลับมาเป็นตัวของมันเองอีกครั้ง"
 }

@@ -40,5 +40,8 @@
   "dialogue.correction": "Not quite. The answer is \"{answer}\".",
   "dialogue.replayLesson": "Tell me again",
   "dialogue.advanceHint": "Press Enter to continue",
-  "world.interactHint": "Press E to talk"
+  "world.interactHint": "Press E to talk",
+  "mastery.wordMastered": "You have mastered \"{word}\"",
+  "mastery.componentMastered": "Remembered: {part}",
+  "mastery.restored": "This word is itself again."
 }

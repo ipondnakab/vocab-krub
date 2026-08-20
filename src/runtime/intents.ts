@@ -30,6 +30,8 @@ export type Intent =
   | { type: "advance-dialogue" }
   | { type: "answer-practice"; optionIndex: number }
   | { type: "close-dialogue" }
-  | { type: "replay-lesson" };
+  | { type: "replay-lesson" }
+  | { type: "open-journal" }
+  | { type: "close-journal" };
 
 export type IntentType = Intent["type"];

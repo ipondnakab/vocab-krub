@@ -310,3 +310,108 @@ canvas, img[data-pixel] { image-rendering: pixelated; }
 
 .worldhud__row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
 .worldhud__locale { padding: 0.35rem 0.6rem; font-size: 0.55rem; }
+
+/* ---------------------------------------------------------------- journal */
+
+.stars { display: inline-flex; gap: 2px; align-items: center; }
+
+.journal {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--ground-deep) 82%, transparent);
+}
+
+.journal__panel { width: min(100%, 820px); max-height: 84dvh; display: grid; gap: 0.9rem; }
+.journal__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.journal__title { font-size: 0.85rem; color: var(--accent); }
+
+.journal__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 1rem;
+  min-height: 0;
+}
+
+@media (max-width: 44rem) { .journal__body { grid-template-columns: minmax(0, 1fr); } }
+
+.journal__list {
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+  max-height: 52dvh;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.journal__entry {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--panel-raised);
+  color: var(--ink);
+  box-shadow: 0 0 0 var(--px) var(--edge);
+}
+
+.journal__entry:hover, .journal__entry:focus-visible { box-shadow: 0 0 0 var(--px) var(--accent); outline: none; }
+.journal__entry--active { box-shadow: 0 0 0 var(--px) var(--accent); background: var(--edge); }
+
+.journal__word { font-family: var(--font-display), monospace; font-size: 0.7rem; }
+.journal__word--big { font-size: 1rem; color: var(--accent); }
+.journal__badge { margin-left: auto; font-size: 0.65rem; color: var(--accent); }
+
+.journal__detail { display: grid; gap: 0.6rem; align-content: start; overflow-y: auto; min-height: 0; max-height: 52dvh; }
+.journal__detailhead { display: flex; align-items: center; gap: 0.8rem; }
+
+.checklist { list-style: none; display: grid; gap: 0.3rem; }
+.checklist__item { display: flex; align-items: baseline; gap: 0.6rem; color: var(--ink-dim); }
+.checklist__item--done { color: var(--ink); }
+.checklist__mark { color: var(--edge-bright); font-family: var(--font-display), monospace; font-size: 0.6rem; }
+.checklist__item--done .checklist__mark { color: var(--correct); }
+.checklist__label { min-width: 8rem; }
+.checklist__detail { color: var(--accent); font-family: var(--font-display), monospace; font-size: 0.62rem; }
+
+/* ---------------------------------------------------------------- battle mastery readout */
+
+/*
+ * FR-029, and the concept document's dual-bar display. Shown right beside the monster's HP so
+ * the difference is unmissable: the bar is the fight, the stars are what you actually know.
+ * Beating a word is not the same as understanding it.
+ */
+.masterytag { display: flex; align-items: center; gap: 0.5rem; }
+.masterytag__label { color: var(--ink-dim); }
+
+/* ---------------------------------------------------------------- mastery moment */
+
+/*
+ * The biggest celebration in the game. It must read as a word coming HOME, not as a kill —
+ * warm, calm, rising. Constitution Principle I.
+ */
+.moment {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  animation: moment-in 420ms ease-out;
+}
+
+.moment__box { display: grid; justify-items: center; gap: 0.5rem; text-align: center; }
+.moment__title { font-family: var(--font-display), monospace; font-size: 0.8rem; color: var(--accent); }
+.moment__note { color: var(--ink-dim); }
+
+@keyframes moment-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
