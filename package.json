@@ -6,7 +6,7 @@
   "description": "A 2D JRPG where the player learns English by playing a real RPG. Stage 1: the single-player learning campaign.",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run generate:placeholders && next build",
     "start": "next start",
     "test": "vitest run",
     "test:watch": "vitest",
