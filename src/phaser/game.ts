@@ -2,6 +2,7 @@ import Phaser from "phaser";
 import { BattleScene } from "./scenes/BattleScene";
 import { BootScene } from "./scenes/BootScene";
 import { PreloadScene } from "./scenes/PreloadScene";
+import { WorldScene } from "./scenes/WorldScene";
 import type { GameStore } from "../runtime/GameStore";
 
 export const GAME_WIDTH = 960;
@@ -37,7 +38,7 @@ export function createPhaserGame(parent: HTMLElement, store: GameStore): PhaserG
     pixelArt: true,
     roundPixels: true,
     scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
-    scene: [PreloadScene, BootScene, BattleScene],
+    scene: [PreloadScene, BootScene, WorldScene, BattleScene],
   });
 
   // Scenes read the store from the registry rather than importing it, which keeps them free of

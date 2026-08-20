@@ -26,3 +26,25 @@ export const MONSTER_FRAMES = { idle: 0, hurt: 1, attack: 2, restored: 3 } as co
 export function monsterSheet(monsterId: string): SpriteSheetSpec {
   return { key: `monster:${monsterId}`, path: `monsters/${monsterId}.png`, ...MONSTER_FRAME };
 }
+
+/** Contract § 3: a separate single-frame 32x32 sprite for the overworld. */
+export function monsterOverworld(monsterId: string): { key: string; path: string } {
+  return { key: `overworld:${monsterId}`, path: `monsters/${monsterId}-overworld.png` };
+}
+
+export function characterSheet(id: string): SpriteSheetSpec {
+  return { key: `char:${id}`, path: `characters/${id}.png`, ...CHARACTER_FRAME };
+}
+
+export function tilesetImage(mapId: string): { key: string; path: string } {
+  return { key: `tiles:${mapId}`, path: `tilesets/${mapId}.png` };
+}
+
+export function tilemapKey(mapId: string): string {
+  return `tilemap:${mapId}`;
+}
+
+/** Contract § 2 row order: 0 down, 1 left, 2 right, 3 up. Columns: idle, step A, idle, step B. */
+export const CHARACTER_ROWS = { down: 0, left: 1, right: 2, up: 3 } as const;
+export const CHARACTER_COLUMNS = 4;
+export const WALK_FPS = 8;

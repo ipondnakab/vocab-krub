@@ -36,6 +36,20 @@ const STAGE_TWO_PACKAGES = [
   },
 ];
 
+/**
+ * Turbopack does not resolve `./foo.js` to `./foo.ts`. tsc and vitest both do, so this mistake
+ * typechecks clean, tests green, and then fails only at `next build`.
+ *
+ * NOTE: ESLint flat config REPLACES a rule's options when a later block redefines it — it does
+ * not merge. So this pattern must be repeated in every block that sets `no-restricted-imports`,
+ * or it silently vanishes for those files. That is exactly how it failed to fire the first time.
+ */
+const NO_JS_SPECIFIER = {
+  group: ["./*.js", "../*.js", "./**/*.js", "../**/*.js"],
+  message:
+    "Use an extensionless relative import. moduleResolution is 'bundler'; a .js specifier resolves under tsc and vitest but NOT under Turbopack, so it breaks only at build time.",
+};
+
 const RULES_LAYER_MESSAGE =
   "src/core and src/content are framework-free game rules. They must run in a plain Node test with no browser, no renderer, and no SSR hazard. Move this import to src/runtime, src/components, or src/phaser.";
 
@@ -52,7 +66,13 @@ export default tseslint.config(
   // ---------------------------------------------------------------------------
   {
     rules: {
-      "no-restricted-imports": ["error", { paths: STAGE_TWO_PACKAGES }],
+      "no-restricted-imports": [
+        "error",
+        {
+          paths: STAGE_TWO_PACKAGES,
+          patterns: [NO_JS_SPECIFIER],
+        },
+      ],
       "@typescript-eslint/no-explicit-any": "error",
     },
   },
@@ -75,6 +95,7 @@ export default tseslint.config(
             { name: "next", message: RULES_LAYER_MESSAGE },
           ],
           patterns: [
+            NO_JS_SPECIFIER,
             {
               group: [
                 "next/*",
@@ -140,6 +161,7 @@ export default tseslint.config(
             },
           ],
           patterns: [
+            NO_JS_SPECIFIER,
             {
               group: ["@/phaser", "@/phaser/*", "@/components", "@/components/*"],
               message:
@@ -169,6 +191,7 @@ export default tseslint.config(
             },
           ],
           patterns: [
+            NO_JS_SPECIFIER,
             {
               group: ["@/phaser/scenes/*", "@/phaser/sprites/*"],
               message:
@@ -203,6 +226,7 @@ export default tseslint.config(
             },
           ],
           patterns: [
+            NO_JS_SPECIFIER,
             {
               group: ["@/components", "@/components/*"],
               message:
@@ -220,7 +244,7 @@ export default tseslint.config(
   {
     files: ["tests/**/*.ts", "scripts/**/*.ts"],
     rules: {
-      "no-restricted-imports": ["error", { paths: STAGE_TWO_PACKAGES }],
+      "no-restricted-imports": ["error", { paths: STAGE_TWO_PACKAGES, patterns: [NO_JS_SPECIFIER] }],
       "no-restricted-properties": "off",
     },
   },

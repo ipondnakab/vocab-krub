@@ -42,6 +42,21 @@ export class PreloadScene extends Phaser.Scene {
 
   create(): void {
     const store = this.registry.get("store") as GameStore;
-    this.scene.start(store.getSnapshot().battle ? "Battle" : "Boot");
+    const state = store.getSnapshot();
+    if (state.battle) {
+      this.scene.start("Battle");
+      return;
+    }
+    // The world map arrives asynchronously; Boot holds the screen until it does.
+    if (state.world) {
+      this.scene.start("World");
+      return;
+    }
+    this.scene.start("Boot");
+    const unsubscribe = store.subscribe(() => {
+      const next = store.getSnapshot();
+      if (next.battle) { unsubscribe(); this.scene.start("Battle"); }
+      else if (next.world) { unsubscribe(); this.scene.start("World"); }
+    });
   }
 }

@@ -321,39 +321,53 @@ visible monsters and choose to fight them.
 
 **Independent Test**: `/play?map=village` with battles stubbed. Walk the full route.
 
-- [ ] **T055** [US2] Implement `src/core/world/movement.ts` — four-direction grid movement with
+- [x] **T055** [US2] Implement `src/core/world/movement.ts` — four-direction grid movement with
       collision against impassable tiles and map bounds (FR-030), as pure functions over a tile grid.
       Kept in core so collision is testable without Phaser.
-- [ ] **T056** [US2] Test movement: moves in all four directions; blocked by a colliding tile; blocked
+- [x] **T056** [US2] Test movement: moves in all four directions; blocked by a colliding tile; blocked
       by map bounds; **never ends inside an obstacle**; diagonal input resolves to a single axis.
-- [ ] **T057** [US2] Implement `src/core/world/mapData.ts` — parse a `.tmj` into a core-side map model:
+- [x] **T057** [US2] Implement `src/core/world/mapData.ts` — parse a `.tmj` into a core-side map model:
       collision grid, spawns, transitions. Validate the six contracted layer names and fail loudly on
       a missing one.
-- [ ] **T058** [US2] Test map parsing: all six layers present; a missing layer fails with the layer
+- [x] **T058** [US2] Test map parsing: all six layers present; a missing layer fails with the layer
       named; spawns resolve to real npc and monster ids; **every transition has a counterpart in its
       destination map**.
-- [ ] **T059** [US2] Implement `src/phaser/scenes/WorldScene.ts`: render tilemap layers in contracted
+- [x] **T059** [US2] Implement `src/phaser/scenes/WorldScene.ts`: render tilemap layers in contracted
       order (`ground`, `decoration`, entities, `above`), camera follow, player sprite.
-- [ ] **T060** [US2] Implement player movement and the four-direction walk animation per the sprite
+- [x] **T060** [US2] Implement player movement and the four-direction walk animation per the sprite
       sheet contract (rows down/left/right/up, columns idle/A/idle/B at 8 fps), driven by `move`
       intents.
-- [ ] **T061** [P] [US2] Implement map transitions (FR-031): stepping on a transition object loads the
+- [x] **T061** [P] [US2] Implement map transitions (FR-031): stepping on a transition object loads the
       target map and places the player at the arrival tile facing the contracted direction. Handle a
       failed map load with an error notice, never a black screen.
-- [ ] **T062** [P] [US2] Implement monster entities from the `spawns` layer with patrol movement
+- [x] **T062** [P] [US2] Implement monster entities from the `spawns` layer with patrol movement
       bounded by `patrolRadius`.
-- [ ] **T063** [US2] Implement contact-to-battle (FR-032): touching a monster starts a battle against
+- [x] **T063** [US2] Implement contact-to-battle (FR-032): touching a monster starts a battle against
       its word and returns to the map afterwards at the player's position.
-- [ ] **T064** [US2] Implement defeated-monster removal — no respawn within the same map visit
+- [x] **T064** [US2] Implement defeated-monster removal — no respawn within the same map visit
       (FR-033), and never respawning under the player on return. Test the tracking rule in core.
-- [ ] **T065** [P] [US2] Build `src/components/hud/WorldHud.tsx` — the exploration HUD: player HP,
+- [x] **T065** [P] [US2] Build `src/components/hud/WorldHud.tsx` — the exploration HUD: player HP,
       gold, level, and the journal and menu buttons.
-- [ ] **T066** [P] [US2] Build the three village / forest / cave map layouts using placeholder
+- [x] **T066** [P] [US2] Build the three village / forest / cave map layouts using placeholder
       tilesets, with a walkable route through all three and sensible monster placement.
-- [ ] **T067** [US2] Verify the exploration guarantee: from any position on any map, movement is
+- [x] **T067** [US2] Verify the exploration guarantee: from any position on any map, movement is
       available and no quiz appears unprompted (Principle I).
 
-**Checkpoint**: The world is walkable and delivers the player to battles by their own choice.
+**Checkpoint**: ✅ **COMPLETE (2026-08-20)** — 219 tests pass, lint/typecheck/build clean, and
+exploration was driven in a real browser: village → forest transition, then walking into the cave
+boss started the battle (140/140, Thai prompt, no flee offered).
+
+Found by driving it, not by testing it:
+- **Quick taps were dropped.** Movement only polled held keys in `update()`, so a key pressed and
+  released between frames was never seen. Tapping a direction and having nothing happen is the
+  most frustrating thing a grid RPG can do. Now a `keydown` event moves immediately and `update()`
+  only handles hold-to-repeat, sharing one throttle so the two paths cannot double-step.
+- **The camera was zoomed too far out** — 32px tiles read as a postage stamp at 1x.
+
+Also fixed: ESLint flat config **replaces** a rule's options when a later block redefines it
+rather than merging them, so the repo-wide `.js`-specifier guard silently vanished inside every
+layer-scoped block. The pattern is now a shared constant repeated in all six blocks, and it was
+verified firing in each layer rather than assumed.
 
 ---
 

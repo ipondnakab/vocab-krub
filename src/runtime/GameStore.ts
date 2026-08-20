@@ -8,6 +8,7 @@ import type { Locale } from "../core/i18n/i18n";
 import { createNewPlayer, type PlayerState } from "../core/player/playerState";
 import type { Rng } from "../core/rng/rng";
 import type { SaveRepository } from "../core/save/SaveRepository";
+import { enterMap, movePlayer, removeMonster, stepPatrol, type WorldState } from "../core/world/worldState";
 import type { Intent } from "./intents";
 
 /**
@@ -31,6 +32,7 @@ export interface Notice {
 export interface GameState {
   screen: Screen;
   player: PlayerState;
+  world: WorldState | null;
   battle: BattleState | null;
   /** The last resolved turn, so renderers can animate what just happened. */
   lastTurn: BattleTurnResult | null;
@@ -70,6 +72,13 @@ function canDispatch(intent: Intent, state: GameState): boolean {
       return state.screen === "title";
     case "start-battle":
       return state.battle === null;
+    case "enter-map":
+      return true;
+    // Exploration is never blocked (FR-006 / Principle I) — but not DURING a battle, because
+    // the player is standing in a fight, not on a map.
+    case "move":
+    case "step-world":
+      return state.battle === null && state.world !== null && state.screen === "world";
     case "answer-question":
       return state.battle?.phase === "awaiting-answer";
     case "dismiss-feedback":
@@ -98,6 +107,7 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
   let state: GameState = {
     screen: "title",
     player: freshPlayer(),
+    world: null,
     battle: null,
     lastTurn: null,
     notice: deps.save.isAvailable() ? null : { kind: "storage-unavailable" },
@@ -134,7 +144,7 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
         case "new-game": {
           const player = freshPlayer();
           deps.save.save(player);
-          commit({ ...state, screen: "world", player, battle: null, lastTurn: null });
+          commit({ ...state, screen: "world", player, world: null, battle: null, lastTurn: null });
           return;
         }
         case "continue-game": {
@@ -154,6 +164,67 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
         }
         case "dismiss-notice": {
           commit({ ...state, notice: null });
+          return;
+        }
+        case "enter-map": {
+          const world = enterMap(intent.map, state.player);
+          // The map's own player-start is authoritative on a fresh game; an arriving transition
+          // has already written the arrival tile into player.location.
+          const start = intent.map.playerStart;
+          const arriving = state.world?.pendingTransition ?? null;
+          const location = arriving
+            ? { mapId: intent.map.id, x: arriving.targetX, y: arriving.targetY, facing: arriving.facing }
+            : state.player.location.mapId === intent.map.id
+              ? state.player.location
+              : {
+                  mapId: intent.map.id,
+                  x: start?.x ?? state.player.location.x,
+                  y: start?.y ?? state.player.location.y,
+                  facing: start?.facing ?? state.player.location.facing,
+                };
+          commit({ ...state, screen: "world", world, player: { ...state.player, location } });
+          return;
+        }
+        case "move": {
+          const outcome = movePlayer(state.world!, state.player, intent.direction);
+          switch (outcome.kind) {
+            case "blocked":
+              commit({
+                ...state,
+                player: { ...state.player, location: { ...state.player.location, facing: outcome.facing } },
+              });
+              return;
+            case "moved":
+              commit({
+                ...state,
+                player: {
+                  ...state.player,
+                  location: { ...state.player.location, x: outcome.x, y: outcome.y, facing: outcome.facing },
+                },
+              });
+              return;
+            case "transition":
+              // Map files load asynchronously, so the store records the intent and the client
+              // fetches, parses, and dispatches `enter-map`. Keeping fetch out of dispatch is
+              // what keeps every rule here synchronous and testable.
+              commit({ ...state, world: outcome.world });
+              return;
+            case "encounter": {
+              const battle = createBattle({
+                monsterId: outcome.monsterId,
+                player: state.player,
+                content: deps.content,
+                balance: deps.balance,
+                rng: deps.rng,
+              });
+              commit({ ...state, screen: "battle", battle, player: battle.player, lastTurn: null });
+              return;
+            }
+          }
+          return;
+        }
+        case "step-world": {
+          commit({ ...state, world: stepPatrol(state.world!, state.player, deps.rng) });
           return;
         }
         case "start-battle": {
@@ -181,9 +252,21 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
           return;
         }
         case "leave-battle": {
-          const player = endBattle(state.battle!);
+          const battle = state.battle!;
+          let player = endBattle(battle);
+
+          // FR-033: a restored word does not come back. Recorded on the player so it survives
+          // save/load, and removed from the live map so it is gone the moment you look up.
+          let world = state.world;
+          if (battle.outcome === "victory") {
+            if (!player.monstersDefeated.includes(battle.monsterId)) {
+              player = { ...player, monstersDefeated: [...player.monstersDefeated, battle.monsterId] };
+            }
+            if (world) world = removeMonster(world, battle.monsterId);
+          }
+
           deps.save.save(player);
-          commit({ ...state, screen: "world", player, battle: null, lastTurn: null });
+          commit({ ...state, screen: "world", player, world, battle: null, lastTurn: null });
           return;
         }
       }
