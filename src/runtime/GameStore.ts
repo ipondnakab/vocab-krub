@@ -6,6 +6,11 @@ import {
 import {
   applyDefeatPenalty, applyRewards, equip, type RewardOutcome,
 } from "../core/progression/rewards";
+import {
+  advanceChallenge, answerChallenge, chapterOfMonster, finishChallenge, isChallengeComplete,
+  isChallengeUnlocked, recordBossDefeated, startChallenge,
+  type ChallengeResult, type ChallengeState,
+} from "../core/chapter/challenge";
 import type { ContentIndex } from "../core/content/loadContent";
 import type { Locale } from "../core/i18n/i18n";
 import { createNewPlayer, type PlayerState } from "../core/player/playerState";
@@ -29,7 +34,7 @@ import type { Intent } from "./intents";
  * mastery updated.
  */
 
-export type Screen = "title" | "world" | "battle" | "dialogue" | "journal";
+export type Screen = "title" | "world" | "battle" | "dialogue" | "challenge" | "journal";
 
 export interface Notice {
   kind: "storage-unavailable" | "save-unreadable" | "content-error";
@@ -41,6 +46,9 @@ export interface GameState {
   player: PlayerState;
   world: WorldState | null;
   dialogue: DialogueState | null;
+  challenge: ChallengeState | null;
+  /** Set once the guard has scored the attempt, so the outcome can be shown in character. */
+  challengeResult: ChallengeResult | null;
   battle: BattleState | null;
   /** Where the journal was opened from, so closing it returns you there rather than to the map. */
   screenBefore: Screen | null;
@@ -120,6 +128,14 @@ function canDispatch(intent: Intent, state: GameState): boolean {
       return state.battle?.phase === "awaiting-answer" && state.battle.petUsesRemaining > 0;
     case "equip":
       return state.battle === null;
+    case "start-challenge":
+      return state.challenge === null && state.battle === null;
+    case "answer-challenge":
+      return state.challenge !== null && state.challenge.feedback === null && state.challenge.outcome === null;
+    case "advance-challenge":
+      return state.challenge?.feedback !== null && state.challenge !== null;
+    case "close-challenge":
+      return state.challenge !== null;
     case "leave-battle":
       return state.battle?.phase === "ended";
     case "new-game":
@@ -144,6 +160,8 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
     player: freshPlayer(),
     world: null,
     dialogue: null,
+    challenge: null,
+    challengeResult: null,
     battle: null,
     screenBefore: null,
     lastTurn: null,
@@ -285,6 +303,19 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
           const { x, y } = facingTile(state.player.location, state.player.location.facing);
           const npc = npcAt(world, x, y);
           if (!npc) return; // Nothing to talk to. Not an error — just air.
+
+          // The guard is a gate, not a conversation, once the boss has fallen.
+          const guardedChapter = deps.content.chapters.find(
+            (c) => c.challenge.guardNpcId === npc.npcId,
+          );
+          if (guardedChapter && isChallengeUnlocked(state.player, guardedChapter.id)) {
+            const challenge = startChallenge({
+              chapterId: guardedChapter.id, player: state.player,
+              content: deps.content, balance: deps.balance, rng: deps.rng,
+            });
+            commit({ ...state, screen: "challenge", challenge, challengeResult: null });
+            return;
+          }
           const dialogue = startDialogue({
             npcId: npc.npcId, player: state.player, content: deps.content, balance: deps.balance, rng: deps.rng,
           });
@@ -346,6 +377,42 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
           applyTurn(dismissFeedback(state.battle!, battleDeps));
           return;
         }
+        case "start-challenge": {
+          const challenge = startChallenge({
+            chapterId: intent.chapterId, player: state.player,
+            content: deps.content, balance: deps.balance, rng: deps.rng,
+          });
+          commit({ ...state, screen: "challenge", challenge, challengeResult: null });
+          return;
+        }
+        case "answer-challenge": {
+          const result = answerChallenge(
+            state.challenge!, intent.optionIndex, state.player, deps.content, deps.balance,
+          );
+          commit({ ...state, challenge: result.state, player: result.player });
+          return;
+        }
+        case "advance-challenge": {
+          const advanced = advanceChallenge(state.challenge!);
+          if (!isChallengeComplete(advanced)) {
+            commit({ ...state, challenge: advanced });
+            return;
+          }
+          // FR-048: the chapter completes and its reward lands ONLY on a pass.
+          const scored = finishChallenge(advanced, state.player, deps.content, deps.balance);
+          deps.save.save(scored.player);
+          commit({
+            ...state,
+            challenge: { ...advanced, outcome: scored.passed ? "passed" : "failed" },
+            challengeResult: scored,
+            player: scored.player,
+          });
+          return;
+        }
+        case "close-challenge": {
+          commit({ ...state, screen: "world", challenge: null, challengeResult: null });
+          return;
+        }
         case "use-pet-ability": {
           const battle = usePetAbility(state.battle!, battleDeps);
           commit({ ...state, battle });
@@ -385,6 +452,12 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
               player = { ...player, monstersDefeated: [...player.monstersDefeated, battle.monsterId] };
             }
             if (world) world = removeMonster(world, battle.monsterId);
+
+            // FR-045: restoring the chapter boss is what opens the castle gate.
+            if (battle.isBoss) {
+              const chapterId = chapterOfMonster(battle.monsterId, deps.content);
+              if (chapterId) player = recordBossDefeated(player, chapterId);
+            }
           }
 
           deps.save.save(player);

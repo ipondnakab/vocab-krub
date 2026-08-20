@@ -34,6 +34,10 @@ export type Intent =
   | { type: "open-journal" }
   | { type: "close-journal" }
   | { type: "use-pet-ability" }
-  | { type: "equip"; itemId: string };
+  | { type: "equip"; itemId: string }
+  | { type: "start-challenge"; chapterId: string }
+  | { type: "answer-challenge"; optionIndex: number }
+  | { type: "advance-challenge" }
+  | { type: "close-challenge" };
 
 export type IntentType = Intent["type"];

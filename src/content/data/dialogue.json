@@ -50,8 +50,12 @@
           "en": "Stop. This gate opens only for those who can still remember the words."
         },
         {
-          "th": "ถ้าอยากผ่านไป ต้องตอบคำถามของข้าให้ได้",
-          "en": "If you wish to pass, you must answer my questions."
+          "th": "แต่เจ้ายังไม่พร้อม ในถ้ำมีคำหนึ่งที่ถูกลืมจนกลายเป็นปีศาจ ไปปลดปล่อยมันก่อน",
+          "en": "But you are not ready. In the cave there is a word so forgotten it became a monster. Go and free it first."
+        },
+        {
+          "th": "เมื่อเจ้าทำได้แล้ว ค่อยกลับมาหาข้า",
+          "en": "When you have done that, come back to me."
         }
       ],
       "next": null,
@@ -63,8 +67,8 @@
       "speakerId": "guard-thanet",
       "lines": [
         {
-          "th": "เจ้ากลับมาอีกแล้วหรือ พร้อมจะลองอีกครั้งไหม",
-          "en": "You have returned. Are you ready to try again?"
+          "th": "เจ้ากลับมาแล้ว ข้าจะถามเจ้าด้วยคำที่เจ้าได้เรียนมาทั้งบท",
+          "en": "You have returned. I will ask you about everything this chapter taught you."
         }
       ],
       "next": null,

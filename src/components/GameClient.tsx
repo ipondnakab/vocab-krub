@@ -15,6 +15,7 @@ import { WorldHud } from "./hud/WorldHud";
 import { DialogueBox } from "./dialogue/DialogueBox";
 import { WordJournal } from "./journal/WordJournal";
 import { MasteryMoment } from "./battle/MasteryMoment";
+import { ChallengePanel } from "./challenge/ChallengePanel";
 import { loadMapFile } from "../platform/loadMapFile";
 import { parseMap } from "../core/world/mapData";
 import type { Locale } from "../core/i18n/i18n";
@@ -132,6 +133,7 @@ export function GameClient() {
         <GameCanvas store={boot.store} />
         <WorldHud />
         <DialogueBox />
+        <ChallengePanel />
         <BattleHud />
         <MasteryMoment />
         <WordJournal />

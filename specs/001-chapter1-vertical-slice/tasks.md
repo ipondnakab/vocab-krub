@@ -523,27 +523,38 @@ re-authored.
 
 **Independent Test**: `/play?challenge=chapter-1`; pass it and fail it.
 
-- [ ] **T100** [US6] Implement `src/core/chapter/challenge.ts` — `startChallenge`, `answerChallenge`,
+- [x] **T100** [US6] Implement `src/core/chapter/challenge.ts` — `startChallenge`, `answerChallenge`,
       `finishChallenge`, `isChallengeUnlocked`, with `ChallengeState` carrying **no HP field** so the
       challenge structurally cannot damage the player (FR-047).
-- [ ] **T101** [US6] Implement the boss gate: the challenge is unavailable until the chapter boss is
+- [x] **T101** [US6] Implement the boss gate: the challenge is unavailable until the chapter boss is
       defeated (FR-045). Test both states.
-- [ ] **T102** [US6] Implement challenge question drawing restricted to the chapter's declared
+- [x] **T102** [US6] Implement challenge question drawing restricted to the chapter's declared
       vocabulary and grammar (FR-046), freshly drawn per attempt (FR-047).
-- [ ] **T103** [US6] Test challenge scoring: at exactly the pass threshold it passes; one below fails;
+- [x] **T103** [US6] Test challenge scoring: at exactly the pass threshold it passes; one below fails;
       the chapter is marked complete and its reward granted **only** on a pass (FR-048); failure
       preserves all mastery gained during the attempt; retries are unlimited and redraw questions.
-- [ ] **T104** [US6] Implement weakest-topic reporting so the guard names what the player struggled
+- [x] **T104** [US6] Implement weakest-topic reporting so the guard names what the player struggled
       with, in character.
-- [ ] **T105** [US6] Build `src/components/challenge/ChallengePanel.tsx` — dialogue-framed, in the
+- [x] **T105** [US6] Build `src/components/challenge/ChallengePanel.tsx` — dialogue-framed, in the
       guard's voice, with visible progress. A story moment at a gate, not an exam screen (Principle I).
-- [ ] **T106** [US6] Implement the gate opening and the chapter completion sequence on a pass.
-- [ ] **T107** [US6] Author the chapter challenge content: the guard's dialogue for the challenge, for
+- [x] **T106** [US6] Implement the gate opening and the chapter completion sequence on a pass.
+- [x] **T107** [US6] Author the chapter challenge content: the guard's dialogue for the challenge, for
       passing, and for each failure case, in both locales.
-- [ ] **T108** [US6] Integration test `tests/integration/chapter-completion.test.ts`: boss defeated →
+- [x] **T108** [US6] Integration test `tests/integration/chapter-completion.test.ts`: boss defeated →
       challenge unlocked → passed → chapter complete → reward granted, end to end.
 
-**Checkpoint**: Chapter 1 has a beginning, a middle, and an earned ending.
+**Checkpoint**: ✅ **COMPLETE (2026-08-20)** — 307 tests pass, lint/typecheck/build clean.
+
+`ChallengeState` has no HP field and this module contains no damage function, so FR-047 holds by
+construction: a future change cannot accidentally reintroduce damage here because there is
+nothing to reintroduce it into. A test asserts the absent keys explicitly.
+
+Talking to the guard is context-sensitive. Before the boss falls he tells you to go and free the
+word in the cave; after, the same interaction opens the challenge instead of small talk — a gate,
+not a menu option.
+
+Failure names the weakest topics in his voice. A failure that does not say what to study is just
+a wall.
 
 ---
 

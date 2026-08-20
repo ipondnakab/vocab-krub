@@ -50,5 +50,14 @@
   "victory.item": "ได้รับ {name}",
   "victory.levelUp": "เลเวลอัพ! ตอนนี้เลเวล {level}",
   "victory.unlock": "ปลดล็อก {name} — เพราะคุณเชี่ยวชาญคำศัพท์แล้ว {count} คำ",
-  "defeat.goldLost": "คุณทำเหรียญทองหล่นไป {amount} เหรียญ แต่ความรู้ยังอยู่ครบ"
+  "defeat.goldLost": "คุณทำเหรียญทองหล่นไป {amount} เหรียญ แต่ความรู้ยังอยู่ครบ",
+  "challenge.title": "ด่านทดสอบประจำบท",
+  "challenge.progress": "ข้อ {current} จาก {total}",
+  "challenge.passed": "ประตูเปิดแล้ว",
+  "challenge.failed": "ประตูยังไม่เปิด",
+  "challenge.passedNote": "เจ้าจำคำได้แล้วจริงๆ ผ่านไปได้",
+  "challenge.failedNote": "ยังไม่พอ กลับไปทบทวนแล้วค่อยมาใหม่",
+  "challenge.weakest": "เจ้ายังไม่แม่นเรื่อง: {topics}",
+  "challenge.retry": "ลองอีกครั้ง",
+  "challenge.score": "ตอบถูก {correct} จาก {total}"
 }

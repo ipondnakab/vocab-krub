@@ -50,5 +50,14 @@
   "victory.item": "Received {name}",
   "victory.levelUp": "Level up! You are now level {level}",
   "victory.unlock": "Unlocked {name} — for mastering {count} words",
-  "defeat.goldLost": "You dropped {amount} gold. Your knowledge is untouched."
+  "defeat.goldLost": "You dropped {amount} gold. Your knowledge is untouched.",
+  "challenge.title": "Chapter Challenge",
+  "challenge.progress": "Question {current} of {total}",
+  "challenge.passed": "The gate opens",
+  "challenge.failed": "The gate stays shut",
+  "challenge.passedNote": "You do remember the words. Pass through.",
+  "challenge.failedNote": "Not yet. Go and study, then come back to me.",
+  "challenge.weakest": "You were weakest on: {topics}",
+  "challenge.retry": "Try again",
+  "challenge.score": "{correct} of {total} correct"
 }

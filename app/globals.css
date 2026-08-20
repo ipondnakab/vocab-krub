@@ -421,3 +421,5 @@ canvas, img[data-pixel] { image-rendering: pixelated; }
 .summary { display: grid; gap: 0.4rem; }
 .summary__list { list-style: none; display: grid; gap: 0.25rem; color: var(--ink); }
 .summary__unlock { color: var(--accent); }
+
+.challenge__progress { margin-left: auto; }
