@@ -35,5 +35,10 @@
   "notice.storageUnavailable": "This device cannot save progress. Your progress will be lost when you close the game.",
   "notice.saveUnreadable": "Your save file could not be read. You can start a new game.",
   "notice.contentError": "The game content failed to load",
-  "battle.victoryNote": "The word was not destroyed. It was freed from The Silence, and it remembers you."
+  "battle.victoryNote": "The word was not destroyed. It was freed from The Silence, and it remembers you.",
+  "dialogue.praise": "That's right! See, you do remember.",
+  "dialogue.correction": "Not quite. The answer is \"{answer}\".",
+  "dialogue.replayLesson": "Tell me again",
+  "dialogue.advanceHint": "Press Enter to continue",
+  "world.interactHint": "Press E to talk"
 }

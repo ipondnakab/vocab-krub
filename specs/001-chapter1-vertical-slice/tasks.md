@@ -378,33 +378,44 @@ that costs no HP.
 
 **Independent Test**: `/play?map=village`, approach the teacher, complete the lesson.
 
-- [ ] **T068** [US3] Implement `src/core/dialogue/dialogue.ts` — dialogue tree traversal as pure
+- [x] **T068** [US3] Implement `src/core/dialogue/dialogue.ts` — dialogue tree traversal as pure
       state: current node, advance, branch, embedded practice questions, completion.
-- [ ] **T069** [US3] Test dialogue traversal: multi-page lines advance in order; branches resolve;
+- [x] **T069** [US3] Test dialogue traversal: multi-page lines advance in order; branches resolve;
       practice questions surface in sequence; completion is reported once; a dangling `next` id is
       caught at content validation, not at runtime.
-- [ ] **T070** [US3] Implement `src/core/progression/grammar.ts` — record a topic as learned on first
+- [x] **T070** [US3] Implement `src/core/progression/grammar.ts` — record a topic as learned on first
       lesson completion (FR-036) and expose learned-topic queries to question selection. Test that
       learning a topic makes its dependent questions eligible and that replay does not double-record.
-- [ ] **T071** [P] [US3] Build `src/components/dialogue/DialogueBox.tsx` and `PortraitFrame.tsx` —
+- [x] **T071** [P] [US3] Build `src/components/dialogue/DialogueBox.tsx` and `PortraitFrame.tsx` —
       CSS-framed box, portrait, speaker name, paginated text, advance indicator. Thai text renders
       through the DOM, which is the whole reason for this boundary (R-014).
-- [ ] **T072** [US3] Wire dialogue rendering to store state, with movement locked for the
+- [x] **T072** [US3] Wire dialogue rendering to store state, with movement locked for the
       conversation's duration (FR-034).
-- [ ] **T073** [US3] Implement NPC interaction in `WorldScene`: interact when adjacent **and facing**
+- [x] **T073** [US3] Implement NPC interaction in `WorldScene`: interact when adjacent **and facing**
       the NPC; only one interaction owns input at a time.
-- [ ] **T074** [US3] Build `src/components/dialogue/PracticePrompt.tsx` — practice questions rendered
+- [x] **T074** [US3] Build `src/components/dialogue/PracticePrompt.tsx` — practice questions rendered
       **inside the dialogue frame in the NPC's voice**, not on a separate quiz screen (FR-035). This is
       the Principle I requirement that keeps lessons diegetic.
-- [ ] **T075** [US3] Implement in-character correction on a wrong practice answer with **no HP or
+- [x] **T075** [US3] Implement in-character correction on a wrong practice answer with **no HP or
       resource loss** (FR-038). Test that no player state except mastery changes during NPC practice.
-- [ ] **T076** [US3] Implement post-lesson dialogue variation and lesson replay on request (FR-037).
-- [ ] **T077** [US3] Author the 6 NPCs and their dialogue: teacher (Present Simple), scholar (Past
+- [x] **T076** [US3] Implement post-lesson dialogue variation and lesson replay on request (FR-037).
+- [x] **T077** [US3] Author the 6 NPCs and their dialogue: teacher (Present Simple), scholar (Past
       Simple), merchant, two villagers, and the castle guard. Data only.
-- [ ] **T078** [P] [US3] Add a locale switch to the HUD and verify every dialogue and question string
+- [x] **T078** [P] [US3] Add a locale switch to the HUD and verify every dialogue and question string
       renders correctly in Thai, including stacked tone marks.
 
-**Checkpoint**: Grammar is taught by characters in the world, and unlocks dependent question types.
+**Checkpoint**: ✅ **COMPLETE (2026-08-20)** — 236 tests pass, lint/typecheck/build clean, and a
+lesson was played in a real browser: walked up to ครูมะลิ, pressed E, read the Present Simple
+lesson, and answered practice **inside the dialogue frame with her portrait still showing**.
+
+FR-038 is structural rather than promised: `answerPractice` is never handed anything that can
+reduce HP, and the browser check asserts zero HP bars exist inside the dialogue box.
+
+Found while authoring: the placeholder generator placed NPCs on a naive stride (`6 + i * 8`),
+which ran the sixth villager to tile x=46 on a 20-tile map. The existing map tests did **not**
+catch it — an out-of-bounds collision read returns `undefined`, which is falsy, so a spawn past
+the east edge looked perfectly walkable. Added explicit in-bounds and no-overlap assertions, and
+verified they fail on the original bug before fixing it.
 
 ---
 

@@ -267,9 +267,17 @@ export function generatePlaceholders(outDir: string): string[] {
   emit("ui/star-filled.png", star(true));
   emit("ui/star-empty.png", star(false));
 
+  // Hand-placed so every NPC lands inside the map, off the path row, and clear of the interior
+  // obstacles. A naive stride ran the sixth villager straight off the east edge.
+  const NPC_TILES: ReadonlyArray<readonly [number, number]> = [
+    [3, 4], [8, 4], [12, 5], [16, 6], [5, 10], [10, 11],
+  ];
   const npcSpawns: SpawnObject[] = npcs.npcs
     .filter((n) => n.mapId === "village")
-    .map((n, i) => ({ type: "npc", tileX: 6 + i * 8, tileY: 6, properties: { npcId: n.id, facing: "down" } }));
+    .map((n, i) => {
+      const tile = NPC_TILES[i % NPC_TILES.length] as readonly [number, number];
+      return { type: "npc", tileX: tile[0], tileY: tile[1], properties: { npcId: n.id, facing: "down" } };
+    });
 
   emit("maps/village.tmj", tiledMap("village",
     [{ type: "player-start", tileX: 3, tileY: 7, properties: { facing: "down" } }, ...npcSpawns],

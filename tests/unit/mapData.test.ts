@@ -104,6 +104,32 @@ describe("spawns", () => {
     }
   });
 
+  it("places every spawn INSIDE the map", () => {
+    // Not covered by the collision check: an out-of-bounds read returns undefined, which is
+    // falsy, so a spawn placed past the east edge looked perfectly walkable. Six NPCs on a
+    // 20-tile map found this the honest way.
+    for (const id of MAP_IDS) {
+      const map = maps.get(id)!;
+      for (const spawn of map.spawns) {
+        expect(spawn.x, `${id} ${spawn.kind} x`).toBeGreaterThanOrEqual(0);
+        expect(spawn.y, `${id} ${spawn.kind} y`).toBeGreaterThanOrEqual(0);
+        expect(spawn.x, `${id} ${spawn.kind} x past east edge`).toBeLessThan(map.width);
+        expect(spawn.y, `${id} ${spawn.kind} y past south edge`).toBeLessThan(map.height);
+      }
+      for (const t of map.transitions) {
+        expect(t.x).toBeLessThan(map.width);
+        expect(t.y).toBeLessThan(map.height);
+      }
+    }
+  });
+
+  it("never stacks two spawns on the same tile", () => {
+    for (const id of MAP_IDS) {
+      const tiles = maps.get(id)!.spawns.map((s) => `${s.x},${s.y}`);
+      expect(new Set(tiles).size, `${id} has overlapping spawns`).toBe(tiles.length);
+    }
+  });
+
   it("references only real npc and monster ids", () => {
     for (const id of MAP_IDS) {
       for (const spawn of maps.get(id)!.spawns) {

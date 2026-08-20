@@ -35,5 +35,10 @@
   "notice.storageUnavailable": "อุปกรณ์นี้บันทึกความคืบหน้าไม่ได้ ความคืบหน้าจะหายเมื่อปิดเกม",
   "notice.saveUnreadable": "อ่านไฟล์บันทึกไม่ได้ คุณสามารถเริ่มเกมใหม่ได้",
   "notice.contentError": "โหลดเนื้อหาเกมไม่สำเร็จ",
-  "battle.victoryNote": "คำนี้ไม่ได้ถูกทำลาย แต่ถูกปลดปล่อยจากความเงียบ และจดจำคุณไว้"
+  "battle.victoryNote": "คำนี้ไม่ได้ถูกทำลาย แต่ถูกปลดปล่อยจากความเงียบ และจดจำคุณไว้",
+  "dialogue.praise": "ถูกต้อง! เห็นไหม เธอจำได้",
+  "dialogue.correction": "ยังไม่ใช่นะ คำตอบคือ \"{answer}\"",
+  "dialogue.replayLesson": "ขอฟังอีกครั้ง",
+  "dialogue.advanceHint": "กด Enter เพื่อไปต่อ",
+  "world.interactHint": "กด E เพื่อพูดคุย"
 }

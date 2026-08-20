@@ -12,6 +12,7 @@ import { createGameStore } from "../runtime/GameStore";
 import { GameStoreProvider } from "../runtime/GameContext";
 import { BattleHud } from "./battle/BattleHud";
 import { WorldHud } from "./hud/WorldHud";
+import { DialogueBox } from "./dialogue/DialogueBox";
 import { loadMapFile } from "../platform/loadMapFile";
 import { parseMap } from "../core/world/mapData";
 import type { Locale } from "../core/i18n/i18n";
@@ -54,12 +55,12 @@ export function GameClient() {
       store.dispatch({ type: "new-game" });
       if (battleId) store.dispatch({ type: "start-battle", monsterId: battleId });
 
-      return { store, error: null as string | null, startMapId: mapId ?? "village" };
+      return { store, content, error: null as string | null, startMapId: mapId ?? "village" };
     } catch (error) {
       // Content failures surface as a readable screen, never a half-loaded world (FR-050).
       const message =
         error instanceof ContentValidationError ? error.message : String(error);
-      return { store: null, error: message, startMapId: "village" };
+      return { store: null, content: null, error: message, startMapId: "village" };
     }
   }, [battleId, seedParam, localeParam, mapId]);
 
@@ -112,7 +113,7 @@ export function GameClient() {
     );
   }
 
-  if (boot.error || !boot.store) {
+  if (boot.error || !boot.store || !boot.content) {
     return (
       <main style={{ padding: "2rem" }}>
         <div className="panel">
@@ -124,10 +125,11 @@ export function GameClient() {
   }
 
   return (
-    <GameStoreProvider store={boot.store}>
+    <GameStoreProvider store={boot.store} content={boot.content}>
       <div className="stage">
         <GameCanvas store={boot.store} />
         <WorldHud />
+        <DialogueBox />
         <BattleHud />
       </div>
     </GameStoreProvider>

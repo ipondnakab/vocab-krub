@@ -2,6 +2,7 @@ import type { BalanceConfig, Question } from "../../content/schemas/index";
 import type { ContentIndex } from "../content/loadContent";
 import type { PlayerState } from "../player/playerState";
 import type { Rng } from "../rng/rng";
+import { isGrammarLearned } from "../progression/grammar";
 
 /**
  * Question selection (FR-013, FR-018, FR-019, FR-020, research R-004).
@@ -41,7 +42,7 @@ interface Weighted {
 
 /** FR-018: a question whose grammar the player has not learned is never asked. */
 function grammarSatisfied(question: Question, player: PlayerState): boolean {
-  return question.requiresGrammar === null || player.grammarLearned.includes(question.requiresGrammar);
+  return question.requiresGrammar === null || isGrammarLearned(player, question.requiresGrammar);
 }
 
 function componentWeight(question: Question, player: PlayerState, balance: BalanceConfig): number {

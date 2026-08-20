@@ -264,3 +264,49 @@ canvas, img[data-pixel] { image-rendering: pixelated; }
 
 .worldhud__panel { pointer-events: auto; display: grid; gap: 0.6rem; padding: 0.7rem 0.9rem; }
 .worldhud__stats { display: flex; gap: 1.25rem; }
+
+/* ---------------------------------------------------------------- dialogue */
+
+/*
+ * Anchored to the bottom like a JRPG text window, with the portrait beside the name. Practice
+ * questions render inside this same frame — a lesson must never become a separate quiz screen
+ * (Constitution Principle I).
+ */
+.dialogue {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1rem;
+  width: min(100%, 960px);
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.dialogue__box { pointer-events: auto; display: grid; gap: 0.8rem; }
+
+.dialogue__head { display: flex; align-items: center; gap: 0.8rem; }
+
+.dialogue__portrait {
+  width: 64px;
+  height: 64px;
+  background: var(--ground-deep);
+  box-shadow: 0 0 0 var(--px) var(--edge);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.dialogue__portrait img { display: block; }
+
+.dialogue__name {
+  font-family: var(--font-display), monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+}
+
+.dialogue__verdict { font-size: 1.05rem; }
+.dialogue__verdict--right { color: var(--correct); }
+.dialogue__verdict--wrong { color: var(--wrong); }
+.dialogue__hint { align-self: center; }
+
+.worldhud__row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.worldhud__locale { padding: 0.35rem 0.6rem; font-size: 0.55rem; }

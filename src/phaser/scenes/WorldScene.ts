@@ -129,7 +129,15 @@ export class WorldScene extends Phaser.Scene {
       // moves immediately and update() only handles the repeat while a key stays held.
       keyboard.on("keydown", (event: KeyboardEvent) => {
         const direction = KEY_DIRECTIONS[event.code];
-        if (direction) this.tryMove(direction, this.time.now);
+        if (direction) {
+          this.tryMove(direction, this.time.now);
+          return;
+        }
+        // Talk to whoever you are FACING (FR-034). Core decides whether anyone is there; a
+        // blocked step still turns the player, which is what makes this feel natural.
+        if (event.code === "KeyE" || event.code === "Enter" || event.code === "Space") {
+          this.store.dispatch({ type: "interact" });
+        }
       });
     }
 

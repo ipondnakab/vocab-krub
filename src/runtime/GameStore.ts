@@ -8,7 +8,11 @@ import type { Locale } from "../core/i18n/i18n";
 import { createNewPlayer, type PlayerState } from "../core/player/playerState";
 import type { Rng } from "../core/rng/rng";
 import type { SaveRepository } from "../core/save/SaveRepository";
-import { enterMap, movePlayer, removeMonster, stepPatrol, type WorldState } from "../core/world/worldState";
+import { enterMap, movePlayer, npcAt, removeMonster, stepPatrol, type WorldState } from "../core/world/worldState";
+import {
+  advanceDialogue, answerPractice, completeDialogue, startDialogue, type DialogueState,
+} from "../core/dialogue/dialogue";
+import { facingTile } from "../core/world/movement";
 import type { Intent } from "./intents";
 
 /**
@@ -22,7 +26,7 @@ import type { Intent } from "./intents";
  * mastery updated.
  */
 
-export type Screen = "title" | "world" | "battle" | "journal";
+export type Screen = "title" | "world" | "battle" | "dialogue" | "journal";
 
 export interface Notice {
   kind: "storage-unavailable" | "save-unreadable" | "content-error";
@@ -33,6 +37,7 @@ export interface GameState {
   screen: Screen;
   player: PlayerState;
   world: WorldState | null;
+  dialogue: DialogueState | null;
   battle: BattleState | null;
   /** The last resolved turn, so renderers can animate what just happened. */
   lastTurn: BattleTurnResult | null;
@@ -78,7 +83,18 @@ function canDispatch(intent: Intent, state: GameState): boolean {
     // the player is standing in a fight, not on a map.
     case "move":
     case "step-world":
-      return state.battle === null && state.world !== null && state.screen === "world";
+      // Movement is locked for the duration of a conversation (FR-034) and during a battle.
+      return state.battle === null && state.dialogue === null && state.world !== null && state.screen === "world";
+    case "interact":
+      return state.battle === null && state.dialogue === null && state.world !== null && state.screen === "world";
+    case "advance-dialogue":
+      return state.dialogue !== null && state.dialogue.phase !== "practice";
+    case "answer-practice":
+      return state.dialogue?.phase === "practice";
+    case "close-dialogue":
+      return state.dialogue?.phase === "ended";
+    case "replay-lesson":
+      return state.dialogue !== null;
     case "answer-question":
       return state.battle?.phase === "awaiting-answer";
     case "dismiss-feedback":
@@ -108,6 +124,7 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
     screen: "title",
     player: freshPlayer(),
     world: null,
+    dialogue: null,
     battle: null,
     lastTurn: null,
     notice: deps.save.isAvailable() ? null : { kind: "storage-unavailable" },
@@ -144,7 +161,7 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
         case "new-game": {
           const player = freshPlayer();
           deps.save.save(player);
-          commit({ ...state, screen: "world", player, world: null, battle: null, lastTurn: null });
+          commit({ ...state, screen: "world", player, world: null, dialogue: null, battle: null, lastTurn: null });
           return;
         }
         case "continue-game": {
@@ -221,6 +238,41 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
               return;
             }
           }
+          return;
+        }
+        case "interact": {
+          const world = state.world!;
+          const { x, y } = facingTile(state.player.location, state.player.location.facing);
+          const npc = npcAt(world, x, y);
+          if (!npc) return; // Nothing to talk to. Not an error — just air.
+          const dialogue = startDialogue({
+            npcId: npc.npcId, player: state.player, content: deps.content, balance: deps.balance, rng: deps.rng,
+          });
+          commit({ ...state, screen: "dialogue", dialogue });
+          return;
+        }
+        case "advance-dialogue": {
+          commit({ ...state, dialogue: advanceDialogue(state.dialogue!, battleDeps) });
+          return;
+        }
+        case "answer-practice": {
+          const result = answerPractice(state.dialogue!, intent.optionIndex, state.player, battleDeps);
+          commit({ ...state, dialogue: result.state, player: result.player });
+          return;
+        }
+        case "close-dialogue": {
+          // FR-036: the topic is recorded here, on completion, not when the lesson opened.
+          const player = completeDialogue(state.dialogue!, state.player);
+          deps.save.save(player);
+          commit({ ...state, screen: "world", dialogue: null, player });
+          return;
+        }
+        case "replay-lesson": {
+          const dialogue = startDialogue({
+            npcId: state.dialogue!.npcId, player: state.player, content: deps.content,
+            balance: deps.balance, rng: deps.rng, replayLesson: true,
+          });
+          commit({ ...state, dialogue });
           return;
         }
         case "step-world": {

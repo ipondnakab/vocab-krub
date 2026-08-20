@@ -6,10 +6,34 @@ import { useDispatch, useGameState } from "./useGameState";
 import type { GameState } from "./GameStore";
 import type { Intent } from "./intents";
 
-const StoreContext = createContext<GameStore | null>(null);
+import type { ContentIndex } from "../core/content/loadContent";
 
-export function GameStoreProvider({ store, children }: { store: GameStore; children: React.ReactNode }) {
-  return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
+const StoreContext = createContext<GameStore | null>(null);
+const ContentContext = createContext<ContentIndex | null>(null);
+
+export function GameStoreProvider({
+  store, content, children,
+}: {
+  store: GameStore;
+  content: ContentIndex;
+  children: React.ReactNode;
+}) {
+  return (
+    <StoreContext.Provider value={store}>
+      <ContentContext.Provider value={content}>{children}</ContentContext.Provider>
+    </StoreContext.Provider>
+  );
+}
+
+/**
+ * Validated content. Separate from GameState on purpose: GameState is for things that change,
+ * and putting an immutable index in it would make every selector diff a large object for no
+ * reason.
+ */
+export function useContent(): ContentIndex {
+  const content = useContext(ContentContext);
+  if (!content) throw new Error("useContent must be used inside a GameStoreProvider");
+  return content;
 }
 
 function useStore(): GameStore {

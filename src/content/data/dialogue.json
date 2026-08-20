@@ -4,20 +4,38 @@
       "id": "dlg-mali-intro",
       "speakerId": "teacher-mali",
       "lines": [
-        { "th": "เมื่อก่อนฉันเคยบอกเด็กๆ ได้ว่าฉันทำอะไรทุกวัน... แต่ตอนนี้คำพวกนั้นหายไปหมดแล้ว", "en": "I used to be able to tell the children what I do each day. Now those words are gone." },
-        { "th": "ช่วยฉันจำมันหน่อยได้ไหม เราเรียกมันว่า Present Simple", "en": "Help me remember them. We call it the Present Simple." },
-        { "th": "เวลาพูดถึงสิ่งที่ทำเป็นประจำ เราใช้กริยารูปปัจจุบัน เช่น I go to school every day.", "en": "For things we do regularly, we use the base verb: I go to school every day." }
+        {
+          "th": "เมื่อก่อนฉันเคยบอกเด็กๆ ได้ว่าฉันทำอะไรทุกวัน... แต่ตอนนี้คำพวกนั้นหายไปหมดแล้ว",
+          "en": "I used to be able to tell the children what I do each day. Now those words are gone."
+        },
+        {
+          "th": "ช่วยฉันจำมันหน่อยได้ไหม เราเรียกมันว่า Present Simple",
+          "en": "Help me remember them. We call it the Present Simple."
+        },
+        {
+          "th": "เวลาพูดถึงสิ่งที่ทำเป็นประจำ เราใช้กริยารูปปัจจุบัน เช่น I go to school every day.",
+          "en": "For things we do regularly, we use the base verb: I go to school every day."
+        }
       ],
       "next": null,
-      "practiceQuestionIds": ["q-go-base", "q-eat-base"],
+      "practiceQuestionIds": [
+        "q-go-base",
+        "q-eat-base"
+      ],
       "teachesGrammarId": "present-simple"
     },
     {
       "id": "dlg-mali-repeat",
       "speakerId": "teacher-mali",
       "lines": [
-        { "th": "ขอบคุณนะ ตอนนี้ฉันบอกได้แล้วว่า I teach here every day", "en": "Thank you. Now I can say it again: I teach here every day." },
-        { "th": "ถ้าอยากทบทวน Present Simple อีกครั้ง มาหาฉันได้เสมอ", "en": "Come back any time you want to go over the Present Simple again." }
+        {
+          "th": "ขอบคุณนะ ตอนนี้ฉันบอกได้แล้วว่า I teach here every day",
+          "en": "Thank you. Now I can say it again: I teach here every day."
+        },
+        {
+          "th": "ถ้าอยากทบทวน Present Simple อีกครั้ง มาหาฉันได้เสมอ",
+          "en": "Come back any time you want to go over the Present Simple again."
+        }
       ],
       "next": null,
       "practiceQuestionIds": [],
@@ -27,8 +45,14 @@
       "id": "dlg-thanet-intro",
       "speakerId": "guard-thanet",
       "lines": [
-        { "th": "หยุดก่อน ประตูนี้เปิดให้เฉพาะผู้ที่จำคำได้เท่านั้น", "en": "Stop. This gate opens only for those who can still remember the words." },
-        { "th": "ถ้าอยากผ่านไป ต้องตอบคำถามของข้าให้ได้", "en": "If you wish to pass, you must answer my questions." }
+        {
+          "th": "หยุดก่อน ประตูนี้เปิดให้เฉพาะผู้ที่จำคำได้เท่านั้น",
+          "en": "Stop. This gate opens only for those who can still remember the words."
+        },
+        {
+          "th": "ถ้าอยากผ่านไป ต้องตอบคำถามของข้าให้ได้",
+          "en": "If you wish to pass, you must answer my questions."
+        }
       ],
       "next": null,
       "practiceQuestionIds": [],
@@ -38,7 +62,150 @@
       "id": "dlg-thanet-repeat",
       "speakerId": "guard-thanet",
       "lines": [
-        { "th": "เจ้ากลับมาอีกแล้วหรือ พร้อมจะลองอีกครั้งไหม", "en": "You have returned. Are you ready to try again?" }
+        {
+          "th": "เจ้ากลับมาอีกแล้วหรือ พร้อมจะลองอีกครั้งไหม",
+          "en": "You have returned. Are you ready to try again?"
+        }
+      ],
+      "next": null,
+      "practiceQuestionIds": [],
+      "teachesGrammarId": null
+    },
+    {
+      "id": "dlg-arun-intro",
+      "speakerId": "scholar-arun",
+      "lines": [
+        {
+          "th": "ข้าจดบันทึกทุกอย่างที่เกิดขึ้นเมื่อวาน... แต่ตอนนี้ข้าเขียนมันไม่ได้อีกแล้ว",
+          "en": "I used to write down everything that happened yesterday. Now I cannot write it at all."
+        },
+        {
+          "th": "สิ่งที่จบไปแล้วต้องใช้รูปอดีต เราเรียกมันว่า Past Simple",
+          "en": "Things that already finished need the past form. We call it the Past Simple."
+        },
+        {
+          "th": "กริยาปกติเติม -ed แต่กริยาอปกติเปลี่ยนรูป go กลายเป็น went, eat กลายเป็น ate, see กลายเป็น saw",
+          "en": "Regular verbs add -ed, but irregular ones change: go becomes went, eat becomes ate, see becomes saw."
+        },
+        {
+          "th": "ลองช่วยข้าจำดูสิ",
+          "en": "Help me remember. Try these."
+        }
+      ],
+      "next": null,
+      "practiceQuestionIds": [
+        "q-go-past",
+        "q-eat-past",
+        "q-see-past"
+      ],
+      "teachesGrammarId": "past-simple"
+    },
+    {
+      "id": "dlg-arun-repeat",
+      "speakerId": "scholar-arun",
+      "lines": [
+        {
+          "th": "ขอบใจเจ้า ตอนนี้ข้าเขียนได้แล้วว่า I saw the light yesterday",
+          "en": "Thank you. Now I can write it again: I saw the light yesterday."
+        }
+      ],
+      "next": null,
+      "practiceQuestionIds": [],
+      "teachesGrammarId": null
+    },
+    {
+      "id": "dlg-som-intro",
+      "speakerId": "merchant-som",
+      "lines": [
+        {
+          "th": "ฉันขายน้ำกับผลไม้ แต่ลืมไปแล้วว่าจะเรียกของพวกนี้ว่าอะไร",
+          "en": "I sell water and fruit, but I have forgotten what to call these things."
+        },
+        {
+          "th": "ถ้าเธอช่วยฉันจำคำได้ ฉันจะขายของให้ในราคาถูก",
+          "en": "If you help me remember the words, I will sell to you cheaply."
+        }
+      ],
+      "next": null,
+      "practiceQuestionIds": [
+        "q-water-meaning",
+        "q-water-context"
+      ],
+      "teachesGrammarId": null
+    },
+    {
+      "id": "dlg-som-repeat",
+      "speakerId": "merchant-som",
+      "lines": [
+        {
+          "th": "น้ำเย็นๆ ไหมจ๊ะ ตอนนี้ฉันเรียกมันว่า water ได้แล้ว",
+          "en": "Cold water? I can call it water again now."
+        }
+      ],
+      "next": null,
+      "practiceQuestionIds": [],
+      "teachesGrammarId": null
+    },
+    {
+      "id": "dlg-kai-intro",
+      "speakerId": "villager-kai",
+      "lines": [
+        {
+          "th": "ตั้งแต่ความเงียบมาถึง ฉันบอกไม่ได้ด้วยซ้ำว่าฉันทำอะไรทุกวัน",
+          "en": "Since The Silence came, I cannot even say what I do each day."
+        },
+        {
+          "th": "แต่ฉันยังจำเพื่อนของฉันได้นะ อย่างน้อยก็ยังจำได้",
+          "en": "But I still remember my friends. At least I still have that."
+        }
+      ],
+      "next": null,
+      "practiceQuestionIds": [
+        "q-friend-meaning",
+        "q-friend-plural"
+      ],
+      "teachesGrammarId": null
+    },
+    {
+      "id": "dlg-kai-repeat",
+      "speakerId": "villager-kai",
+      "lines": [
+        {
+          "th": "เพื่อนของฉันกลับมาแล้ว ขอบคุณนะ",
+          "en": "My friends came back. Thank you."
+        }
+      ],
+      "next": null,
+      "practiceQuestionIds": [],
+      "teachesGrammarId": null
+    },
+    {
+      "id": "dlg-nong-intro",
+      "speakerId": "villager-nong",
+      "lines": [
+        {
+          "th": "อย่าเข้าไปในถ้ำนะ มีบางอย่างอยู่ในนั้น มันเคยเป็นคำที่ทุกคนใช้ทุกวัน",
+          "en": "Do not go into the cave. Something lives there. It used to be a word everyone used every day."
+        },
+        {
+          "th": "มันไม่ได้ชั่วร้ายหรอก มันแค่ถูกลืม",
+          "en": "It is not evil. It was just forgotten."
+        }
+      ],
+      "next": null,
+      "practiceQuestionIds": [
+        "q-go-meaning"
+      ],
+      "teachesGrammarId": null
+    },
+    {
+      "id": "dlg-nong-repeat",
+      "speakerId": "villager-nong",
+      "lines": [
+        {
+          "th": "เธอไปเจอมันมาแล้วใช่ไหม แล้วมันเป็นยังไงบ้าง",
+          "en": "You met it, did you not? How did it seem to you?"
+        }
       ],
       "next": null,
       "practiceQuestionIds": [],

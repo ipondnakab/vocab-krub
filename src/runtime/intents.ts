@@ -24,6 +24,12 @@ export type Intent =
   | { type: "enter-map"; map: GameMap }
   | { type: "move"; direction: Direction }
   /** Advances monster patrol one tile. Driven by a timer in the world scene. */
-  | { type: "step-world" };
+  | { type: "step-world" }
+  /** Talk to whoever the player is facing (FR-034). */
+  | { type: "interact" }
+  | { type: "advance-dialogue" }
+  | { type: "answer-practice"; optionIndex: number }
+  | { type: "close-dialogue" }
+  | { type: "replay-lesson" };
 
 export type IntentType = Intent["type"];
