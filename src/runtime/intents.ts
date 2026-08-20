@@ -33,6 +33,7 @@ export type Intent =
   | { type: "replay-lesson" }
   | { type: "open-journal" }
   | { type: "close-journal" }
+  | { type: "toggle-minimap" }
   | { type: "use-pet-ability" }
   | { type: "equip"; itemId: string }
   | { type: "start-challenge"; chapterId: string }

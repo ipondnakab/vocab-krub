@@ -53,6 +53,15 @@ export interface GameState {
   battle: BattleState | null;
   /** Where the journal was opened from, so closing it returns you there rather than to the map. */
   screenBefore: Screen | null;
+  /**
+   * Whether the minimap is open (FR-019). Hidden at start, toggled with M.
+   *
+   * Lives here rather than in the component because the minimap unmounts whenever the player
+   * fights, talks, or opens the journal — component state would silently reset the toggle every
+   * time (FR-020). Session state only: never persisted, because a UI preference is not player
+   * progress (FR-016).
+   */
+  minimapOpen: boolean;
   /** The last resolved turn, so renderers can animate what just happened. */
   lastTurn: BattleTurnResult | null;
   /** What the last victory paid out, for the summary screen. Null until a battle is won. */
@@ -119,6 +128,9 @@ function canDispatch(intent: Intent, state: GameState): boolean {
       return state.dialogue === null && state.screen !== "journal";
     case "close-journal":
       return state.screen === "journal";
+    // M does nothing outside exploration — the minimap cannot appear there anyway (FR-021).
+    case "toggle-minimap":
+      return state.screen === "world";
     case "answer-question":
       return state.battle?.phase === "awaiting-answer";
     case "dismiss-feedback":
@@ -165,6 +177,7 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
     challengeResult: null,
     battle: null,
     screenBefore: null,
+    minimapOpen: false,
     lastTurn: null,
     lastRewards: null,
     lastDefeatGoldLost: null,
@@ -371,6 +384,10 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
         }
         case "open-journal": {
           commit({ ...state, screen: "journal", screenBefore: state.screen });
+          return;
+        }
+        case "toggle-minimap": {
+          commit({ ...state, minimapOpen: !state.minimapOpen });
           return;
         }
         case "close-journal": {

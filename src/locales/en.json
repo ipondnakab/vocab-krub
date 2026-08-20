@@ -77,5 +77,6 @@
   "journal.filterNotStarted": "Not started",
   "journal.count": "{count} words",
   "minimap.monstersRemaining": "Monsters",
-  "minimap.lessonsRemaining": "Lessons"
+  "minimap.lessonsRemaining": "Lessons",
+  "world.minimapHint": "Press M for the map"
 }

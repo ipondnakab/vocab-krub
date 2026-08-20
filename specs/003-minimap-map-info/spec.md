@@ -4,7 +4,7 @@
 
 **Created**: 2026-08-20
 
-**Status**: Draft — no open clarifications
+**Status**: Draft — no open clarifications. Revised 2026-08-20: the minimap is toggled, not always visible.
 
 **Input**: User description: "I need to add minimap and map information."
 
@@ -36,8 +36,9 @@ moves to match.
 
 **Acceptance Scenarios**:
 
-1. **Given** the player is on any map, **When** they look at the minimap, **Then** the walkable
-   area, the blocked area, and their own position are all distinguishable at a glance.
+1. **Given** the player is on any map and presses the minimap key, **When** the minimap appears,
+   **Then** the walkable area, the blocked area, and their own position are all distinguishable at
+   a glance.
 2. **Given** the player moves one tile, **When** the move completes, **Then** the marker on the
    minimap moves by one corresponding step.
 3. **Given** the map has exits, **When** the player looks at the minimap, **Then** each exit is
@@ -45,7 +46,9 @@ moves to match.
 4. **Given** the player enters a different map, **When** the new map loads, **Then** the minimap
    redraws for the new map without stale tiles from the previous one.
 5. **Given** the player is in a battle or a conversation, **When** they look at the screen,
-   **Then** the minimap does not obstruct the question or the dialogue.
+   **Then** the minimap is not shown at all, whether or not it was open when they left the map.
+6. **Given** the player opened the minimap, fought a battle, and returned to the map, **When** the
+   map reappears, **Then** the minimap is still open — the toggle is not forgotten mid-session.
 
 ---
 
@@ -106,6 +109,9 @@ player can orient themselves from the map shape alone.
 - What happens if a monster patrols behind the player's own marker? One must remain visible.
 - What happens when a map is much larger than the current 20×15 — does the minimap still fit?
 - What happens during the story opening, before any map has loaded?
+- What happens if the player presses M during a battle or a conversation?
+- What happens if the player presses M repeatedly and quickly?
+- What happens to the toggle when the player changes map — does it stay as they left it?
 
 ## Requirements *(mandatory)*
 
@@ -141,9 +147,21 @@ player can orient themselves from the map shape alone.
   never rendering a blank or a raw identifier.
 - **FR-015**: Map names MUST be authored content, not derived from map file names in code.
 
+### Functional Requirements — Showing and hiding
+
+- **FR-019**: The minimap MUST be hidden when the game starts, and MUST appear and disappear when
+  the player presses **M**.
+- **FR-020**: The toggle MUST survive leaving and returning to the map — a battle, a conversation,
+  or the journal MUST NOT reset it. It need not survive closing the game.
+- **FR-021**: The minimap MUST NOT respond to **M** outside exploration, and MUST NOT appear over a
+  battle, a conversation, the chapter challenge, or the story opening.
+- **FR-022**: Because it is hidden by default, the game MUST tell the player the minimap exists,
+  in the same unobtrusive way the interact hint already does.
+
 ### Functional Requirements — Constraints
 
-- **FR-016**: The feature MUST add no new persisted player state.
+- **FR-016**: The feature MUST add no new persisted player state. The toggle is session state,
+  not player progress — a save file MUST NOT record whether the minimap was open.
 - **FR-017**: The feature MUST introduce no new question type and no new battle mechanic.
 - **FR-018**: All user-visible text MUST resolve through the locale layer in both Thai and English.
 
@@ -168,8 +186,10 @@ player can orient themselves from the map shape alone.
 - **SC-004**: The feature adds zero fields to saved player state, verified by a save round-trip
   test.
 - **SC-005**: The full automated test suite still completes in under 30 seconds.
-- **SC-006**: The minimap never overlaps the question panel, dialogue box, or challenge panel at
-  390 px, 820 px, or 1280 px wide.
+- **SC-006**: When open, the minimap never overlaps the exploration HUD or the question panel,
+  dialogue box, or challenge panel at 390 px, 820 px, or 1280 px wide.
+- **SC-009**: A player who has never used the minimap can discover it and open it within 30 seconds
+  of being asked "where are you on this map?", using only what is on screen.
 - **SC-007**: Both Thai and English are complete for all new text, verified automatically.
 - **SC-008**: Map names are authored in content — adding a map's name requires no source change.
 
@@ -181,8 +201,16 @@ player can orient themselves from the map shape alone.
 - **All entities on the map are shown**, including monsters the player has not met. This matches
   the existing design, where encounters are visible on the map and chosen rather than random —
   hiding them on the minimap would contradict what the player can already see.
-- **The minimap is always visible during exploration** rather than toggled. A toggle adds a control
-  and a state for something small enough to leave on.
+- **The minimap is hidden by default and toggled with M** (FR-019). An earlier draft of this spec
+  assumed the opposite — always visible, on the grounds that a toggle adds a control and a state
+  for something small. That was overruled by the project owner, and the reasoning is sound: the
+  playfield is 960×540, the HUD already occupies a corner, and a permanent minimap spends screen
+  space on information the player only wants occasionally.
+
+  The cost is discoverability — a player who never presses M never learns it exists — which is why
+  FR-022 requires a hint.
+- **M is free.** Movement uses the arrow keys and WASD, interaction uses E, Enter, and Space, and
+  battle answers use A–D and 1–4. Nothing currently binds M.
 - The minimap is hidden during battle, dialogue, the chapter challenge, and the story opening,
   where the player is not navigating.
 - Map names are added to existing chapter content rather than introducing a new content file.
@@ -191,6 +219,8 @@ player can orient themselves from the map shape alone.
 ## Out of Scope
 
 - Fog of war, or any tracking of which tiles the player has visited.
+- Remembering the toggle across sessions — that would be persisted state, which FR-016 forbids.
+- Rebindable keys. **M** is fixed for now.
 - A full-screen or zoomable world map spanning multiple maps.
 - Waypoints, pings, custom markers, or fast travel.
 - Any new persisted player state.

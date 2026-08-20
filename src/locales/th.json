@@ -77,5 +77,6 @@
   "journal.filterNotStarted": "ยังไม่เริ่ม",
   "journal.count": "{count} คำ",
   "minimap.monstersRemaining": "มอนสเตอร์",
-  "minimap.lessonsRemaining": "บทเรียน"
+  "minimap.lessonsRemaining": "บทเรียน",
+  "world.minimapHint": "กด M เพื่อดูแผนที่"
 }

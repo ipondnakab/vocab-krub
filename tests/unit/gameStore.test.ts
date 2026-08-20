@@ -229,3 +229,58 @@ describe("GameStore — battle intents (FR-010)", () => {
     expect(save).toHaveBeenCalledTimes(2); // new-game, then battle end
   });
 });
+
+describe("minimap toggle (FR-019, FR-020, FR-021)", () => {
+  const inWorld = () => {
+    const store = createGameStore(deps());
+    store.dispatch({ type: "new-game" });
+    return store;
+  };
+
+  it("starts hidden", () => {
+    expect(inWorld().getSnapshot().minimapOpen).toBe(false);
+  });
+
+  it("opens and closes on repeated toggles", () => {
+    const store = inWorld();
+    store.dispatch({ type: "toggle-minimap" });
+    expect(store.getSnapshot().minimapOpen).toBe(true);
+    store.dispatch({ type: "toggle-minimap" });
+    expect(store.getSnapshot().minimapOpen).toBe(false);
+  });
+
+  it("is DROPPED outside exploration", () => {
+    const store = inWorld();
+    store.dispatch({ type: "start-battle", monsterId: "monster-eat" });
+    const before = store.getSnapshot();
+    store.dispatch({ type: "toggle-minimap" });
+    expect(store.getSnapshot()).toBe(before);
+  });
+
+  it("survives a battle, so returning to the map does not reset it (FR-020)", () => {
+    // The reason this state lives in the store at all: the minimap component unmounts during a
+    // battle, so component state would silently forget the toggle every fight.
+    const store = inWorld();
+    store.dispatch({ type: "toggle-minimap" });
+    store.dispatch({ type: "start-battle", monsterId: "monster-eat" });
+
+    for (let i = 0; i < 60 && store.getSnapshot().battle?.phase !== "ended"; i += 1) {
+      const battle = store.getSnapshot().battle!;
+      if (battle.phase === "awaiting-answer") {
+        store.dispatch({ type: "answer-question", optionIndex: battle.currentQuestion!.correctIndex });
+      } else {
+        store.dispatch({ type: "dismiss-feedback" });
+      }
+    }
+    store.dispatch({ type: "leave-battle" });
+
+    expect(store.getSnapshot().screen).toBe("world");
+    expect(store.getSnapshot().minimapOpen).toBe(true);
+  });
+
+  it("is never written to a save (FR-016)", () => {
+    const store = inWorld();
+    store.dispatch({ type: "toggle-minimap" });
+    expect(Object.keys(store.getSnapshot().player)).not.toContain("minimapOpen");
+  });
+});

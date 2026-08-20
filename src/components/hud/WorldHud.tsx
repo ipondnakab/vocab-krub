@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { useGame, useGameDispatch } from "../../runtime/GameContext";
 import { createI18n, type Bundles } from "../../core/i18n/i18n";
 import { HpBar } from "../battle/HpBar";
@@ -22,6 +22,25 @@ export function WorldHud() {
   const dispatch = useGameDispatch();
   const t = useMemo(() => createI18n(bundles, player.locale).t, [player.locale]);
 
+  /*
+   * The M key lives HERE, not beside the minimap.
+   *
+   * The minimap unmounts when it is closed, so a listener inside it could never reopen it — the
+   * key would work exactly once. WorldHud stays mounted for the whole of exploration, which also
+   * gives FR-021 for free: M is inert on every other screen because this component is not there.
+   */
+  useEffect(() => {
+    if (screen !== "world") return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.code === "KeyM") {
+        event.preventDefault();
+        dispatch({ type: "toggle-minimap" });
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [screen, dispatch]);
+
   if (screen !== "world") return null;
 
   return (
@@ -36,8 +55,14 @@ export function WorldHud() {
           </span>
         </div>
         <HpBar label={t("hud.hp")} hp={player.hp} maxHp={player.maxHp} variant="player" />
+        {/* Hints stack rather than sharing a row: side by side in an 18rem panel they wrapped
+            mid-phrase ("กด E เพื่อ / พูดคุย"), which is worse than no hint at all. */}
+        <div className="worldhud__hints">
+          <span className="label">{t("world.interactHint")}</span>
+          {/* Hidden by default means a player who never presses M never learns it exists (FR-022). */}
+          <span className="label">{t("world.minimapHint")}</span>
+        </div>
         <div className="worldhud__row">
-          <span className="label dialogue__hint">{t("world.interactHint")}</span>
           {/*
             T078. The switch changes INSTRUCTION only — the English being learned never moves.
             A Thai player and an English player see the same answer options, because those

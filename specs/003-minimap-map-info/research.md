@@ -98,8 +98,12 @@ immediately, rather than after whatever would have written the count.
 
 ## R-304: Keeping the minimap out of the way
 
-**Decision**: The minimap renders only while `screen === "world"`, and is positioned by the same
-CSS layout rules as the rest of the HUD.
+**Decision**: The minimap renders only while `screen === "world"` **and** the player has toggled it
+open, and is positioned by the same CSS layout rules as the rest of the HUD.
+
+**Revised 2026-08-20**: originally the minimap was always visible during exploration. The project
+owner overruled that — it is hidden by default and toggled with **M** (FR-019). The screen gate
+below still applies and is now the second of two conditions rather than the only one.
 
 **Rationale**: FR-006 says it must never obstruct the question panel, the dialogue box, or the
 challenge. The simplest way to guarantee that is for it not to exist on those screens — the player
@@ -111,6 +115,64 @@ pattern exists; the minimap follows it rather than inventing a hiding mechanism.
 **Testing note**: feature 001 shipped a layout defect where the feedback panel pushed the HP bar
 over the monster, and it was invisible to the test suite. Overlap is checked in a browser at the
 three viewport widths named in SC-006, not assumed from the CSS.
+
+The analysis pass found that the panels FR-006 originally named — question, dialogue, challenge —
+all set a different screen, so the minimap could never have collided with them. The collision that
+can actually happen is with the exploration HUD, which shares the world screen and is anchored
+top-left. FR-006 was corrected to say so.
+
+---
+
+## R-306: Where the toggle state lives
+
+**Decision**: In the store, as `ui.minimapOpen`, flipped by a `toggle-minimap` intent. **Not**
+component state, and **not** persisted.
+
+**Rationale**: three constraints pick this uniquely.
+
+1. **It cannot be component state.** The minimap renders only on the world screen, so the component
+   unmounts whenever the player fights, talks, or opens the journal. Component state would reset
+   every time — open the map, win a battle, come back, it is closed again. FR-020 forbids exactly
+   that.
+2. **It cannot be persisted.** FR-016 says the feature adds no save state, and a UI preference is
+   not player progress. Recording it would mean a save schema change for a boolean nobody would
+   miss on reload.
+3. **The store already holds this kind of thing.** `screen` and `screenBefore` are both view state
+   living in `GameState`, and every renderer already reads state through one subscription. Adding a
+   second mechanism for one boolean would be the inconsistency, not the boolean.
+
+**Where the keypress is handled**: in React, beside the minimap, as a `window` keydown listener —
+the same pattern `OptionList` already uses for answering with A–D. Phaser's keyboard handler owns
+movement and interaction because those are world actions; showing a HUD panel is not.
+
+**Alternatives rejected**:
+
+- *Phaser `WorldScene` keydown dispatching the intent* — works, and sits beside the existing key
+  handling. Rejected because it puts a HUD concern in the world renderer, and the listener would
+  keep running on screens where the minimap cannot appear.
+- *A `useRef` in a component above the render gate* — survives unmounting, but hides UI state
+  outside the store where nothing else can see it, including tests.
+- *Persisting the preference* — pleasant, and forbidden by FR-016. Worth revisiting if a settings
+  feature ever adds a preferences record; a boolean does not justify one on its own.
+
+---
+
+## R-307: Discoverability
+
+**Decision**: A hint in the exploration HUD, alongside the existing interact hint (FR-022).
+
+**Rationale**: hidden-by-default has one real cost — a player who never presses M never learns the
+minimap exists, and the feature is invisible to exactly the people who would benefit most.
+
+The HUD already carries `world.interactHint` ("กด E เพื่อพูดคุย" / "Press E to talk"), so the
+pattern, the placement, and the locale keys all exist. A second hint costs one line and removes the
+whole risk.
+
+**Alternatives rejected**:
+
+- *A first-time popup* — a modal to explain a corner map is heavier than the feature.
+- *Nothing at all* — leaves SC-009 unmeetable, and the answer to "why did nobody use the minimap?"
+  would be "nobody knew".
 
 ---
 
@@ -135,5 +197,7 @@ calculation and removes the trap.
 | R-303 | How is "still to do" computed? | Derived on read from existing state; no new persisted fields |
 | R-304 | How does it stay out of the way? | Rendered only on the world screen, like `WorldHud` |
 | R-305 | How does it avoid distortion? | Sized from the map's own aspect ratio, not a fixed box |
+| R-306 | Where does the toggle state live? | `ui.minimapOpen` in the store — component state would reset on every battle, and persisting it would break FR-016 |
+| R-307 | How does anyone find a hidden minimap? | A HUD hint beside the existing interact hint |
 
 **No unresolved NEEDS CLARIFICATION items.** Phase 1 may proceed.

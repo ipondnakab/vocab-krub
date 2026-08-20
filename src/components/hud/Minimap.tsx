@@ -21,6 +21,7 @@ const FACING_DEGREES: Record<Direction, number> = { up: 0, right: 90, down: 180,
 
 export function Minimap() {
   const screen = useGame((s) => s.screen);
+  const minimapOpen = useGame((s) => s.minimapOpen);
   const world = useGame((s) => s.world);
   const player = useGame((s) => s.player);
   const content = useContent();
@@ -30,7 +31,7 @@ export function Minimap() {
   const map = world?.map;
   const terrain = useMemo(() => (map ? buildMinimapTerrain(map) : null), [map?.id]);
 
-  if (screen !== "world" || !world || !terrain) return null;
+  if (screen !== "world" || !minimapOpen || !world || !terrain) return null;
 
   const markers = buildMinimapMarkers(world, player, content);
   const { width, height } = terrain;

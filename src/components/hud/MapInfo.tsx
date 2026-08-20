@@ -16,12 +16,13 @@ const bundles = { th, en } as Bundles;
  */
 export function MapInfo() {
   const screen = useGame((s) => s.screen);
+  const minimapOpen = useGame((s) => s.minimapOpen);
   const world = useGame((s) => s.world);
   const player = useGame((s) => s.player);
   const content = useContent();
   const t = useMemo(() => createI18n(bundles, player.locale).t, [player.locale]);
 
-  if (screen !== "world" || !world) return null;
+  if (screen !== "world" || !minimapOpen || !world) return null;
 
   const mapName = mapDisplayName(world.map.id, content);
   const chapter = chapterOfMap(world.map.id, content);

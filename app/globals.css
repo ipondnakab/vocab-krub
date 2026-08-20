@@ -499,3 +499,8 @@ canvas, img[data-pixel] { image-rendering: pixelated; }
 .journal__group { display: grid; gap: 0.35rem; margin-bottom: 0.8rem; }
 .journal__grouptitle { color: var(--accent); }
 .journal__grouplist { list-style: none; display: grid; gap: 0.35rem; }
+
+/* Hints stack. Side by side in an 18rem panel they wrapped mid-phrase, which reads worse than
+   no hint at all — and the minimap hint is the only thing telling a player the map exists. */
+.worldhud__hints { display: grid; gap: 0.15rem; }
+.worldhud__hints .label { white-space: nowrap; }

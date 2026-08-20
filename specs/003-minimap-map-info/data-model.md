@@ -59,10 +59,25 @@ patrolling every 900 ms must not recompute 300 collision lookups.
 | | Why not |
 |---|---|
 | **Persisted state** | FR-016. Everything above derives in microseconds. A stored count goes stale the moment content changes. |
+| **A persisted minimap preference** | The toggle is session state, not player progress. Recording it would mean a save schema change for a boolean nobody would miss on reload. |
 | **Visited-tile tracking** | Fog of war is out of scope. Tracking it would be the feature's only new persisted state, and would need a save migration. |
 | **A minimap toggle** | A control and a state for something small enough to leave on. |
 | **A minimap image per map** | An asset the owner would have to draw and keep in sync with the `.tmj`. The whole point is that it is derived. |
 | **Any battle or question state** | FR-017. |
+
+---
+
+## 3a. Session state — one boolean
+
+`GameState` gains a single field:
+
+| Field | Type | Notes |
+|---|---|---|
+| `ui.minimapOpen` | `boolean` | Starts `false` (FR-019). Flipped by the `toggle-minimap` intent. **Never persisted** (FR-016). |
+
+It lives in the store rather than in the component because the minimap unmounts whenever the player
+fights, talks, or opens the journal — component state would silently reset the toggle every time
+(FR-020, research R-306).
 
 ---
 

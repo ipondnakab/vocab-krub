@@ -195,7 +195,13 @@ shipped was invisible to the test suite and obvious on screen within seconds.
 | 5 | T023–T026 | US3 (P3) | Map name and chapter title |
 | 6 | T027–T036 | — | Memoization, audits, browser verification |
 
-**Total**: 36 tasks. **Critical path to a useful minimap**: T001–T016.
+- [X] T037 [US1] Add `minimapOpen` to GameState in src/runtime/GameStore.ts and the guarded `toggle-minimap` intent in src/runtime/intents.ts (FR-019, FR-020, FR-021)
+- [X] T038 [US1] Handle the M keypress in src/components/hud/WorldHud.tsx — NOT in Minimap.tsx, which unmounts when closed and could therefore never reopen itself (FR-019)
+- [X] T039 [US1] Gate src/components/hud/Minimap.tsx and src/components/hud/MapInfo.tsx on the toggle (FR-019)
+- [X] T040 [US1] Add the minimap hint to src/components/hud/WorldHud.tsx with locale keys in src/locales/{th,en}.json (FR-022)
+- [X] T041 [P] Test the toggle in tests/unit/gameStore.test.ts: starts hidden, flips, is dropped outside exploration, and survives a battle round trip (FR-019, FR-020, FR-021)
+
+**Total**: 41 tasks. **Critical path to a useful minimap**: T001–T016.
 
 ## Notes
 
