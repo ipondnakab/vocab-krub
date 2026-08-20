@@ -40,8 +40,13 @@ describe("locale bundles", () => {
 
   it("actually contain Thai script in the Thai bundle", () => {
     // Guards against an untranslated bundle copied wholesale from English.
+    // Language endonyms are exempt: a switcher shows each language in its OWN script, so "EN"
+    // stays "EN" in the Thai bundle. Listed by name so nothing else can hide behind it.
+    const ENDONYMS = new Set(["common.localeEndonymEn", "common.localeEndonymTh"]);
     const thaiPattern = /[฀-๿]/;
-    const untranslated = thKeys.filter((k) => !thaiPattern.test((th as Record<string, string>)[k]!));
+    const untranslated = thKeys
+      .filter((k) => !ENDONYMS.has(k))
+      .filter((k) => !thaiPattern.test((th as Record<string, string>)[k]!));
     expect(untranslated, `these Thai entries contain no Thai script: ${untranslated.join(", ")}`).toEqual([]);
   });
 });

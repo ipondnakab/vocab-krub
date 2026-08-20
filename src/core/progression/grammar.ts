@@ -1,4 +1,4 @@
-import type { ContentIndex } from "../content/loadContent";
+
 import type { PlayerState } from "../player/playerState";
 
 /**
@@ -17,9 +17,3 @@ export function learnGrammar(player: PlayerState, topicId: string): PlayerState 
   return { ...player, grammarLearned: [...player.grammarLearned, topicId] };
 }
 
-/** Questions that became askable because of what the player now knows. */
-export function unlockedQuestionCount(player: PlayerState, content: ContentIndex): number {
-  return content.questions.filter(
-    (q) => q.requiresGrammar !== null && isGrammarLearned(player, q.requiresGrammar),
-  ).length;
-}

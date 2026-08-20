@@ -279,3 +279,27 @@ describe("purity", () => {
     expect(JSON.stringify(s)).toBe(snapshot);
   });
 });
+
+describe("flee — the paths that change state", () => {
+  const neverEscape = () => ({ ...deps(), rng: scriptedRng([0.99]) });
+
+  it("KILLS the player when a failed escape lands the finishing blow", () => {
+    // A real state-changing rule with a real consequence: turning to run is not free. Covered
+    // because "you died while fleeing" must resolve as a proper defeat, not a stuck battle.
+    const attack = content.monster(MOB).attack;
+    const frail = player({ hp: attack });
+    const result = attemptFlee(start(MOB, frail), neverEscape());
+
+    expect(result.escaped).toBe(false);
+    expect(result.state.player.hp).toBe(0);
+    expect(result.state.outcome).toBe("defeat");
+    expect(result.state.phase).toBe("ended");
+    expect(result.state.currentQuestion).toBeNull();
+  });
+
+  it("throws if flee is attempted outside the answering phase", () => {
+    const s = start(MOB);
+    const showing = submitAnswer(s, (s.currentQuestion!.correctIndex + 1) % 4, deps()).state;
+    expect(() => attemptFlee(showing, neverEscape())).toThrow(/phase is 'showing-feedback'/);
+  });
+});

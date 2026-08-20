@@ -42,7 +42,8 @@
         "house",
         "city",
         "teacher",
-        "sing"
+        "sing",
+        "dance"
       ],
       "grammarTopicIds": [
         "present-simple",
@@ -56,7 +57,8 @@
         "monster-write",
         "monster-friend",
         "monster-go",
-        "monster-sing"
+        "monster-sing",
+        "monster-dance"
       ],
       "npcIds": [
         "teacher-mali",

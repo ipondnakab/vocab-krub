@@ -387,6 +387,3 @@ export function endBattle(state: BattleState): PlayerState {
   return state.player;
 }
 
-export function isOver(state: BattleState): boolean {
-  return state.phase === "ended";
-}

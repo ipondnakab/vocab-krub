@@ -6,7 +6,6 @@ import {
   markEncountered,
   masteryPercent,
   recordAnswer,
-  unmasteredComponentIds,
   wordsMasteredCount,
 } from "../../src/core/mastery/mastery";
 import type { BalanceConfig, VocabularyWord } from "../../src/content/schemas/index";
@@ -161,7 +160,7 @@ describe("mastery — percentage (FR-026)", () => {
     m = answer(m, last, true);
     expect(masteryPercent(m)).toBe(1);
     expect(isWordMastered(m)).toBe(true);
-    expect(unmasteredComponentIds(m)).toEqual([]);
+    expect(Object.values(m.components).every((c) => c.mastered)).toBe(true);
   });
 
   it("lets a single-form word reach 100%", () => {

@@ -17,6 +17,24 @@ export default defineConfig({
     coverage: {
       include: ["src/core/**"],
       reporter: ["text", "html"],
+      /**
+       * T124 / SC-006. Thresholds so coverage cannot quietly regress.
+       *
+       * Set just below the current numbers rather than at 100%: the remaining gaps are
+       * defensive throws and validation branches that are genuinely unreachable from valid
+       * content (the migration path with only one save version, the "no eligible question"
+       * error that content validation now prevents). Chasing those to 100% would mean writing
+       * tests that assert nothing about behaviour.
+       *
+       * What IS at 100% line coverage is every module that changes player state: battle,
+       * mastery, progression. That is what SC-006 actually asks for.
+       */
+      thresholds: {
+        statements: 90,
+        branches: 78,
+        functions: 95,
+        lines: 92,
+      },
     },
   },
   resolve: {

@@ -85,13 +85,7 @@ export function isWordMastered(mastery: WordMastery): boolean {
   return ids.length > 0 && ids.every((id) => mastery.components[id]?.mastered === true);
 }
 
-export function masteredComponentIds(mastery: WordMastery): string[] {
-  return Object.keys(mastery.components).filter((id) => mastery.components[id]?.mastered);
-}
 
-export function unmasteredComponentIds(mastery: WordMastery): string[] {
-  return Object.keys(mastery.components).filter((id) => !mastery.components[id]?.mastered);
-}
 
 /** Drives equipment unlock thresholds (FR-044). */
 export function wordsMasteredCount(player: PlayerState): number {

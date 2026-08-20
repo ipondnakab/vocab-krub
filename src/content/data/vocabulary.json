@@ -1724,6 +1724,56 @@
           "formId": "past"
         }
       ]
+    },
+    {
+      "id": "dance",
+      "word": "dance",
+      "meaning": {
+        "th": "เต้นรำ",
+        "en": "to move your body to music"
+      },
+      "cefr": "A1",
+      "topic": "daily-life",
+      "difficulty": 2,
+      "forms": [
+        {
+          "id": "base",
+          "text": "dance",
+          "role": "base",
+          "roleLabel": {
+            "th": "รูปปัจจุบัน",
+            "en": "base form"
+          }
+        },
+        {
+          "id": "past",
+          "text": "danced",
+          "role": "past",
+          "roleLabel": {
+            "th": "รูปอดีต",
+            "en": "past"
+          }
+        },
+        {
+          "id": "prp",
+          "text": "dancing",
+          "role": "present-participle",
+          "roleLabel": {
+            "th": "รูปกำลังทำ",
+            "en": "present participle"
+          }
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "I dance every day.",
+          "translation": {
+            "th": "ฉันเต้นรำทุกวัน",
+            "en": "I dance every day."
+          },
+          "formId": "base"
+        }
+      ]
     }
   ]
 }

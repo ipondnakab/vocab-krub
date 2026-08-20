@@ -4070,6 +4070,144 @@
         "th": "คำถามใช้ \"did\" จึงต้องตอบด้วยรูปอดีต \"sang\"",
         "en": "The question uses \"did\", so answer in the past: \"sang\"."
       }
+    },
+    {
+      "id": "q-dance-meaning",
+      "wordId": "dance",
+      "component": "meaning",
+      "level": 1,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "คำใดแปลว่า \"เต้นรำ\"?",
+        "en": "Which word means \"to move your body to music\"?"
+      },
+      "options": [
+        "dance",
+        "sing",
+        "house",
+        "drink"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"dance\" แปลว่า เต้นรำ",
+        "en": "\"dance\" means to move your body to music."
+      }
+    },
+    {
+      "id": "q-dance-recognition",
+      "wordId": "dance",
+      "component": "context",
+      "level": 2,
+      "difficulty": "easy",
+      "requiresGrammar": null,
+      "prompt": {
+        "th": "ประโยคใดใช้ \"dance\" ได้ถูกต้อง?",
+        "en": "Which sentence uses \"dance\" correctly?"
+      },
+      "options": [
+        "I dance every day.",
+        "I dance yesterday.",
+        "I am dance every day.",
+        "I dances every day."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "ใช้ \"dance\" กับประธาน I",
+        "en": "Use \"dance\" with I for a routine."
+      }
+    },
+    {
+      "id": "q-dance-base",
+      "wordId": "dance",
+      "component": "form:base",
+      "level": 4,
+      "difficulty": "easy",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I ___ every day.",
+        "en": "Fill in the blank: I ___ every day."
+      },
+      "options": [
+        "dance",
+        "danced",
+        "dancing",
+        "sang"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"every day\" ใช้รูปปัจจุบัน \"dance\"",
+        "en": "\"every day\" signals a routine, so use \"dance\"."
+      }
+    },
+    {
+      "id": "q-dance-past",
+      "wordId": "dance",
+      "component": "form:past",
+      "level": 3,
+      "difficulty": "medium",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "รูปอดีตของ \"dance\" คืออะไร?",
+        "en": "What is the past tense of \"dance\"?"
+      },
+      "options": [
+        "danced",
+        "dance",
+        "dancing",
+        "sang"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "\"dance\" เป็นกริยาปกติ เติม -d เป็น \"danced\"",
+        "en": "\"dance\" is regular: add -d to get \"danced\"."
+      }
+    },
+    {
+      "id": "q-dance-prp",
+      "wordId": "dance",
+      "component": "form:prp",
+      "level": 4,
+      "difficulty": "medium",
+      "requiresGrammar": "present-simple",
+      "prompt": {
+        "th": "เติมคำในช่องว่าง: I am ___ now.",
+        "en": "Fill in the blank: I am ___ now."
+      },
+      "options": [
+        "dancing",
+        "dance",
+        "danced",
+        "sung"
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "หลัง \"am\" ใช้รูป -ing คือ \"dancing\"",
+        "en": "After \"am\", use the -ing form \"dancing\"."
+      }
+    },
+    {
+      "id": "q-dance-context",
+      "wordId": "dance",
+      "component": "context",
+      "level": 5,
+      "difficulty": "expert",
+      "requiresGrammar": "past-simple",
+      "prompt": {
+        "th": "มีคนถามว่า \"What did you do yesterday?\" ควรตอบอย่างไร?",
+        "en": "Someone asks, \"What did you do yesterday?\" How should you answer?"
+      },
+      "options": [
+        "I danced yesterday.",
+        "I dance yesterday.",
+        "I have dance yesterday.",
+        "I am dance yesterday."
+      ],
+      "correctIndex": 0,
+      "explanation": {
+        "th": "คำถามใช้ \"did\" จึงตอบด้วย \"danced\"",
+        "en": "The question uses \"did\", so answer \"danced\"."
+      }
     }
   ]
 }

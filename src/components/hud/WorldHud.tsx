@@ -52,7 +52,7 @@ export function WorldHud() {
             className="action worldhud__locale"
             onClick={() => dispatch({ type: "set-locale", locale: player.locale === "th" ? "en" : "th" })}
           >
-            {player.locale === "th" ? "EN" : "ไทย"}
+            {player.locale === "th" ? t("common.localeEndonymEn") : t("common.localeEndonymTh")}
           </button>
         </div>
       </div>

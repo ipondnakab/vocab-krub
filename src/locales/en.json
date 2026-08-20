@@ -66,5 +66,7 @@
   "story.opening4": "You are a Word Keeper. You free a word by understanding it.",
   "story.opening5": "Your knowledge is your weapon. Go — the village is waiting.",
   "story.chapterComplete": "Chapter 1 is over. The village has its words back. The Silence does not.",
-  "story.skip": "Skip"
+  "story.skip": "Skip",
+  "common.localeEndonymEn": "EN",
+  "common.localeEndonymTh": "ไทย"
 }

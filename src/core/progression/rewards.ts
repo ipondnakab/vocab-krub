@@ -1,4 +1,4 @@
-import type { BalanceConfig, Item, RewardTable } from "../../content/schemas";
+import type { BalanceConfig, RewardTable } from "../../content/schemas";
 import { levelForXp, maxHpForLevel } from "../config/balance";
 import type { ContentIndex } from "../content/loadContent";
 import { wordsMasteredCount } from "../mastery/mastery";
@@ -161,9 +161,3 @@ export function unequip(player: PlayerState, slot: "weapon" | "armor" | "pet"): 
   return { ...player, equipped: { ...player.equipped, [slot]: null } };
 }
 
-export function equippedItems(player: PlayerState, content: ContentIndex): Item[] {
-  return (["weapon", "armor", "pet"] as const)
-    .map((slot) => player.equipped[slot])
-    .filter((id): id is string => id !== null)
-    .map((id) => content.item(id));
-}

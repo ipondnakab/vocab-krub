@@ -66,5 +66,7 @@
   "story.opening4": "เจ้าคือผู้พิทักษ์คำ เจ้าปลดปล่อยคำได้ด้วยการเข้าใจมัน",
   "story.opening5": "ความรู้ของเจ้าคืออาวุธ ไปเถอะ — หมู่บ้านกำลังรอ",
   "story.chapterComplete": "บทที่ 1 จบแล้ว คำต่างๆ ในหมู่บ้านกลับมาแล้ว แต่ความเงียบยังไม่จบ",
-  "story.skip": "ข้าม"
+  "story.skip": "ข้าม",
+  "common.localeEndonymEn": "EN",
+  "common.localeEndonymTh": "ไทย"
 }
