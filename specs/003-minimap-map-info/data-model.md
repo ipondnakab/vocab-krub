@@ -37,9 +37,9 @@ record adds the name without changing the shape everything else already consumes
 | `exits` | `{ x, y, targetMapId }[]` | `GameMap.transitions` (FR-003) |
 | `player` | `{ x, y, facing }` | `PlayerState.location` (FR-002) |
 | `monsters` | `{ x, y, monsterId }[]` | `WorldState.monsters` — already filtered by `monstersDefeated` (FR-008, FR-009, FR-010) |
-| `npcs` | `{ x, y, npcId, lessonDone }[]` | `WorldState.npcs` + `hasCompletedLesson` |
+| `npcs` | `{ x, y, npcId, lesson }[]` | `WorldState.npcs` + `hasCompletedLesson`; `lesson` is `"none"` when `grammarTopicId` is null, else `"outstanding"` or `"done"` |
 | `monstersRemaining` | `number` | `WorldState.monsters.length` (FR-012) |
-| `lessonsRemaining` | `number` | count of map NPCs whose grammar topic is unlearned |
+| `lessonsRemaining` | `number` | count of map NPCs with `lesson === "outstanding"` — an NPC with no lesson (`"none"`) never counts |
 
 `enterMap` already removes defeated monsters when building world state, so "monsters remaining" is
 the length of a list that exists — verified against the shipped `worldState.ts` rather than assumed.

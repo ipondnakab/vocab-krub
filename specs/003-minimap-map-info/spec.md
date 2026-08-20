@@ -70,8 +70,10 @@ defeat a monster, and confirm its marker is gone.
    monster's marker is gone.
 3. **Given** an NPC whose lesson the player has completed, **When** they look at the minimap,
    **Then** that NPC is shown as finished rather than as outstanding.
-4. **Given** monsters patrol, **When** they move, **Then** their markers move with them.
-5. **Given** a map where everything is done, **When** the player looks at the minimap, **Then**
+4. **Given** an NPC who has no lesson to give at all, **When** they look at the minimap, **Then**
+   that NPC is shown as neither outstanding nor finished, and is not counted in lessons left.
+5. **Given** monsters patrol, **When** they move, **Then** their markers move with them.
+6. **Given** a map where everything is done, **When** the player looks at the minimap, **Then**
    nothing on it is flagged as outstanding.
 
 ---
@@ -127,10 +129,10 @@ player can orient themselves from the map shape alone.
   NPCs.
 - **FR-009**: The system MUST stop marking a monster once the player has restored its word.
 - **FR-010**: The system MUST move a monster's marker as that monster patrols.
-- **FR-011**: The system MUST distinguish an NPC whose lesson is outstanding from one whose lesson
-  is complete.
+- **FR-011**: The system MUST distinguish, for every NPC, whether they have no lesson to give, a
+  lesson outstanding, or a lesson already complete.
 - **FR-012**: The system MUST show a summary of what remains on the current map — monsters left and
-  lessons left — as counts.
+  lessons left — as counts. An NPC with no lesson to give MUST NOT count toward lessons left.
 
 ### Functional Requirements — Map information
 

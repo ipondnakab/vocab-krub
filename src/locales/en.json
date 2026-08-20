@@ -75,5 +75,7 @@
   "journal.filterMastered": "Mastered",
   "journal.filterInProgress": "In progress",
   "journal.filterNotStarted": "Not started",
-  "journal.count": "{count} words"
+  "journal.count": "{count} words",
+  "minimap.monstersRemaining": "Monsters",
+  "minimap.lessonsRemaining": "Lessons"
 }

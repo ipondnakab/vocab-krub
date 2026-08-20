@@ -12,6 +12,8 @@ import { createGameStore } from "../runtime/GameStore";
 import { GameStoreProvider } from "../runtime/GameContext";
 import { BattleHud } from "./battle/BattleHud";
 import { WorldHud } from "./hud/WorldHud";
+import { Minimap } from "./hud/Minimap";
+import { MapInfo } from "./hud/MapInfo";
 import { DialogueBox } from "./dialogue/DialogueBox";
 import { WordJournal } from "./journal/WordJournal";
 import { NoticeBar } from "./hud/NoticeBar";
@@ -183,6 +185,10 @@ export function GameClient() {
         <StoryOpening />
         <NoticeBar />
         <WorldHud />
+        <div className="minimap-cluster">
+          <MapInfo />
+          <Minimap />
+        </div>
         <DialogueBox />
         <ChallengePanel />
         <BattleHud />

@@ -312,6 +312,21 @@ export function validateContent(content: RawContent, level: ValidationLevel = "s
     missing("monsterIds", chapter.monsterIds, (id) => monsterById.has(id), "monster");
     missing("npcIds", chapter.npcIds, (id) => npcById.has(id), "npc");
 
+    // FR-015: every map a chapter declares must have a localized name. A Record does not itself
+    // guarantee every mapId key is present, so this is checked explicitly rather than by schema.
+    chapter.mapIds.forEach((mapId) => {
+      const name = chapter.mapNames[mapId];
+      if (!name) {
+        add("chapters.json", at(`mapNames['${mapId}']`), `map '${mapId}' has no entry in mapNames`);
+      } else if (!name.th || !name.en) {
+        add(
+          "chapters.json",
+          at(`mapNames['${mapId}']`),
+          `map '${mapId}' name is missing ${!name.th ? "Thai" : "English"} text`,
+        );
+      }
+    });
+
     const boss = monsterById.get(chapter.bossMonsterId);
     if (!boss) {
       add("chapters.json", at("bossMonsterId"), `references unknown monster '${chapter.bossMonsterId}'`);

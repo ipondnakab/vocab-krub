@@ -12,6 +12,11 @@
         "forest",
         "cave"
       ],
+      "mapNames": {
+        "village": { "th": "หมู่บ้านที่ถูกลืม", "en": "The Forgotten Village" },
+        "forest": { "th": "ป่าแห่งเสียงกระซิบ", "en": "Whispering Woods" },
+        "cave": { "th": "ถ้ำเงียบงัน", "en": "Silent Hollow" }
+      },
       "vocabularyIds": [
         "go",
         "eat",
@@ -98,6 +103,11 @@
         "river",
         "ruins"
       ],
+      "mapNames": {
+        "castle": { "th": "ป้อมประตู", "en": "The Gatehouse" },
+        "river": { "th": "ท่าข้ามแม่น้ำ", "en": "Riverside Crossing" },
+        "ruins": { "th": "ซากปรักหักพัง", "en": "The Old Ruins" }
+      },
       "vocabularyIds": [
         "open",
         "close",
