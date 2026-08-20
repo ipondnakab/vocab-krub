@@ -415,3 +415,9 @@ canvas, img[data-pixel] { image-rendering: pixelated; }
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: none; }
 }
+
+/* ---------------------------------------------------------------- victory summary */
+
+.summary { display: grid; gap: 0.4rem; }
+.summary__list { list-style: none; display: grid; gap: 0.25rem; color: var(--ink); }
+.summary__unlock { color: var(--accent); }

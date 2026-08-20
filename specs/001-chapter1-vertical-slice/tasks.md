@@ -472,34 +472,48 @@ T117/T119 close that gap. A test that fails on unfinished authoring would just g
 
 **Independent Test**: Resolve a scripted victory and assert the exact payout; equip each item.
 
-- [ ] **T089** [US5] Implement `src/core/progression/rewards.ts` — `applyRewards`: XP, gold, seeded
+- [x] **T089** [US5] Implement `src/core/progression/rewards.ts` — `applyRewards`: XP, gold, seeded
       drop resolution, level-up against the XP curve, max-HP increase, HP restore (FR-039, FR-040).
-- [ ] **T090** [US5] Test rewards: payout matches the monster's reward data exactly; XP crossing a
+- [x] **T090** [US5] Test rewards: payout matches the monster's reward data exactly; XP crossing a
       threshold levels up; max HP rises per config and current HP restores to the new max; a drop at
       chance 0 never occurs and at chance 1 always does; multiple level-ups in one payout work.
-- [ ] **T091** [US5] Implement `src/core/progression/equipment.ts` — `equip`, and application of the
+- [x] **T091** [US5] Implement `src/core/progression/equipment.ts` — `equip`, and application of the
       data-declared effects (FR-041) for `damage-multiplier`, `damage-reduction`, `first-mistake-free`,
       and `xp-bonus`.
-- [ ] **T092** [US5] Test equipment effects: a weapon multiplier changes dealt damage; armor reduction
+- [x] **T092** [US5] Test equipment effects: a weapon multiplier changes dealt damage; armor reduction
       changes taken damage and **floors at 0**; `first-mistake-free` applies once per battle;
       `xp-bonus` scales XP.
-- [ ] **T093** [US5] **Write the Principle IV guard test**: enumerate every variant of the `Effect`
+- [x] **T093** [US5] **Write the Principle IV guard test**: enumerate every variant of the `Effect`
       union and assert none can select an option, submit an answer, or skip a question (FR-043). This
       test must fail if someone later adds an answer-revealing effect — that is its purpose.
-- [ ] **T094** [US5] Implement pet abilities — `usePetAbility` removing exactly one incorrect option,
+- [x] **T094** [US5] Implement pet abilities — `usePetAbility` removing exactly one incorrect option,
       limited to `usesPerBattle` (FR-042).
-- [ ] **T095** [US5] Test the pet ability: removes exactly one option; it is always incorrect; the
+- [x] **T095** [US5] Test the pet ability: removes exactly one option; it is always incorrect; the
       correct answer always survives; uses are consumed and capped per battle; uses reset next battle.
-- [ ] **T096** [US5] Implement mastery-threshold equipment unlocks (FR-044), telling the player which
+- [x] **T096** [US5] Implement mastery-threshold equipment unlocks (FR-044), telling the player which
       learning milestone earned the item. Test the boundary at exactly N words.
-- [ ] **T097** [US5] Implement `applyDefeatPenalty` — configurable gold loss and return to the village,
+- [x] **T097** [US5] Implement `applyDefeatPenalty` — configurable gold loss and return to the village,
       with **no** reduction to mastery, XP, level, or inventory (FR-014). Test each explicitly.
-- [ ] **T098** [P] [US5] Build `src/components/battle/VictorySummary.tsx` — XP, gold, drops, level-up,
+- [x] **T098** [P] [US5] Build `src/components/battle/VictorySummary.tsx` — XP, gold, drops, level-up,
       and mastery gained this battle. Plus the pet ability button in the battle HUD.
-- [ ] **T099** [US5] Author 3 items, 1 weapon, 1 armor, and 1 pet (the owl) with unlock conditions tied
+- [x] **T099** [US5] Author 3 items, 1 weapon, 1 armor, and 1 pet (the owl) with unlock conditions tied
       to mastery counts.
 
-**Checkpoint**: Learning converts into RPG progression, and nothing equipped can avoid learning.
+**Checkpoint**: ✅ **COMPLETE (2026-08-20)** — 282 tests pass, lint/typecheck/build clean, and a
+win was played out in a browser: flee offered on a non-boss, no pet button without a pet equipped,
+and a victory summary reading ค่าประสบการณ์ +40 / เหรียญทอง +15 — exactly `monster-eat`'s reward
+data.
+
+**T093 is the load-bearing test of this phase.** It enumerates every variant the `Effect` schema
+permits and asserts the list matches an explicit allow-list. If anyone later adds `auto-answer`,
+`reveal-correct`, or `skip-question`, that test fails — which is its entire purpose. FR-043 is
+now checkable rather than aspirational.
+
+Rewards land the moment victory is decided, not when the summary is dismissed, so closing the tab
+on the victory screen cannot cost the payout.
+
+T099's items were authored in Phase 2 and are covered by the content tests; verified rather than
+re-authored.
 
 ---
 

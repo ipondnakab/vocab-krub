@@ -43,5 +43,12 @@
   "world.interactHint": "กด E เพื่อพูดคุย",
   "mastery.wordMastered": "เชี่ยวชาญคำว่า \"{word}\" แล้ว",
   "mastery.componentMastered": "จำได้แล้ว: {part}",
-  "mastery.restored": "คำนี้กลับมาเป็นตัวของมันเองอีกครั้ง"
+  "mastery.restored": "คำนี้กลับมาเป็นตัวของมันเองอีกครั้ง",
+  "victory.title": "คำได้รับการปลดปล่อย",
+  "victory.xp": "ค่าประสบการณ์ +{amount}",
+  "victory.gold": "เหรียญทอง +{amount}",
+  "victory.item": "ได้รับ {name}",
+  "victory.levelUp": "เลเวลอัพ! ตอนนี้เลเวล {level}",
+  "victory.unlock": "ปลดล็อก {name} — เพราะคุณเชี่ยวชาญคำศัพท์แล้ว {count} คำ",
+  "defeat.goldLost": "คุณทำเหรียญทองหล่นไป {amount} เหรียญ แต่ความรู้ยังอยู่ครบ"
 }

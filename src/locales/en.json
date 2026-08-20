@@ -43,5 +43,12 @@
   "world.interactHint": "Press E to talk",
   "mastery.wordMastered": "You have mastered \"{word}\"",
   "mastery.componentMastered": "Remembered: {part}",
-  "mastery.restored": "This word is itself again."
+  "mastery.restored": "This word is itself again.",
+  "victory.title": "The word is free",
+  "victory.xp": "XP +{amount}",
+  "victory.gold": "Gold +{amount}",
+  "victory.item": "Received {name}",
+  "victory.levelUp": "Level up! You are now level {level}",
+  "victory.unlock": "Unlocked {name} — for mastering {count} words",
+  "defeat.goldLost": "You dropped {amount} gold. Your knowledge is untouched."
 }

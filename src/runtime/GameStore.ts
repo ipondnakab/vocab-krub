@@ -1,8 +1,11 @@
 import type { BalanceConfig } from "../content/schemas/index";
 import {
-  attemptFlee, createBattle, dismissFeedback, endBattle, submitAnswer,
+  attemptFlee, createBattle, dismissFeedback, endBattle, submitAnswer, usePetAbility,
   type BattleState, type BattleTurnResult,
 } from "../core/battle/battle";
+import {
+  applyDefeatPenalty, applyRewards, equip, type RewardOutcome,
+} from "../core/progression/rewards";
 import type { ContentIndex } from "../core/content/loadContent";
 import type { Locale } from "../core/i18n/i18n";
 import { createNewPlayer, type PlayerState } from "../core/player/playerState";
@@ -43,6 +46,10 @@ export interface GameState {
   screenBefore: Screen | null;
   /** The last resolved turn, so renderers can animate what just happened. */
   lastTurn: BattleTurnResult | null;
+  /** What the last victory paid out, for the summary screen. Null until a battle is won. */
+  lastRewards: RewardOutcome | null;
+  /** Gold lost to the last defeat, so the player is told what it cost. */
+  lastDefeatGoldLost: number | null;
   notice: Notice | null;
 }
 
@@ -109,6 +116,10 @@ function canDispatch(intent: Intent, state: GameState): boolean {
       return state.battle?.phase === "showing-feedback";
     case "attempt-flee":
       return state.battle?.phase === "awaiting-answer" && !state.battle.isBoss;
+    case "use-pet-ability":
+      return state.battle?.phase === "awaiting-answer" && state.battle.petUsesRemaining > 0;
+    case "equip":
+      return state.battle === null;
     case "leave-battle":
       return state.battle?.phase === "ended";
     case "new-game":
@@ -136,6 +147,8 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
     battle: null,
     screenBefore: null,
     lastTurn: null,
+    lastRewards: null,
+    lastDefeatGoldLost: null,
     notice: deps.save.isAvailable() ? null : { kind: "storage-unavailable" },
   };
 
@@ -148,9 +161,27 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
     for (const listener of listeners) listener();
   };
 
-  /** Battle turns all end the same way: keep the state, mirror the player, remember the turn. */
+  /**
+   * Battle turns all end the same way: keep the state, mirror the player, remember the turn.
+   *
+   * Rewards land the MOMENT victory is decided, not when the player dismisses the summary — so
+   * the summary has something true to show, and closing the tab on the victory screen cannot
+   * cost the payout.
+   */
   const applyTurn = (result: BattleTurnResult): void => {
-    commit({ ...state, battle: result.state, player: result.state.player, lastTurn: result });
+    if (result.outcome !== "victory") {
+      commit({ ...state, battle: result.state, player: result.state.player, lastTurn: result });
+      return;
+    }
+    const monster = deps.content.monster(result.state.monsterId);
+    const rewards = applyRewards(result.state.player, monster.rewards, deps.rng, deps.balance, deps.content);
+    commit({
+      ...state,
+      battle: { ...result.state, player: rewards.player },
+      player: rewards.player,
+      lastTurn: result,
+      lastRewards: rewards,
+    });
   };
 
   return {
@@ -315,6 +346,17 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
           applyTurn(dismissFeedback(state.battle!, battleDeps));
           return;
         }
+        case "use-pet-ability": {
+          const battle = usePetAbility(state.battle!, battleDeps);
+          commit({ ...state, battle });
+          return;
+        }
+        case "equip": {
+          const player = equip(state.player, intent.itemId, deps.content);
+          deps.save.save(player);
+          commit({ ...state, player });
+          return;
+        }
         case "attempt-flee": {
           const result = attemptFlee(state.battle!, battleDeps);
           commit({ ...state, battle: result.state, player: result.state.player });
@@ -323,6 +365,17 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
         case "leave-battle": {
           const battle = state.battle!;
           let player = endBattle(battle);
+          let defeatGoldLost: number | null = null;
+
+          if (battle.outcome === "defeat") {
+            // FR-014: costs time and gold, never learning. The penalty function is not even
+            // handed anything that could reduce mastery, XP, level, or inventory.
+            const penalty = applyDefeatPenalty(player, deps.balance, {
+              mapId: deps.startMapId, x: deps.startX, y: deps.startY,
+            });
+            player = penalty.player;
+            defeatGoldLost = penalty.goldLost;
+          }
 
           // FR-033: a restored word does not come back. Recorded on the player so it survives
           // save/load, and removed from the live map so it is gone the moment you look up.
@@ -335,7 +388,10 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
           }
 
           deps.save.save(player);
-          commit({ ...state, screen: "world", player, world, battle: null, lastTurn: null });
+          commit({
+            ...state, screen: "world", player, world, battle: null,
+            lastTurn: null, lastRewards: null, lastDefeatGoldLost: defeatGoldLost,
+          });
           return;
         }
       }

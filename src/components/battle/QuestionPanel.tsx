@@ -12,13 +12,15 @@ import { OptionList } from "./OptionList";
  * combining vowels and tone marks lay out correctly in the DOM and unreliably in canvas text.
  */
 export function QuestionPanel({
-  question, locale, disabled, revealedIndex, chosenIndex, onChoose,
+  question, locale, disabled, revealedIndex, chosenIndex, eliminated, onChoose,
 }: {
   question: PresentedQuestion;
   locale: Locale;
   disabled: boolean;
   revealedIndex: number | null;
   chosenIndex: number | null;
+  /** Options a pet ability has struck out (FR-042). Never includes the correct one. */
+  eliminated?: readonly number[];
   onChoose: (index: number) => void;
 }) {
   return (
@@ -29,6 +31,7 @@ export function QuestionPanel({
         disabled={disabled}
         revealedIndex={revealedIndex}
         chosenIndex={chosenIndex}
+        eliminated={eliminated ?? []}
         onChoose={onChoose}
       />
     </div>

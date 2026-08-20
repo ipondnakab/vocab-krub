@@ -32,6 +32,8 @@ export type Intent =
   | { type: "close-dialogue" }
   | { type: "replay-lesson" }
   | { type: "open-journal" }
-  | { type: "close-journal" };
+  | { type: "close-journal" }
+  | { type: "use-pet-ability" }
+  | { type: "equip"; itemId: string };
 
 export type IntentType = Intent["type"];

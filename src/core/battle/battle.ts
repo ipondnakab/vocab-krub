@@ -62,6 +62,12 @@ export interface BattleState {
   feedback: Feedback | null;
   outcome: BattleOutcome | null;
   masteryEvents: MasteryEvent[];
+  /** Pet ability budget for this battle (FR-042). Resets every fight. */
+  petUsesRemaining: number;
+  /** Option indices removed by a pet. NEVER includes the correct one. */
+  eliminatedIndices: number[];
+  /** Whether a `first-mistake-free` effect has already absorbed a miss this battle. */
+  firstMistakeUsed: boolean;
 }
 
 export interface BattleDeps {
@@ -85,9 +91,43 @@ export interface FleeResult {
   escaped: boolean;
 }
 
-function equippedItem(player: PlayerState, slot: "weapon" | "armor", content: ContentIndex): Item | null {
+function equippedItem(
+  player: PlayerState,
+  slot: "weapon" | "armor" | "pet",
+  content: ContentIndex,
+): Item | null {
   const id = player.equipped[slot];
   return id === null ? null : content.item(id);
+}
+
+/** How many times the equipped pet may act this battle (FR-042). */
+function petUses(player: PlayerState, content: ContentIndex): number {
+  const pet = equippedItem(player, "pet", content);
+  if (!pet) return 0;
+  let uses = 0;
+  for (const effect of pet.effects) {
+    if (effect.kind === "reveal-wrong-option") uses += effect.usesPerBattle;
+  }
+  return uses;
+}
+
+/**
+ * Whether an equipped `first-mistake-free` effect covers this particular miss.
+ *
+ * `scope: "grammar"` covers only questions that depend on a grammar topic — the Scholar's Robe
+ * forgives you for fumbling a tense, not for forgetting what a word means.
+ */
+function firstMistakeCovers(player: PlayerState, question: PresentedQuestion, content: ContentIndex): boolean {
+  for (const slot of ["weapon", "armor", "pet"] as const) {
+    const item = equippedItem(player, slot, content);
+    if (!item) continue;
+    for (const effect of item.effects) {
+      if (effect.kind !== "first-mistake-free") continue;
+      if (effect.scope === "any") return true;
+      if (effect.scope === "grammar" && question.requiresGrammar !== null) return true;
+    }
+  }
+  return false;
 }
 
 /** Review words may have no mastery record yet; create it on first sight rather than throwing. */
@@ -141,6 +181,9 @@ export function createBattle(input: {
     feedback: null,
     outcome: null,
     masteryEvents: [],
+    petUsesRemaining: petUses(player, input.content),
+    eliminatedIndices: [],
+    firstMistakeUsed: false,
   };
 
   return { ...base, currentQuestion: drawQuestion(base, deps) };
@@ -183,6 +226,8 @@ function advance(state: BattleState, deps: BattleDeps): BattleState {
     currentQuestion: drawQuestion(state, deps),
     feedback: null,
     pendingMonsterDamage: 0,
+    // A new question means a fresh set of options; anything the pet removed is gone with it.
+    eliminatedIndices: [],
   };
 }
 
@@ -237,10 +282,22 @@ export function submitAnswer(state: BattleState, optionIndex: number, deps: Batt
   }
 
   const monster = deps.content.monster(state.monsterId);
-  const pending = incomingDamage(monster.attack, equippedItem(player, "armor", deps.content));
+  const armored = incomingDamage(monster.attack, equippedItem(player, "armor", deps.content));
+
+  // FR-016 of Principle IV in practice: the effect softens the COST of being wrong. It never
+  // hides that you were wrong — the feedback panel still runs, and mastery still records a miss.
+  const forgiven = !state.firstMistakeUsed && firstMistakeCovers(player, question, deps.content);
+  const pending = forgiven ? 0 : armored;
+
   const feedback: Feedback = { correctOption: correctOptionText(question), explanation: question.explanation };
 
-  const showing: BattleState = { ...common, phase: "showing-feedback", feedback, pendingMonsterDamage: pending };
+  const showing: BattleState = {
+    ...common,
+    phase: "showing-feedback",
+    feedback,
+    pendingMonsterDamage: pending,
+    firstMistakeUsed: state.firstMistakeUsed || forgiven,
+  };
   return { state: showing, correct: false, damageDealt: 0, damageTaken: 0, feedback,
     masteryEvents: [event], outcome: null };
 }
@@ -291,6 +348,38 @@ export function attemptFlee(state: BattleState, deps: BattleDeps): FleeResult {
   }
   // A failed escape costs the turn.
   return { state: advance({ ...state, player }, deps), escaped: false };
+}
+
+/**
+ * Uses the pet's ability: removes exactly ONE incorrect option (FR-042).
+ *
+ * Constitution Principle IV, FR-043: this narrows the field, it never answers. The correct
+ * option can never be eliminated, and at least two options always remain, so the player still
+ * has to know something. If every wrong option is already gone, the ability refuses to fire
+ * rather than wasting a use on nothing.
+ */
+export function usePetAbility(state: BattleState, deps: BattleDeps): BattleState {
+  if (state.phase !== "awaiting-answer") {
+    throw new Error(`usePetAbility called while phase is '${state.phase}'`);
+  }
+  if (state.petUsesRemaining <= 0) throw new Error("No pet ability uses remaining this battle");
+
+  const question = state.currentQuestion;
+  if (!question) throw new Error("usePetAbility called with no current question");
+
+  const candidates = question.options
+    .map((_, index) => index)
+    .filter((index) => index !== question.correctIndex && !state.eliminatedIndices.includes(index));
+
+  // Keep at least one wrong option standing, so a four-option question never collapses to one.
+  if (candidates.length <= 1) return state;
+
+  const removed = deps.rng.pick(candidates);
+  return {
+    ...state,
+    petUsesRemaining: state.petUsesRemaining - 1,
+    eliminatedIndices: [...state.eliminatedIndices, removed],
+  };
 }
 
 export function endBattle(state: BattleState): PlayerState {

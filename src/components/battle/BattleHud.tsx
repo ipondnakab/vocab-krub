@@ -7,6 +7,7 @@ import { HpBar } from "./HpBar";
 import { QuestionPanel } from "./QuestionPanel";
 import { FeedbackPanel } from "./FeedbackPanel";
 import { MasteryStars } from "../journal/MasteryStars";
+import { VictorySummary } from "./VictorySummary";
 import { masteryPercent } from "../../core/mastery/mastery";
 import { useContent } from "../../runtime/GameContext";
 import th from "../../locales/th.json";
@@ -103,9 +104,16 @@ export function BattleHud() {
                 disabled={!awaiting}
                 revealedIndex={null}
                 chosenIndex={null}
+                eliminated={battle.eliminatedIndices}
                 onChoose={(optionIndex) => dispatch({ type: "answer-question", optionIndex })}
               />
               <div className="actions">
+                {battle.petUsesRemaining > 0 && (
+                  <button type="button" className="action" disabled={!awaiting}
+                          onClick={() => dispatch({ type: "use-pet-ability" })}>
+                    {t("battle.usePet")}
+                  </button>
+                )}
                 {!battle.isBoss && (
                   <button
                     type="button"
@@ -151,11 +159,12 @@ function BattleOutcome({
           {title}
         </p>
         {outcome === "victory" && (
-          // The word is restored, not killed. The Silence is the antagonist; the words are
-          // its victims (Constitution Principle I).
-          <p className="outcome__note">
-            {t("battle.victoryNote")}
-          </p>
+          <>
+            {/* The word is restored, not killed. The Silence is the antagonist; the words are
+                its victims (Constitution Principle I). */}
+            <p className="outcome__note">{t("battle.victoryNote")}</p>
+            <VictorySummary />
+          </>
         )}
         <div className="actions">
           <button type="button" className="action action--primary" onClick={onLeave} autoFocus>
