@@ -42,7 +42,15 @@ describe("locale audit — instruction is complete (FR-051)", () => {
       expect(item.name.th, item.id).toMatch(THAI);
       expect(item.description.th, item.id).toMatch(THAI);
     }
-    for (const chapter of content.chapters) expect(chapter.title.th, chapter.id).toMatch(THAI);
+    for (const chapter of content.chapters) {
+      expect(chapter.title.th, chapter.id).toMatch(THAI);
+      // T023 (FR-018, SC-007): every map name carries Thai script and non-empty English.
+      for (const mapId of chapter.mapIds) {
+        const name = chapter.mapNames[mapId];
+        expect(name?.th, `${chapter.id}.mapNames.${mapId}`).toMatch(THAI);
+        expect(name?.en.trim().length, `${chapter.id}.mapNames.${mapId}`).toBeGreaterThan(0);
+      }
+    }
   });
 });
 

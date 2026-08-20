@@ -38,7 +38,7 @@ interface MinimapTerrain {
 interface MinimapMarkers {
   player: { x: number; y: number; facing: Direction };         // FR-002
   monsters: Array<{ x: number; y: number; monsterId: string }>; // FR-008, FR-009, FR-010
-  npcs: Array<{ x: number; y: number; npcId: string; lessonDone: boolean }>; // FR-011
+  npcs: Array<{ x: number; y: number; npcId: string; lesson: "none" | "outstanding" | "done" }>; // FR-011
   monstersRemaining: number;                                   // FR-012
   lessonsRemaining: number;
 }
@@ -53,8 +53,11 @@ zero counts, never null (FR-007).
   (FR-016).
 - `monsters` contains only monsters still present — `enterMap` has already removed defeated ones,
   so no second filter is needed and adding one would risk the two disagreeing.
-- `npcs` marks lessons done rather than omitting them: an NPC you have finished with still exists
-  and is still worth locating (FR-011).
+- `npcs` marks every NPC's lesson state rather than omitting anyone: `"none"` for an NPC with no
+  `grammarTopicId`, `"outstanding"` or `"done"` for one who has a lesson, based on whether it is
+  learned. An NPC you have finished with still exists and is still worth locating (FR-011).
+  `lessonsRemaining` counts only `"outstanding"` — `"none"` never counts, or the total is wrong for
+  the 8 of 12 shipped NPCs who have nothing to teach (FR-012).
 - `blocked` is row-major and indexed `y * width + x`, matching how the map's collision grid is
   already stored.
 - `mapDisplayName` never returns an empty string or a raw id (FR-014), and returns the localized

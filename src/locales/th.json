@@ -75,5 +75,7 @@
   "journal.filterMastered": "เชี่ยวชาญแล้ว",
   "journal.filterInProgress": "กำลังเรียน",
   "journal.filterNotStarted": "ยังไม่เริ่ม",
-  "journal.count": "{count} คำ"
+  "journal.count": "{count} คำ",
+  "minimap.monstersRemaining": "มอนสเตอร์",
+  "minimap.lessonsRemaining": "บทเรียน"
 }

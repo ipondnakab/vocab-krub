@@ -269,4 +269,27 @@ describe("content validation failures (FR-050)", () => {
       expect((error as ContentValidationError).message).toMatch(/vocabulary\.json → words\[0\]\..+:/);
     }
   });
+
+  // T006 (FR-015): every map a chapter declares must have a localized name.
+  it("fails when a map has no entry in mapNames", () => {
+    const patched = structuredClone(rawContentFiles["chapters.json"]) as {
+      chapters: Array<{ mapNames: Record<string, unknown> }>;
+    };
+    delete patched.chapters[0]!.mapNames["village"];
+    try {
+      loadContent(brokenFiles({ "chapters.json": patched }));
+      expect.unreachable("should have thrown");
+    } catch (error) {
+      const issues = (error as ContentValidationError).issues;
+      expect(issues.some((i) => i.message.includes("village") && i.message.includes("mapNames"))).toBe(true);
+    }
+  });
+
+  it("fails when a map name has an empty Thai side", () => {
+    const patched = structuredClone(rawContentFiles["chapters.json"]) as {
+      chapters: Array<{ mapNames: Record<string, { th: string; en: string }> }>;
+    };
+    patched.chapters[0]!.mapNames["village"]!.th = "";
+    expect(() => loadContent(brokenFiles({ "chapters.json": patched }))).toThrow(/Thai text is required/);
+  });
 });

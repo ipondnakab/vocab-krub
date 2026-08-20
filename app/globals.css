@@ -311,6 +311,62 @@ canvas, img[data-pixel] { image-rendering: pixelated; }
 .worldhud__row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
 .worldhud__locale { padding: 0.35rem 0.6rem; font-size: 0.55rem; }
 
+/* ---------------------------------------------------------------- minimap */
+
+/*
+ * Bottom-right, not top-right: WorldHud (top-left, up to 18rem wide) and the minimap cluster
+ * both need real width, and at a 390px viewport there is not enough top row for both — measured
+ * in a browser, not assumed, per feature 001's own lesson that layout defects are invisible to
+ * the test suite. The bottom-right corner is otherwise empty during exploration, at every
+ * viewport size this feature is verified at (SC-006).
+ */
+.minimap-cluster {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  pointer-events: none;
+}
+
+.minimap { width: min(9rem, 32vw); pointer-events: none; }
+
+.minimap__svg { display: block; width: 100%; box-shadow: 0 0 0 var(--px) var(--edge-bright), 0 0 0 calc(var(--px) * 2) var(--ground-deep); }
+
+.minimap__ground { fill: var(--panel-raised); }
+.minimap__blocked { fill: var(--ground-deep); }
+.minimap__exit { fill: var(--accent); }
+
+.minimap__monster { fill: var(--hp-monster); }
+
+.minimap__npc--none { fill: var(--ink-dim); }
+.minimap__npc--outstanding { fill: var(--accent); }
+.minimap__npc--done { fill: var(--correct); }
+
+.minimap__player { fill: var(--ink); }
+
+/* ---------------------------------------------------------------- map info */
+
+/*
+ * An opaque panel, not bare text — the world behind the top-right corner is not under this
+ * feature's control (a monster can patrol under it on any map), so the background must be solid
+ * or the text reads as noise over whatever sprite happens to be there.
+ */
+.mapinfo {
+  width: min(9rem, 32vw);
+  display: grid;
+  gap: 0.25rem;
+  text-align: right;
+  padding: 0.5rem 0.6rem;
+  pointer-events: none;
+}
+
+.mapinfo__name { font-family: var(--font-display), monospace; font-size: 0.62rem; color: var(--ink); }
+.mapinfo__chapter { font-size: 0.55rem; color: var(--ink-dim); }
+.mapinfo__remaining { display: flex; justify-content: flex-end; gap: 0.6rem; font-size: 0.55rem; color: var(--ink-dim); }
+
 /* ---------------------------------------------------------------- journal */
 
 .stars { display: inline-flex; gap: 2px; align-items: center; }

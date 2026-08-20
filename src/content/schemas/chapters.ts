@@ -21,6 +21,9 @@ export const chapterSchema = z.strictObject({
    */
   requiresChapterId: identifier().nullable(),
   mapIds: z.array(identifier()).min(1),
+  /** Localized name per map (FR-013, FR-015). Every id in `mapIds` must have an entry — enforced
+   *  in cross-file validation, since a Record does not itself guarantee every key is present. */
+  mapNames: z.record(z.string(), localized()),
   vocabularyIds: z.array(identifier()),
   grammarTopicIds: z.array(identifier()),
   monsterIds: z.array(identifier()),

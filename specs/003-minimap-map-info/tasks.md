@@ -33,8 +33,8 @@ Unchanged from features 001 and 002: `src/core/`, `src/content/`, `src/component
 
 **Purpose**: Almost nothing. This feature adds no dependency, no layer, and no configuration.
 
-- [ ] T001 Create the empty derivation module at src/core/world/minimap.ts with its exported function signatures from contracts/minimap-model.md
-- [ ] T002 [P] Create the empty test suite at tests/unit/minimap.test.ts so the harness picks it up
+- [X] T001 Create the empty derivation module at src/core/world/minimap.ts with its exported function signatures from contracts/minimap-model.md
+- [X] T002 [P] Create the empty test suite at tests/unit/minimap.test.ts so the harness picks it up
 
 **Checkpoint**: `npm test` still green; the new module compiles.
 
@@ -47,12 +47,12 @@ only new authored data this feature introduces.
 
 **⚠️ CRITICAL**: No user story work begins until this phase is complete.
 
-- [ ] T003 Add the `mapNames` record to the chapter schema in src/content/schemas/chapters.ts, keyed by map id with a localized value (data-model §1, FR-015)
-- [ ] T004 Author Thai and English names for all six existing maps in src/content/data/chapters.json — village, forest, cave, castle, river, ruins (FR-013, FR-018)
-- [ ] T005 Add cross-file validation to src/core/content/validate.ts requiring every id in `mapIds` to have a `mapNames` entry with both locales non-empty, naming the file and the map on failure (FR-015)
-- [ ] T006 [P] Test the map-name validation in tests/content/schemas.test.ts: a map with no name fails, and a name with an empty Thai side fails
-- [ ] T007 [P] Implement `mapDisplayName` in src/core/world/minimap.ts, returning the authored name and never an empty string or a raw id (FR-014)
-- [ ] T008 [P] Test `mapDisplayName` in tests/unit/minimap.test.ts, including the fallback path for a map with no authored name (FR-014)
+- [X] T003 Add the `mapNames` record to the chapter schema in src/content/schemas/chapters.ts, keyed by map id with a localized value (data-model §1, FR-015)
+- [X] T004 Author Thai and English names for all six existing maps in src/content/data/chapters.json — village, forest, cave, castle, river, ruins (FR-013, FR-018)
+- [X] T005 Add cross-file validation to src/core/content/validate.ts requiring every id in `mapIds` to have a `mapNames` entry with both locales non-empty, naming the file and the map on failure (FR-015)
+- [X] T006 [P] Test the map-name validation in tests/content/schemas.test.ts: a map with no name fails, and a name with an empty Thai side fails
+- [X] T007 [P] Implement `mapDisplayName` in src/core/world/minimap.ts, returning the authored name and never an empty string or a raw id (FR-014)
+- [X] T008 [P] Test `mapDisplayName` in tests/unit/minimap.test.ts, including the fallback path for a map with no authored name (FR-014)
 
 **Checkpoint**: Every map has a localized name, and content fails to load without one.
 
@@ -68,17 +68,17 @@ confirm the marker moves three steps.
 
 ### Tests for User Story 1
 
-- [ ] T009 [P] [US1] Test `buildMinimapTerrain` in tests/unit/minimap.test.ts: `blocked` is row-major with length width × height, and matches `GameMap.collidesAt` for every tile (FR-001)
-- [ ] T010 [P] [US1] Test in tests/unit/minimap.test.ts that every map transition appears in `exits` with its correct tile position (FR-003)
-- [ ] T011 [P] [US1] Test in tests/unit/minimap.test.ts that terrain is derived per map, so two different maps never produce equal models — the stale-map failure mode (FR-004)
-- [ ] T012 [P] [US1] Test in tests/unit/minimap.test.ts that a map with no monsters and no NPCs still produces a valid model with empty arrays rather than null (FR-007)
+- [X] T009 [P] [US1] Test `buildMinimapTerrain` in tests/unit/minimap.test.ts: `blocked` is row-major with length width × height, and matches `GameMap.collidesAt` for every tile (FR-001)
+- [X] T010 [P] [US1] Test in tests/unit/minimap.test.ts that every map transition appears in `exits` with its correct tile position (FR-003)
+- [X] T011 [P] [US1] Test in tests/unit/minimap.test.ts that terrain is derived per map, so two different maps never produce equal models — the stale-map failure mode (FR-004)
+- [X] T012 [P] [US1] Test in tests/unit/minimap.test.ts that a map with no monsters and no NPCs still produces a valid model with empty arrays rather than null (FR-007)
 
 ### Implementation for User Story 1
 
-- [ ] T013 [US1] Implement `buildMinimapTerrain` in src/core/world/minimap.ts per contracts/minimap-model.md (FR-001, FR-003, FR-004, FR-007)
-- [ ] T014 [US1] Implement `buildMinimapMarkers` in src/core/world/minimap.ts, returning the player's position and facing (FR-002)
-- [ ] T015 [US1] Build src/components/hud/Minimap.tsx as inline SVG sized from the map's own width and height, so proportions hold rather than stretching to a fixed box (FR-005, research R-305)
-- [ ] T016 [US1] Render Minimap from src/components/GameClient.tsx only while the screen is `world`, following the pattern WorldHud already uses (FR-006, research R-304)
+- [X] T013 [US1] Implement `buildMinimapTerrain` in src/core/world/minimap.ts per contracts/minimap-model.md (FR-001, FR-003, FR-004, FR-007)
+- [X] T014 [US1] Implement `buildMinimapMarkers` in src/core/world/minimap.ts, returning the player's position and facing (FR-002)
+- [X] T015 [US1] Build src/components/hud/Minimap.tsx as inline SVG sized from the map's own width and height, so proportions hold rather than stretching to a fixed box (FR-005, research R-305)
+- [X] T016 [US1] Render Minimap from src/components/GameClient.tsx only while the screen is `world`, following the pattern WorldHud already uses (FR-006, research R-304)
 
 **Checkpoint**: The player can orient themselves on every map. **This is the MVP** — everything
 below adds detail to a picture that is already useful.
@@ -94,15 +94,15 @@ confirm its marker is gone.
 
 ### Tests for User Story 2
 
-- [ ] T017 [P] [US2] Test in tests/unit/minimap.test.ts that markers include every monster in world state and that a defeated monster is absent — `enterMap` has already filtered it, so no second filter is needed (FR-008, FR-009)
-- [ ] T018 [P] [US2] Test in tests/unit/minimap.test.ts that a monster's marker position follows it after `stepPatrol` (FR-010)
-- [ ] T019 [P] [US2] Test in tests/unit/minimap.test.ts that an NPC whose lesson is complete is marked `lessonDone: true` rather than omitted (FR-011)
-- [ ] T020 [P] [US2] Test in tests/unit/minimap.test.ts that `monstersRemaining` and `lessonsRemaining` match the map's actual outstanding work, and are both zero on a finished map (FR-012)
+- [X] T017 [P] [US2] Test in tests/unit/minimap.test.ts that markers include every monster in world state and that a defeated monster is absent — `enterMap` has already filtered it, so no second filter is needed (FR-008, FR-009)
+- [X] T018 [P] [US2] Test in tests/unit/minimap.test.ts that a monster's marker position follows it after `stepPatrol` (FR-010)
+- [X] T019 [P] [US2] Test in tests/unit/minimap.test.ts that `lesson` is `"none"` for an NPC with no `grammarTopicId`, `"outstanding"` for one with an unlearned topic, and `"done"` for one with a learned topic — never omitted (FR-011)
+- [X] T020 [P] [US2] Test in tests/unit/minimap.test.ts that `monstersRemaining` and `lessonsRemaining` match the map's actual outstanding work, that `lessonsRemaining` excludes NPCs with `lesson: "none"`, and both counts are zero on a finished map (FR-012)
 
 ### Implementation for User Story 2
 
-- [ ] T021 [US2] Extend `buildMinimapMarkers` in src/core/world/minimap.ts with monster and NPC markers and the two remaining-counts, reusing `hasCompletedLesson` from src/core/dialogue/dialogue.ts rather than reimplementing it (FR-008, FR-011, FR-012)
-- [ ] T022 [US2] Render monster, NPC, and player markers distinguishably in src/components/hud/Minimap.tsx — by shape as well as colour, since colour is the first thing to fail on a small pixel-art palette (FR-008)
+- [X] T021 [US2] Extend `buildMinimapMarkers` in src/core/world/minimap.ts with monster and NPC markers (NPC `lesson` as `"none" | "outstanding" | "done"`, derived from `grammarTopicId` and `hasCompletedLesson` from src/core/dialogue/dialogue.ts rather than reimplemented) and the two remaining-counts, excluding `"none"` from `lessonsRemaining` (FR-008, FR-011, FR-012)
+- [X] T022 [US2] Render monster, NPC, and player markers distinguishably in src/components/hud/Minimap.tsx — by shape as well as colour, since colour is the first thing to fail on a small pixel-art palette. NPCs with `lesson: "none"` render in a neutral style, distinct from both `"outstanding"` and `"done"` (FR-008, FR-011)
 
 **Checkpoint**: The minimap answers "what have I not done here?" without walking the map.
 
@@ -116,13 +116,13 @@ confirm its marker is gone.
 
 ### Tests for User Story 3
 
-- [ ] T023 [P] [US3] Test in tests/content/locale-audit.test.ts that every authored map name carries Thai script on its Thai side and non-empty text on its English side (FR-018, SC-007)
+- [X] T023 [P] [US3] Test in tests/content/locale-audit.test.ts that every authored map name carries Thai script on its Thai side and non-empty text on its English side (FR-018, SC-007)
 
 ### Implementation for User Story 3
 
-- [ ] T024 [US3] Build src/components/hud/MapInfo.tsx showing the map name, the chapter title, and the two remaining-counts as DOM text beside the SVG — never inside it, so Thai marks render through the DOM (FR-013, FR-012, research R-014 of feature 001)
-- [ ] T025 [P] [US3] Add locale keys for the remaining-counts labels to src/locales/th.json and src/locales/en.json (FR-018)
-- [ ] T026 [US3] Render MapInfo alongside Minimap from src/components/GameClient.tsx, hidden outside the world screen (FR-006)
+- [X] T024 [US3] Build src/components/hud/MapInfo.tsx showing the map name, the chapter title, and the two remaining-counts as DOM text beside the SVG — never inside it, so Thai marks render through the DOM (FR-013, FR-012, research R-014 of feature 001)
+- [X] T025 [P] [US3] Add locale keys for the remaining-counts labels to src/locales/th.json and src/locales/en.json (FR-018)
+- [X] T026 [US3] Render MapInfo alongside Minimap from src/components/GameClient.tsx, hidden outside the world screen (FR-006)
 
 **Checkpoint**: The player knows where they are, in their own language.
 
@@ -130,16 +130,16 @@ confirm its marker is gone.
 
 ## Phase 6: Polish & Cross-Cutting Concerns
 
-- [ ] T027 Memoize terrain on map identity in src/components/hud/Minimap.tsx so a monster patrolling every 900ms does not recompute 300 collision lookups for a picture that has not changed (plan.md § Performance Goals)
-- [ ] T028 [P] Verify SC-004 in tests/unit/save.test.ts: a save round-trip is byte-identical before and after this feature, because it adds no persisted state (FR-016)
-- [ ] T029 [P] Verify SC-005 by running `npm test` and confirming the suite still finishes under 30 seconds
-- [ ] T030 [P] Verify SC-007 by running `npm run author:check` and tests/content/locale-audit.test.ts across both chapters
-- [ ] T031 Verify SC-006 against src/components/hud/Minimap.tsx via `npm run dev` at 390px, 820px, and 1280px: the minimap must never overlap the question panel, the dialogue box, or the challenge panel. Check it visually rather than by reading app/globals.css — feature 001 shipped a layout defect where the feedback panel pushed the HP bar over the monster, and the suite was green throughout
-- [ ] T032 Verify SC-003 in a browser by loading all six maps via `/play?map=<id>` and confirming each renders correctly, including a map with no entities on it
-- [ ] T033 Verify SC-002 via `npm run dev` → /play by walking every walkable tile of one map and confirming the marker in src/components/hud/Minimap.tsx never disagrees with the player's true position
+- [X] T027 Memoize terrain on map identity in src/components/hud/Minimap.tsx so a monster patrolling every 900ms does not recompute 300 collision lookups for a picture that has not changed (plan.md § Performance Goals)
+- [X] T028 [P] Verify SC-004 in tests/unit/save.test.ts: a save round-trip is byte-identical before and after this feature, because it adds no persisted state (FR-016)
+- [X] T029 [P] Verify SC-005 by running `npm test` and confirming the suite still finishes under 30 seconds
+- [X] T030 [P] Verify SC-007 by running `npm run author:check` and tests/content/locale-audit.test.ts across both chapters
+- [X] T031 Verify SC-006 against src/components/hud/Minimap.tsx via `npm run dev` at 390px, 820px, and 1280px: the minimap must never overlap the question panel, the dialogue box, or the challenge panel. Check it visually rather than by reading app/globals.css — feature 001 shipped a layout defect where the feedback panel pushed the HP bar over the monster, and the suite was green throughout
+- [X] T032 Verify SC-003 in a browser by loading all six maps via `/play?map=<id>` and confirming each renders correctly, including a map with no entities on it
+- [X] T033 Verify SC-002 via `npm run dev` → /play by walking every walkable tile of one map and confirming the marker in src/components/hud/Minimap.tsx never disagrees with the player's true position
 - [ ] T034 Verify SC-001 via `npm run dev` by having a playtester return to a map after a break and state what they still have to do there within 5 seconds, without walking
-- [ ] T035 [P] Verify FR-017 by inspecting `git diff --name-only` across the whole feature: src/content/schemas/questions.ts and src/core/battle/battle.ts must be untouched. A navigation aid that changed a battle rule would be a different feature
-- [ ] T036 Verify SC-008 by adding a seventh map name to src/content/data/chapters.json and confirming via `git diff --name-only` that no file outside src/content/data/ changed — the same check SC-008 of feature 001 and SC-002 of feature 002 used
+- [X] T035 [P] Verify FR-017 by inspecting `git diff --name-only` across the whole feature: src/content/schemas/questions.ts and src/core/battle/battle.ts must be untouched. A navigation aid that changed a battle rule would be a different feature
+- [X] T036 Verify SC-008 by adding a seventh map name to src/content/data/chapters.json and confirming via `git diff --name-only` that no file outside src/content/data/ changed — the same check SC-008 of feature 001 and SC-002 of feature 002 used
 
 ---
 
