@@ -423,3 +423,8 @@ canvas, img[data-pixel] { image-rendering: pixelated; }
 .summary__unlock { color: var(--accent); }
 
 .challenge__progress { margin-left: auto; }
+
+/* ---------------------------------------------------------------- notices */
+
+.notice { position: absolute; top: 1rem; left: 50%; transform: translateX(-50%); z-index: 5; max-width: min(92%, 40rem); }
+.notice__box { display: flex; align-items: center; gap: 1rem; background: var(--panel-raised); }

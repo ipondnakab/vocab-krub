@@ -241,6 +241,10 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
           commit({ ...state, notice: null });
           return;
         }
+        // T113 save triggers: battle end, lesson completion, map transition, challenge attempt,
+        // inventory and equipment change. NOT mid-battle — an interrupted fight is not resumed
+        // (US7 scenario 2), but mastery earned in it is already banked, because mastery is
+        // applied per answer rather than at battle end.
         case "enter-map": {
           const world = enterMap(intent.map, state.player);
           // The map's own player-start is authoritative on a fresh game; an arriving transition
@@ -257,7 +261,9 @@ export function createGameStore(deps: GameStoreDeps): GameStore {
                   y: start?.y ?? state.player.location.y,
                   facing: start?.facing ?? state.player.location.facing,
                 };
-          commit({ ...state, screen: "world", world, player: { ...state.player, location } });
+          const moved = { ...state.player, location };
+          deps.save.save(moved);
+          commit({ ...state, screen: "world", world, player: moved });
           return;
         }
         case "move": {

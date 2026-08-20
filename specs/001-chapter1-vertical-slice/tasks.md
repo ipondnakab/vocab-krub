@@ -565,29 +565,52 @@ a wall.
 **Independent Test**: Serialize a fully populated state, deserialize into a fresh runtime, assert deep
 equality.
 
-- [ ] **T109** [US7] Implement `src/core/save/serialize.ts` — the versioned envelope from
+- [x] **T109** [US7] Implement `src/core/save/serialize.ts` — the versioned envelope from
       [contracts/save-format.md](./contracts/save-format.md), with a Zod schema for the save document
       and no optional fields with silent defaults.
-- [ ] **T110** [US7] Implement `src/platform/LocalStorageSaveRepository.ts` against the core interface,
+- [x] **T110** [US7] Implement `src/platform/LocalStorageSaveRepository.ts` against the core interface,
       including the `isAvailable()` writability probe. **Instantiated only inside the client-mounted
       game**, never at module scope — `localStorage` does not exist during SSR (R-010).
-- [ ] **T111** [US7] **Write the round-trip test** (SC-010, FR-054): build a `PlayerState` with every
+- [x] **T111** [US7] **Write the round-trip test** (SC-010, FR-054): build a `PlayerState` with every
       field populated non-trivially — several words at different mastery stages, a partial streak, a
       demoted component, multiple inventory entries, all three equipment slots, both chapter progress
       states — serialize, deserialize, assert deep equality.
-- [ ] **T112** [US7] Test every load-failure path: absent key → new game; malformed JSON → unreadable;
+- [x] **T112** [US7] Test every load-failure path: absent key → new game; malformed JSON → unreadable;
       schema violation → unreadable with the field path; newer `schemaVersion` → unreadable; storage
       throwing → `isAvailable() === false` (FR-055, FR-056).
-- [ ] **T113** [US7] Implement save triggers: battle end, lesson completion, map transition, challenge
+- [x] **T113** [US7] Implement save triggers: battle end, lesson completion, map transition, challenge
       attempt, inventory and equipment change. **Not** mid-battle.
-- [ ] **T114** [US7] Implement load-on-start with the new-game path when no save exists, and the
+- [x] **T114** [US7] Implement load-on-start with the new-game path when no save exists, and the
       player-facing "save could not be read" screen offering a new game — never a crash (FR-055).
-- [ ] **T115** [US7] Implement the storage-unavailable warning so the player knows progress will not
+- [x] **T115** [US7] Implement the storage-unavailable warning so the player knows progress will not
       persist (FR-056).
-- [ ] **T116** [US7] Test the interrupted-battle rule: quitting mid-battle does not resume the battle,
+- [x] **T116** [US7] Test the interrupted-battle rule: quitting mid-battle does not resume the battle,
       but mastery earned during it is already persisted.
 
-**Checkpoint**: The slice can be played across multiple sittings.
+**Checkpoint**: ✅ **COMPLETE (2026-08-20)** — 327 tests pass, lint/typecheck/build clean, and
+persistence was verified in a real browser: save written on start, resumed into the forest after
+reload rather than resetting to the village, and a deliberately corrupted save surfaced as
+"อ่านไฟล์บันทึกไม่ได้" instead of crashing.
+
+**T110 is the proof the SaveRepository interface was worth having.** Swapping the in-memory
+adapter for the localStorage one changed exactly one import in one file. No gameplay module was
+touched — which is what Principle II promised in Phase 1 and what T129 will need again.
+
+Three bugs the test suite could not have caught, all found by driving the browser:
+- **SSR hydration mismatch.** `createLocalStorageSaveRepository` probes `window.localStorage`,
+  which does not exist server-side, so SSR decided storage was unavailable and rendered a warning
+  the client then contradicted. The game is client-only, so store construction moved into an
+  effect and the server now renders nothing for it.
+- **Reload teleported the player home.** `startMapId` fell back to a hardcoded `"village"`
+  instead of the saved location, so anyone who saved in the forest or cave was quietly reset on
+  every reload.
+- **React Strict Mode double-invoked the boot effect**, and booting WRITES — the first pass
+  overwrote the unreadable save with a fresh one before the second could report it. The player
+  silently lost a corrupted save instead of being offered a new game (FR-055), and only in
+  development, which is the worst place for behaviour to diverge.
+
+`MemorySaveRepository` was deleted once unreferenced. It was a stepping stone to T110, and unused
+code is a liability (Principle VI).
 
 ---
 
