@@ -1,0 +1,113 @@
+{
+  "topics": [
+    {
+      "id": "present-simple",
+      "name": {
+        "th": "ปัจจุบันกาลธรรมดา",
+        "en": "Present Simple"
+      },
+      "explanation": [
+        {
+          "th": "เราใช้ Present Simple พูดถึงสิ่งที่ทำเป็นประจำ เช่น กิจวัตรประจำวัน",
+          "en": "We use the Present Simple for things we do regularly — daily routines and habits."
+        },
+        {
+          "th": "โครงสร้างคือ ประธาน + กริยารูปปัจจุบัน เช่น I go to school every day.",
+          "en": "The pattern is subject + base verb: I go to school every day."
+        },
+        {
+          "th": "เมื่อประธานเป็น he, she, it ให้เติม -s ที่กริยา เช่น She goes to school.",
+          "en": "With he, she, or it, add -s to the verb: She goes to school."
+        }
+      ],
+      "patterns": [
+        "I + verb",
+        "He / She / It + verb + s",
+        "I go to school every day."
+      ],
+      "cefr": "A1"
+    },
+    {
+      "id": "past-simple",
+      "name": {
+        "th": "อดีตกาลธรรมดา",
+        "en": "Past Simple"
+      },
+      "explanation": [
+        {
+          "th": "เราใช้ Past Simple พูดถึงสิ่งที่จบไปแล้วในอดีต",
+          "en": "We use the Past Simple for things that finished in the past."
+        },
+        {
+          "th": "กริยาปกติเติม -ed แต่กริยาอปกติเปลี่ยนรูป เช่น go กลายเป็น went",
+          "en": "Regular verbs add -ed, but irregular verbs change form: go becomes went."
+        },
+        {
+          "th": "มักใช้กับคำบอกเวลา เช่น yesterday, last week",
+          "en": "It often appears with time words like yesterday or last week."
+        }
+      ],
+      "patterns": [
+        "I + past verb",
+        "I went to school yesterday.",
+        "go → went, eat → ate, see → saw"
+      ],
+      "cefr": "A1"
+    },
+    {
+      "id": "present-continuous",
+      "name": {
+        "th": "ปัจจุบันกาลกำลังดำเนินอยู่",
+        "en": "Present Continuous"
+      },
+      "explanation": [
+        {
+          "th": "เราใช้ Present Continuous พูดถึงสิ่งที่กำลังเกิดขึ้นตอนนี้",
+          "en": "We use the Present Continuous for what is happening right now."
+        },
+        {
+          "th": "โครงสร้างคือ ประธาน + is/am/are + กริยาเติม -ing เช่น I am going now.",
+          "en": "The pattern is subject + is/am/are + verb-ing: I am going now."
+        },
+        {
+          "th": "ต่างจาก Present Simple ที่พูดถึงสิ่งที่ทำเป็นประจำ",
+          "en": "It differs from the Present Simple, which is for things you do regularly."
+        }
+      ],
+      "patterns": [
+        "I am + verb-ing",
+        "She is + verb-ing",
+        "They are + verb-ing",
+        "I am going now."
+      ],
+      "cefr": "A1"
+    },
+    {
+      "id": "question-forms",
+      "name": {
+        "th": "การตั้งคำถามด้วย do/does",
+        "en": "Questions with do/does"
+      },
+      "explanation": [
+        {
+          "th": "เวลาจะถามคำถามในปัจจุบัน เราขึ้นต้นด้วย Do หรือ Does",
+          "en": "To ask a question in the present, start with Do or Does."
+        },
+        {
+          "th": "ใช้ Do กับ I, you, we, they และใช้ Does กับ he, she, it",
+          "en": "Use Do with I, you, we, they — and Does with he, she, it."
+        },
+        {
+          "th": "หลัง do/does ให้ใช้กริยารูปปัจจุบันเสมอ เช่น Does she go to school?",
+          "en": "After do/does, always use the base verb: Does she go to school?"
+        }
+      ],
+      "patterns": [
+        "Do you + verb?",
+        "Does he / she + verb?",
+        "Do you go to school?"
+      ],
+      "cefr": "A1"
+    }
+  ]
+}

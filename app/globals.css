@@ -1,0 +1,445 @@
+/*
+ * The RPG visual language (T047).
+ *
+ * Constitution Principle I: this is a game that teaches, not a quiz with sprites. React renders
+ * all the text (research R-014), which means HTML's defaults are the standing threat — a page of
+ * <button> elements in a system font IS a web form, and no amount of good battle logic survives
+ * looking like one.
+ *
+ * So: no default form controls, no system fonts, no browser focus rings, no rounded corners.
+ * Frames are pixel-stepped with hard box-shadows rather than borders with radii.
+ */
+
+:root {
+  /*
+   * NOTE: --font-display and --font-text are set on <html> by next/font (app/layout.tsx).
+   * Do NOT redeclare them here — :root IS <html>, so `--font-text: var(--font-text), …` is
+   * self-referential, invalid, and silently drops every face back to a system serif. Reference
+   * them with a fallback at the point of use instead.
+   */
+  --ground: #14101f;
+  --ground-deep: #0b0813;
+  --panel: #241d38;
+  --panel-raised: #302749;
+  --edge: #4b3d70;
+  --edge-bright: #6d5a9c;
+
+  --ink: #f4eeda;
+  --ink-dim: #a99ec2;
+  --accent: #f2c14e;
+
+  --hp-player: #6ec06e;
+  --hp-monster: #d9584a;
+  --correct: #7fd18a;
+  --wrong: #e8614d;
+
+  --px: 2px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+
+body {
+  background: var(--ground-deep);
+  color: var(--ink);
+  font-family: var(--font-text), "Noto Sans Thai", sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-family: var(--font-display), monospace; font-weight: 400; line-height: 1.5; }
+a { color: var(--accent); }
+
+canvas, img[data-pixel] { image-rendering: pixelated; }
+
+/* ---------------------------------------------------------------- panels */
+
+/*
+ * A stepped frame, the way an RPG window is drawn: hard bands of colour, no anti-aliased
+ * curve anywhere. This is the asset the contract no longer asks anyone to draw.
+ */
+.panel {
+  background: var(--panel);
+  /* Opaque, so a scrolled panel never lets the canvas bleed through the text. */
+  box-shadow:
+    0 0 0 var(--px) var(--edge-bright),
+    0 0 0 calc(var(--px) * 2) var(--ground-deep),
+    0 0 0 calc(var(--px) * 3) var(--edge);
+  padding: 1rem 1.25rem;
+}
+
+.panel--raised { background: var(--panel-raised); }
+
+.label {
+  font-family: var(--font-display), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-dim);
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- hp bars */
+
+.hpbar { display: grid; gap: 0.35rem; }
+
+.hpbar__track {
+  height: 14px;
+  background: var(--ground-deep);
+  box-shadow: 0 0 0 var(--px) var(--edge);
+  overflow: hidden;
+}
+
+.hpbar__fill {
+  height: 100%;
+  /* Tweened, not jumped — a bar that snaps reads as a spreadsheet updating. */
+  transition: width 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hpbar__fill--player { background: var(--hp-player); }
+.hpbar__fill--monster { background: var(--hp-monster); }
+
+.hpbar__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.hpbar__value { font-family: var(--font-display), monospace; font-size: 0.6rem; color: var(--ink-dim); }
+
+/* ---------------------------------------------------------------- options */
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+@media (max-width: 40rem) {
+  .options { grid-template-columns: minmax(0, 1fr); }
+}
+
+/*
+ * Deliberately NOT a <button> with default styling. `appearance: none` strips the OS control,
+ * and every state below is drawn as a stepped frame so an answer reads as a menu command in a
+ * JRPG, not a form submit.
+ */
+.option {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+
+  background: var(--panel-raised);
+  color: var(--ink);
+  padding: 0.7rem 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  box-shadow: 0 0 0 var(--px) var(--edge);
+  transition: background 120ms steps(2), box-shadow 120ms steps(2), transform 80ms steps(2);
+}
+
+.option__key {
+  font-family: var(--font-display), monospace;
+  font-size: 0.6rem;
+  color: var(--accent);
+  min-width: 1.4rem;
+}
+
+.option:hover:not(:disabled),
+.option:focus-visible {
+  background: var(--edge);
+  box-shadow: 0 0 0 var(--px) var(--accent);
+  outline: none;
+  transform: translateX(2px);
+}
+
+.option:disabled { cursor: default; opacity: 0.45; }
+
+.option--correct { background: color-mix(in srgb, var(--correct) 28%, var(--panel-raised)); box-shadow: 0 0 0 var(--px) var(--correct); }
+.option--wrong { background: color-mix(in srgb, var(--wrong) 28%, var(--panel-raised)); box-shadow: 0 0 0 var(--px) var(--wrong); }
+.option--eliminated { opacity: 0.25; text-decoration: line-through; }
+
+/* ---------------------------------------------------------------- battle layout */
+
+.battle {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /* Match the Phaser canvas width so the HUD frames the monster instead of the browser. */
+  width: min(100%, 960px);
+  margin: 0 auto;
+  padding: 1rem;
+  gap: 1rem;
+  pointer-events: none;
+}
+
+.battle > * { pointer-events: auto; }
+
+.battle__top { display: grid; gap: 0.75rem; max-width: 26rem; }
+
+/* min-height:0 is load-bearing: without it the 1fr row refuses to shrink, the bottom section
+   grows past the viewport, and the HP bar rides up over the monster. */
+.battle__stage-gap { min-height: 0; pointer-events: none; }
+
+.battle__bottom { display: grid; gap: 0.75rem; min-height: 0; }
+
+/* The HP bar stays pinned; only the panels scroll when feedback makes them tall. */
+.battle__panels {
+  display: grid;
+  gap: 0.75rem;
+  min-height: 0;
+  max-height: 58dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.prompt {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 0.9rem;
+}
+
+.feedback { display: grid; gap: 0.6rem; }
+.feedback__answer { font-family: var(--font-display), monospace; font-size: 0.85rem; color: var(--correct); }
+.feedback__why { color: var(--ink-dim); }
+
+.actions { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+
+.action {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: var(--font-display), monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+  background: var(--panel-raised);
+  color: var(--ink);
+  padding: 0.65rem 1rem;
+  box-shadow: 0 0 0 var(--px) var(--edge);
+  transition: background 120ms steps(2), box-shadow 120ms steps(2);
+}
+
+.action:hover:not(:disabled), .action:focus-visible {
+  background: var(--edge);
+  box-shadow: 0 0 0 var(--px) var(--accent);
+  outline: none;
+}
+
+.action:disabled { cursor: default; opacity: 0.4; }
+.action--primary { background: var(--accent); color: var(--ground-deep); }
+.action--primary:hover:not(:disabled) { background: var(--ink); box-shadow: 0 0 0 var(--px) var(--accent); }
+
+/* ---------------------------------------------------------------- outcome */
+
+.outcome { display: grid; gap: 0.9rem; justify-items: start; }
+.outcome__title { font-family: var(--font-display), monospace; font-size: 1.1rem; }
+.outcome__title--victory { color: var(--accent); }
+.outcome__title--defeat { color: var(--wrong); }
+.outcome__note { color: var(--ink-dim); }
+
+.stage { position: relative; width: 100%; height: 100%; overflow: hidden; background: var(--ground); }
+.stage__canvas { position: absolute; inset: 0; }
+
+/* ---------------------------------------------------------------- world hud */
+
+/*
+ * Sparse on purpose. While exploring, the player should be looking at the world — a HUD that
+ * fills the screen turns walking around into a stats screen.
+ */
+.worldhud {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  pointer-events: none;
+  max-width: 18rem;
+}
+
+.worldhud__panel { pointer-events: auto; display: grid; gap: 0.6rem; padding: 0.7rem 0.9rem; }
+.worldhud__stats { display: flex; gap: 1.25rem; }
+
+/* ---------------------------------------------------------------- dialogue */
+
+/*
+ * Anchored to the bottom like a JRPG text window, with the portrait beside the name. Practice
+ * questions render inside this same frame — a lesson must never become a separate quiz screen
+ * (Constitution Principle I).
+ */
+.dialogue {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 1rem;
+  width: min(100%, 960px);
+  margin: 0 auto;
+  pointer-events: none;
+}
+
+.dialogue__box { pointer-events: auto; display: grid; gap: 0.8rem; }
+
+.dialogue__head { display: flex; align-items: center; gap: 0.8rem; }
+
+.dialogue__portrait {
+  width: 64px;
+  height: 64px;
+  background: var(--ground-deep);
+  box-shadow: 0 0 0 var(--px) var(--edge);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+.dialogue__portrait img { display: block; }
+
+.dialogue__name {
+  font-family: var(--font-display), monospace;
+  font-size: 0.7rem;
+  color: var(--accent);
+}
+
+.dialogue__verdict { font-size: 1.05rem; }
+.dialogue__verdict--right { color: var(--correct); }
+.dialogue__verdict--wrong { color: var(--wrong); }
+.dialogue__hint { align-self: center; }
+
+.worldhud__row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
+.worldhud__locale { padding: 0.35rem 0.6rem; font-size: 0.55rem; }
+
+/* ---------------------------------------------------------------- journal */
+
+.stars { display: inline-flex; gap: 2px; align-items: center; }
+
+.journal {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--ground-deep) 82%, transparent);
+}
+
+.journal__panel { width: min(100%, 820px); max-height: 84dvh; display: grid; gap: 0.9rem; }
+.journal__head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.journal__title { font-size: 0.85rem; color: var(--accent); }
+
+.journal__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 1rem;
+  min-height: 0;
+}
+
+@media (max-width: 44rem) { .journal__body { grid-template-columns: minmax(0, 1fr); } }
+
+.journal__list {
+  list-style: none;
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+  max-height: 52dvh;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.journal__entry {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: 0;
+  cursor: pointer;
+  font: inherit;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--panel-raised);
+  color: var(--ink);
+  box-shadow: 0 0 0 var(--px) var(--edge);
+}
+
+.journal__entry:hover, .journal__entry:focus-visible { box-shadow: 0 0 0 var(--px) var(--accent); outline: none; }
+.journal__entry--active { box-shadow: 0 0 0 var(--px) var(--accent); background: var(--edge); }
+
+.journal__word { font-family: var(--font-display), monospace; font-size: 0.7rem; }
+.journal__word--big { font-size: 1rem; color: var(--accent); }
+.journal__badge { margin-left: auto; font-size: 0.65rem; color: var(--accent); }
+
+.journal__detail { display: grid; gap: 0.6rem; align-content: start; overflow-y: auto; min-height: 0; max-height: 52dvh; }
+.journal__detailhead { display: flex; align-items: center; gap: 0.8rem; }
+
+.checklist { list-style: none; display: grid; gap: 0.3rem; }
+.checklist__item { display: flex; align-items: baseline; gap: 0.6rem; color: var(--ink-dim); }
+.checklist__item--done { color: var(--ink); }
+.checklist__mark { color: var(--edge-bright); font-family: var(--font-display), monospace; font-size: 0.6rem; }
+.checklist__item--done .checklist__mark { color: var(--correct); }
+.checklist__label { min-width: 8rem; }
+.checklist__detail { color: var(--accent); font-family: var(--font-display), monospace; font-size: 0.62rem; }
+
+/* ---------------------------------------------------------------- battle mastery readout */
+
+/*
+ * FR-029, and the concept document's dual-bar display. Shown right beside the monster's HP so
+ * the difference is unmissable: the bar is the fight, the stars are what you actually know.
+ * Beating a word is not the same as understanding it.
+ */
+.masterytag { display: flex; align-items: center; gap: 0.5rem; }
+.masterytag__label { color: var(--ink-dim); }
+
+/* ---------------------------------------------------------------- mastery moment */
+
+/*
+ * The biggest celebration in the game. It must read as a word coming HOME, not as a kill —
+ * warm, calm, rising. Constitution Principle I.
+ */
+.moment {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  animation: moment-in 420ms ease-out;
+}
+
+.moment__box { display: grid; justify-items: center; gap: 0.5rem; text-align: center; }
+.moment__title { font-family: var(--font-display), monospace; font-size: 0.8rem; color: var(--accent); }
+.moment__note { color: var(--ink-dim); }
+
+@keyframes moment-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* ---------------------------------------------------------------- victory summary */
+
+.summary { display: grid; gap: 0.4rem; }
+.summary__list { list-style: none; display: grid; gap: 0.25rem; color: var(--ink); }
+.summary__unlock { color: var(--accent); }
+
+.challenge__progress { margin-left: auto; }
+
+/* ---------------------------------------------------------------- notices */
+
+.notice { position: absolute; top: 1rem; left: 50%; transform: translateX(-50%); z-index: 5; max-width: min(92%, 40rem); }
+.notice__box { display: flex; align-items: center; gap: 1rem; background: var(--panel-raised); }
+
+/* ---------------------------------------------------------------- story */
+
+.story { position: absolute; inset: 0; display: grid; place-items: center; padding: 1.5rem;
+         background: color-mix(in srgb, var(--ground-deep) 88%, transparent); z-index: 6; }
+.story__box { width: min(100%, 44rem); display: grid; gap: 1.1rem; }
+.story__line { font-size: 1.1rem; line-height: 1.8; }
+.story__count { margin-left: auto; align-self: center; }
+
+/* Journal at scale: grouped by chapter, filtered by state. A flat list was fine at 31 words. */
+.journal__filters { display: flex; gap: 0.4rem; flex-wrap: wrap; align-items: center; }
+.journal__count { margin-left: auto; }
+.journal__group { display: grid; gap: 0.35rem; margin-bottom: 0.8rem; }
+.journal__grouptitle { color: var(--accent); }
+.journal__grouplist { list-style: none; display: grid; gap: 0.35rem; }

@@ -1,0 +1,160 @@
+{
+  "npcs": [
+    {
+      "id": "teacher-mali",
+      "name": {
+        "th": "ครูมะลิ",
+        "en": "Teacher Mali"
+      },
+      "role": "teacher",
+      "mapId": "village",
+      "dialogueId": "dlg-mali-intro",
+      "repeatDialogueId": "dlg-mali-repeat",
+      "grammarTopicId": "present-simple",
+      "portrait": "teacher-mali"
+    },
+    {
+      "id": "guard-thanet",
+      "name": {
+        "th": "ทหารยามธเนศ",
+        "en": "Guard Thanet"
+      },
+      "role": "guard",
+      "mapId": "village",
+      "dialogueId": "dlg-thanet-intro",
+      "repeatDialogueId": "dlg-thanet-repeat",
+      "grammarTopicId": null,
+      "portrait": "guard-thanet"
+    },
+    {
+      "id": "scholar-arun",
+      "name": {
+        "th": "นักปราชญ์อรุณ",
+        "en": "Scholar Arun"
+      },
+      "role": "scholar",
+      "mapId": "village",
+      "dialogueId": "dlg-arun-intro",
+      "repeatDialogueId": "dlg-arun-repeat",
+      "grammarTopicId": "past-simple",
+      "portrait": "scholar-arun"
+    },
+    {
+      "id": "merchant-som",
+      "name": {
+        "th": "แม่ค้าส้ม",
+        "en": "Merchant Som"
+      },
+      "role": "merchant",
+      "mapId": "village",
+      "dialogueId": "dlg-som-intro",
+      "repeatDialogueId": "dlg-som-repeat",
+      "grammarTopicId": null,
+      "portrait": "merchant-som"
+    },
+    {
+      "id": "villager-kai",
+      "name": {
+        "th": "ชาวบ้านไก่",
+        "en": "Villager Kai"
+      },
+      "role": "villager",
+      "mapId": "village",
+      "dialogueId": "dlg-kai-intro",
+      "repeatDialogueId": "dlg-kai-repeat",
+      "grammarTopicId": null,
+      "portrait": "villager-kai"
+    },
+    {
+      "id": "villager-nong",
+      "name": {
+        "th": "ชาวบ้านหน่อง",
+        "en": "Villager Nong"
+      },
+      "role": "villager",
+      "mapId": "village",
+      "dialogueId": "dlg-nong-intro",
+      "repeatDialogueId": "dlg-nong-repeat",
+      "grammarTopicId": null,
+      "portrait": "villager-nong"
+    },
+    {
+      "id": "teacher-anong",
+      "name": {
+        "th": "ครูอนงค์",
+        "en": "Teacher Anong"
+      },
+      "role": "teacher",
+      "mapId": "castle",
+      "dialogueId": "dlg-anong-intro",
+      "repeatDialogueId": "dlg-anong-repeat",
+      "grammarTopicId": "present-continuous",
+      "portrait": "teacher-anong"
+    },
+    {
+      "id": "scholar-decha",
+      "name": {
+        "th": "นักปราชญ์เดชา",
+        "en": "Scholar Decha"
+      },
+      "role": "scholar",
+      "mapId": "castle",
+      "dialogueId": "dlg-decha-intro",
+      "repeatDialogueId": "dlg-decha-repeat",
+      "grammarTopicId": "question-forms",
+      "portrait": "scholar-decha"
+    },
+    {
+      "id": "merchant-ploy",
+      "name": {
+        "th": "แม่ค้าพลอย",
+        "en": "Merchant Ploy"
+      },
+      "role": "merchant",
+      "mapId": "river",
+      "dialogueId": "dlg-ploy-intro",
+      "repeatDialogueId": "dlg-ploy-repeat",
+      "grammarTopicId": null,
+      "portrait": "merchant-ploy"
+    },
+    {
+      "id": "villager-manee",
+      "name": {
+        "th": "ชาวเมืองมณี",
+        "en": "Townsfolk Manee"
+      },
+      "role": "villager",
+      "mapId": "river",
+      "dialogueId": "dlg-manee-intro",
+      "repeatDialogueId": "dlg-manee-repeat",
+      "grammarTopicId": null,
+      "portrait": "villager-manee"
+    },
+    {
+      "id": "villager-suchat",
+      "name": {
+        "th": "ชาวเมืองสุชาติ",
+        "en": "Townsfolk Suchat"
+      },
+      "role": "villager",
+      "mapId": "ruins",
+      "dialogueId": "dlg-suchat-intro",
+      "repeatDialogueId": "dlg-suchat-repeat",
+      "grammarTopicId": null,
+      "portrait": "villager-suchat"
+    },
+    {
+      "id": "guard-pim",
+      "name": {
+        "th": "ทหารยามพิม",
+        "en": "Guard Pim"
+      },
+      "role": "guard",
+      "mapId": "ruins",
+      "dialogueId": "dlg-pim-intro",
+      "repeatDialogueId": "dlg-pim-repeat",
+      "grammarTopicId": null,
+      "portrait": "guard-pim"
+    }
+  ]
+}

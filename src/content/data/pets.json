@@ -1,0 +1,12 @@
+{
+  "pets": [
+    {
+      "id": "owl",
+      "name": { "th": "นกฮูก", "en": "Owl" },
+      "description": { "th": "ตัดตัวเลือกที่ผิดออกหนึ่งข้อ ครั้งละหนึ่งครั้งต่อการต่อสู้ — แต่จะไม่บอกคำตอบให้", "en": "Removes one wrong option, once per battle. It will never tell you the answer." },
+      "kind": "pet",
+      "effects": [{ "kind": "reveal-wrong-option", "usesPerBattle": 1 }],
+      "unlock": { "type": "chapter-complete", "chapterId": "chapter-1" }
+    }
+  ]
+}

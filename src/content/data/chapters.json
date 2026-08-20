@@ -1,0 +1,177 @@
+{
+  "chapters": [
+    {
+      "id": "chapter-1",
+      "title": {
+        "th": "บทที่ 1 — หมู่บ้านที่ถูกลืม",
+        "en": "Chapter 1 — The Forgotten Village"
+      },
+      "requiresChapterId": null,
+      "mapIds": [
+        "village",
+        "forest",
+        "cave"
+      ],
+      "vocabularyIds": [
+        "go",
+        "eat",
+        "see",
+        "take",
+        "come",
+        "give",
+        "make",
+        "run",
+        "drink",
+        "sleep",
+        "write",
+        "listen",
+        "buy",
+        "find",
+        "know",
+        "walk",
+        "play",
+        "work",
+        "study",
+        "help",
+        "want",
+        "like",
+        "water",
+        "food",
+        "friend",
+        "school",
+        "book",
+        "house",
+        "city",
+        "teacher",
+        "sing",
+        "dance"
+      ],
+      "grammarTopicIds": [
+        "present-simple",
+        "past-simple"
+      ],
+      "monsterIds": [
+        "monster-eat",
+        "monster-see",
+        "monster-take",
+        "monster-drink",
+        "monster-write",
+        "monster-friend",
+        "monster-go",
+        "monster-sing",
+        "monster-dance"
+      ],
+      "npcIds": [
+        "teacher-mali",
+        "scholar-arun",
+        "merchant-som",
+        "villager-kai",
+        "villager-nong",
+        "guard-thanet"
+      ],
+      "bossMonsterId": "monster-go",
+      "challenge": {
+        "questionCount": 10,
+        "passThreshold": 0.8,
+        "guardNpcId": "guard-thanet"
+      },
+      "completionReward": {
+        "xp": 200,
+        "gold": 100,
+        "drops": [
+          {
+            "itemId": "owl",
+            "chance": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "chapter-2",
+      "title": {
+        "th": "บทที่ 2 — เมืองหลังประตู",
+        "en": "Chapter 2 — The Town Beyond the Gate"
+      },
+      "requiresChapterId": "chapter-1",
+      "mapIds": [
+        "castle",
+        "river",
+        "ruins"
+      ],
+      "vocabularyIds": [
+        "open",
+        "close",
+        "start",
+        "stop",
+        "ask",
+        "answer",
+        "call",
+        "wait",
+        "meet",
+        "leave",
+        "arrive",
+        "learn",
+        "teach",
+        "speak",
+        "understand",
+        "remember",
+        "forget",
+        "choose",
+        "carry",
+        "build",
+        "door",
+        "window",
+        "road",
+        "market",
+        "river",
+        "boat",
+        "money",
+        "time",
+        "day",
+        "night",
+        "morning",
+        "family",
+        "mother",
+        "father",
+        "child",
+        "name",
+        "hand",
+        "eye",
+        "tree",
+        "bird"
+      ],
+      "grammarTopicIds": [
+        "present-continuous",
+        "question-forms"
+      ],
+      "monsterIds": [
+        "monster-open",
+        "monster-ask",
+        "monster-speak",
+        "monster-forget",
+        "monster-family",
+        "monster-river",
+        "monster-remember"
+      ],
+      "npcIds": [
+        "teacher-anong",
+        "scholar-decha",
+        "merchant-ploy",
+        "villager-manee",
+        "villager-suchat",
+        "guard-pim"
+      ],
+      "bossMonsterId": "monster-remember",
+      "challenge": {
+        "questionCount": 12,
+        "passThreshold": 0.8,
+        "guardNpcId": "guard-pim"
+      },
+      "completionReward": {
+        "xp": 300,
+        "gold": 150,
+        "drops": []
+      }
+    }
+  ]
+}
