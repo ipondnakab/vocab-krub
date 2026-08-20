@@ -6,6 +6,7 @@
         "th": "บทที่ 1 — หมู่บ้านที่ถูกลืม",
         "en": "Chapter 1 — The Forgotten Village"
       },
+      "requiresChapterId": null,
       "mapIds": [
         "village",
         "forest",

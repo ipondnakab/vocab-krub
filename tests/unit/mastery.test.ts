@@ -204,6 +204,27 @@ describe("mastery — bookkeeping", () => {
   });
 });
 
+describe("a word declared by two chapters (FR-013)", () => {
+  it("has ONE mastery record and counts once toward unlocks", () => {
+    // Mastery is keyed by word id, not by chapter, so revisiting a word in a later chapter
+    // continues its progress rather than starting a second record.
+    let m = initMastery(GO);
+    for (const c of Object.keys(m.components)) {
+      m = answer(m, c, true);
+      m = answer(m, c, true);
+    }
+    const p: PlayerState = {
+      level: 1, xp: 0, hp: 100, maxHp: 100, gold: 0,
+      inventory: [], equipped: { weapon: null, armor: null, pet: null },
+      mastery: { go: m },
+      grammarLearned: [], monstersDefeated: [], chapterProgress: {},
+      location: { mapId: "village", x: 0, y: 0, facing: "down" }, locale: "th",
+    };
+    expect(Object.keys(p.mastery)).toHaveLength(1);
+    expect(wordsMasteredCount(p)).toBe(1);
+  });
+});
+
 describe("mastery — player-level aggregates (FR-044)", () => {
   function playerWith(...masteries: WordMastery[]): PlayerState {
     return {

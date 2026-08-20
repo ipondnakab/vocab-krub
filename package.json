@@ -14,7 +14,9 @@
     "test:content": "vitest run tests/content",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
-    "generate:placeholders": "node scripts/generate-placeholders.ts"
+    "generate:placeholders": "node scripts/generate-placeholders.ts",
+    "author": "node --import ./scripts/register-ts.mjs scripts/author.ts",
+    "author:check": "node --import ./scripts/register-ts.mjs scripts/author.ts --check"
   },
   "dependencies": {
     "next": "16.3.1",

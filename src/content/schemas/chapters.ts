@@ -12,6 +12,14 @@ export const challengeConfigSchema = z.strictObject({
 export const chapterSchema = z.strictObject({
   id: identifier(),
   title: localized(),
+  /**
+   * The chapter that must be completed before this one opens. `null` marks the campaign entry
+   * point, and exactly one chapter may have it.
+   *
+   * Ordering lives in content rather than code (research R-103): reordering the campaign or
+   * inserting a side chapter should not need an engineer.
+   */
+  requiresChapterId: identifier().nullable(),
   mapIds: z.array(identifier()).min(1),
   vocabularyIds: z.array(identifier()),
   grammarTopicIds: z.array(identifier()),

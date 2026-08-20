@@ -93,7 +93,13 @@ or inserting a side chapter should not need an engineer.
 
 ## R-104: Cross-chapter review
 
-**Resolves**: FR-015, FR-016.
+**Resolves**: FR-015 only.
+
+**Correction (analysis pass, 2026-08-20)**: this entry originally claimed FR-016 too. It does not.
+Verified against the shipped code: `challengePool` in `src/core/chapter/challenge.ts` builds
+`words = new Set(chapter.vocabularyIds)` and rejects anything outside that chapter, so the CHAPTER
+CHALLENGE does not span chapters and genuinely needs a code change (T057). The "already works,
+verify don't build" conclusion holds for **battle review only**.
 
 **Decision**: No new mechanism. Question selection already draws review questions from any word
 the player has `encountered`, regardless of which chapter declared it, at
@@ -186,7 +192,7 @@ the concept document asks for.
 | R-101 | How is content authored at chapter scale? | A guided CLI writing the same JSON a human would; hand-editing stays the source of truth |
 | R-102 | What does the tool refuse to emit? | Every content defect Chapter 1 actually hit — homograph forms, all-gated pools, fake `-s` distractors, uncovered components |
 | R-103 | How is chapter order expressed? | An authored `requiresChapterId`, gating on the existing `completed` flag |
-| R-104 | How does cross-chapter review work? | It already does — the review pool keys off `encountered`, not chapter. Verify, do not build |
+| R-104 | How does cross-chapter review work? | In BATTLES it already does — the review pool keys off `encountered`, not chapter. The CHALLENGE filters per-chapter and needs code (T057) |
 | R-105 | A word in two chapters? | One mastery record, counted once; validation warns because it is usually a copy-paste |
 | R-106 | Do old saves migrate? | No. A missing chapter key already returns a zeroed default |
 | R-107 | Journal at 70+ words? | Group by chapter, filter by state. No search box — it would need a form control |

@@ -11,7 +11,7 @@ depends on: **can a chapter be authored without an engineer?**
 
 The technical work divides unevenly, and that is the point. Most of Chapter 2 is *content* running
 on systems Chapter 1 already ships — cross-chapter review, for instance, already works and only
-needs verifying. The genuinely new engineering is small and specific: a guided authoring tool,
+needs verifying. The genuinely new engineering is small and specific: the authoring CLI,
 chapter-to-chapter gating, and a journal that stays usable at 70+ words.
 
 If this feature turns out to be mostly authoring time and very little code, that is a successful
@@ -39,7 +39,8 @@ the content (SC-008). Question selection must stay responsive as the review pool
 (FR-020), so any schedule overrun is attributable to the content pipeline rather than to new code
 — which is the measurement this feature exists to take.
 
-**Scale/Scope** (FR-014, FR-018, FR-019): ~40 new A1 words, ~240 new questions, 2 new grammar
+**Scale/Scope** (FR-014, FR-018, FR-019): **floor 30 new A1 words, target ~40** — FR-014 and
+SC-004 set the floor; the target is what the question-count estimate below assumes. ~40 new A1 words, ~240 new questions, 2 new grammar
 topics, 3 new maps, 6 new NPCs, 6 new monsters plus a boss, 1 chapter challenge. Both locales
 complete.
 
@@ -93,7 +94,7 @@ Almost nothing moves. Listing only what this feature touches:
 
 ```text
 scripts/
-└── author.ts                    # NEW — the guided authoring CLI (R-101, R-102)
+└── author.ts                    # NEW — the authoring CLI (R-101, R-102)
 
 src/
 ├── core/

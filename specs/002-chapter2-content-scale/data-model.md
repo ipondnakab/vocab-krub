@@ -67,7 +67,7 @@ content edit changed the ordering.
 
 | | Chapter 1 (shipped) | Chapter 2 (target) | Combined |
 |---|---|---|---|
-| Vocabulary words (FR-014: ≥30 new) | 31 | ~40 | ~71 |
+| Vocabulary words (FR-014 floor 30, target 40) | 31 | ~40 | ~71 |
 | Questions | 177 | ~240 | ~417 |
 | Grammar topics | 2 | 2 | 4 |
 | NPCs | 6 | 6 | 12 |

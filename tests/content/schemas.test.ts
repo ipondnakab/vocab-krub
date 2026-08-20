@@ -193,6 +193,56 @@ describe("content validation failures (FR-050)", () => {
     }
   });
 
+  it("rejects a chapter whose prerequisite does not exist", () => {
+    const patched = structuredClone(rawContentFiles["chapters.json"]) as {
+      chapters: Array<{ requiresChapterId: string | null }>;
+    };
+    patched.chapters[0]!.requiresChapterId = "chapter-nonexistent";
+    try {
+      loadContent({ ...rawContentFiles, "chapters.json": patched });
+      expect.unreachable("should have thrown");
+    } catch (error) {
+      const issues = (error as ContentValidationError).issues;
+      expect(issues.some((i) => i.message.includes("chapter-nonexistent"))).toBe(true);
+    }
+  });
+
+  it("rejects a cycle in chapter prerequisites", () => {
+    // Two chapters each waiting on the other means the campaign has no entry point at all.
+    const patched = structuredClone(rawContentFiles["chapters.json"]) as {
+      chapters: Array<Record<string, unknown>>;
+    };
+    const second = structuredClone(patched.chapters[0]!);
+    second["id"] = "chapter-2";
+    second["requiresChapterId"] = "chapter-1";
+    patched.chapters[0]!["requiresChapterId"] = "chapter-2";
+    patched.chapters.push(second);
+    try {
+      loadContent({ ...rawContentFiles, "chapters.json": patched });
+      expect.unreachable("should have thrown");
+    } catch (error) {
+      const issues = (error as ContentValidationError).issues;
+      expect(issues.some((i) => i.message.includes("cycle"))).toBe(true);
+    }
+  });
+
+  it("requires exactly one campaign entry point", () => {
+    const patched = structuredClone(rawContentFiles["chapters.json"]) as {
+      chapters: Array<Record<string, unknown>>;
+    };
+    const second = structuredClone(patched.chapters[0]!);
+    second["id"] = "chapter-2";
+    second["requiresChapterId"] = null; // a second null prerequisite
+    patched.chapters.push(second);
+    try {
+      loadContent({ ...rawContentFiles, "chapters.json": patched });
+      expect.unreachable("should have thrown");
+    } catch (error) {
+      const issues = (error as ContentValidationError).issues;
+      expect(issues.some((i) => i.message.includes("entry point"))).toBe(true);
+    }
+  });
+
   it("collects EVERY error rather than stopping at the first", () => {
     // Fixing a batch of new content one error per run is the loop that makes authoring painful.
     const patched = structuredClone(rawContentFiles["monsters.json"]) as {

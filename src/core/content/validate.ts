@@ -246,6 +246,59 @@ export function validateContent(content: RawContent, level: ValidationLevel = "s
     }
   });
 
+  // ------------------------------------------------------- chapter ordering (R-103)
+  const chapterById = new Map(content.chapters.map((c) => [c.id, c]));
+  const entryPoints = content.chapters.filter((c) => c.requiresChapterId === null);
+
+  if (content.chapters.length > 0 && entryPoints.length !== 1) {
+    add(
+      "chapters.json",
+      "chapters",
+      `exactly one chapter must have requiresChapterId: null (the campaign entry point); found ${entryPoints.length}`,
+    );
+  }
+
+  content.chapters.forEach((chapter, ci) => {
+    const required = chapter.requiresChapterId;
+    if (required === null) return;
+    if (!chapterById.has(required)) {
+      add("chapters.json", `chapters[${ci}].requiresChapterId`, `references unknown chapter '${required}'`);
+      return;
+    }
+    // Walk the prerequisite chain. A cycle means no chapter is ever reachable.
+    const seen = new Set<string>([chapter.id]);
+    let cursor: string | null = required;
+    while (cursor !== null) {
+      if (seen.has(cursor)) {
+        add(
+          "chapters.json",
+          `chapters[${ci}].requiresChapterId`,
+          `chapter prerequisites form a cycle through '${cursor}', so no chapter is reachable`,
+        );
+        break;
+      }
+      seen.add(cursor);
+      cursor = chapterById.get(cursor)?.requiresChapterId ?? null;
+    }
+  });
+
+  // A word in two chapters is legal but usually a copy-paste, so warn rather than fail (R-105).
+  const wordChapters = new Map<string, string[]>();
+  for (const chapter of content.chapters) {
+    for (const wordId of chapter.vocabularyIds) {
+      wordChapters.set(wordId, [...(wordChapters.get(wordId) ?? []), chapter.id]);
+    }
+  }
+  for (const [wordId, chapters] of wordChapters) {
+    if (chapters.length > 1) {
+      add(
+        "chapters.json",
+        `chapters(word='${wordId}')`,
+        `WARNING: declared by ${chapters.length} chapters (${chapters.join(", ")}). Legal — mastery is counted once — but usually a copy-paste`,
+      );
+    }
+  }
+
   // ---------------------------------------------------------------- chapters
   content.chapters.forEach((chapter, ci) => {
     const at = (field: string) => `chapters[${ci}].${field}`;

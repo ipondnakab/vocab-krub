@@ -35,11 +35,11 @@ Single Next.js package, unchanged from feature 001: `src/core/`, `src/content/`,
 **Purpose**: Wire the new npm script. There is deliberately almost nothing here — this feature adds
 no dependency and no new layer.
 
-- [ ] T001 Add the `author` and `author:check` scripts to package.json, pointing at scripts/author.ts
-- [ ] T002 [P] Create the empty scripts/author.ts entry point with its CLI argument parsing in scripts/author.ts
-- [ ] T003 [P] Add tests/unit/authoring.test.ts and tests/unit/chapterProgression.test.ts as empty suites so the harness picks them up
+- [X] T001 Add the `author` and `author:check` scripts to package.json, pointing at scripts/author.ts
+- [X] T002 [P] Create the empty scripts/author.ts entry point with its CLI argument parsing in scripts/author.ts
+- [X] T003 [P] Add tests/unit/authoring.test.ts and tests/unit/chapterProgression.test.ts as empty suites so the harness picks them up
 
-**Checkpoint**: `npm run author` runs and exits cleanly; `npm test` still green.
+**Checkpoint**: ✅ **COMPLETE (2026-08-20)** — `npm run author` and `npm run author:check` both run; `npm test` green.
 
 ---
 
@@ -50,23 +50,23 @@ expressible at all.
 
 **⚠️ CRITICAL**: No user story work begins until this phase is complete.
 
-- [ ] T004 Add the nullable `requiresChapterId` field to the chapter schema in src/content/schemas/chapters.ts (data-model §1)
-- [ ] T005 Set `requiresChapterId: null` on chapter-1 in src/content/data/chapters.json so the existing chapter remains the campaign entry point
-- [ ] T006 Implement `isChapterAvailable`, `nextChapter`, and `blockedBy` in src/core/chapter/progression.ts per contracts/chapter-ordering.md (FR-009)
-- [ ] T007 Test chapter availability in tests/unit/chapterProgression.test.ts: a null prerequisite is always available; a chapter is unavailable until its prerequisite is `completed`; `blockedBy` names the blocking chapter rather than returning a bare false (FR-009)
-- [ ] T008 Add cross-file validation to src/core/content/validate.ts for chapter ordering: `requiresChapterId` resolves, the graph is acyclic, and exactly one chapter has a null prerequisite (contracts/chapter-ordering.md)
-- [ ] T009 [P] Test the ordering validation in tests/content/schemas.test.ts: a dangling prerequisite fails, a two-chapter cycle fails, and two null-prerequisite chapters fail — each naming the file and field
-- [ ] T010 [P] Add the duplicate-word warning to src/core/content/validate.ts for a word declared by more than one chapter (research R-105, FR-013)
-- [ ] T011 [P] Test in tests/unit/mastery.test.ts that a word declared by two chapters produces exactly one mastery record and counts once toward `wordsMasteredCount` (FR-013)
-- [ ] T012 Verify against the shipped code that no save migration is needed: add a test in tests/unit/save.test.ts loading a save with no `chapter-2` key and asserting `chapterProgressOf` returns a zeroed default (FR-011, research R-106)
+- [X] T004 Add the nullable `requiresChapterId` field to the chapter schema in src/content/schemas/chapters.ts (data-model §1)
+- [X] T005 Set `requiresChapterId: null` on chapter-1 in src/content/data/chapters.json so the existing chapter remains the campaign entry point
+- [X] T006 Implement `isChapterAvailable`, `nextChapter`, and `blockedBy` in src/core/chapter/progression.ts per contracts/chapter-ordering.md (FR-009)
+- [X] T007 Test chapter availability in tests/unit/chapterProgression.test.ts: a null prerequisite is always available; a chapter is unavailable until its prerequisite is `completed`; `blockedBy` names the blocking chapter rather than returning a bare false (FR-009)
+- [X] T008 Add cross-file validation to src/core/content/validate.ts for chapter ordering: `requiresChapterId` resolves, the graph is acyclic, and exactly one chapter has a null prerequisite (contracts/chapter-ordering.md)
+- [X] T009 [P] Test the ordering validation in tests/content/schemas.test.ts: a dangling prerequisite fails, a two-chapter cycle fails, and two null-prerequisite chapters fail — each naming the file and field
+- [X] T010 [P] Add the duplicate-word warning to src/core/content/validate.ts for a word declared by more than one chapter (research R-105, FR-013)
+- [X] T011 [P] Test in tests/unit/mastery.test.ts that a word declared by two chapters produces exactly one mastery record and counts once toward `wordsMasteredCount` (FR-013)
+- [X] T012 Verify against the shipped code that no save migration is needed: add a test in tests/unit/save.test.ts loading a save with no `chapter-2` key and asserting `chapterProgressOf` returns a zeroed default (FR-011, research R-106)
 
-**Checkpoint**: A second chapter can be declared and gated. Chapter 1 still loads and plays.
+**Checkpoint**: ✅ **COMPLETE (2026-08-20)** — 392 tests pass. Chapter ordering is authored data; cycles, dangling prerequisites, and duplicate entry points all fail at load with the field named. A pre-Chapter-2 save loads with no migration, verified against `chapterProgressOf`'s shipped default rather than assumed.
 
 ---
 
 ## Phase 3: User Story 1 — A content author adds a chapter without engineering help (Priority: P1) 🎯 MVP
 
-**Goal**: A guided tool that makes authoring ~40 words tractable, and that refuses to emit the
+**Goal**: The authoring CLI — a guided tool that makes authoring ~40 words tractable (FR-014 sets the floor at 30; 40 is the plan's target and what the ~240-question estimate assumes), and that refuses to emit the
 content defects Chapter 1 actually shipped.
 
 **Independent Test**: Hand scripts/author.ts and quickstart.md to someone who has not seen the
@@ -75,28 +75,42 @@ without asking an engineer (SC-001).
 
 ### Tests for User Story 1
 
-- [ ] T013 [P] [US1] Test in tests/unit/authoring.test.ts that the tool REFUSES a word whose forms are spelled identically, and explains why in one sentence (FR-003, research R-102 — the `read`/`read`/`read` defect from Chapter 1)
-- [ ] T014 [P] [US1] Test in tests/unit/authoring.test.ts that the tool REFUSES to emit a monster with fewer than two questions answerable before any grammar is learned (FR-004 — the defect that made a first battle throw in Chapter 1)
-- [ ] T015 [P] [US1] Test in tests/unit/authoring.test.ts that third-person distractors use real `-s`/`-es`/`-ies` forms, so `go` yields `goes` and never `gos` (research R-102)
-- [ ] T016 [P] [US1] Test in tests/unit/authoring.test.ts that every derived mastery component receives at least one question (FR-005)
-- [ ] T017 [P] [US1] Test in tests/unit/authoring.test.ts that no generated question has a duplicate option or a distractor equal to the correct answer (FR-022 of feature 001)
+- [X] T013 [P] [US1] Test in tests/unit/authoring.test.ts that the tool REFUSES a word whose forms are spelled identically, and explains why in one sentence (FR-003, research R-102 — the `read`/`read`/`read` defect from Chapter 1)
+- [X] T014 [P] [US1] Test in tests/unit/authoring.test.ts that the tool REFUSES to emit a monster with fewer than two questions answerable before any grammar is learned (FR-004 — the defect that made a first battle throw in Chapter 1)
+- [X] T015 [P] [US1] Test in tests/unit/authoring.test.ts that third-person distractors use real `-s`/`-es`/`-ies` forms, so `go` yields `goes` and never `gos` (research R-102)
+- [X] T016 [P] [US1] Test in tests/unit/authoring.test.ts that every derived mastery component receives at least one question (FR-005)
+- [X] T017 [P] [US1] Test in tests/unit/authoring.test.ts that no generated question has a duplicate option or a distractor equal to the correct answer (FR-022 of feature 001)
 
 ### Implementation for User Story 1
 
-- [ ] T018 [US1] Implement the interactive prompt sequence in scripts/author.ts — word, both meanings, topic, forms, one example, chapter — per contracts/authoring-cli.md (FR-008)
-- [ ] T019 [US1] Implement mastery-component derivation and one-question-per-component generation in scripts/author.ts, reusing src/core/content/deriveComponents.ts rather than reimplementing it (FR-005)
-- [ ] T020 [US1] Implement distractor generation in scripts/author.ts with correct third-person and plural morphology (research R-102)
-- [ ] T021 [US1] Implement the five refusal rules in scripts/author.ts, each returning a one-sentence explanation rather than a bare rejection (FR-003, FR-004, FR-005)
-- [ ] T022 [US1] Implement writing into src/content/data/*.json from scripts/author.ts, preserving existing formatting and ordering so the diff stays reviewable (FR-008)
-- [ ] T023 [US1] Implement `npm run author -- --check` in scripts/author.ts to run full content validation without writing (FR-002)
-- [ ] T024 [US1] Make the validation report in src/core/content/errors.ts readable by a non-engineer: file, field path, what was expected — and all problems in one run (FR-002)
-- [ ] T025 [P] [US1] Extend scripts/generate-placeholders.ts so newly authored NPCs and monsters get conforming placeholder art automatically (FR-006)
-- [ ] T026 [US1] Write the authoring guide in specs/002-chapter2-content-scale/quickstart.md covering every content file and the validation step, aimed at someone who will not open a source file (FR-007)
+- [X] T018 [US1] Implement the interactive prompt sequence in scripts/author.ts — word, both meanings, topic, forms, one example, chapter — per contracts/authoring-cli.md (FR-008)
+- [X] T019 [US1] Implement mastery-component derivation and one-question-per-component generation in scripts/author.ts, reusing src/core/content/deriveComponents.ts rather than reimplementing it (FR-005)
+- [X] T020 [US1] Implement distractor generation in scripts/author.ts with correct third-person and plural morphology (research R-102)
+- [X] T021 [US1] Implement the five refusal rules in scripts/author.ts, each returning a one-sentence explanation rather than a bare rejection (FR-003, FR-004, FR-005)
+- [X] T022 [US1] Implement writing into src/content/data/*.json from scripts/author.ts, preserving existing formatting and ordering so the diff stays reviewable (FR-008)
+- [X] T023 [US1] Implement `npm run author -- --check` in scripts/author.ts to run full content validation without writing (FR-002)
+- [X] T024 [US1] Make the validation report in src/core/content/errors.ts readable by a non-engineer: file, field path, what was expected — and all problems in one run (FR-002)
+- [X] T025 [P] [US1] Extend scripts/generate-placeholders.ts so newly authored NPCs and monsters get conforming placeholder art automatically (FR-006)
+- [X] T026 [US1] Write the authoring guide in specs/002-chapter2-content-scale/quickstart.md covering every content file and the validation step, aimed at someone who will not open a source file (FR-007)
 - [ ] T027 [US1] Verify SC-001 by having a person who has not seen the codebase add five words, one monster, and one NPC using only specs/002-chapter2-content-scale/quickstart.md, and record the elapsed time in that file
 
-**Checkpoint**: The hypothesis is now testable. **Run T027 before authoring all of Chapter 2** — if
-authoring five words is painful, authoring forty will not get better, and the next task is a better
-tool rather than more content.
+**Checkpoint**: ✅ **T013–T026 COMPLETE (2026-08-20)**. T027 is human-gated and remains open.
+
+The CLI works end to end, verified by running it: it added a word with 6 questions spanning all
+five levels and two ungated ones, that content validated, and the full suite stayed green.
+
+**A rule was wrong and running the tool caught it.** The homograph refusal originally rejected any
+word with two identically-spelled forms — which is EVERY regular English verb (walked/walked). It
+refused `jump`. Refusing regular verbs would have rejected most of A1. The rule is now narrow and
+correct: it refuses only when BASE and PAST collapse (`read`/`read`), because that is the case
+where "what is the past tense?" genuinely has no answerable options. `walked`/`walked` is fine —
+the duplicate participle component is simply not generated.
+
+The unit tests did not catch this: they only ever exercised base==past. A regular-verb case is now
+part of the suite.
+
+**Run T027 before authoring all of Chapter 2** — if authoring five words is painful, forty will not
+get better, and the next task is a better tool rather than more content.
 
 ---
 
@@ -171,7 +185,7 @@ proportion of questions come from Chapter 1 vocabulary.
 - [ ] T049 [US4] Author the Chapter 2 question set into src/content/data/questions.json via `npm run author`, covering every derived component, all five levels, and all four difficulty tiers (FR-014, SC-004)
 - [ ] T050 [US4] Author six Chapter 2 monsters plus the chapter boss in src/content/data/monsters.json, each with at least two ungated questions (FR-004, FR-018)
 - [ ] T051 [US4] Place the Chapter 2 monsters on the new maps via scripts/generate-placeholders.ts, with patrol radii set (FR-018)
-- [ ] T052 [US4] Confirm no file under src/core/, src/runtime/, src/phaser/, or src/components/ changed to make cross-chapter review work, by inspecting `git diff --name-only` for this phase (research R-104)
+- [ ] T052 [US4] Confirm no file under src/core/, src/runtime/, src/phaser/, or src/components/ changed to make **battle** review span chapters, by inspecting `git diff --name-only` for this phase. Scoped to battles deliberately: the chapter CHALLENGE does filter per-chapter and legitimately changes code in T057 (research R-104)
 
 **Checkpoint**: Chapter 1's words come back in Chapter 2 battles, and the proportion is measured.
 
@@ -275,7 +289,7 @@ measurement in T071 actually accrues.
 |---|---|---|---|
 | 1 | T001–T003 | — | The `author` script wired up |
 | 2 | T004–T012 | — | Chapter ordering, validation, save compatibility |
-| 3 | T013–T027 | US1 (P1) | 🎯 The authoring tool and its refusals — the hypothesis |
+| 3 | T013–T027 | US1 (P1) | 🎯 The authoring CLI and its refusals — the hypothesis |
 | 4 | T028–T037 | US2 (P2) | Chapter 2 reachable, all progress carried forward |
 | 5 | T038–T044 | US3 (P3) | Present Continuous and question forms, taught by new NPCs |
 | 6 | T045–T052 | US4 (P4) | 30+ new words, ~240 questions, cross-chapter review verified |

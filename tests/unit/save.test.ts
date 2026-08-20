@@ -4,6 +4,7 @@ import {
 } from "../../src/core/save/serialize";
 import { initMastery, recordAnswer } from "../../src/core/mastery/mastery";
 import { balance, content, player } from "../helpers/fixtures";
+import { chapterProgressOf } from "../../src/core/chapter/challenge";
 import type { PlayerState } from "../../src/core/player/playerState";
 
 /**
@@ -153,6 +154,26 @@ describe("load failure paths (FR-055)", () => {
       expect(() => deserialize(raw)).not.toThrow();
       expect(deserialize(raw).status).toBe("unreadable");
     }
+  });
+
+  it("loads a save written before Chapter 2 existed, with no migration (FR-011)", () => {
+    // Verified against the shipped code rather than assumed: chapterProgressOf returns a zeroed
+    // default for a missing key, so a pre-Chapter-2 save is simply a player who has not started
+    // it. A migration that does nothing would be worse than none — it implies a change happened.
+    const old = fullyPopulated();
+    expect(Object.keys(old.chapterProgress)).not.toContain("chapter-2");
+
+    const result = deserialize(serialize(old));
+    expect(result.status).toBe("ok");
+    if (result.status !== "ok") return;
+
+    const progress = chapterProgressOf(result.player as PlayerState, "chapter-2");
+    expect(progress).toEqual({
+      chapterId: "chapter-2", bossDefeated: false,
+      challengeAttempts: 0, challengeBestScore: 0, completed: false,
+    });
+    // And nothing about Chapter 1 was disturbed.
+    expect(result.player.chapterProgress["chapter-1"]).toEqual(old.chapterProgress["chapter-1"]);
   });
 
   it("treats a defaulted player as valid — a brand new game must save", () => {
